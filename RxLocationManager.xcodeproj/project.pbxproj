@@ -10,6 +10,8 @@
 		72B336041D2BF8FC0002FB39 /* RxLocationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 72B336031D2BF8FC0002FB39 /* RxLocationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		72B336051D2BF9500002FB39 /* RxLocationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 72B336031D2BF8FC0002FB39 /* RxLocationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		72B336091D2C05990002FB39 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72B336081D2C05990002FB39 /* RxSwift.framework */; };
+		72B3360C1D2C08120002FB39 /* RxLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B3360B1D2C08120002FB39 /* RxLocationManager.swift */; };
+		72B3360D1D2C08180002FB39 /* RxLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B3360B1D2C08120002FB39 /* RxLocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,7 @@
 		72B336031D2BF8FC0002FB39 /* RxLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RxLocationManager.h; sourceTree = "<group>"; };
 		72B336071D2BFF980002FB39 /* RxLocationManager.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = RxLocationManager.podspec; sourceTree = "<group>"; };
 		72B336081D2C05990002FB39 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "Carthage/Checkouts/RxSwift/build/Debug-iphoneos/RxSwift.framework"; sourceTree = "<group>"; };
+		72B3360B1D2C08120002FB39 /* RxLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxLocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +66,7 @@
 		72B336001D2BF6C00002FB39 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				72B3360B1D2C08120002FB39 /* RxLocationManager.swift */,
 				72B336031D2BF8FC0002FB39 /* RxLocationManager.h */,
 				72B336011D2BF6C00002FB39 /* Info-iOS.plist */,
 				72B336021D2BF6C00002FB39 /* Info-watchOS.plist */,
@@ -201,6 +205,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72B3360C1D2C08120002FB39 /* RxLocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,6 +213,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72B3360D1D2C08180002FB39 /* RxLocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,6 +315,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -319,6 +326,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgth.RxLocationManager;
 				PRODUCT_NAME = RxLocationManager;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -326,6 +334,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
