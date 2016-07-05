@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		72B336041D2BF8FC0002FB39 /* RxLocationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 72B336031D2BF8FC0002FB39 /* RxLocationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		72B336051D2BF9500002FB39 /* RxLocationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 72B336031D2BF8FC0002FB39 /* RxLocationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		72B336091D2C05990002FB39 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72B336081D2C05990002FB39 /* RxSwift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,6 +19,7 @@
 		72B336021D2BF6C00002FB39 /* Info-watchOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-watchOS.plist"; sourceTree = "<group>"; };
 		72B336031D2BF8FC0002FB39 /* RxLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RxLocationManager.h; sourceTree = "<group>"; };
 		72B336071D2BFF980002FB39 /* RxLocationManager.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = RxLocationManager.podspec; sourceTree = "<group>"; };
+		72B336081D2C05990002FB39 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "Carthage/Checkouts/RxSwift/build/Debug-iphoneos/RxSwift.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -25,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72B336091D2C05990002FB39 /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +44,7 @@
 		72B335D51D2BEE9E0002FB39 = {
 			isa = PBXGroup;
 			children = (
+				72B3360A1D2C065D0002FB39 /* Frameworks */,
 				72B336061D2BFE160002FB39 /* Metadata */,
 				72B336001D2BF6C00002FB39 /* Sources */,
 				72B335E01D2BEE9E0002FB39 /* Products */,
@@ -72,6 +76,14 @@
 				72B336071D2BFF980002FB39 /* RxLocationManager.podspec */,
 			);
 			name = Metadata;
+			sourceTree = "<group>";
+		};
+		72B3360A1D2C065D0002FB39 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				72B336081D2C05990002FB39 /* RxSwift.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
