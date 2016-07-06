@@ -7,6 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		724DF71C1D2D56BD0024AB3C /* StandardLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF71B1D2D56BD0024AB3C /* StandardLocationService.swift */; };
+		724DF71D1D2D56BD0024AB3C /* StandardLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF71B1D2D56BD0024AB3C /* StandardLocationService.swift */; };
+		724DF71F1D2D575B0024AB3C /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF71E1D2D575B0024AB3C /* Bridge.swift */; };
+		724DF7201D2D575B0024AB3C /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF71E1D2D575B0024AB3C /* Bridge.swift */; };
+		724DF7241D2D57970024AB3C /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724DF7221D2D57970024AB3C /* RxSwift.framework */; };
+		724DF7261D2D58090024AB3C /* SignificantLocationUpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF7251D2D58090024AB3C /* SignificantLocationUpdateService.swift */; };
+		724DF7271D2D58090024AB3C /* SignificantLocationUpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF7251D2D58090024AB3C /* SignificantLocationUpdateService.swift */; };
+		724DF7291D2D58B20024AB3C /* HeadingUpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF7281D2D58B20024AB3C /* HeadingUpdateService.swift */; };
+		724DF72A1D2D58B20024AB3C /* HeadingUpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF7281D2D58B20024AB3C /* HeadingUpdateService.swift */; };
+		724DF72C1D2D58FD0024AB3C /* RegionMonitoringService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF72B1D2D58FD0024AB3C /* RegionMonitoringService.swift */; };
+		724DF72D1D2D58FD0024AB3C /* RegionMonitoringService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF72B1D2D58FD0024AB3C /* RegionMonitoringService.swift */; };
+		724DF72F1D2D5A1C0024AB3C /* nextId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF72E1D2D5A1C0024AB3C /* nextId.swift */; };
+		724DF7301D2D5A1C0024AB3C /* nextId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF72E1D2D5A1C0024AB3C /* nextId.swift */; };
+		724DF7321D2D5A3E0024AB3C /* BeaconRangingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF7311D2D5A3E0024AB3C /* BeaconRangingService.swift */; };
+		724DF7331D2D5A3E0024AB3C /* BeaconRangingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF7311D2D5A3E0024AB3C /* BeaconRangingService.swift */; };
+		724DF7351D2D5A880024AB3C /* MonitoringVisitsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF7341D2D5A880024AB3C /* MonitoringVisitsService.swift */; };
+		724DF7361D2D5A880024AB3C /* MonitoringVisitsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF7341D2D5A880024AB3C /* MonitoringVisitsService.swift */; };
 		72B336041D2BF8FC0002FB39 /* RxLocationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 72B336031D2BF8FC0002FB39 /* RxLocationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		72B336051D2BF9500002FB39 /* RxLocationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 72B336031D2BF8FC0002FB39 /* RxLocationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		72B336091D2C05990002FB39 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72B336081D2C05990002FB39 /* RxSwift.framework */; };
@@ -15,6 +32,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		724DF7191D2D56580024AB3C /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = "Carthage/Checkouts/RxSwift/build/Debug-iphoneos/RxCocoa.framework"; sourceTree = "<group>"; };
+		724DF71B1D2D56BD0024AB3C /* StandardLocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardLocationService.swift; sourceTree = "<group>"; };
+		724DF71E1D2D575B0024AB3C /* Bridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bridge.swift; sourceTree = "<group>"; };
+		724DF7211D2D57970024AB3C /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = "../../Library/Developer/Xcode/DerivedData/RxLocationManager-forrdtavsxtttydggcxklgyodsnw/Build/Products/Debug-iphonesimulator/RxCocoa.framework"; sourceTree = "<group>"; };
+		724DF7221D2D57970024AB3C /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/RxLocationManager-forrdtavsxtttydggcxklgyodsnw/Build/Products/Debug-iphonesimulator/RxSwift.framework"; sourceTree = "<group>"; };
+		724DF7251D2D58090024AB3C /* SignificantLocationUpdateService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignificantLocationUpdateService.swift; sourceTree = "<group>"; };
+		724DF7281D2D58B20024AB3C /* HeadingUpdateService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadingUpdateService.swift; sourceTree = "<group>"; };
+		724DF72B1D2D58FD0024AB3C /* RegionMonitoringService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionMonitoringService.swift; sourceTree = "<group>"; };
+		724DF72E1D2D5A1C0024AB3C /* nextId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = nextId.swift; sourceTree = "<group>"; };
+		724DF7311D2D5A3E0024AB3C /* BeaconRangingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconRangingService.swift; sourceTree = "<group>"; };
+		724DF7341D2D5A880024AB3C /* MonitoringVisitsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitoringVisitsService.swift; sourceTree = "<group>"; };
 		72B335DF1D2BEE9E0002FB39 /* RxLocationManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxLocationManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		72B335EF1D2BF2960002FB39 /* RxLocationManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxLocationManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		72B336011D2BF6C00002FB39 /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
@@ -38,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				724DF7241D2D57970024AB3C /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +95,14 @@
 		72B336001D2BF6C00002FB39 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				724DF72E1D2D5A1C0024AB3C /* nextId.swift */,
+				724DF71E1D2D575B0024AB3C /* Bridge.swift */,
+				724DF71B1D2D56BD0024AB3C /* StandardLocationService.swift */,
+				724DF7251D2D58090024AB3C /* SignificantLocationUpdateService.swift */,
+				724DF7281D2D58B20024AB3C /* HeadingUpdateService.swift */,
+				724DF72B1D2D58FD0024AB3C /* RegionMonitoringService.swift */,
+				724DF7311D2D5A3E0024AB3C /* BeaconRangingService.swift */,
+				724DF7341D2D5A880024AB3C /* MonitoringVisitsService.swift */,
 				72B3360B1D2C08120002FB39 /* RxLocationManager.swift */,
 				72B336031D2BF8FC0002FB39 /* RxLocationManager.h */,
 				72B336011D2BF6C00002FB39 /* Info-iOS.plist */,
@@ -85,6 +122,9 @@
 		72B3360A1D2C065D0002FB39 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				724DF7211D2D57970024AB3C /* RxCocoa.framework */,
+				724DF7221D2D57970024AB3C /* RxSwift.framework */,
+				724DF7191D2D56580024AB3C /* RxCocoa.framework */,
 				72B336081D2C05990002FB39 /* RxSwift.framework */,
 			);
 			name = Frameworks;
@@ -205,7 +245,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				724DF71C1D2D56BD0024AB3C /* StandardLocationService.swift in Sources */,
+				724DF7261D2D58090024AB3C /* SignificantLocationUpdateService.swift in Sources */,
+				724DF7291D2D58B20024AB3C /* HeadingUpdateService.swift in Sources */,
 				72B3360C1D2C08120002FB39 /* RxLocationManager.swift in Sources */,
+				724DF7321D2D5A3E0024AB3C /* BeaconRangingService.swift in Sources */,
+				724DF71F1D2D575B0024AB3C /* Bridge.swift in Sources */,
+				724DF72C1D2D58FD0024AB3C /* RegionMonitoringService.swift in Sources */,
+				724DF72F1D2D5A1C0024AB3C /* nextId.swift in Sources */,
+				724DF7351D2D5A880024AB3C /* MonitoringVisitsService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,7 +261,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				724DF71D1D2D56BD0024AB3C /* StandardLocationService.swift in Sources */,
+				724DF7271D2D58090024AB3C /* SignificantLocationUpdateService.swift in Sources */,
+				724DF72A1D2D58B20024AB3C /* HeadingUpdateService.swift in Sources */,
 				72B3360D1D2C08180002FB39 /* RxLocationManager.swift in Sources */,
+				724DF7331D2D5A3E0024AB3C /* BeaconRangingService.swift in Sources */,
+				724DF7201D2D575B0024AB3C /* Bridge.swift in Sources */,
+				724DF72D1D2D58FD0024AB3C /* RegionMonitoringService.swift in Sources */,
+				724DF7301D2D5A1C0024AB3C /* nextId.swift in Sources */,
+				724DF7361D2D5A880024AB3C /* MonitoringVisitsService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +376,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Checkouts/RxSwift/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = "Sources/Info-iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -339,6 +399,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Checkouts/RxSwift/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = "Sources/Info-iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -416,6 +480,7 @@
 				72B335F51D2BF2960002FB39 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
