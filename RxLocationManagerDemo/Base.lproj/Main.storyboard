@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="iO7-p5-JIc">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--RxLocationManager Demo-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="RootViewController" customModule="RxLocationManagerDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="TSU-31-YAY">
+                                <rect key="frame" x="0.0" y="550" width="600" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lXy-6T-v02">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
+                                        <state key="normal" title="RequestWhenInUse">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eEV-AT-pYP">
+                                        <rect key="frame" x="300" y="0.0" width="300" height="50"/>
+                                        <state key="normal" title="RequestAlways">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Kfg-M1-XEM"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location Service Status " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZR6-Fm-MXc">
+                                <rect key="frame" x="20" y="84" width="560" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nxh-2M-DlQ">
+                                <rect key="frame" x="20" y="165" width="560" height="34"/>
+                                <state key="normal" title="Standard Location Service"/>
+                                <connections>
+                                    <segue destination="MxH-t7-J6b" kind="show" id="VrG-O7-tPJ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Authorization Status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jta-Eo-aqA">
+                                <rect key="frame" x="20" y="125" width="560" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="TSU-31-YAY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="4Lx-N3-cZm"/>
+                            <constraint firstItem="jta-Eo-aqA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ABH-0X-5Jq"/>
+                            <constraint firstItem="ZR6-Fm-MXc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="FFl-EZ-oWj"/>
+                            <constraint firstItem="ZR6-Fm-MXc" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="MUF-Pf-cxp"/>
+                            <constraint firstItem="TSU-31-YAY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QRx-1S-oFN"/>
+                            <constraint firstItem="jta-Eo-aqA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cYP-BL-a50"/>
+                            <constraint firstItem="jta-Eo-aqA" firstAttribute="top" secondItem="ZR6-Fm-MXc" secondAttribute="bottom" constant="20" id="lNV-BS-Vkv"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="ZR6-Fm-MXc" secondAttribute="leading" id="nrR-R1-Og6"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Nxh-2M-DlQ" secondAttribute="leading" id="vyf-op-XZw"/>
+                            <constraint firstItem="Nxh-2M-DlQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xC6-uN-bzM"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="TSU-31-YAY" secondAttribute="bottom" id="yFC-XL-xxt"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="RxLocationManager Demo" id="l5S-ra-sEM"/>
+                    <connections>
+                        <outlet property="authStatusLbl" destination="jta-Eo-aqA" id="EKc-g4-vYp"/>
+                        <outlet property="locationServiceStatusLbl" destination="ZR6-Fm-MXc" id="0HJ-pW-8aU"/>
+                        <outlet property="requestAlwaysBtn" destination="eEV-AT-pYP" id="PdQ-NY-hc8"/>
+                        <outlet property="requestWhenInUseBtn" destination="lXy-6T-v02" id="8Uh-DN-lYp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1701" y="270"/>
+        </scene>
+        <!--Standard Location Service-->
+        <scene sceneID="Pum-By-I3o">
+            <objects>
+                <viewController id="MxH-t7-J6b" customClass="StandardLocationServiceViewController" customModule="RxLocationManagerDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8HR-LL-FxF"/>
+                        <viewControllerLayoutGuide type="bottom" id="APE-Sk-7Nx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="whN-TO-T2j">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Location: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zXS-Yp-LM0">
+                                <rect key="frame" x="20" y="84" width="560" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lJP-qy-Fxa">
+                                <rect key="frame" x="20" y="125" width="560" height="30"/>
+                                <state key="normal" title="Get Current Location"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lJP-qy-Fxa" firstAttribute="top" secondItem="zXS-Yp-LM0" secondAttribute="bottom" constant="20" id="B4V-BN-Fy9"/>
+                            <constraint firstItem="zXS-Yp-LM0" firstAttribute="centerX" secondItem="whN-TO-T2j" secondAttribute="centerX" id="HIG-fI-pfC"/>
+                            <constraint firstItem="lJP-qy-Fxa" firstAttribute="centerX" secondItem="whN-TO-T2j" secondAttribute="centerX" id="R1R-QS-38U"/>
+                            <constraint firstItem="zXS-Yp-LM0" firstAttribute="top" secondItem="8HR-LL-FxF" secondAttribute="bottom" constant="20" id="hTu-j5-A4u"/>
+                            <constraint firstItem="lJP-qy-Fxa" firstAttribute="leading" secondItem="whN-TO-T2j" secondAttribute="leadingMargin" id="koT-So-aH7"/>
+                            <constraint firstItem="zXS-Yp-LM0" firstAttribute="leading" secondItem="whN-TO-T2j" secondAttribute="leadingMargin" id="yEe-e4-Lal"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Standard Location Service" id="deR-iA-sLF"/>
+                    <connections>
+                        <outlet property="currentLocationLbl" destination="zXS-Yp-LM0" id="1mb-sa-a20"/>
+                        <outlet property="getCurrentLocationBtn" destination="lJP-qy-Fxa" id="4yp-iM-hIx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cSK-5N-nJ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2424" y="270"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="cwQ-Pk-mUh">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iO7-p5-JIc" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kyL-sR-EgJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="aXg-nj-wLZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aKV-ag-SZp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1008" y="270"/>
+        </scene>
+    </scenes>
+</document>

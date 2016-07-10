@@ -24,7 +24,7 @@ public protocol BeaconRangingService: BeaconRangingServiceConfigurable{
 }
 //MARK: DefaultBeaconRagningService
 class DefaultBeaconRangingService: BeaconRangingService{
-    private let locMgr: Bridge = Bridge(bridgedManager: CLLocationManager())
+    private let locMgr: Bridge = Bridge()
     
     private var observers = [(id:Int, observer: AnyObserver<([CLBeacon], CLBeaconRegion)>)]()
     private var errorObservers = [(id:Int, observer: AnyObserver<(CLBeaconRegion, NSError)>)]()

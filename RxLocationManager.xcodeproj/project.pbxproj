@@ -29,7 +29,24 @@
 		72B336091D2C05990002FB39 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72B336081D2C05990002FB39 /* RxSwift.framework */; };
 		72B3360C1D2C08120002FB39 /* RxLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B3360B1D2C08120002FB39 /* RxLocationManager.swift */; };
 		72B3360D1D2C08180002FB39 /* RxLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B3360B1D2C08120002FB39 /* RxLocationManager.swift */; };
+		72FC158C1D3256650051FB39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC158B1D3256650051FB39 /* AppDelegate.swift */; };
+		72FC158E1D3256650051FB39 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC158D1D3256650051FB39 /* RootViewController.swift */; };
+		72FC15911D3256650051FB39 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72FC158F1D3256650051FB39 /* Main.storyboard */; };
+		72FC15931D3256650051FB39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72FC15921D3256650051FB39 /* Assets.xcassets */; };
+		72FC15961D3256650051FB39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72FC15941D3256650051FB39 /* LaunchScreen.storyboard */; };
+		72FC15A91D326FA10051FB39 /* RxLocationManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72B335DF1D2BEE9E0002FB39 /* RxLocationManager.framework */; };
+		72FC15AD1D32A6650051FB39 /* StandardLocationServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC15AC1D32A6650051FB39 /* StandardLocationServiceViewController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		72FC15A71D326F120051FB39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 72B335D61D2BEE9E0002FB39 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 72B335DE1D2BEE9E0002FB39;
+			remoteInfo = RxLocationManager;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		724DF7191D2D56580024AB3C /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = "Carthage/Checkouts/RxSwift/build/Debug-iphoneos/RxCocoa.framework"; sourceTree = "<group>"; };
@@ -51,6 +68,14 @@
 		72B336071D2BFF980002FB39 /* RxLocationManager.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = RxLocationManager.podspec; sourceTree = "<group>"; };
 		72B336081D2C05990002FB39 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "Carthage/Checkouts/RxSwift/build/Debug-iphoneos/RxSwift.framework"; sourceTree = "<group>"; };
 		72B3360B1D2C08120002FB39 /* RxLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxLocationManager.swift; sourceTree = "<group>"; };
+		72FC15891D3256640051FB39 /* RxLocationManagerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxLocationManagerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		72FC158B1D3256650051FB39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		72FC158D1D3256650051FB39 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		72FC15901D3256650051FB39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		72FC15921D3256650051FB39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		72FC15951D3256650051FB39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		72FC15971D3256650051FB39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		72FC15AC1D32A6650051FB39 /* StandardLocationServiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardLocationServiceViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,12 +95,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		72FC15861D3256640051FB39 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72FC15A91D326FA10051FB39 /* RxLocationManager.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		72B335D51D2BEE9E0002FB39 = {
 			isa = PBXGroup;
 			children = (
+				72FC158A1D3256650051FB39 /* RxLocationManagerDemo */,
 				72B3360A1D2C065D0002FB39 /* Frameworks */,
 				72B336061D2BFE160002FB39 /* Metadata */,
 				72B336001D2BF6C00002FB39 /* Sources */,
@@ -88,6 +122,7 @@
 			children = (
 				72B335DF1D2BEE9E0002FB39 /* RxLocationManager.framework */,
 				72B335EF1D2BF2960002FB39 /* RxLocationManager.framework */,
+				72FC15891D3256640051FB39 /* RxLocationManagerDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -129,6 +164,21 @@
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
+		};
+		72FC158A1D3256650051FB39 /* RxLocationManagerDemo */ = {
+			isa = PBXGroup;
+			children = (
+				72FC158B1D3256650051FB39 /* AppDelegate.swift */,
+				72FC158D1D3256650051FB39 /* RootViewController.swift */,
+				72FC158F1D3256650051FB39 /* Main.storyboard */,
+				72FC15921D3256650051FB39 /* Assets.xcassets */,
+				72FC15941D3256650051FB39 /* LaunchScreen.storyboard */,
+				72FC15971D3256650051FB39 /* Info.plist */,
+				72FC15AC1D32A6650051FB39 /* StandardLocationServiceViewController.swift */,
+			);
+			name = RxLocationManagerDemo;
+			path = /Users/haoyu/Dev/rxlocationmanager/RxLocationManagerDemo;
+			sourceTree = "<absolute>";
 		};
 /* End PBXGroup section */
 
@@ -188,12 +238,31 @@
 			productReference = 72B335EF1D2BF2960002FB39 /* RxLocationManager.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		72FC15881D3256640051FB39 /* RxLocationManagerDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 72FC15981D3256650051FB39 /* Build configuration list for PBXNativeTarget "RxLocationManagerDemo" */;
+			buildPhases = (
+				72FC15851D3256640051FB39 /* Sources */,
+				72FC15861D3256640051FB39 /* Frameworks */,
+				72FC15871D3256640051FB39 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				72FC15A81D326F120051FB39 /* PBXTargetDependency */,
+			);
+			name = RxLocationManagerDemo;
+			productName = RxLocationManagerDemo;
+			productReference = 72FC15891D3256640051FB39 /* RxLocationManagerDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		72B335D61D2BEE9E0002FB39 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = GFWGTH;
 				TargetAttributes = {
@@ -203,6 +272,9 @@
 					72B335EE1D2BF2960002FB39 = {
 						CreatedOnToolsVersion = 7.3.1;
 					};
+					72FC15881D3256640051FB39 = {
+						CreatedOnToolsVersion = 7.3;
+					};
 				};
 			};
 			buildConfigurationList = 72B335D91D2BEE9E0002FB39 /* Build configuration list for PBXProject "RxLocationManager" */;
@@ -211,6 +283,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 72B335D51D2BEE9E0002FB39;
 			productRefGroup = 72B335E01D2BEE9E0002FB39 /* Products */;
@@ -219,6 +292,7 @@
 			targets = (
 				72B335DE1D2BEE9E0002FB39 /* RxLocationManager */,
 				72B335EE1D2BF2960002FB39 /* RxLocationManager watchOS */,
+				72FC15881D3256640051FB39 /* RxLocationManagerDemo */,
 			);
 		};
 /* End PBXProject section */
@@ -235,6 +309,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		72FC15871D3256640051FB39 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72FC15961D3256650051FB39 /* LaunchScreen.storyboard in Resources */,
+				72FC15931D3256650051FB39 /* Assets.xcassets in Resources */,
+				72FC15911D3256650051FB39 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,7 +357,44 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		72FC15851D3256640051FB39 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72FC158E1D3256650051FB39 /* RootViewController.swift in Sources */,
+				72FC158C1D3256650051FB39 /* AppDelegate.swift in Sources */,
+				72FC15AD1D32A6650051FB39 /* StandardLocationServiceViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		72FC15A81D326F120051FB39 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 72B335DE1D2BEE9E0002FB39 /* RxLocationManager */;
+			targetProxy = 72FC15A71D326F120051FB39 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		72FC158F1D3256650051FB39 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				72FC15901D3256650051FB39 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		72FC15941D3256650051FB39 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				72FC15951D3256650051FB39 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		72B335E51D2BEE9E0002FB39 /* Debug */ = {
@@ -314,7 +435,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -357,7 +478,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -452,6 +573,30 @@
 			};
 			name = Release;
 		};
+		72FC15991D3256650051FB39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = RxLocationManagerDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgotohell.RxLocationManagerDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		72FC159A1D3256650051FB39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = RxLocationManagerDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgotohell.RxLocationManagerDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -478,6 +623,15 @@
 			buildConfigurations = (
 				72B335F41D2BF2960002FB39 /* Debug */,
 				72B335F51D2BF2960002FB39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		72FC15981D3256650051FB39 /* Build configuration list for PBXNativeTarget "RxLocationManagerDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				72FC15991D3256650051FB39 /* Debug */,
+				72FC159A1D3256650051FB39 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

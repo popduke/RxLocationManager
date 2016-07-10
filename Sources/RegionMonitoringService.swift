@@ -28,7 +28,7 @@ public protocol RegionMonitoringService: RegionMonitoringServiceConfigurable{
 
 //MARK: DefaultRegionMonitoringService
 class DefaultRegionMonitoringService: RegionMonitoringService{
-    private let locMgr: Bridge = Bridge(bridgedManager: CLLocationManager())
+    private let locMgr: Bridge = Bridge()
     
     private var enteringObservers = [(id:Int, observer: AnyObserver<CLRegion>)]()
     private var exitingObservers = [(id:Int, observer: AnyObserver<CLRegion>)]()

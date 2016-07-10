@@ -28,7 +28,7 @@ public protocol HeadingUpdateService: HeadingUpdateServiceConfigurable{
 
 //MARK: DefaultHeadingUpdateService
 class DefaultHeadingUpdateService: HeadingUpdateService {
-    private let locMgr: Bridge = Bridge(bridgedManager: CLLocationManager())
+    private let locMgr: Bridge = Bridge()
     
     var headingFilter: CLLocationDegrees{
         get{

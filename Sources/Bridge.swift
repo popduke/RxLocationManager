@@ -25,11 +25,12 @@ class Bridge:NSObject, CLLocationManagerDelegate{
     var didPausedUpdate:((CLLocationManager) -> Void)?
     var didResumeUpdate:((CLLocationManager) -> Void)?
     
-    init(bridgedManager:CLLocationManager){
-        manager = bridgedManager
+    override init(){
+        manager = CLLocationManager()
         super.init()
         manager.delegate = self
     }
+    
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         didFailWithError?(manager, error)
     }

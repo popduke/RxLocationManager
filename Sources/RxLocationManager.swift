@@ -13,7 +13,7 @@ import CoreLocation
 //MARK: RxLocationManager
 public class RxLocationManager{
     private static var defaultLocationMgr: Bridge = {
-        let locMgr = Bridge(bridgedManager: CLLocationManager())
+        let locMgr = Bridge()
         locMgr.didChangeAuthorizationStatus = {
             clLocMgr, status in
             authorizationStatusSink.onNext(status)

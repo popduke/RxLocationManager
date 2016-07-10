@@ -17,7 +17,7 @@ public protocol SignificantLocationUpdateService{
 
 //MARK: DefaultSignificantLocationUpdateService
 class DefaultSignificantLocationUpdateService: SignificantLocationUpdateService{
-    private let locMgr = Bridge(bridgedManager: CLLocationManager())
+    private let locMgr = Bridge()
     private var observers = [(id: Int, AnyObserver<[CLLocation]>)]()
     var locating: Observable<[CLLocation]>{
         get{

@@ -17,7 +17,7 @@ public protocol MonitoringVisitsService{
 
 //MARK: DefaultMonitoringVisitsService
 class DefaultMonitoringVisitsService: MonitoringVisitsService{
-    private let locMgr: Bridge = Bridge(bridgedManager: CLLocationManager())
+    private let locMgr: Bridge = Bridge()
     private var observers = [(id:Int, observer: AnyObserver<CLVisit>)]()
     
     var visiting: Observable<CLVisit>{
