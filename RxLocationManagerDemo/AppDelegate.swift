@@ -7,6 +7,57 @@
 //
 
 import UIKit
+import CoreLocation
+
+extension NSError{
+    public override var description: String{
+        get{
+            switch domain {
+            case "kCLErrorDomain":
+                switch CLError(rawValue:code)! {
+                case .LocationUnknown:
+                    return "Location Unknown"
+                case .Denied:
+                    return "Denied"
+                case .Network:
+                    return "Network"
+                case .HeadingFailure:
+                    return "Heading Failure"
+                case .RegionMonitoringDenied:
+                    return "Region Monitoring Denied"
+                case .RegionMonitoringFailure:
+                    return "Region Monitoring Failure"
+                case .RegionMonitoringSetupDelayed:
+                    return "Region Monitoring Setup Delayed"
+                case .RegionMonitoringResponseDelayed:
+                    return "Region Monitoring Response Delayed"
+                case .GeocodeFoundNoResult:
+                    return "Geocode Found No Result"
+                case .GeocodeFoundPartialResult:
+                    return "Geocode Found Partial Result"
+                case .GeocodeCanceled:
+                    return "Geocode Canceled"
+                case .DeferredFailed:
+                    return "Deferred Failed"
+                case .DeferredNotUpdatingLocation:
+                    return "Deferred Not Updating Location"
+                case .DeferredAccuracyTooLow:
+                    return "Deferred Accuracy Too Low"
+                case .DeferredDistanceFiltered:
+                    return "Deferred Distance Filtered"
+                case .DeferredCanceled:
+                    return "Deferred Canceled"
+                case .RangingUnavailable:
+                    return "Ranging Unavailable"
+                case .RangingFailure:
+                    return "Ranging Failure"
+                }
+            default:
+                return self.description
+            }
+        }
+    }
+}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
