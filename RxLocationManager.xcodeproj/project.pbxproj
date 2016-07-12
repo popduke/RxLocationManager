@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		723217061D3539A700F46CEC /* SignificantLocationUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723217051D3539A700F46CEC /* SignificantLocationUpdateViewController.swift */; };
 		724DF71C1D2D56BD0024AB3C /* StandardLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF71B1D2D56BD0024AB3C /* StandardLocationService.swift */; };
 		724DF71D1D2D56BD0024AB3C /* StandardLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF71B1D2D56BD0024AB3C /* StandardLocationService.swift */; };
 		724DF71F1D2D575B0024AB3C /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF71E1D2D575B0024AB3C /* Bridge.swift */; };
@@ -49,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		723217051D3539A700F46CEC /* SignificantLocationUpdateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignificantLocationUpdateViewController.swift; path = RxLocationManagerDemo/SignificantLocationUpdateViewController.swift; sourceTree = SOURCE_ROOT; };
 		724DF7191D2D56580024AB3C /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = "Carthage/Checkouts/RxSwift/build/Debug-iphoneos/RxCocoa.framework"; sourceTree = "<group>"; };
 		724DF71B1D2D56BD0024AB3C /* StandardLocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardLocationService.swift; sourceTree = "<group>"; };
 		724DF71E1D2D575B0024AB3C /* Bridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bridge.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				72FC15941D3256650051FB39 /* LaunchScreen.storyboard */,
 				72FC15971D3256650051FB39 /* Info.plist */,
 				72FC15AC1D32A6650051FB39 /* StandardLocationServiceViewController.swift */,
+				723217051D3539A700F46CEC /* SignificantLocationUpdateViewController.swift */,
 			);
 			name = RxLocationManagerDemo;
 			path = /Users/haoyu/Dev/rxlocationmanager/RxLocationManagerDemo;
@@ -363,6 +366,7 @@
 			files = (
 				72FC158E1D3256650051FB39 /* RootViewController.swift in Sources */,
 				72FC158C1D3256650051FB39 /* AppDelegate.swift in Sources */,
+				723217061D3539A700F46CEC /* SignificantLocationUpdateViewController.swift in Sources */,
 				72FC15AD1D32A6650051FB39 /* StandardLocationServiceViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -39,37 +39,48 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location Service Status " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZR6-Fm-MXc">
-                                <rect key="frame" x="20" y="84" width="560" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="20" y="84" width="560" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nxh-2M-DlQ">
-                                <rect key="frame" x="20" y="165" width="560" height="34"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nxh-2M-DlQ">
+                                <rect key="frame" x="20" y="158" width="560" height="30"/>
                                 <state key="normal" title="Standard Location Service"/>
                                 <connections>
                                     <segue destination="MxH-t7-J6b" kind="show" id="VrG-O7-tPJ"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Authorization Status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jta-Eo-aqA">
-                                <rect key="frame" x="20" y="125" width="560" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="20" y="121" width="560" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NBw-jj-avb">
+                                <rect key="frame" x="20" y="208" width="560" height="30"/>
+                                <state key="normal" title="Significant Location Update"/>
+                                <connections>
+                                    <segue destination="Cap-jv-Uzq" kind="show" id="K1d-f5-nBQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="TSU-31-YAY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="4Lx-N3-cZm"/>
                             <constraint firstItem="jta-Eo-aqA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ABH-0X-5Jq"/>
                             <constraint firstItem="ZR6-Fm-MXc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="FFl-EZ-oWj"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="NBw-jj-avb" secondAttribute="leading" id="HQm-iy-NuW"/>
                             <constraint firstItem="ZR6-Fm-MXc" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="MUF-Pf-cxp"/>
                             <constraint firstItem="TSU-31-YAY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QRx-1S-oFN"/>
+                            <constraint firstItem="NBw-jj-avb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XYn-cr-lpV"/>
                             <constraint firstItem="jta-Eo-aqA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cYP-BL-a50"/>
+                            <constraint firstItem="Nxh-2M-DlQ" firstAttribute="top" secondItem="jta-Eo-aqA" secondAttribute="bottom" constant="20" id="hpx-Cc-6ye"/>
                             <constraint firstItem="jta-Eo-aqA" firstAttribute="top" secondItem="ZR6-Fm-MXc" secondAttribute="bottom" constant="20" id="lNV-BS-Vkv"/>
                             <constraint firstAttribute="leadingMargin" secondItem="ZR6-Fm-MXc" secondAttribute="leading" id="nrR-R1-Og6"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Nxh-2M-DlQ" secondAttribute="leading" id="vyf-op-XZw"/>
                             <constraint firstItem="Nxh-2M-DlQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xC6-uN-bzM"/>
+                            <constraint firstItem="NBw-jj-avb" firstAttribute="top" secondItem="Nxh-2M-DlQ" secondAttribute="bottom" constant="20" id="xaX-br-UwC"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="TSU-31-YAY" secondAttribute="bottom" id="yFC-XL-xxt"/>
                         </constraints>
                     </view>
@@ -79,11 +90,12 @@
                         <outlet property="locationServiceStatusLbl" destination="ZR6-Fm-MXc" id="0HJ-pW-8aU"/>
                         <outlet property="requestAlwaysBtn" destination="eEV-AT-pYP" id="PdQ-NY-hc8"/>
                         <outlet property="requestWhenInUseBtn" destination="lXy-6T-v02" id="8Uh-DN-lYp"/>
+                        <outlet property="significantLocationUpdateBtn" destination="NBw-jj-avb" id="JVd-Qo-rev"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1701" y="270"/>
+            <point key="canvasLocation" x="1698" y="270"/>
         </scene>
         <!--Standard Location Service-->
         <scene sceneID="Pum-By-I3o">
@@ -104,7 +116,7 @@
                                     <segment title="Locating"/>
                                 </segments>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lJP-qy-Fxa">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lJP-qy-Fxa" userLabel="GetCurrentLocationBtn">
                                 <rect key="frame" x="0.0" y="550" width="600" height="50"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -114,7 +126,7 @@
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ZC-HT-ruQ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ZC-HT-ruQ" userLabel="CurrentLocationLbl">
                                 <rect key="frame" x="0.0" y="144" width="600" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="pNs-ok-TlO"/>
@@ -123,7 +135,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sjA-0r-JLP">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sjA-0r-JLP" userLabel="ErrorLbl">
                                 <rect key="frame" x="0.0" y="420" width="600" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="wej-Kp-ZBS"/>
@@ -173,7 +185,59 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cSK-5N-nJ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2424" y="270"/>
+            <point key="canvasLocation" x="2510" y="-147"/>
+        </scene>
+        <!--Significant Location Update-->
+        <scene sceneID="hKy-ii-xm1">
+            <objects>
+                <viewController id="Cap-jv-Uzq" customClass="SignificantLocationUpdateViewController" customModule="RxLocationManagerDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Upb-aK-xae"/>
+                        <viewControllerLayoutGuide type="bottom" id="kzc-5n-C8j"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fid-Uk-Dx1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3pe-LZ-09f" userLabel="ToggleSignificantLocationUpdateBtn">
+                                <rect key="frame" x="0.0" y="550" width="600" height="50"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="w5W-rJ-g7X"/>
+                                </constraints>
+                                <state key="normal" title="Start">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C4x-Xd-bwL" userLabel="CurrentLocationLbl">
+                                <rect key="frame" x="0.0" y="144" width="600" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="ReF-e3-gtF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="C4x-Xd-bwL" firstAttribute="leading" secondItem="fid-Uk-Dx1" secondAttribute="leading" id="0vl-1H-HIY"/>
+                            <constraint firstItem="kzc-5n-C8j" firstAttribute="top" secondItem="3pe-LZ-09f" secondAttribute="bottom" id="5Bk-pp-uw8"/>
+                            <constraint firstItem="3pe-LZ-09f" firstAttribute="leading" secondItem="fid-Uk-Dx1" secondAttribute="leading" id="AnV-Jv-1N8"/>
+                            <constraint firstItem="C4x-Xd-bwL" firstAttribute="centerX" secondItem="fid-Uk-Dx1" secondAttribute="centerX" id="pq1-xI-cYO"/>
+                            <constraint firstItem="3pe-LZ-09f" firstAttribute="centerX" secondItem="fid-Uk-Dx1" secondAttribute="centerX" id="uaM-lN-yIA"/>
+                            <constraint firstItem="C4x-Xd-bwL" firstAttribute="top" secondItem="Upb-aK-xae" secondAttribute="bottom" constant="80" id="xq7-Hy-beY"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Significant Location Update" id="3hx-z8-M7S"/>
+                    <connections>
+                        <outlet property="currentLocationLbl" destination="C4x-Xd-bwL" id="RhK-Gq-uJf"/>
+                        <outlet property="toggleSignificantLocationUpdateBtn" destination="3pe-LZ-09f" id="2Us-oQ-flk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AfC-xO-0af" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2510" y="520"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cwQ-Pk-mUh">

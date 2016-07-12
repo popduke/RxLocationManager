@@ -20,11 +20,13 @@ class RootViewController: UIViewController {
     
     @IBOutlet weak var locationServiceStatusLbl: UILabel!
     
+    @IBOutlet weak var significantLocationUpdateBtn: UIButton!
+    
     @IBOutlet weak var authStatusLbl: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        significantLocationUpdateBtn.enabled = RxLocationManager.significantLocationChangeMonitoringAvailable
         requestWhenInUseBtn.rx_tap.subscribeNext{
             RxLocationManager.requestWhenInUseAuthorization()
         }
@@ -60,6 +62,7 @@ class RootViewController: UIViewController {
             }
             .subscribe(authStatusLbl.rx_text)
             .addDisposableTo(disposeBag)
+        
     }
 
     override func didReceiveMemoryWarning() {

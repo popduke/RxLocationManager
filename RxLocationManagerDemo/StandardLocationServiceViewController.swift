@@ -97,6 +97,7 @@ class StandardLocationServiceViewController: UIViewController {
                         .subscribe(self.currentLocationLbl.rx_text)
                 }else{
                     self.toggleLocatingBtn.setTitle("Start", forState: .Normal)
+                    self.currentLocationLbl.text = ""
                     self.locatingSubscription!.dispose()
                     self.locatingSubscription = nil
                 }

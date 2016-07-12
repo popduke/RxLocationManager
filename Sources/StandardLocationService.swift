@@ -73,22 +73,26 @@ class DefaultStandardLocationService: StandardLocationService{
 
     var located:Observable<CLLocation> {
         get{
-            return Observable.create{
-                observer in
-                var ownerService: DefaultStandardLocationService! = self
-                let id = nextId()
-                ownerService.locatedObservers.append((id, observer))
-                if #available(iOS 9.0, *) {
-                    ownerService.locMgrForLocation.manager.requestLocation()
-                } else {
-                    ownerService.locMgrForLocation.manager.startUpdatingLocation()
-                }
-                return AnonymousDisposable{
-                    ownerService.locatedObservers.removeAtIndex(ownerService.locatedObservers.indexOf{$0.id == id}!)
-                    if(ownerService.locatedObservers.count == 0){
-                        ownerService.locMgrForLocation.manager.stopUpdatingLocation()
+            if self.locMgrForLocation.manager.location != nil{
+                return Observable.just(self.locMgrForLocation.manager.location!)
+            }else{
+                return Observable.create{
+                    observer in
+                    var ownerService: DefaultStandardLocationService! = self
+                    let id = nextId()
+                    ownerService.locatedObservers.append((id, observer))
+                    if #available(iOS 9.0, *) {
+                        ownerService.locMgrForLocation.manager.requestLocation()
+                    } else {
+                        ownerService.locMgrForLocation.manager.startUpdatingLocation()
                     }
-                    ownerService = nil
+                    return AnonymousDisposable{
+                        ownerService.locatedObservers.removeAtIndex(ownerService.locatedObservers.indexOf{$0.id == id}!)
+                        if(ownerService.locatedObservers.count == 0){
+                            ownerService.locMgrForLocation.manager.stopUpdatingLocation()
+                        }
+                        ownerService = nil
+                    }
                 }
             }
         }
