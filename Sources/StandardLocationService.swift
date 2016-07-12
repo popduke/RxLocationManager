@@ -165,6 +165,10 @@ class DefaultStandardLocationService: StandardLocationService{
         locMgrForLocating.didFailWithError = {
             [weak self]
             mgr, err in
+            if err.domain == "kCLErrorDomain" && CLError.LocationUnknown.rawValue == err.code{
+                //ignore location update error, since new update event may come
+                return
+            }
             if let copyOfLocatingObservers = self?.locatingObservers{
                 for (_, observer) in copyOfLocatingObservers{
                     observer.onError(err)
