@@ -15,9 +15,11 @@ public protocol HeadingUpdateServiceConfigurable{
     func headingFilter(degrees:CLLocationDegrees) -> HeadingUpdateService
     func headingOrientation(degrees:CLDeviceOrientation) -> HeadingUpdateService
     func displayHeadingCalibration(should:Bool) -> HeadingUpdateService
+    func trueHeading(enable:Bool) -> HeadingUpdateService
     var headingFilter: CLLocationDegrees{get}
     var headingOrientation: CLDeviceOrientation{get}
     var displayHeadingCalibration: Bool{get}
+    var trueHeading: Bool{get}
 }
 //MARK: HeadingUpdateService
 public protocol HeadingUpdateService: HeadingUpdateServiceConfigurable{
@@ -29,7 +31,12 @@ public protocol HeadingUpdateService: HeadingUpdateServiceConfigurable{
 //MARK: DefaultHeadingUpdateService
 class DefaultHeadingUpdateService: HeadingUpdateService {
     private let locMgr: Bridge = Bridge()
-    
+    private var _trueHeading: Bool = false
+    var trueHeading: Bool{
+        get{
+            return _trueHeading
+        }
+    }
     var headingFilter: CLLocationDegrees{
         get{
             return locMgr.manager.headingFilter
@@ -54,11 +61,15 @@ class DefaultHeadingUpdateService: HeadingUpdateService {
                 var ownerService: DefaultHeadingUpdateService! = self
                 let id = nextId()
                 ownerService.observers.append((id, observer))
+                if ownerService._trueHeading{
+                    ownerService.locMgr.manager.startUpdatingLocation()
+                }
                 ownerService.locMgr.manager.startUpdatingHeading()
                 return AnonymousDisposable {
                     ownerService.observers.removeAtIndex(ownerService.observers.indexOf{$0.id == id}!)
                     if(ownerService.observers.count == 0){
                         ownerService.locMgr.manager.stopUpdatingLocation()
+                        ownerService.locMgr.manager.stopUpdatingHeading()
                     }
                     ownerService = nil
                 }
@@ -103,6 +114,16 @@ class DefaultHeadingUpdateService: HeadingUpdateService {
     
     func displayHeadingCalibration(should: Bool) -> HeadingUpdateService {
         locMgr.displayHeadingCalibration = should
+        return self
+    }
+    
+    func trueHeading(enable: Bool) -> HeadingUpdateService {
+        _trueHeading = enable
+        if enable{
+            locMgr.manager.startUpdatingLocation()
+        }else{
+            locMgr.manager.stopUpdatingLocation()
+        }
         return self
     }
     

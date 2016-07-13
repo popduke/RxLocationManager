@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 import RxSwift
 import RxCocoa
 import RxLocationManager
@@ -22,11 +23,28 @@ class RootViewController: UIViewController {
     
     @IBOutlet weak var significantLocationUpdateBtn: UIButton!
     
+    @IBOutlet weak var headingUpdateServiceBtn: UIButton!
+    
+    @IBOutlet weak var regionMonitoringServiceBtn: UIButton!
+    
     @IBOutlet weak var authStatusLbl: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         significantLocationUpdateBtn.enabled = RxLocationManager.significantLocationChangeMonitoringAvailable
+        
+        headingUpdateServiceBtn.enabled = RxLocationManager.headingAvailable
+        
+        regionMonitoringServiceBtn.enabled = RxLocationManager.isRangingAvailable
+        
+        RxLocationManager.authorizationStatus
+            .map{return $0 == CLAuthorizationStatus.NotDetermined}
+            .subscribe(requestWhenInUseBtn.rx_enabled)
+        
+        RxLocationManager.authorizationStatus
+            .map{return $0 == CLAuthorizationStatus.NotDetermined}
+            .subscribe(requestAlwaysBtn.rx_enabled)
+        
         requestWhenInUseBtn.rx_tap.subscribeNext{
             RxLocationManager.requestWhenInUseAuthorization()
         }
