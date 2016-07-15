@@ -19,6 +19,7 @@ class Bridge:NSObject, CLLocationManagerDelegate{
     var didEnterRegion: ((CLLocationManager, CLRegion) -> Void)?
     var didExitRegion: ((CLLocationManager, CLRegion) -> Void)?
     var monitoringDidFailForRegion: ((CLLocationManager, CLRegion?, NSError) -> Void)?
+    var didStartMonitoringForRegion:((CLLocationManager, CLRegion) -> Void)?
     var didRangeBeaconsInRegion:((CLLocationManager, [CLBeacon], CLBeaconRegion) -> Void)?
     var rangingBeaconsDidFailForRegion:((CLLocationManager, CLBeaconRegion, NSError) -> Void)?
     var didVisit:((CLLocationManager, CLVisit) -> Void)?
@@ -61,6 +62,10 @@ class Bridge:NSObject, CLLocationManagerDelegate{
     
     func locationManager(manager: CLLocationManager, monitoringDidFailForRegion region: CLRegion?, withError error: NSError) {
         monitoringDidFailForRegion?(manager, region, error)
+    }
+    
+    func locationManager(manager: CLLocationManager, didStartMonitoringForRegion region: CLRegion) {
+        didStartMonitoringForRegion?(manager, region)
     }
     
     func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {

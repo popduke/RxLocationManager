@@ -35,7 +35,7 @@ class RootViewController: UIViewController {
         
         headingUpdateServiceBtn.enabled = RxLocationManager.headingAvailable
         
-        regionMonitoringServiceBtn.enabled = RxLocationManager.isRangingAvailable
+        regionMonitoringServiceBtn.enabled = RxLocationManager.isMonitoringAvailableForClass(CLCircularRegion)
         
         RxLocationManager.authorizationStatus
             .map{return $0 == CLAuthorizationStatus.NotDetermined}

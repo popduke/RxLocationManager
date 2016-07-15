@@ -58,6 +58,10 @@ public class RxLocationManager{
         defaultLocationMgr.manager.requestAlwaysAuthorization()
     }
     
+    public static func isMonitoringAvailableForClass(regionClass: AnyClass) -> Bool{
+        return CLLocationManager.isMonitoringAvailableForClass(regionClass)
+    }
+    
     public static let deferredLocationUpdatesAvailable = CLLocationManager.deferredLocationUpdatesAvailable()
     
     public static let headingAvailable = CLLocationManager.headingAvailable()

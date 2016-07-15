@@ -31,6 +31,8 @@
 		72B336091D2C05990002FB39 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72B336081D2C05990002FB39 /* RxSwift.framework */; };
 		72B3360C1D2C08120002FB39 /* RxLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B3360B1D2C08120002FB39 /* RxLocationManager.swift */; };
 		72B3360D1D2C08180002FB39 /* RxLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B3360B1D2C08120002FB39 /* RxLocationManager.swift */; };
+		72F970581D378E2B0020F65C /* RegionMonitoringServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F970571D378E2B0020F65C /* RegionMonitoringServiceViewController.swift */; };
+		72F9705A1D37B9A70020F65C /* MonitoredCircleRegionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F970591D37B9A70020F65C /* MonitoredCircleRegionTableViewCell.swift */; };
 		72FC158C1D3256650051FB39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC158B1D3256650051FB39 /* AppDelegate.swift */; };
 		72FC158E1D3256650051FB39 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC158D1D3256650051FB39 /* RootViewController.swift */; };
 		72FC15911D3256650051FB39 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72FC158F1D3256650051FB39 /* Main.storyboard */; };
@@ -72,6 +74,8 @@
 		72B336071D2BFF980002FB39 /* RxLocationManager.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = RxLocationManager.podspec; sourceTree = "<group>"; };
 		72B336081D2C05990002FB39 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "Carthage/Checkouts/RxSwift/build/Debug-iphoneos/RxSwift.framework"; sourceTree = "<group>"; };
 		72B3360B1D2C08120002FB39 /* RxLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxLocationManager.swift; sourceTree = "<group>"; };
+		72F970571D378E2B0020F65C /* RegionMonitoringServiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionMonitoringServiceViewController.swift; sourceTree = "<group>"; };
+		72F970591D37B9A70020F65C /* MonitoredCircleRegionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitoredCircleRegionTableViewCell.swift; sourceTree = "<group>"; };
 		72FC15891D3256640051FB39 /* RxLocationManagerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxLocationManagerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72FC158B1D3256650051FB39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		72FC158D1D3256650051FB39 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -181,6 +185,8 @@
 				72FC15AC1D32A6650051FB39 /* StandardLocationServiceViewController.swift */,
 				723217051D3539A700F46CEC /* SignificantLocationUpdateViewController.swift */,
 				721AD1181D367F2000744B42 /* HeadingUpdateServiceViewController.swift */,
+				72F970571D378E2B0020F65C /* RegionMonitoringServiceViewController.swift */,
+				72F970591D37B9A70020F65C /* MonitoredCircleRegionTableViewCell.swift */,
 			);
 			name = RxLocationManagerDemo;
 			path = /Users/haoyu/Dev/rxlocationmanager/RxLocationManagerDemo;
@@ -367,11 +373,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72F970581D378E2B0020F65C /* RegionMonitoringServiceViewController.swift in Sources */,
 				72FC158E1D3256650051FB39 /* RootViewController.swift in Sources */,
 				72FC158C1D3256650051FB39 /* AppDelegate.swift in Sources */,
 				721AD1191D367F2000744B42 /* HeadingUpdateServiceViewController.swift in Sources */,
 				723217061D3539A700F46CEC /* SignificantLocationUpdateViewController.swift in Sources */,
 				72FC15AD1D32A6650051FB39 /* StandardLocationServiceViewController.swift in Sources */,
+				72F9705A1D37B9A70020F65C /* MonitoredCircleRegionTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

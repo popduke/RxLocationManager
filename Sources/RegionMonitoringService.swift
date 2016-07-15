@@ -13,7 +13,6 @@ import RxSwift
 
 //MARK: RegionMonitoringServiceConfigurable
 public protocol RegionMonitoringServiceConfigurable{
-    var monitoredRegions: Set<CLRegion> { get }
     var maximumRegionMonitoringDistance: CLLocationDistance { get }
     func startMonitoringForRegions(regions: [CLRegion]) -> RegionMonitoringService
     func stopMonitoringForRegions(regions: [CLRegion]) -> RegionMonitoringService
@@ -21,6 +20,7 @@ public protocol RegionMonitoringServiceConfigurable{
 }
 //MARK: RegionMonitoringService
 public protocol RegionMonitoringService: RegionMonitoringServiceConfigurable{
+    var monitoredRegions: Observable<Set<CLRegion>> { get }
     var entering: Observable<CLRegion>{get}
     var exiting: Observable<CLRegion>{get}
     var error: Observable<(CLRegion?, NSError)>{get}
@@ -33,11 +33,7 @@ class DefaultRegionMonitoringService: RegionMonitoringService{
     private var enteringObservers = [(id:Int, observer: AnyObserver<CLRegion>)]()
     private var exitingObservers = [(id:Int, observer: AnyObserver<CLRegion>)]()
     private var errorObservers = [(id:Int, observer: AnyObserver<(CLRegion?, NSError)>)]()
-    var monitoredRegions: Set<CLRegion>{
-        get{
-            return locMgr.manager.monitoredRegions
-        }
-    }
+    private var monitoredRegionsObservers = [(id:Int, observer: AnyObserver<Set<CLRegion>>)]()
     
     var maximumRegionMonitoringDistance: CLLocationDistance{
         get{
@@ -90,6 +86,24 @@ class DefaultRegionMonitoringService: RegionMonitoringService{
         }
     }
     
+    var monitoredRegions: Observable<Set<CLRegion>>{
+        get{
+            return Observable.create{
+                observer in
+                var ownerService:DefaultRegionMonitoringService! = self
+                let id = nextId()
+                ownerService.monitoredRegionsObservers.append((id, observer))
+                if !ownerService.locMgr.manager.monitoredRegions.isEmpty{
+                    observer.onNext(ownerService.locMgr.manager.monitoredRegions)
+                }
+                return AnonymousDisposable{
+                    ownerService.monitoredRegionsObservers.removeAtIndex(ownerService.errorObservers.indexOf{$0.id == id}!)
+                    ownerService = nil
+                }
+            }
+        }
+    }
+    
     init(){
         locMgr.didEnterRegion = {
             [weak self]
@@ -118,6 +132,15 @@ class DefaultRegionMonitoringService: RegionMonitoringService{
                 }
             }
         }
+        locMgr.didStartMonitoringForRegion = {
+            [weak self]
+            mgr, region in
+            if let copyOfMonitoredRegionsObservers = self?.monitoredRegionsObservers{
+                for (_, observer) in copyOfMonitoredRegionsObservers{
+                    observer.onNext(self!.locMgr.manager.monitoredRegions)
+                }
+            }
+        }
     }
     
     func startMonitoringForRegions(regions: [CLRegion]) -> RegionMonitoringService {
@@ -131,11 +154,17 @@ class DefaultRegionMonitoringService: RegionMonitoringService{
         for region in regions{
             locMgr.manager.stopMonitoringForRegion(region)
         }
+        
+        //Workaround for lacking knowledge about the time when regions actually stop monitored
+        let currentMonitoredRegions = locMgr.manager.monitoredRegions.subtract(regions)
+        for (_, observer) in monitoredRegionsObservers{
+            observer.onNext(currentMonitoredRegions)
+        }
         return self
     }
     
     func stopMonitoringForAllRegions() -> RegionMonitoringService {
-        for region in monitoredRegions{
+        for region in locMgr.manager.monitoredRegions{
             locMgr.manager.stopMonitoringForRegion(region)
         }
         return self
