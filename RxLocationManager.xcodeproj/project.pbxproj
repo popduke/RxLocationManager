@@ -33,6 +33,7 @@
 		72B3360D1D2C08180002FB39 /* RxLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B3360B1D2C08120002FB39 /* RxLocationManager.swift */; };
 		72F970581D378E2B0020F65C /* RegionMonitoringServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F970571D378E2B0020F65C /* RegionMonitoringServiceViewController.swift */; };
 		72F9705A1D37B9A70020F65C /* MonitoredCircleRegionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F970591D37B9A70020F65C /* MonitoredCircleRegionTableViewCell.swift */; };
+		72F9705C1D3913F90020F65C /* VisitMonitoringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F9705B1D3913F90020F65C /* VisitMonitoringViewController.swift */; };
 		72FC158C1D3256650051FB39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC158B1D3256650051FB39 /* AppDelegate.swift */; };
 		72FC158E1D3256650051FB39 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC158D1D3256650051FB39 /* RootViewController.swift */; };
 		72FC15911D3256650051FB39 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72FC158F1D3256650051FB39 /* Main.storyboard */; };
@@ -76,6 +77,7 @@
 		72B3360B1D2C08120002FB39 /* RxLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxLocationManager.swift; sourceTree = "<group>"; };
 		72F970571D378E2B0020F65C /* RegionMonitoringServiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionMonitoringServiceViewController.swift; sourceTree = "<group>"; };
 		72F970591D37B9A70020F65C /* MonitoredCircleRegionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitoredCircleRegionTableViewCell.swift; sourceTree = "<group>"; };
+		72F9705B1D3913F90020F65C /* VisitMonitoringViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitMonitoringViewController.swift; sourceTree = "<group>"; };
 		72FC15891D3256640051FB39 /* RxLocationManagerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxLocationManagerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72FC158B1D3256650051FB39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		72FC158D1D3256650051FB39 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				721AD1181D367F2000744B42 /* HeadingUpdateServiceViewController.swift */,
 				72F970571D378E2B0020F65C /* RegionMonitoringServiceViewController.swift */,
 				72F970591D37B9A70020F65C /* MonitoredCircleRegionTableViewCell.swift */,
+				72F9705B1D3913F90020F65C /* VisitMonitoringViewController.swift */,
 			);
 			name = RxLocationManagerDemo;
 			path = /Users/haoyu/Dev/rxlocationmanager/RxLocationManagerDemo;
@@ -375,6 +378,7 @@
 			files = (
 				72F970581D378E2B0020F65C /* RegionMonitoringServiceViewController.swift in Sources */,
 				72FC158E1D3256650051FB39 /* RootViewController.swift in Sources */,
+				72F9705C1D3913F90020F65C /* VisitMonitoringViewController.swift in Sources */,
 				72FC158C1D3256650051FB39 /* AppDelegate.swift in Sources */,
 				721AD1191D367F2000744B42 /* HeadingUpdateServiceViewController.swift in Sources */,
 				723217061D3539A700F46CEC /* SignificantLocationUpdateViewController.swift in Sources */,

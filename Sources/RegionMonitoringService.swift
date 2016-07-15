@@ -97,7 +97,7 @@ class DefaultRegionMonitoringService: RegionMonitoringService{
                     observer.onNext(ownerService.locMgr.manager.monitoredRegions)
                 }
                 return AnonymousDisposable{
-                    ownerService.monitoredRegionsObservers.removeAtIndex(ownerService.errorObservers.indexOf{$0.id == id}!)
+                    ownerService.monitoredRegionsObservers.removeAtIndex(ownerService.monitoredRegionsObservers.indexOf{$0.id == id}!)
                     ownerService = nil
                 }
             }
