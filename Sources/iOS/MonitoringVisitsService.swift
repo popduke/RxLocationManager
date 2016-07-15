@@ -10,6 +10,7 @@ import Foundation
 import CoreLocation
 import RxSwift
 
+
 //MARK: MonitoringVisitsService
 public protocol MonitoringVisitsService{
     var visiting: Observable<CLVisit>{get}

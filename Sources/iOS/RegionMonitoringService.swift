@@ -10,7 +10,6 @@ import Foundation
 import CoreLocation
 import RxSwift
 
-
 //MARK: RegionMonitoringServiceConfigurable
 public protocol RegionMonitoringServiceConfigurable{
     var maximumRegionMonitoringDistance: CLLocationDistance { get }

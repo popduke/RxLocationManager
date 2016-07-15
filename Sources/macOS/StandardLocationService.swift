@@ -10,28 +10,20 @@ import Foundation
 import CoreLocation
 import RxSwift
 
+
 //MARK: StandardLocationServiceConfigurable
 public protocol StandardLocationServiceConfigurable{
     func distanceFilter(distance: CLLocationDistance) -> StandardLocationService
     func desiredAccuracy(desiredAccuracy: CLLocationAccuracy) -> StandardLocationService
-    func pausesLocationUpdatesAutomatically(pause : Bool) -> StandardLocationService
-    @available(iOS 9.0, *)
-    func allowsBackgroundLocationUpdates(allow : Bool) -> StandardLocationService
-    func activityType(type: CLActivityType) -> StandardLocationService
     
     var distanceFilter: CLLocationDistance {get}
     var desiredAccuracy: CLLocationAccuracy {get}
-    var pausesLocationUpdatesAutomatically: Bool {get}
-    @available(iOS 9.0, *)
-    var allowsBackgroundLocationUpdates: Bool{get}
-    var activityType: CLActivityType {get}
 }
+
 
 //MARK: StandardLocationService
 public protocol StandardLocationService: StandardLocationServiceConfigurable{
-    var located: Observable<CLLocation>{get}
     var locating: Observable<[CLLocation]>{get}
-    var isPaused: Observable<Bool>{get}
     func clone() -> StandardLocationService
 }
 
@@ -41,7 +33,6 @@ class DefaultStandardLocationService: StandardLocationService{
     private let locMgrForLocating = Bridge()
     private var locatedObservers = [(id: Int, observer: AnyObserver<CLLocation>)]()
     private var locatingObservers = [(id: Int, observer: AnyObserver<[CLLocation]>)]()
-    private var isPausedObservers = [(id: Int, observer: AnyObserver<Bool>)]()
     
     var distanceFilter:CLLocationDistance{
         get{
@@ -53,50 +44,7 @@ class DefaultStandardLocationService: StandardLocationService{
             return locMgrForLocation.manager.desiredAccuracy
         }
     }
-    var pausesLocationUpdatesAutomatically: Bool{
-        get{
-            return locMgrForLocation.manager.pausesLocationUpdatesAutomatically
-        }
-    }
-    @available(iOS 9.0, *)
-    var allowsBackgroundLocationUpdates: Bool{
-        get{
-            return locMgrForLocation.manager.allowsBackgroundLocationUpdates
-        }
-    }
-    var activityType: CLActivityType{
-        get{
-            return locMgrForLocation.manager.activityType
-        }
-    }
     
-
-    var located:Observable<CLLocation> {
-        get{
-            if self.locMgrForLocation.manager.location != nil{
-                return Observable.just(self.locMgrForLocation.manager.location!)
-            }else{
-                return Observable.create{
-                    observer in
-                    var ownerService: DefaultStandardLocationService! = self
-                    let id = nextId()
-                    ownerService.locatedObservers.append((id, observer))
-                    if #available(iOS 9.0, *) {
-                        ownerService.locMgrForLocation.manager.requestLocation()
-                    } else {
-                        ownerService.locMgrForLocation.manager.startUpdatingLocation()
-                    }
-                    return AnonymousDisposable{
-                        ownerService.locatedObservers.removeAtIndex(ownerService.locatedObservers.indexOf{$0.id == id}!)
-                        if(ownerService.locatedObservers.count == 0){
-                            ownerService.locMgrForLocation.manager.stopUpdatingLocation()
-                        }
-                        ownerService = nil
-                    }
-                }
-            }
-        }
-    }
     var locating:Observable<[CLLocation]> {
         get{
             return Observable.create {
@@ -116,20 +64,6 @@ class DefaultStandardLocationService: StandardLocationService{
             }
         }
     }
-    var isPaused:Observable<Bool>{
-        get{
-            return Observable.create {
-                observer in
-                var ownerService: DefaultStandardLocationService! = self
-                let id = nextId()
-                ownerService.isPausedObservers.append((id, observer))
-                return AnonymousDisposable{
-                    ownerService.locatingObservers.removeAtIndex(ownerService.isPausedObservers.indexOf{$0.id == id}!)
-                    ownerService = nil
-                }
-            }
-        }
-    }
     
     init(){
         locMgrForLocation.didUpdateLocations = {
@@ -144,7 +78,7 @@ class DefaultStandardLocationService: StandardLocationService{
                     self?.locMgrForLocation.manager.stopUpdatingLocation()
                     return
                 }
-
+                
             }
         }
         locMgrForLocation.didFailWithError = {
@@ -179,24 +113,6 @@ class DefaultStandardLocationService: StandardLocationService{
                 }
             }
         }
-        locMgrForLocating.didPausedUpdate = {
-            [weak self]
-            mgr in
-            if let copyOfIsPausedObservers = self?.isPausedObservers{
-                for(_, observer) in copyOfIsPausedObservers{
-                    observer.onNext(true)
-                }
-            }
-        }
-        locMgrForLocating.didResumeUpdate = {
-            [weak self]
-            mgr in
-            if let copyOfIsPausedObservers = self?.isPausedObservers{
-                for(_, observer) in copyOfIsPausedObservers{
-                    observer.onNext(false)
-                }
-            }
-        }
     }
     
     deinit{
@@ -215,34 +131,11 @@ class DefaultStandardLocationService: StandardLocationService{
         return self
     }
     
-    func pausesLocationUpdatesAutomatically(pause: Bool) -> StandardLocationService {
-        locMgrForLocation.manager.pausesLocationUpdatesAutomatically = pause
-        locMgrForLocating.manager.pausesLocationUpdatesAutomatically = pause
-        return self
-    }
-    
-    @available(iOS 9.0, *)
-    func allowsBackgroundLocationUpdates(allow: Bool) -> StandardLocationService {
-        locMgrForLocation.manager.allowsBackgroundLocationUpdates = allow
-        locMgrForLocating.manager.allowsBackgroundLocationUpdates = allow
-        return self
-    }
-    
-    func activityType(type: CLActivityType) -> StandardLocationService {
-        locMgrForLocation.manager.activityType = type
-        locMgrForLocating.manager.activityType = type
-        return self
-    }
-    
     func clone() -> StandardLocationService {
         let cloned = DefaultStandardLocationService()
-        cloned.activityType(self.activityType)
-        if #available(iOS 9.0, *) {
-            cloned.allowsBackgroundLocationUpdates(self.allowsBackgroundLocationUpdates)
-        }
         cloned.desiredAccuracy(self.desiredAccuracy)
         cloned.distanceFilter(self.distanceFilter)
-        cloned.pausesLocationUpdatesAutomatically(self.pausesLocationUpdatesAutomatically)
+        
         return cloned
     }
 }

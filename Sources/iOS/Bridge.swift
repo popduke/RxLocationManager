@@ -14,18 +14,18 @@ class Bridge:NSObject, CLLocationManagerDelegate{
     var didFailWithError: ((CLLocationManager, NSError) -> Void)?
     var didChangeAuthorizationStatus: ((CLLocationManager, CLAuthorizationStatus)->Void)?
     var didUpdateLocations: ((CLLocationManager, [CLLocation]) -> Void)?
-    var didUpdateHeading: ((CLLocationManager, CLHeading) -> Void)?
-    var displayHeadingCalibration:Bool = false
     var didEnterRegion: ((CLLocationManager, CLRegion) -> Void)?
     var didExitRegion: ((CLLocationManager, CLRegion) -> Void)?
-    var didDetermineState:((CLLocationManager, CLRegionState, CLRegion) -> Void)?
     var monitoringDidFailForRegion: ((CLLocationManager, CLRegion?, NSError) -> Void)?
     var didStartMonitoringForRegion:((CLLocationManager, CLRegion) -> Void)?
+    var didPausedUpdate:((CLLocationManager) -> Void)?
+    var didResumeUpdate:((CLLocationManager) -> Void)?
+    var displayHeadingCalibration:Bool = false
+    var didUpdateHeading: ((CLLocationManager, CLHeading) -> Void)?
+    var didDetermineState:((CLLocationManager, CLRegionState, CLRegion) -> Void)?
     var didRangeBeaconsInRegion:((CLLocationManager, [CLBeacon], CLBeaconRegion) -> Void)?
     var rangingBeaconsDidFailForRegion:((CLLocationManager, CLBeaconRegion, NSError) -> Void)?
     var didVisit:((CLLocationManager, CLVisit) -> Void)?
-    var didPausedUpdate:((CLLocationManager) -> Void)?
-    var didResumeUpdate:((CLLocationManager) -> Void)?
     
     override init(){
         manager = CLLocationManager()
@@ -45,28 +45,20 @@ class Bridge:NSObject, CLLocationManagerDelegate{
         didChangeAuthorizationStatus?(manager, status)
     }
     
-    func locationManager(manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-        didUpdateHeading?(manager, newHeading)
+    func locationManagerDidPauseLocationUpdates(manager: CLLocationManager) {
+        didPausedUpdate?(manager)
+    }
+    
+    func locationManagerDidResumeLocationUpdates(manager: CLLocationManager) {
+        didResumeUpdate?(manager)
     }
     
     func locationManagerShouldDisplayHeadingCalibration(manager: CLLocationManager) -> Bool {
         return displayHeadingCalibration
     }
     
-    func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
-        didEnterRegion?(manager, region)
-    }
-    
-    func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {
-        didExitRegion?(manager, region)
-    }
-    
-    func locationManager(manager: CLLocationManager, monitoringDidFailForRegion region: CLRegion?, withError error: NSError) {
-        monitoringDidFailForRegion?(manager, region, error)
-    }
-    
-    func locationManager(manager: CLLocationManager, didStartMonitoringForRegion region: CLRegion) {
-        didStartMonitoringForRegion?(manager, region)
+    func locationManager(manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+        didUpdateHeading?(manager, newHeading)
     }
     
     func locationManager(manager: CLLocationManager, didDetermineState state: CLRegionState, forRegion region: CLRegion) {
@@ -85,11 +77,19 @@ class Bridge:NSObject, CLLocationManagerDelegate{
         didVisit?(manager, visit)
     }
     
-    func locationManagerDidPauseLocationUpdates(manager: CLLocationManager) {
-        didPausedUpdate?(manager)
+    func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        didEnterRegion?(manager, region)
     }
     
-    func locationManagerDidResumeLocationUpdates(manager: CLLocationManager) {
-        didResumeUpdate?(manager)
+    func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {
+        didExitRegion?(manager, region)
+    }
+    
+    func locationManager(manager: CLLocationManager, monitoringDidFailForRegion region: CLRegion?, withError error: NSError) {
+        monitoringDidFailForRegion?(manager, region, error)
+    }
+    
+    func locationManager(manager: CLLocationManager, didStartMonitoringForRegion region: CLRegion) {
+        didStartMonitoringForRegion?(manager, region)
     }
 }

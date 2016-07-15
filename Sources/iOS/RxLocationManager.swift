@@ -74,11 +74,12 @@ public class RxLocationManager{
     
     public static let SignificantLocation: SignificantLocationUpdateService = DefaultSignificantLocationUpdateService()
     
+    public static let VisitMonitoring: MonitoringVisitsService = DefaultMonitoringVisitsService()
+    
     public static let HeadingUpdate: HeadingUpdateService = DefaultHeadingUpdateService()
     
     public static let RegionMonitoring: RegionMonitoringService = DefaultRegionMonitoringService()
     
-    public static let VisitMonitoring: MonitoringVisitsService = DefaultMonitoringVisitsService()
 }
 
 
