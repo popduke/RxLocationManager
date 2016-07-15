@@ -33,7 +33,7 @@ class RegionMonitoringServiceViewController: UIViewController {
                     }
                     .subscribeNext{
                         location in
-                        RxLocationManager.RegionMonitoring.startMonitoringForRegions([CLCircularRegion(center: location.coordinate, radius: 5, identifier: location.timestamp.description)])
+                        RxLocationManager.RegionMonitoring.startMonitoringForRegions([CLCircularRegion(center: location.coordinate, radius: 20, identifier: location.timestamp.description)])
                     }
                     .addDisposableTo(self.disposeBag)
             }
@@ -63,7 +63,40 @@ class RegionMonitoringServiceViewController: UIViewController {
                 RxLocationManager.RegionMonitoring.stopMonitoringForRegions([removedRegionCell.monitoredRegion!])
             }
             .addDisposableTo(disposeBag)
-        // Do any additional setup after loading the view.
+        
+        RxLocationManager.RegionMonitoring.entering
+            .subscribeNext{
+                [unowned self]
+                enteredRegion in
+                for i in 0 ..< self.monitoredRangesTableView.numberOfSections {
+                    for j in 0 ..< self.monitoredRangesTableView.numberOfRowsInSection(i){
+                        if let cell = self.monitoredRangesTableView.cellForRowAtIndexPath(NSIndexPath(forRow: j, inSection: i)){
+                            let monitoredCell = cell as! MonitoredCircleRegionTableViewCell
+                            if monitoredCell.monitoredRegion!.identifier == enteredRegion.identifier{
+                                monitoredCell.inoutStatusLbl!.text = "IN"
+                            }
+                        }
+                    }
+                }
+            }
+            .addDisposableTo(disposeBag)
+        
+        RxLocationManager.RegionMonitoring.exiting
+            .subscribeNext{
+                [unowned self]
+                exitedRegion in
+                for i in 0 ..< self.monitoredRangesTableView.numberOfSections {
+                    for j in 0 ..< self.monitoredRangesTableView.numberOfRowsInSection(i){
+                        if let cell = self.monitoredRangesTableView.cellForRowAtIndexPath(NSIndexPath(forRow: j, inSection: i)){
+                            let monitoredCell = cell as! MonitoredCircleRegionTableViewCell
+                            if monitoredCell.monitoredRegion!.identifier == exitedRegion.identifier{
+                                monitoredCell.inoutStatusLbl!.text = "OUT"
+                            }
+                        }
+                    }
+                }
+            }
+            .addDisposableTo(disposeBag)
     }
 
     override func didReceiveMemoryWarning() {
