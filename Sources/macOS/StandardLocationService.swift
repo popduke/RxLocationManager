@@ -5,7 +5,7 @@
 //  Created by Hao Yu on 16/7/6.
 //  Copyright © 2016年 GFWGTH. All rights reserved.
 //
-
+#if os(OSX)
 import Foundation
 import CoreLocation
 import RxSwift
@@ -88,10 +88,6 @@ class DefaultStandardLocationService: StandardLocationService{
         }
     }
     
-    deinit{
-        print("StandardLocationService deinit")
-    }
-    
     func distanceFilter(distance: CLLocationDistance) -> StandardLocationService {
         locMgrForLocating.manager.distanceFilter = distance
         return self
@@ -110,3 +106,4 @@ class DefaultStandardLocationService: StandardLocationService{
         return cloned
     }
 }
+#endif
