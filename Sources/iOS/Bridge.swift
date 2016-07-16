@@ -14,6 +14,7 @@
         var didFailWithError: ((CLLocationManager, NSError) -> Void)?
         var didChangeAuthorizationStatus: ((CLLocationManager, CLAuthorizationStatus)->Void)?
         var didUpdateLocations: ((CLLocationManager, [CLLocation]) -> Void)?
+        var didFinishDeferredUpdatesWithError: ((CLLocationManager, NSError?) -> Void)?
         var didEnterRegion: ((CLLocationManager, CLRegion) -> Void)?
         var didExitRegion: ((CLLocationManager, CLRegion) -> Void)?
         var monitoringDidFailForRegion: ((CLLocationManager, CLRegion?, NSError) -> Void)?
@@ -39,6 +40,10 @@
         
         func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
             didUpdateLocations?(manager, locations)
+        }
+        
+        func locationManager(manager: CLLocationManager, didFinishDeferredUpdatesWithError error: NSError?) {
+            didFinishDeferredUpdatesWithError?(manager, error)
         }
         
         func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {

@@ -791,6 +791,7 @@
 				PRODUCT_NAME = RxLocationManager;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -815,6 +816,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgotohell.RxLocationManager;
 				PRODUCT_NAME = RxLocationManager;
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

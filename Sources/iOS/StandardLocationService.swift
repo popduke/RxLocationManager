@@ -13,6 +13,9 @@
     
     //MARK: StandardLocationServiceConfigurable
     public protocol StandardLocationServiceConfigurable{
+        func allowDeferredLocationUpdates(untilTraveled distance: CLLocationDistance, timeout: NSTimeInterval) -> StandardLocationService
+        func disallowDeferredLocationUpdates() -> StandardLocationService
+        
         func distanceFilter(distance: CLLocationDistance) -> StandardLocationService
         func desiredAccuracy(desiredAccuracy: CLLocationAccuracy) -> StandardLocationService
         
@@ -36,6 +39,7 @@
     public protocol StandardLocationService: StandardLocationServiceConfigurable{
         var located: Observable<CLLocation>{get}
         var locating: Observable<[CLLocation]>{get}
+        var deferredUpdateError: Observable<NSError?>{get}
         var isPaused: Observable<Bool>{get}
         func clone() -> StandardLocationService
     }
@@ -46,6 +50,7 @@
         private let locMgrForLocating = Bridge()
         private var locatedObservers = [(id: Int, observer: AnyObserver<CLLocation>)]()
         private var locatingObservers = [(id: Int, observer: AnyObserver<[CLLocation]>)]()
+        private var deferredUpdateErrorObservers = [(id: Int, observer: AnyObserver<NSError?>)]()
         private var isPausedObservers = [(id: Int, observer: AnyObserver<Bool>)]()
         
         var distanceFilter:CLLocationDistance{
@@ -139,6 +144,21 @@
             }
         }
         
+        var deferredUpdateError:Observable<NSError?>{
+            get{
+                return Observable.create {
+                    observer in
+                    var ownerService: DefaultStandardLocationService! = self
+                    let id = nextId()
+                    ownerService.deferredUpdateErrorObservers.append((id, observer))
+                    return AnonymousDisposable{
+                        ownerService.deferredUpdateErrorObservers.removeAtIndex(ownerService.deferredUpdateErrorObservers.indexOf{$0.id == id}!)
+                        ownerService = nil
+                    }
+                }
+            }
+        }
+        
         init(){
             locMgrForLocation.didUpdateLocations = {
                 [weak self]
@@ -174,6 +194,7 @@
                     }
                 }
             }
+            
             locMgrForLocating.didFailWithError = {
                 [weak self]
                 mgr, err in
@@ -184,6 +205,16 @@
                 if let copyOfLocatingObservers = self?.locatingObservers{
                     for (_, observer) in copyOfLocatingObservers{
                         observer.onError(err)
+                    }
+                }
+            }
+            
+            locMgrForLocating.didFinishDeferredUpdatesWithError = {
+                [weak self]
+                mgr, error in
+                if let copyOfdeferredUpdateErrorObservers = self?.deferredUpdateErrorObservers{
+                    for (_, observer) in copyOfdeferredUpdateErrorObservers{
+                        observer.onNext(error)
                     }
                 }
             }
@@ -206,6 +237,16 @@
                     }
                 }
             }
+        }
+        
+        func allowDeferredLocationUpdates(untilTraveled distance: CLLocationDistance, timeout: NSTimeInterval) -> StandardLocationService{
+            locMgrForLocating.manager.allowDeferredLocationUpdatesUntilTraveled(distance, timeout: timeout)
+            return self
+        }
+        
+        func disallowDeferredLocationUpdates() -> StandardLocationService{
+            locMgrForLocating.manager.disallowDeferredLocationUpdates()
+            return self
         }
         
         func distanceFilter(distance: CLLocationDistance) -> StandardLocationService {
