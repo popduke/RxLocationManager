@@ -252,7 +252,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="AZr-Yi-hTf"/>
                                 </constraints>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="Start">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
