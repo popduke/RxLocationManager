@@ -22,7 +22,6 @@
 		72B336091D2C05990002FB39 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72B336081D2C05990002FB39 /* RxSwift.framework */; };
 		72F9706A1D3936F50020F65C /* nextId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF72E1D2D5A1C0024AB3C /* nextId.swift */; };
 		72F970751D39370A0020F65C /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72F970741D39370A0020F65C /* RxSwift.framework */; };
-		72F970861D3946450020F65C /* Info-iOS.plist in Resources */ = {isa = PBXBuildFile; fileRef = 72F9707C1D3946450020F65C /* Info-iOS.plist */; };
 		72F9708C1D3946620020F65C /* BeaconRangingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F970791D3946450020F65C /* BeaconRangingService.swift */; };
 		72F9708D1D3946620020F65C /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F9707A1D3946450020F65C /* Bridge.swift */; };
 		72F9708E1D3946620020F65C /* HeadingUpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F9707B1D3946450020F65C /* HeadingUpdateService.swift */; };
@@ -31,7 +30,6 @@
 		72F970921D3946620020F65C /* RxLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F970801D3946450020F65C /* RxLocationManager.swift */; };
 		72F970931D3946620020F65C /* SignificantLocationUpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F970811D3946450020F65C /* SignificantLocationUpdateService.swift */; };
 		72F970941D3946620020F65C /* StandardLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F970821D3946450020F65C /* StandardLocationService.swift */; };
-		72F970A21D394A3A0020F65C /* Info-macOS.plist in Resources */ = {isa = PBXBuildFile; fileRef = 72F970991D394A3A0020F65C /* Info-macOS.plist */; };
 		72F970A81D394C5D0020F65C /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F970971D394A3A0020F65C /* Bridge.swift */; };
 		72F970AB1D394C5D0020F65C /* RegionMonitoringService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F9709B1D394A3A0020F65C /* RegionMonitoringService.swift */; };
 		72F970AC1D394C5D0020F65C /* RxLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F9709C1D394A3A0020F65C /* RxLocationManager.swift */; };
@@ -433,6 +431,12 @@
 					};
 					72FC15881D3256640051FB39 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = EHSX39WJ93;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -492,11 +496,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72F970861D3946450020F65C /* Info-iOS.plist in Resources */,
 				72FC15961D3256650051FB39 /* LaunchScreen.storyboard in Resources */,
 				72FC15931D3256650051FB39 /* Assets.xcassets in Resources */,
 				72FC15911D3256650051FB39 /* Main.storyboard in Resources */,
-				72F970A21D394A3A0020F65C /* Info-macOS.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -883,11 +885,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = RxLocationManagerDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgotohell.RxLocationManagerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -895,11 +901,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = RxLocationManagerDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgotohell.RxLocationManagerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -913,6 +923,7 @@
 				729F25971D3A03FB00D835B6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		72B335D91D2BEE9E0002FB39 /* Build configuration list for PBXProject "RxLocationManager" */ = {
 			isa = XCConfigurationList;

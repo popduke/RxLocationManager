@@ -14,10 +14,12 @@ import RxLocationManager
 
 class RootViewController: UIViewController {
     var disposeBag = DisposeBag()
-
+    
     @IBOutlet weak var requestWhenInUseBtn: UIButton!
     
     @IBOutlet weak var requestAlwaysBtn: UIButton!
+    
+    @IBOutlet weak var standardLocationServiceBtn: UIButton!
     
     @IBOutlet weak var locationServiceStatusLbl: UILabel!
     
@@ -29,31 +31,43 @@ class RootViewController: UIViewController {
     
     @IBOutlet weak var authStatusLbl: UILabel!
     
+    @IBOutlet weak var visitMonitoringServiceBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        significantLocationUpdateBtn.enabled = RxLocationManager.significantLocationChangeMonitoringAvailable
         
-        headingUpdateServiceBtn.enabled = RxLocationManager.headingAvailable
+        let isAuthorized = RxLocationManager.authorizationStatus.map{return $0 == .AuthorizedAlways || $0 == .AuthorizedWhenInUse}
         
-        regionMonitoringServiceBtn.enabled = RxLocationManager.isMonitoringAvailableForClass(CLCircularRegion)
+        isAuthorized.subscribe(standardLocationServiceBtn.rx_enabled).addDisposableTo(disposeBag)
+        isAuthorized.subscribe(visitMonitoringServiceBtn.rx_enabled).addDisposableTo(disposeBag)
         
-        RxLocationManager.authorizationStatus
-            .map{return $0 == CLAuthorizationStatus.NotDetermined}
-            .subscribe(requestWhenInUseBtn.rx_enabled)
+        isAuthorized.map{
+            $0 && RxLocationManager.significantLocationChangeMonitoringAvailable
+            }
+            .subscribe(significantLocationUpdateBtn.rx_enabled)
+            .addDisposableTo(disposeBag)
         
-        RxLocationManager.authorizationStatus
-            .map{return $0 == CLAuthorizationStatus.NotDetermined}
-            .subscribe(requestAlwaysBtn.rx_enabled)
+        isAuthorized.map{
+            $0 && RxLocationManager.headingAvailable
+            }
+            .subscribe(headingUpdateServiceBtn.rx_enabled)
+            .addDisposableTo(disposeBag)
+        
+        isAuthorized.map{
+            $0 && RxLocationManager.isMonitoringAvailableForClass(CLCircularRegion)
+            }
+            .subscribe(regionMonitoringServiceBtn.rx_enabled)
+            .addDisposableTo(disposeBag)
         
         requestWhenInUseBtn.rx_tap.subscribeNext{
             RxLocationManager.requestWhenInUseAuthorization()
-        }
-        .addDisposableTo(disposeBag)
+            }
+            .addDisposableTo(disposeBag)
         
         requestAlwaysBtn.rx_tap.subscribeNext{
             RxLocationManager.requestAlwaysAuthorization()
-        }
-        .addDisposableTo(disposeBag)
+            }
+            .addDisposableTo(disposeBag)
         
         RxLocationManager.enabled
             .map{return "Location Service is \($0 ? "ON":"OFF")"}
@@ -82,12 +96,12 @@ class RootViewController: UIViewController {
             .addDisposableTo(disposeBag)
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
 
