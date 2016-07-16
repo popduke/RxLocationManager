@@ -29,19 +29,17 @@ public protocol StandardLocationService: StandardLocationServiceConfigurable{
 
 //MARK: DefaultStandardLocationService
 class DefaultStandardLocationService: StandardLocationService{
-    private let locMgrForLocation = Bridge()
     private let locMgrForLocating = Bridge()
-    private var locatedObservers = [(id: Int, observer: AnyObserver<CLLocation>)]()
     private var locatingObservers = [(id: Int, observer: AnyObserver<[CLLocation]>)]()
     
     var distanceFilter:CLLocationDistance{
         get{
-            return locMgrForLocation.manager.distanceFilter
+            return locMgrForLocating.manager.distanceFilter
         }
     }
     var desiredAccuracy: CLLocationAccuracy{
         get{
-            return locMgrForLocation.manager.desiredAccuracy
+            return locMgrForLocating.manager.desiredAccuracy
         }
     }
     
@@ -66,31 +64,6 @@ class DefaultStandardLocationService: StandardLocationService{
     }
     
     init(){
-        locMgrForLocation.didUpdateLocations = {
-            [weak self]
-            mgr, locations in
-            if let copyOfLocatedObservers = self?.locatedObservers{
-                for (_, observer) in copyOfLocatedObservers{
-                    observer.onNext(locations.last!)
-                    observer.onCompleted()
-                }
-                guard #available(iOS 9.0, *) else {
-                    self?.locMgrForLocation.manager.stopUpdatingLocation()
-                    return
-                }
-                
-            }
-        }
-        locMgrForLocation.didFailWithError = {
-            [weak self]
-            mgr, err in
-            if let copyOfLocatedObservers = self?.locatedObservers{
-                for (_, observer) in copyOfLocatedObservers{
-                    observer.onError(err)
-                }
-            }
-        }
-        
         locMgrForLocating.didUpdateLocations = {
             [weak self]
             mgr, locations in
@@ -120,13 +93,11 @@ class DefaultStandardLocationService: StandardLocationService{
     }
     
     func distanceFilter(distance: CLLocationDistance) -> StandardLocationService {
-        locMgrForLocation.manager.distanceFilter = distance
         locMgrForLocating.manager.distanceFilter = distance
         return self
     }
     
     func desiredAccuracy(desiredAccuracy: CLLocationAccuracy) -> StandardLocationService {
-        locMgrForLocation.manager.desiredAccuracy = desiredAccuracy
         locMgrForLocating.manager.desiredAccuracy = desiredAccuracy
         return self
     }

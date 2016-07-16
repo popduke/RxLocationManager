@@ -10,6 +10,9 @@
 		724DF7241D2D57970024AB3C /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724DF7221D2D57970024AB3C /* RxSwift.framework */; };
 		724DF72F1D2D5A1C0024AB3C /* nextId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF72E1D2D5A1C0024AB3C /* nextId.swift */; };
 		724DF7301D2D5A1C0024AB3C /* nextId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF72E1D2D5A1C0024AB3C /* nextId.swift */; };
+		729F25831D39FDF800D835B6 /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729F257A1D39FDF800D835B6 /* Bridge.swift */; };
+		729F25881D39FDF900D835B6 /* RxLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729F257F1D39FDF800D835B6 /* RxLocationManager.swift */; };
+		729F258A1D39FDF900D835B6 /* StandardLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729F25811D39FDF800D835B6 /* StandardLocationService.swift */; };
 		72B336091D2C05990002FB39 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72B336081D2C05990002FB39 /* RxSwift.framework */; };
 		72F9706A1D3936F50020F65C /* nextId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF72E1D2D5A1C0024AB3C /* nextId.swift */; };
 		72F970751D39370A0020F65C /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72F970741D39370A0020F65C /* RxSwift.framework */; };
@@ -59,6 +62,10 @@
 		724DF7211D2D57970024AB3C /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = "../../Library/Developer/Xcode/DerivedData/RxLocationManager-forrdtavsxtttydggcxklgyodsnw/Build/Products/Debug-iphonesimulator/RxCocoa.framework"; sourceTree = "<group>"; };
 		724DF7221D2D57970024AB3C /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/RxLocationManager-forrdtavsxtttydggcxklgyodsnw/Build/Products/Debug-iphonesimulator/RxSwift.framework"; sourceTree = "<group>"; };
 		724DF72E1D2D5A1C0024AB3C /* nextId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = nextId.swift; sourceTree = "<group>"; };
+		729F257A1D39FDF800D835B6 /* Bridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bridge.swift; path = watchOS/Bridge.swift; sourceTree = "<group>"; };
+		729F257C1D39FDF800D835B6 /* Info-watchOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Info-watchOS.plist"; path = "watchOS/Info-watchOS.plist"; sourceTree = "<group>"; };
+		729F257F1D39FDF800D835B6 /* RxLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RxLocationManager.swift; path = watchOS/RxLocationManager.swift; sourceTree = "<group>"; };
+		729F25811D39FDF800D835B6 /* StandardLocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StandardLocationService.swift; path = watchOS/StandardLocationService.swift; sourceTree = "<group>"; };
 		72B335DF1D2BEE9E0002FB39 /* RxLocationManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxLocationManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		72B335EF1D2BF2960002FB39 /* RxLocationManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxLocationManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		72B336071D2BFF980002FB39 /* RxLocationManager.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = RxLocationManager.podspec; sourceTree = "<group>"; };
@@ -129,6 +136,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		729F25781D39FDAE00D835B6 /* watchOS */ = {
+			isa = PBXGroup;
+			children = (
+				729F257A1D39FDF800D835B6 /* Bridge.swift */,
+				729F257C1D39FDF800D835B6 /* Info-watchOS.plist */,
+				729F257F1D39FDF800D835B6 /* RxLocationManager.swift */,
+				729F25811D39FDF800D835B6 /* StandardLocationService.swift */,
+			);
+			name = watchOS;
+			sourceTree = "<group>";
+		};
 		72B335D51D2BEE9E0002FB39 = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +174,7 @@
 			children = (
 				72F970781D3946360020F65C /* iOS */,
 				72F970951D3949A30020F65C /* macOS */,
+				729F25781D39FDAE00D835B6 /* watchOS */,
 				724DF72E1D2D5A1C0024AB3C /* nextId.swift */,
 			);
 			path = Sources;
@@ -432,6 +451,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				724DF7301D2D5A1C0024AB3C /* nextId.swift in Sources */,
+				729F25831D39FDF800D835B6 /* Bridge.swift in Sources */,
+				729F25881D39FDF900D835B6 /* RxLocationManager.swift in Sources */,
+				729F258A1D39FDF900D835B6 /* StandardLocationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -637,7 +659,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Sources/Info-watchOS.plist";
+				INFOPLIST_FILE = "Sources/watchOS/Info-watchOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgth.RxLocationManager;
@@ -657,7 +679,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Sources/Info-watchOS.plist";
+				INFOPLIST_FILE = "Sources/watchOS/Info-watchOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgth.RxLocationManager;
@@ -780,6 +802,7 @@
 				72F970691D39363B0020F65C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		72FC15981D3256650051FB39 /* Build configuration list for PBXNativeTarget "RxLocationManagerDemo" */ = {
 			isa = XCConfigurationList;
