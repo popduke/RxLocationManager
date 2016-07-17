@@ -17,12 +17,11 @@ class SignificantLocationUpdateViewController: UIViewController {
     
     @IBOutlet weak var toggleSignificantLocationUpdateBtn: UIButton!
     
-    private var disposeBag = DisposeBag()
+    private var disposeBag:DisposeBag!
     
     private var locatingSubscription: Disposable?
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    override func viewWillAppear(animated: Bool) {
+        disposeBag = DisposeBag()
         toggleSignificantLocationUpdateBtn.rx_tap
             .subscribeNext{
                 [unowned self]
@@ -45,21 +44,9 @@ class SignificantLocationUpdateViewController: UIViewController {
             }
             .addDisposableTo(disposeBag)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewDidDisappear(animated: Bool) {
+        disposeBag = nil
+        locatingSubscription?.dispose()
+        locatingSubscription = nil
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

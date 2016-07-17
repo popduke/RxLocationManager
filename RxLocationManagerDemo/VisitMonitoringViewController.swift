@@ -19,10 +19,10 @@ class VisitMonitoringViewController: UIViewController {
     @IBOutlet weak var departureDateLbl: UILabel!
     @IBOutlet weak var toggleBtn: UIButton!
     
-    private var disposeBag = DisposeBag()
+    private var disposeBag:DisposeBag!
     private var subscription: Disposable?
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(animated: Bool) {
+        disposeBag = DisposeBag()
         toggleBtn.rx_tap
             .subscribeNext{
                 [unowned self]
@@ -46,20 +46,9 @@ class VisitMonitoringViewController: UIViewController {
             .addDisposableTo(disposeBag)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewDidDisappear(animated: Bool) {
+        disposeBag = nil
+        subscription?.dispose()
+        subscription = nil
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

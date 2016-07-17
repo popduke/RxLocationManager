@@ -25,19 +25,22 @@ class HeadingUpdateServiceViewController: UIViewController {
     
     @IBOutlet weak var trueHeadingSwitch: UISwitch!
     
-    private var disposeBag = DisposeBag()
+    private var disposeBag: DisposeBag!
     
     private var headingSubscription: Disposable?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        disposeBag = DisposeBag()
         trueHeadingSwitch.rx_value
             .subscribeNext{
                 RxLocationManager.HeadingUpdate.trueHeading($0)
             }
             .addDisposableTo(disposeBag)
-
+        
         toggleHeadingUpdateBtn.rx_tap
             .subscribeNext{
                 [unowned self]
@@ -54,6 +57,7 @@ class HeadingUpdateServiceViewController: UIViewController {
                             self.timestampValueLbl.text = heading.timestamp.description
                     }
                 }else{
+                    self.headingSubscription?.dispose()
                     self.toggleHeadingUpdateBtn.setTitle("Start", forState: .Normal)
                     self.magneticHeadingValueLbl.text = ""
                     self.trueHeadingValueLbl.text = ""
@@ -65,21 +69,10 @@ class HeadingUpdateServiceViewController: UIViewController {
             }
             .addDisposableTo(disposeBag)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewDidDisappear(animated: Bool) {
+        disposeBag = nil
+        headingSubscription?.dispose()
+        headingSubscription = nil
     }
-    */
-
 }
