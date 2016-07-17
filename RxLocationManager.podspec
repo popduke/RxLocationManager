@@ -14,7 +14,7 @@ Pod::Spec.new do |spec|
     spec.frameworks  = "Foundation", "CoreLocation"
     spec.requires_arc = true
     spec.source = { git: "https://github.com/popduke/RxLocationManager.git", tag: "v#{spec.version}", submodules: true }
-
+    spec.source_files = 'sources/*.{h,swift}'
 
     spec.dependency "RxSwift", "~> 2.0"
 
