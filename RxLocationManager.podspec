@@ -18,19 +18,19 @@ Pod::Spec.new do |spec|
 
     spec.dependency "RxSwift", "~> 2.0"
 
-    subspec 'iOS' do |sp|
+    spec.subspec 'iOS' do |sp|
         sp.source_files = 'sources/iOS/**/*.{h,swift}'
     end
 
-    subspec 'macOS' do |sp|
+    spec.subspec 'macOS' do |sp|
         sp.source_files = 'sources/macOS/**/*.{h,swift}'
     end
 
-    subspec 'watchOS' do |sp|
+    spec.subspec 'watchOS' do |sp|
         sp.source_files = 'sources/watchOS/**/*.{h,swift}'
     end
 
-    subspec 'tvOS' do |sp|
+    spec.subspec 'tvOS' do |sp|
         sp.source_files = 'sources/tvOS/**/*.{h,swift}'
     end
 end
