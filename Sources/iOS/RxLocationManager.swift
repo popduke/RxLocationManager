@@ -30,6 +30,7 @@
             return replaySubject
         }()
         
+        /// Observable of location service enabled status change, start with current authorization status
         public static var enabled:Observable<Bool>{
             get{
                 return enabledSink.distinctUntilChanged()
@@ -44,16 +45,23 @@
             return replaySubject
         }()
         
+        /// Observable of the app's authorization status change, start with current authorization status
         public static var authorizationStatus: Observable<CLAuthorizationStatus>{
             get{
                 return authorizationStatusSink.distinctUntilChanged()
             }
         }
         
+        /**
+         same as the one in CLLocationManager
+         */
         public static func requestWhenInUseAuthorization(){
             defaultLocationMgr.manager.requestWhenInUseAuthorization()
         }
         
+        /**
+         same as the one in CLLocationManager
+         */
         public static func requestAlwaysAuthorization(){
             defaultLocationMgr.manager.requestAlwaysAuthorization()
         }
@@ -62,22 +70,31 @@
             return CLLocationManager.isMonitoringAvailableForClass(regionClass)
         }
         
+        /// same in CLLocationManager
         public static let deferredLocationUpdatesAvailable = CLLocationManager.deferredLocationUpdatesAvailable()
         
+        /// same in CLLocationManager
         public static let headingAvailable = CLLocationManager.headingAvailable()
         
+        /// same in CLLocationManager
         public static let isRangingAvailable = CLLocationManager.isRangingAvailable()
         
+        /// same in CLLocationManager
         public static let significantLocationChangeMonitoringAvailable = CLLocationManager.significantLocationChangeMonitoringAvailable()
         
+        /// shared standard location service
         public static let Standard: StandardLocationService = DefaultStandardLocationService()
         
+        /// shared significant location update service
         public static let SignificantLocation: SignificantLocationUpdateService = DefaultSignificantLocationUpdateService()
         
+        /// shared visit monitoring service
         public static let VisitMonitoring: MonitoringVisitsService = DefaultMonitoringVisitsService()
         
+        /// shared heading update service
         public static let HeadingUpdate: HeadingUpdateService = DefaultHeadingUpdateService()
         
+        /// shared region monitoring service
         public static let RegionMonitoring: RegionMonitoringService = DefaultRegionMonitoringService()
         
     }

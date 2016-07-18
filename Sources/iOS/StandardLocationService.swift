@@ -37,10 +37,19 @@
     
     //MARK: StandardLocationService
     public protocol StandardLocationService: StandardLocationServiceConfigurable{
+        /// Observable of current location, only report one CLLocation object and complete, or error if underlying CLLocationManager report error
         var located: Observable<CLLocation>{get}
+        /// Observable of current changing location, series of CLLocation objects will be reported, intermittent LocationUnknown error will be ignored, other errors are reported as usual
         var locating: Observable<[CLLocation]>{get}
+        /// Observable of possible error when calling allowDeferredLocationUpdates method
         var deferredUpdateError: Observable<NSError?>{get}
+        /// Observable of pause status
         var isPaused: Observable<Bool>{get}
+        /**
+         Return clone object of current standard location service
+         
+         - returns: cloned standard location service
+         */
         func clone() -> StandardLocationService
     }
     
