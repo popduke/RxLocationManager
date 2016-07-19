@@ -14,7 +14,6 @@
         let manager:CLLocationManager
         var didFailWithError: ((CLLocationManager, NSError) -> Void)?
         var didChangeAuthorizationStatus: ((CLLocationManager, CLAuthorizationStatus)->Void)?
-        
         var didUpdateLocations: ((CLLocationManager, [CLLocation]) -> Void)?
         
         var didEnterRegion: ((CLLocationManager, CLRegion) -> Void)?
@@ -32,6 +31,10 @@
         
         func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
             didFailWithError?(manager, error)
+        }
+        
+        func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+            didUpdateLocations?(manager, locations)
         }
         
         func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
