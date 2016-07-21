@@ -17,11 +17,13 @@
         func startRangingBeaconsInRegions(regions: [CLBeaconRegion]) -> BeaconRangingService
         func stopRangingBeaconsInRegions(regions: [CLBeaconRegion]) -> BeaconRangingService
         func stopRangingBeaconsInAllRegions() -> BeaconRangingService
+        func requestRegionsState(regions:[CLBeaconRegion]) -> BeaconRangingService
     }
     //MARK: BeaconRangingService
     public protocol BeaconRangingService: BeaconRangingServiceConfigurable{
         var ranging: Observable<([CLBeacon], CLBeaconRegion)>{get}
         var rangingError: Observable<(CLBeaconRegion, NSError)>{get}
+        var determinedRegionState: Observable<(CLBeaconRegion, CLRegionState)> {get}
     }
     //MARK: DefaultBeaconRagningService
     class DefaultBeaconRangingService: BeaconRangingService{
@@ -29,6 +31,7 @@
         
         private var observers = [(id:Int, observer: AnyObserver<([CLBeacon], CLBeaconRegion)>)]()
         private var errorObservers = [(id:Int, observer: AnyObserver<(CLBeaconRegion, NSError)>)]()
+        private var determinedRegionStateObservers = [(id:Int, observer: AnyObserver<(CLBeaconRegion, CLRegionState)>)]()
         
         var rangedRegions: Set<CLRegion> {
             get{
@@ -49,6 +52,22 @@
                 }
             }
         }
+        
+        var determinedRegionState: Observable<(CLBeaconRegion, CLRegionState)>{
+            get{
+                return Observable.create{
+                    observer in
+                    var ownerService:DefaultBeaconRangingService! = self
+                    let id = nextId()
+                    ownerService.determinedRegionStateObservers.append((id, observer))
+                    return AnonymousDisposable{
+                        ownerService.determinedRegionStateObservers.removeAtIndex(ownerService.determinedRegionStateObservers.indexOf{$0.id == id}!)
+                        ownerService = nil
+                    }
+                }
+            }
+        }
+        
         var rangingError: Observable<(CLBeaconRegion, NSError)>{
             get{
                 return Observable.create{
@@ -84,6 +103,16 @@
                     }
                 }
             }
+            
+            locMgr.didDetermineState = {
+                [weak self]
+                mgr, state, region in
+                if let copyOfDeterminedRegionStateObservers = self?.determinedRegionStateObservers{
+                    for(_, observer) in copyOfDeterminedRegionStateObservers{
+                        observer.onNext((region as! CLBeaconRegion, state))
+                    }
+                }
+            }
         }
         
         func startRangingBeaconsInRegions(regions: [CLBeaconRegion]) -> BeaconRangingService {
@@ -103,6 +132,13 @@
         func stopRangingBeaconsInAllRegions() -> BeaconRangingService {
             for region in rangedRegions as! Set<CLBeaconRegion>{
                 locMgr.manager.stopRangingBeaconsInRegion(region)
+            }
+            return self
+        }
+        
+        func requestRegionsState(regions: [CLBeaconRegion]) -> BeaconRangingService {
+            for region in regions{
+                locMgr.manager.requestStateForRegion(region)
             }
             return self
         }

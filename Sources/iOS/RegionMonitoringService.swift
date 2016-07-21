@@ -16,12 +16,14 @@
         func startMonitoringForRegions(regions: [CLRegion]) -> RegionMonitoringService
         func stopMonitoringForRegions(regions: [CLRegion]) -> RegionMonitoringService
         func stopMonitoringForAllRegions() -> RegionMonitoringService
+        func requestRegionsState(regions:[CLRegion]) -> RegionMonitoringService
     }
     //MARK: RegionMonitoringService
     public protocol RegionMonitoringService: RegionMonitoringServiceConfigurable{
         var monitoredRegions: Observable<Set<CLRegion>> { get }
         var entering: Observable<CLRegion>{get}
         var exiting: Observable<CLRegion>{get}
+        var determinedRegionState: Observable<(CLRegion, CLRegionState)> {get}
         var error: Observable<(CLRegion?, NSError)>{get}
     }
     
@@ -31,6 +33,7 @@
         
         private var enteringObservers = [(id:Int, observer: AnyObserver<CLRegion>)]()
         private var exitingObservers = [(id:Int, observer: AnyObserver<CLRegion>)]()
+        private var determinedRegionStateObservers = [(id:Int, observer: AnyObserver<(CLRegion, CLRegionState)>)]()
         private var errorObservers = [(id:Int, observer: AnyObserver<(CLRegion?, NSError)>)]()
         private var monitoredRegionsObservers = [(id:Int, observer: AnyObserver<Set<CLRegion>>)]()
         
@@ -64,6 +67,21 @@
                     ownerService.exitingObservers.append((id, observer))
                     return AnonymousDisposable{
                         ownerService.exitingObservers.removeAtIndex(ownerService.exitingObservers.indexOf{$0.id == id}!)
+                        ownerService = nil
+                    }
+                }
+            }
+        }
+        
+        var determinedRegionState: Observable<(CLRegion, CLRegionState)>{
+            get{
+                return Observable.create{
+                    observer in
+                    var ownerService:DefaultRegionMonitoringService! = self
+                    let id = nextId()
+                    ownerService.determinedRegionStateObservers.append((id, observer))
+                    return AnonymousDisposable{
+                        ownerService.determinedRegionStateObservers.removeAtIndex(ownerService.determinedRegionStateObservers.indexOf{$0.id == id}!)
                         ownerService = nil
                     }
                 }
@@ -140,6 +158,22 @@
                     }
                 }
             }
+            locMgr.didDetermineState = {
+                [weak self]
+                mgr, state, region in
+                if let copyOfDeterminedRegionStateObservers = self?.determinedRegionStateObservers{
+                    for(_, observer) in copyOfDeterminedRegionStateObservers{
+                        observer.onNext((region, state))
+                    }
+                }
+            }
+        }
+        
+        func requestRegionsState(regions: [CLRegion]) -> RegionMonitoringService {
+            for region in regions{
+                locMgr.manager.requestStateForRegion(region)
+            }
+            return self
         }
         
         func startMonitoringForRegions(regions: [CLRegion]) -> RegionMonitoringService {

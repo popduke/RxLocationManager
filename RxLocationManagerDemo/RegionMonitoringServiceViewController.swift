@@ -11,6 +11,21 @@ import CoreLocation
 import RxLocationManager
 import RxSwift
 
+extension CLRegionState: CustomStringConvertible{
+    public var description:String{
+        get{
+            switch self{
+            case .Unknown:
+                return "Unknown"
+            case .Inside:
+                return "IN"
+            case .Outside:
+                return "OUT"
+            }
+        }
+    }
+}
+
 class RegionMonitoringServiceViewController: UIViewController {
 
     @IBOutlet weak var addRegionBtn: UIButton!
@@ -92,6 +107,32 @@ class RegionMonitoringServiceViewController: UIViewController {
                             let monitoredCell = cell as! MonitoredCircleRegionTableViewCell
                             if monitoredCell.monitoredRegion!.identifier == exitedRegion.identifier{
                                 monitoredCell.inoutStatusLbl!.text = "OUT"
+                            }
+                        }
+                    }
+                }
+            }
+            .addDisposableTo(disposeBag)
+        
+        monitoredRangesTableView.rx_itemSelected
+            .subscribeNext{
+                [unowned self]
+                indexPath in
+                let monitoredCell = self.monitoredRangesTableView.cellForRowAtIndexPath(indexPath) as! MonitoredCircleRegionTableViewCell
+                RxLocationManager.RegionMonitoring.requestRegionsState([monitoredCell.monitoredRegion!])
+            }
+        .addDisposableTo(disposeBag)
+        
+        RxLocationManager.RegionMonitoring.determinedRegionState
+            .subscribeNext{
+                [unowned self]
+                region, state in
+                for i in 0 ..< self.monitoredRangesTableView.numberOfSections {
+                    for j in 0 ..< self.monitoredRangesTableView.numberOfRowsInSection(i){
+                        if let cell = self.monitoredRangesTableView.cellForRowAtIndexPath(NSIndexPath(forRow: j, inSection: i)){
+                            let monitoredCell = cell as! MonitoredCircleRegionTableViewCell
+                            if monitoredCell.monitoredRegion!.identifier == region.identifier{
+                                monitoredCell.inoutStatusLbl!.text = state.description
                             }
                         }
                     }
