@@ -12,7 +12,7 @@ import RxSwift
 import RxCocoa
 
 class StandardLocationServiceViewController: UIViewController {
-
+    
     @IBOutlet weak var currentLocationLbl: UILabel!
     
     @IBOutlet weak var errorLbl: UILabel!
@@ -25,6 +25,7 @@ class StandardLocationServiceViewController: UIViewController {
     
     private var disposeBag:DisposeBag!
     
+    private var locatedSubscription: Disposable?
     private var locatingSubscription: Disposable?
     
     override func viewWillAppear(animated: Bool) {
@@ -47,24 +48,29 @@ class StandardLocationServiceViewController: UIViewController {
             .subscribeNext{
                 [unowned self]
                 _ in
-                RxLocationManager.Standard.located
-                    .map{
-                        return "\($0.coordinate.latitude),\($0.coordinate.longitude)"
-                    }
-                    .doOn{
-                        switch $0{
-                        case .Next(_):
-                            self.errorLbl.text = ""
-                        case .Error(let error as NSError):
-                            self.currentLocationLbl.text = ""
-                            self.errorLbl.text = error.description
-                        default:
-                            return
+                if self.locatedSubscription == nil {
+                    self.locatedSubscription = RxLocationManager.Standard.located
+                        .map{
+                            return "\($0.coordinate.latitude),\($0.coordinate.longitude)"
                         }
-                    }
-                    .catchErrorJustReturn("")
-                    .subscribe(self.currentLocationLbl.rx_text)
-                    .addDisposableTo(self.disposeBag)
+                        .doOn{
+                            switch $0{
+                            case .Next(_):
+                                self.errorLbl.text = ""
+                            case .Error(let error as NSError):
+                                self.currentLocationLbl.text = ""
+                                self.errorLbl.text = error.description
+                            default:
+                                return
+                            }
+                        }
+                        .catchErrorJustReturn("")
+                        .subscribe(self.currentLocationLbl.rx_text)
+                }else{
+                    self.currentLocationLbl.text = ""
+                    self.locatedSubscription!.dispose()
+                    self.locatedSubscription = nil
+                }
             }
             .addDisposableTo(disposeBag)
         
@@ -101,9 +107,11 @@ class StandardLocationServiceViewController: UIViewController {
             }
             .addDisposableTo(disposeBag)
     }
-
+    
     override func viewDidDisappear(animated: Bool) {
         disposeBag = nil
+        locatedSubscription!.dispose()
+        locatedSubscription = nil
         locatingSubscription!.dispose()
         locatingSubscription = nil
     }
