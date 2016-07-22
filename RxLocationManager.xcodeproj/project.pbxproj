@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		721CD9321D4257B800145EA6 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 721CD9311D4257B800145EA6 /* RxSwift.framework */; };
+		721CD9341D4257DA00145EA6 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 721CD9331D4257DA00145EA6 /* RxSwift.framework */; };
+		721CD9361D4257EA00145EA6 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 721CD9351D4257EA00145EA6 /* RxSwift.framework */; };
+		721CD9381D42580000145EA6 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 721CD9371D42580000145EA6 /* RxSwift.framework */; };
+		721CD9401D42585000145EA6 /* RxLocationManagerTests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721CD93F1D42585000145EA6 /* RxLocationManagerTests_iOS.swift */; };
+		721CD9421D42585000145EA6 /* RxLocationManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7230449B1D3E58AF00982952 /* RxLocationManager.framework */; };
 		723044931D3E58AF00982952 /* nextId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF72E1D2D5A1C0024AB3C /* nextId.swift */; };
 		723044B01D3E66DE00982952 /* nextId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF72E1D2D5A1C0024AB3C /* nextId.swift */; };
 		723044B81D3E714300982952 /* nextId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF72E1D2D5A1C0024AB3C /* nextId.swift */; };
@@ -67,6 +73,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		721CD9431D42585000145EA6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 72B335D61D2BEE9E0002FB39 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 723044891D3E58AF00982952;
+			remoteInfo = "RxLocationManager iOS";
+		};
 		72B752B71D4248B700E6E82B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 72B335D61D2BEE9E0002FB39 /* Project object */;
@@ -94,6 +107,13 @@
 
 /* Begin PBXFileReference section */
 		721AD1181D367F2000744B42 /* HeadingUpdateServiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadingUpdateServiceViewController.swift; sourceTree = "<group>"; };
+		721CD9311D4257B800145EA6 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Checkouts/RxSwift/build/Debug/RxSwift.framework; sourceTree = "<group>"; };
+		721CD9331D4257DA00145EA6 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "Carthage/Checkouts/RxSwift/build/Debug-watchos/RxSwift.framework"; sourceTree = "<group>"; };
+		721CD9351D4257EA00145EA6 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "Carthage/Checkouts/RxSwift/build/Debug-appletvos/RxSwift.framework"; sourceTree = "<group>"; };
+		721CD9371D42580000145EA6 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "Carthage/Checkouts/RxSwift/build/Debug-iphoneos/RxSwift.framework"; sourceTree = "<group>"; };
+		721CD93D1D42585000145EA6 /* RxLocationManagerTests_iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxLocationManagerTests_iOS.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		721CD93F1D42585000145EA6 /* RxLocationManagerTests_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxLocationManagerTests_iOS.swift; sourceTree = "<group>"; };
+		721CD9411D42585000145EA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7230449B1D3E58AF00982952 /* RxLocationManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxLocationManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		723044AC1D3E66B300982952 /* RxLocationManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxLocationManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		723044C01D3E714300982952 /* RxLocationManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxLocationManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,10 +148,19 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		721CD93A1D42585000145EA6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				721CD9421D42585000145EA6 /* RxLocationManager.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		723044941D3E58AF00982952 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				721CD9381D42580000145EA6 /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +168,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				721CD9321D4257B800145EA6 /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +176,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				721CD9341D4257DA00145EA6 /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,6 +184,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				721CD9361D4257EA00145EA6 /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,10 +201,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		721CD93E1D42585000145EA6 /* RxLocationManagerTests_iOS */ = {
+			isa = PBXGroup;
+			children = (
+				721CD93F1D42585000145EA6 /* RxLocationManagerTests_iOS.swift */,
+				721CD9411D42585000145EA6 /* Info.plist */,
+			);
+			path = RxLocationManagerTests_iOS;
+			sourceTree = "<group>";
+		};
 		72B335D51D2BEE9E0002FB39 = {
 			isa = PBXGroup;
 			children = (
 				72FC158A1D3256650051FB39 /* RxLocationManagerDemo */,
+				721CD93E1D42585000145EA6 /* RxLocationManagerTests_iOS */,
 				72B3360A1D2C065D0002FB39 /* Frameworks */,
 				72B336061D2BFE160002FB39 /* Metadata */,
 				72B336001D2BF6C00002FB39 /* Sources */,
@@ -188,6 +230,7 @@
 				723044AC1D3E66B300982952 /* RxLocationManager.framework */,
 				723044C01D3E714300982952 /* RxLocationManager.framework */,
 				723044D01D3E72CC00982952 /* RxLocationManager.framework */,
+				721CD93D1D42585000145EA6 /* RxLocationManagerTests_iOS.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -222,6 +265,10 @@
 		72B3360A1D2C065D0002FB39 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				721CD9371D42580000145EA6 /* RxSwift.framework */,
+				721CD9351D4257EA00145EA6 /* RxSwift.framework */,
+				721CD9331D4257DA00145EA6 /* RxSwift.framework */,
+				721CD9311D4257B800145EA6 /* RxSwift.framework */,
 				72B752C71D424B8400E6E82B /* RxCocoa.framework */,
 				72B752C81D424B8400E6E82B /* RxSwift.framework */,
 			);
@@ -282,6 +329,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		721CD93C1D42585000145EA6 /* RxLocationManagerTests_iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 721CD9451D42585000145EA6 /* Build configuration list for PBXNativeTarget "RxLocationManagerTests_iOS" */;
+			buildPhases = (
+				721CD9391D42585000145EA6 /* Sources */,
+				721CD93A1D42585000145EA6 /* Frameworks */,
+				721CD93B1D42585000145EA6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				721CD9441D42585000145EA6 /* PBXTargetDependency */,
+			);
+			name = RxLocationManagerTests_iOS;
+			productName = RxLocationManagerTests_iOS;
+			productReference = 721CD93D1D42585000145EA6 /* RxLocationManagerTests_iOS.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		723044891D3E58AF00982952 /* RxLocationManager iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 723044981D3E58AF00982952 /* Build configuration list for PBXNativeTarget "RxLocationManager iOS" */;
@@ -383,6 +448,9 @@
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = GFWGTH;
 				TargetAttributes = {
+					721CD93C1D42585000145EA6 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
 					72FC15881D3256640051FB39 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = EHSX39WJ93;
@@ -412,11 +480,19 @@
 				7230449D1D3E66B300982952 /* RxLocationManager macOS */,
 				723044B31D3E714300982952 /* RxLocationManager watchOS */,
 				723044C31D3E72CC00982952 /* RxLocationManager tvOS */,
+				721CD93C1D42585000145EA6 /* RxLocationManagerTests_iOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		721CD93B1D42585000145EA6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		723044971D3E58AF00982952 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -462,6 +538,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		721CD9391D42585000145EA6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				721CD9401D42585000145EA6 /* RxLocationManagerTests_iOS.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7230448A1D3E58AF00982952 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -544,6 +628,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		721CD9441D42585000145EA6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 723044891D3E58AF00982952 /* RxLocationManager iOS */;
+			targetProxy = 721CD9431D42585000145EA6 /* PBXContainerItemProxy */;
+		};
 		72B752B81D4248B700E6E82B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 723044891D3E58AF00982952 /* RxLocationManager iOS */;
@@ -571,6 +660,28 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		721CD9461D42585000145EA6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = RxLocationManagerTests_iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gfwgth.RxLocationManagerTests-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		721CD9471D42585000145EA6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = RxLocationManagerTests_iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gfwgth.RxLocationManagerTests-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		723044991D3E58AF00982952 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -902,6 +1013,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		721CD9451D42585000145EA6 /* Build configuration list for PBXNativeTarget "RxLocationManagerTests_iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				721CD9461D42585000145EA6 /* Debug */,
+				721CD9471D42585000145EA6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		723044981D3E58AF00982952 /* Build configuration list for PBXNativeTarget "RxLocationManager iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
