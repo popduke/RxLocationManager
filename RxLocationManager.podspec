@@ -15,22 +15,7 @@ Pod::Spec.new do |spec|
     spec.frameworks  = "Foundation", "CoreLocation"
     spec.requires_arc = true
     spec.source = { git: "https://github.com/popduke/RxLocationManager.git", tag: spec.version.to_s }
+    spec.source_files = 'sources/*.{h,swift}'
 
     spec.dependency "RxSwift", "~> 2.0"
-
-    spec.subspec 'iOS' do |sp|
-        sp.source_files = 'sources/*.{h,swift}','sources/iOS/**/*.{h,swift}'
-    end
-
-    spec.subspec 'macOS' do |sp|
-        sp.source_files = 'sources/*.{h,swift}','sources/macOS/**/*.{h,swift}'
-    end
-
-    spec.subspec 'watchOS' do |sp|
-        sp.source_files = 'sources/*.{h,swift}','sources/watchOS/**/*.{h,swift}'
-    end
-
-    spec.subspec 'tvOS' do |sp|
-        sp.source_files = 'sources/*.{h,swift}','sources/tvOS/**/*.{h,swift}'
-    end
 end
