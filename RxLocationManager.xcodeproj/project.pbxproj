@@ -49,6 +49,10 @@
 		72B752CA1D424B8400E6E82B /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72B752C81D424B8400E6E82B /* RxSwift.framework */; };
 		72B752CB1D424B8C00E6E82B /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 72B752C71D424B8400E6E82B /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		72B752CC1D424B8C00E6E82B /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 72B752C81D424B8400E6E82B /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		72B752CE1D424D7800E6E82B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 72B752CD1D424D7800E6E82B /* Info.plist */; };
+		72B752CF1D424D7800E6E82B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 72B752CD1D424D7800E6E82B /* Info.plist */; };
+		72B752D01D424D7800E6E82B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 72B752CD1D424D7800E6E82B /* Info.plist */; };
+		72B752D11D424D7800E6E82B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 72B752CD1D424D7800E6E82B /* Info.plist */; };
 		72F970AF1D3951570020F65C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC158B1D3256650051FB39 /* AppDelegate.swift */; };
 		72F970B01D3951570020F65C /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC158D1D3256650051FB39 /* RootViewController.swift */; };
 		72F970B11D3951570020F65C /* StandardLocationServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC15AC1D32A6650051FB39 /* StandardLocationServiceViewController.swift */; };
@@ -107,6 +111,7 @@
 		72B752951D42471300E6E82B /* MonitoringVisitsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitoringVisitsService.swift; sourceTree = "<group>"; };
 		72B752C71D424B8400E6E82B /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = "../../Library/Developer/Xcode/DerivedData/RxLocationManager-adtaorgvupmwkpdcuooaxijwotft/Build/Products/Debug-iphoneos/RxCocoa.framework"; sourceTree = "<group>"; };
 		72B752C81D424B8400E6E82B /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/RxLocationManager-adtaorgvupmwkpdcuooaxijwotft/Build/Products/Debug-iphoneos/RxSwift.framework"; sourceTree = "<group>"; };
+		72B752CD1D424D7800E6E82B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		72EC75051D3A7EC3002AECE2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		72EC75061D3A7F0B002AECE2 /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		72F970571D378E2B0020F65C /* RegionMonitoringServiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionMonitoringServiceViewController.swift; sourceTree = "<group>"; };
@@ -190,6 +195,7 @@
 		72B336001D2BF6C00002FB39 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				72B752CD1D424D7800E6E82B /* Info.plist */,
 				72B7528E1D42471300E6E82B /* RxLocationManager.swift */,
 				72B7528F1D42471300E6E82B /* RegionMonitoringService.swift */,
 				72B752901D42471300E6E82B /* BeaconRangingService.swift */,
@@ -415,6 +421,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72B752CE1D424D7800E6E82B /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +429,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72B752CF1D424D7800E6E82B /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,6 +437,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72B752D01D424D7800E6E82B /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,6 +445,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72B752D11D424D7800E6E82B /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
