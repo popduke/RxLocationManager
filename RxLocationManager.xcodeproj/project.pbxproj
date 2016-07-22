@@ -8,62 +8,47 @@
 
 /* Begin PBXBuildFile section */
 		723044931D3E58AF00982952 /* nextId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF72E1D2D5A1C0024AB3C /* nextId.swift */; };
-		723044951D3E58AF00982952 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72B336081D2C05990002FB39 /* RxSwift.framework */; };
-		723044A61D3E66B300982952 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72F970741D39370A0020F65C /* RxSwift.framework */; };
-		723044AE1D3E66CF00982952 /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723044881D3E588700982952 /* Bridge.swift */; };
-		723044AF1D3E66DE00982952 /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723044881D3E588700982952 /* Bridge.swift */; };
 		723044B01D3E66DE00982952 /* nextId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF72E1D2D5A1C0024AB3C /* nextId.swift */; };
 		723044B81D3E714300982952 /* nextId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF72E1D2D5A1C0024AB3C /* nextId.swift */; };
-		723044BA1D3E714300982952 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 729F25BA1D3A05E600D835B6 /* RxSwift.framework */; };
-		723044C21D3E716600982952 /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723044881D3E588700982952 /* Bridge.swift */; };
 		723044C81D3E72CC00982952 /* nextId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF72E1D2D5A1C0024AB3C /* nextId.swift */; };
-		723044CA1D3E72CC00982952 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 729F25B81D3A05D500D835B6 /* RxSwift.framework */; };
-		723044D21D3E732400982952 /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723044881D3E588700982952 /* Bridge.swift */; };
-		723044D51D3E74AD00982952 /* StandardLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723044D31D3E748600982952 /* StandardLocationService.swift */; };
-		723044D61D3E777E00982952 /* StandardLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723044D31D3E748600982952 /* StandardLocationService.swift */; };
-		723044D71D3E79AE00982952 /* StandardLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723044D31D3E748600982952 /* StandardLocationService.swift */; };
-		723044D81D3E79B300982952 /* StandardLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723044D31D3E748600982952 /* StandardLocationService.swift */; };
-		723044DA1D3E81DF00982952 /* SignificantLocationUpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723044D91D3E81DF00982952 /* SignificantLocationUpdateService.swift */; };
-		723044DB1D3E81DF00982952 /* SignificantLocationUpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723044D91D3E81DF00982952 /* SignificantLocationUpdateService.swift */; };
-		723044DC1D3E81DF00982952 /* SignificantLocationUpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723044D91D3E81DF00982952 /* SignificantLocationUpdateService.swift */; };
-		723044DD1D3E81DF00982952 /* SignificantLocationUpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723044D91D3E81DF00982952 /* SignificantLocationUpdateService.swift */; };
-		723044DF1D3E8ACB00982952 /* RegionMonitoringService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723044DE1D3E8ACB00982952 /* RegionMonitoringService.swift */; };
-		723044E01D3E8ACB00982952 /* RegionMonitoringService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723044DE1D3E8ACB00982952 /* RegionMonitoringService.swift */; };
-		723044E11D3E8ACB00982952 /* RegionMonitoringService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723044DE1D3E8ACB00982952 /* RegionMonitoringService.swift */; };
-		723044E21D3E8ACB00982952 /* RegionMonitoringService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723044DE1D3E8ACB00982952 /* RegionMonitoringService.swift */; };
-		724DF72F1D2D5A1C0024AB3C /* nextId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF72E1D2D5A1C0024AB3C /* nextId.swift */; };
-		729F25AB1D3A05B400D835B6 /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729F257A1D39FDF800D835B6 /* Bridge.swift */; };
-		729F25AC1D3A05B400D835B6 /* RxLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729F257F1D39FDF800D835B6 /* RxLocationManager.swift */; };
-		729F25AD1D3A05B400D835B6 /* StandardLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729F25811D39FDF800D835B6 /* StandardLocationService.swift */; };
-		729F25AE1D3A05B400D835B6 /* nextId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF72E1D2D5A1C0024AB3C /* nextId.swift */; };
-		729F25B01D3A05C700D835B6 /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729F25991D3A057800D835B6 /* Bridge.swift */; };
-		729F25B41D3A05C700D835B6 /* RxLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729F259E1D3A057800D835B6 /* RxLocationManager.swift */; };
-		729F25B61D3A05C700D835B6 /* StandardLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729F25A01D3A057800D835B6 /* StandardLocationService.swift */; };
-		729F25B71D3A05C700D835B6 /* nextId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF72E1D2D5A1C0024AB3C /* nextId.swift */; };
-		729F25B91D3A05D500D835B6 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 729F25B81D3A05D500D835B6 /* RxSwift.framework */; };
-		729F25BB1D3A05E600D835B6 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 729F25BA1D3A05E600D835B6 /* RxSwift.framework */; };
-		72B336091D2C05990002FB39 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72B336081D2C05990002FB39 /* RxSwift.framework */; };
-		72EC74FC1D3A317C002AECE2 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72EC74FB1D3A317C002AECE2 /* RxSwift.framework */; };
-		72EC74FD1D3A375C002AECE2 /* RxLocationManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72B335DF1D2BEE9E0002FB39 /* RxLocationManager.framework */; };
-		72EC74FE1D3A375C002AECE2 /* RxLocationManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 72B335DF1D2BEE9E0002FB39 /* RxLocationManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		72EC75011D3A3767002AECE2 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 72EC74FB1D3A317C002AECE2 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		72EC75031D3A3773002AECE2 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72EC75021D3A3773002AECE2 /* RxCocoa.framework */; };
-		72EC75041D3A3773002AECE2 /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 72EC75021D3A3773002AECE2 /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		72F9706A1D3936F50020F65C /* nextId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF72E1D2D5A1C0024AB3C /* nextId.swift */; };
-		72F970751D39370A0020F65C /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72F970741D39370A0020F65C /* RxSwift.framework */; };
-		72F9708C1D3946620020F65C /* BeaconRangingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F970791D3946450020F65C /* BeaconRangingService.swift */; };
-		72F9708D1D3946620020F65C /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F9707A1D3946450020F65C /* Bridge.swift */; };
-		72F9708E1D3946620020F65C /* HeadingUpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F9707B1D3946450020F65C /* HeadingUpdateService.swift */; };
-		72F9708F1D3946620020F65C /* MonitoringVisitsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F9707D1D3946450020F65C /* MonitoringVisitsService.swift */; };
-		72F970901D3946620020F65C /* RegionMonitoringService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F9707E1D3946450020F65C /* RegionMonitoringService.swift */; };
-		72F970921D3946620020F65C /* RxLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F970801D3946450020F65C /* RxLocationManager.swift */; };
-		72F970931D3946620020F65C /* SignificantLocationUpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F970811D3946450020F65C /* SignificantLocationUpdateService.swift */; };
-		72F970941D3946620020F65C /* StandardLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F970821D3946450020F65C /* StandardLocationService.swift */; };
-		72F970A81D394C5D0020F65C /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F970971D394A3A0020F65C /* Bridge.swift */; };
-		72F970AB1D394C5D0020F65C /* RegionMonitoringService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F9709B1D394A3A0020F65C /* RegionMonitoringService.swift */; };
-		72F970AC1D394C5D0020F65C /* RxLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F9709C1D394A3A0020F65C /* RxLocationManager.swift */; };
-		72F970AD1D394C5D0020F65C /* SignificantLocationUpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F9709D1D394A3A0020F65C /* SignificantLocationUpdateService.swift */; };
-		72F970AE1D394C5D0020F65C /* StandardLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F9709E1D394A3A0020F65C /* StandardLocationService.swift */; };
+		72B752961D42471300E6E82B /* RxLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B7528E1D42471300E6E82B /* RxLocationManager.swift */; };
+		72B752971D42471300E6E82B /* RxLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B7528E1D42471300E6E82B /* RxLocationManager.swift */; };
+		72B752981D42471300E6E82B /* RxLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B7528E1D42471300E6E82B /* RxLocationManager.swift */; };
+		72B752991D42471300E6E82B /* RxLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B7528E1D42471300E6E82B /* RxLocationManager.swift */; };
+		72B7529A1D42471300E6E82B /* RegionMonitoringService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B7528F1D42471300E6E82B /* RegionMonitoringService.swift */; };
+		72B7529B1D42471300E6E82B /* RegionMonitoringService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B7528F1D42471300E6E82B /* RegionMonitoringService.swift */; };
+		72B7529C1D42471300E6E82B /* RegionMonitoringService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B7528F1D42471300E6E82B /* RegionMonitoringService.swift */; };
+		72B7529D1D42471300E6E82B /* RegionMonitoringService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B7528F1D42471300E6E82B /* RegionMonitoringService.swift */; };
+		72B7529E1D42471300E6E82B /* BeaconRangingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B752901D42471300E6E82B /* BeaconRangingService.swift */; };
+		72B7529F1D42471300E6E82B /* BeaconRangingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B752901D42471300E6E82B /* BeaconRangingService.swift */; };
+		72B752A01D42471300E6E82B /* BeaconRangingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B752901D42471300E6E82B /* BeaconRangingService.swift */; };
+		72B752A11D42471300E6E82B /* BeaconRangingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B752901D42471300E6E82B /* BeaconRangingService.swift */; };
+		72B752A21D42471300E6E82B /* StandardLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B752911D42471300E6E82B /* StandardLocationService.swift */; };
+		72B752A31D42471300E6E82B /* StandardLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B752911D42471300E6E82B /* StandardLocationService.swift */; };
+		72B752A41D42471300E6E82B /* StandardLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B752911D42471300E6E82B /* StandardLocationService.swift */; };
+		72B752A51D42471300E6E82B /* StandardLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B752911D42471300E6E82B /* StandardLocationService.swift */; };
+		72B752A61D42471300E6E82B /* SignificantLocationUpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B752921D42471300E6E82B /* SignificantLocationUpdateService.swift */; };
+		72B752A71D42471300E6E82B /* SignificantLocationUpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B752921D42471300E6E82B /* SignificantLocationUpdateService.swift */; };
+		72B752A81D42471300E6E82B /* SignificantLocationUpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B752921D42471300E6E82B /* SignificantLocationUpdateService.swift */; };
+		72B752A91D42471300E6E82B /* SignificantLocationUpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B752921D42471300E6E82B /* SignificantLocationUpdateService.swift */; };
+		72B752AA1D42471300E6E82B /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B752931D42471300E6E82B /* Bridge.swift */; };
+		72B752AB1D42471300E6E82B /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B752931D42471300E6E82B /* Bridge.swift */; };
+		72B752AC1D42471300E6E82B /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B752931D42471300E6E82B /* Bridge.swift */; };
+		72B752AD1D42471300E6E82B /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B752931D42471300E6E82B /* Bridge.swift */; };
+		72B752AE1D42471300E6E82B /* HeadingUpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B752941D42471300E6E82B /* HeadingUpdateService.swift */; };
+		72B752AF1D42471300E6E82B /* HeadingUpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B752941D42471300E6E82B /* HeadingUpdateService.swift */; };
+		72B752B01D42471300E6E82B /* HeadingUpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B752941D42471300E6E82B /* HeadingUpdateService.swift */; };
+		72B752B11D42471300E6E82B /* HeadingUpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B752941D42471300E6E82B /* HeadingUpdateService.swift */; };
+		72B752B21D42471300E6E82B /* MonitoringVisitsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B752951D42471300E6E82B /* MonitoringVisitsService.swift */; };
+		72B752B31D42471300E6E82B /* MonitoringVisitsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B752951D42471300E6E82B /* MonitoringVisitsService.swift */; };
+		72B752B41D42471300E6E82B /* MonitoringVisitsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B752951D42471300E6E82B /* MonitoringVisitsService.swift */; };
+		72B752B51D42471300E6E82B /* MonitoringVisitsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B752951D42471300E6E82B /* MonitoringVisitsService.swift */; };
+		72B752B61D4247F200E6E82B /* RxLocationManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7230449B1D3E58AF00982952 /* RxLocationManager.framework */; };
+		72B752C61D424B1200E6E82B /* RxLocationManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7230449B1D3E58AF00982952 /* RxLocationManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		72B752C91D424B8400E6E82B /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72B752C71D424B8400E6E82B /* RxCocoa.framework */; };
+		72B752CA1D424B8400E6E82B /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72B752C81D424B8400E6E82B /* RxSwift.framework */; };
+		72B752CB1D424B8C00E6E82B /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 72B752C71D424B8400E6E82B /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		72B752CC1D424B8C00E6E82B /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 72B752C81D424B8400E6E82B /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		72F970AF1D3951570020F65C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC158B1D3256650051FB39 /* AppDelegate.swift */; };
 		72F970B01D3951570020F65C /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC158D1D3256650051FB39 /* RootViewController.swift */; };
 		72F970B11D3951570020F65C /* StandardLocationServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC15AC1D32A6650051FB39 /* StandardLocationServiceViewController.swift */; };
@@ -78,11 +63,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		72F970B71D3951750020F65C /* PBXContainerItemProxy */ = {
+		72B752B71D4248B700E6E82B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 72B335D61D2BEE9E0002FB39 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 72B335DE1D2BEE9E0002FB39;
+			remoteGlobalIDString = 723044891D3E58AF00982952;
 			remoteInfo = "RxLocationManager iOS";
 		};
 /* End PBXContainerItemProxy section */
@@ -94,9 +79,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				72EC75041D3A3773002AECE2 /* RxCocoa.framework in Embed Frameworks */,
-				72EC75011D3A3767002AECE2 /* RxSwift.framework in Embed Frameworks */,
-				72EC74FE1D3A375C002AECE2 /* RxLocationManager.framework in Embed Frameworks */,
+				72B752CB1D424B8C00E6E82B /* RxCocoa.framework in Embed Frameworks */,
+				72B752CC1D424B8C00E6E82B /* RxSwift.framework in Embed Frameworks */,
+				72B752C61D424B1200E6E82B /* RxLocationManager.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -105,60 +90,28 @@
 
 /* Begin PBXFileReference section */
 		721AD1181D367F2000744B42 /* HeadingUpdateServiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadingUpdateServiceViewController.swift; sourceTree = "<group>"; };
-		723044881D3E588700982952 /* Bridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Bridge.swift; path = ccexperiment/Bridge.swift; sourceTree = "<group>"; };
-		7230449B1D3E58AF00982952 /* RxLocationManager_iOS_CC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxLocationManager_iOS_CC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		723044AC1D3E66B300982952 /* RxLocationManager_macOS_CC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxLocationManager_macOS_CC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		723044B11D3E675D00982952 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ccexperiment/Info.plist; sourceTree = "<group>"; };
-		723044C01D3E714300982952 /* RxLocationManager_watchOS_CC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxLocationManager_watchOS_CC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		723044D01D3E72CC00982952 /* RxLocationManager_tvOS_CC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxLocationManager_tvOS_CC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		723044D31D3E748600982952 /* StandardLocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StandardLocationService.swift; path = ccexperiment/StandardLocationService.swift; sourceTree = "<group>"; };
-		723044D91D3E81DF00982952 /* SignificantLocationUpdateService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignificantLocationUpdateService.swift; path = ccexperiment/SignificantLocationUpdateService.swift; sourceTree = "<group>"; };
-		723044DE1D3E8ACB00982952 /* RegionMonitoringService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegionMonitoringService.swift; path = ccexperiment/RegionMonitoringService.swift; sourceTree = "<group>"; };
+		7230449B1D3E58AF00982952 /* RxLocationManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxLocationManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		723044AC1D3E66B300982952 /* RxLocationManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxLocationManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		723044C01D3E714300982952 /* RxLocationManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxLocationManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		723044D01D3E72CC00982952 /* RxLocationManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxLocationManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		723217051D3539A700F46CEC /* SignificantLocationUpdateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignificantLocationUpdateViewController.swift; path = RxLocationManagerDemo/SignificantLocationUpdateViewController.swift; sourceTree = SOURCE_ROOT; };
-		724DF7191D2D56580024AB3C /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = "Carthage/Checkouts/RxSwift/build/Debug-iphoneos/RxCocoa.framework"; sourceTree = "<group>"; };
-		724DF7211D2D57970024AB3C /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = "../../Library/Developer/Xcode/DerivedData/RxLocationManager-forrdtavsxtttydggcxklgyodsnw/Build/Products/Debug-iphonesimulator/RxCocoa.framework"; sourceTree = "<group>"; };
-		724DF7221D2D57970024AB3C /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/RxLocationManager-forrdtavsxtttydggcxklgyodsnw/Build/Products/Debug-iphonesimulator/RxSwift.framework"; sourceTree = "<group>"; };
 		724DF72E1D2D5A1C0024AB3C /* nextId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = nextId.swift; sourceTree = "<group>"; };
-		729F257A1D39FDF800D835B6 /* Bridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bridge.swift; path = watchOS/Bridge.swift; sourceTree = "<group>"; };
-		729F257C1D39FDF800D835B6 /* Info-watchOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Info-watchOS.plist"; path = "watchOS/Info-watchOS.plist"; sourceTree = "<group>"; };
-		729F257F1D39FDF800D835B6 /* RxLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RxLocationManager.swift; path = watchOS/RxLocationManager.swift; sourceTree = "<group>"; };
-		729F25811D39FDF800D835B6 /* StandardLocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StandardLocationService.swift; path = watchOS/StandardLocationService.swift; sourceTree = "<group>"; };
-		729F25901D3A03FB00D835B6 /* RxLocationManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxLocationManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		729F25991D3A057800D835B6 /* Bridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bridge.swift; path = tvOS/Bridge.swift; sourceTree = "<group>"; };
-		729F259B1D3A057800D835B6 /* Info-tvOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Info-tvOS.plist"; path = "tvOS/Info-tvOS.plist"; sourceTree = "<group>"; };
-		729F259E1D3A057800D835B6 /* RxLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RxLocationManager.swift; path = tvOS/RxLocationManager.swift; sourceTree = "<group>"; };
-		729F25A01D3A057800D835B6 /* StandardLocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StandardLocationService.swift; path = tvOS/StandardLocationService.swift; sourceTree = "<group>"; };
-		729F25B81D3A05D500D835B6 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "Carthage/Checkouts/RxSwift/build/Debug-appletvos/RxSwift.framework"; sourceTree = "<group>"; };
-		729F25BA1D3A05E600D835B6 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "Carthage/Checkouts/RxSwift/build/Debug-watchos/RxSwift.framework"; sourceTree = "<group>"; };
-		72B335DF1D2BEE9E0002FB39 /* RxLocationManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxLocationManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		72B335EF1D2BF2960002FB39 /* RxLocationManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxLocationManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		72B336071D2BFF980002FB39 /* RxLocationManager.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = RxLocationManager.podspec; sourceTree = "<group>"; };
-		72B336081D2C05990002FB39 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "Carthage/Checkouts/RxSwift/build/Debug-iphoneos/RxSwift.framework"; sourceTree = "<group>"; };
-		72EC74F91D3A316B002AECE2 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = "Carthage/Checkouts/RxSwift/build/Debug-iphoneos/RxCocoa.framework"; sourceTree = "<group>"; };
-		72EC74FB1D3A317C002AECE2 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/RxLocationManager-forrdtavsxtttydggcxklgyodsnw/Build/Products/Debug-iphoneos/RxSwift.framework"; sourceTree = "<group>"; };
-		72EC75021D3A3773002AECE2 /* RxCocoa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = RxCocoa.framework; path = "/Users/haoyu/Library/Developer/Xcode/DerivedData/RxLocationManager-forrdtavsxtttydggcxklgyodsnw/Build/Products/Debug-iphoneos/RxCocoa.framework"; sourceTree = "<absolute>"; };
+		72B7528E1D42471300E6E82B /* RxLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxLocationManager.swift; sourceTree = "<group>"; };
+		72B7528F1D42471300E6E82B /* RegionMonitoringService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionMonitoringService.swift; sourceTree = "<group>"; };
+		72B752901D42471300E6E82B /* BeaconRangingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconRangingService.swift; sourceTree = "<group>"; };
+		72B752911D42471300E6E82B /* StandardLocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardLocationService.swift; sourceTree = "<group>"; };
+		72B752921D42471300E6E82B /* SignificantLocationUpdateService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignificantLocationUpdateService.swift; sourceTree = "<group>"; };
+		72B752931D42471300E6E82B /* Bridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bridge.swift; sourceTree = "<group>"; };
+		72B752941D42471300E6E82B /* HeadingUpdateService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadingUpdateService.swift; sourceTree = "<group>"; };
+		72B752951D42471300E6E82B /* MonitoringVisitsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitoringVisitsService.swift; sourceTree = "<group>"; };
+		72B752C71D424B8400E6E82B /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = "../../Library/Developer/Xcode/DerivedData/RxLocationManager-adtaorgvupmwkpdcuooaxijwotft/Build/Products/Debug-iphoneos/RxCocoa.framework"; sourceTree = "<group>"; };
+		72B752C81D424B8400E6E82B /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/RxLocationManager-adtaorgvupmwkpdcuooaxijwotft/Build/Products/Debug-iphoneos/RxSwift.framework"; sourceTree = "<group>"; };
 		72EC75051D3A7EC3002AECE2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		72EC75061D3A7F0B002AECE2 /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		72F970571D378E2B0020F65C /* RegionMonitoringServiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionMonitoringServiceViewController.swift; sourceTree = "<group>"; };
 		72F970591D37B9A70020F65C /* MonitoredCircleRegionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitoredCircleRegionTableViewCell.swift; sourceTree = "<group>"; };
 		72F9705B1D3913F90020F65C /* VisitMonitoringViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitMonitoringViewController.swift; sourceTree = "<group>"; };
-		72F970621D39363B0020F65C /* RxLocationManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxLocationManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		72F970741D39370A0020F65C /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Checkouts/RxSwift/build/Debug/RxSwift.framework; sourceTree = "<group>"; };
-		72F970791D3946450020F65C /* BeaconRangingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BeaconRangingService.swift; path = iOS/BeaconRangingService.swift; sourceTree = "<group>"; };
-		72F9707A1D3946450020F65C /* Bridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bridge.swift; path = iOS/Bridge.swift; sourceTree = "<group>"; };
-		72F9707B1D3946450020F65C /* HeadingUpdateService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeadingUpdateService.swift; path = iOS/HeadingUpdateService.swift; sourceTree = "<group>"; };
-		72F9707C1D3946450020F65C /* Info-iOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Info-iOS.plist"; path = "iOS/Info-iOS.plist"; sourceTree = "<group>"; };
-		72F9707D1D3946450020F65C /* MonitoringVisitsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MonitoringVisitsService.swift; path = iOS/MonitoringVisitsService.swift; sourceTree = "<group>"; };
-		72F9707E1D3946450020F65C /* RegionMonitoringService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegionMonitoringService.swift; path = iOS/RegionMonitoringService.swift; sourceTree = "<group>"; };
-		72F970801D3946450020F65C /* RxLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RxLocationManager.swift; path = iOS/RxLocationManager.swift; sourceTree = "<group>"; };
-		72F970811D3946450020F65C /* SignificantLocationUpdateService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignificantLocationUpdateService.swift; path = iOS/SignificantLocationUpdateService.swift; sourceTree = "<group>"; };
-		72F970821D3946450020F65C /* StandardLocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StandardLocationService.swift; path = iOS/StandardLocationService.swift; sourceTree = "<group>"; };
-		72F970971D394A3A0020F65C /* Bridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bridge.swift; path = macOS/Bridge.swift; sourceTree = "<group>"; };
-		72F970991D394A3A0020F65C /* Info-macOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Info-macOS.plist"; path = "macOS/Info-macOS.plist"; sourceTree = "<group>"; };
-		72F9709B1D394A3A0020F65C /* RegionMonitoringService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegionMonitoringService.swift; path = macOS/RegionMonitoringService.swift; sourceTree = "<group>"; };
-		72F9709C1D394A3A0020F65C /* RxLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RxLocationManager.swift; path = macOS/RxLocationManager.swift; sourceTree = "<group>"; };
-		72F9709D1D394A3A0020F65C /* SignificantLocationUpdateService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignificantLocationUpdateService.swift; path = macOS/SignificantLocationUpdateService.swift; sourceTree = "<group>"; };
-		72F9709E1D394A3A0020F65C /* StandardLocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StandardLocationService.swift; path = macOS/StandardLocationService.swift; sourceTree = "<group>"; };
 		72FC15891D3256640051FB39 /* RxLocationManagerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxLocationManagerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72FC158B1D3256650051FB39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		72FC158D1D3256650051FB39 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -174,7 +127,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				723044951D3E58AF00982952 /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,7 +134,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				723044A61D3E66B300982952 /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,7 +141,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				723044BA1D3E714300982952 /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,39 +148,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				723044CA1D3E72CC00982952 /* RxSwift.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		729F258C1D3A03FB00D835B6 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				729F25B91D3A05D500D835B6 /* RxSwift.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		72B335DB1D2BEE9E0002FB39 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				72B336091D2C05990002FB39 /* RxSwift.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		72B335EB1D2BF2960002FB39 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				729F25BB1D3A05E600D835B6 /* RxSwift.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		72F9705E1D39363B0020F65C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				72F970751D39370A0020F65C /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,49 +155,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72EC75031D3A3773002AECE2 /* RxCocoa.framework in Frameworks */,
-				72EC74FC1D3A317C002AECE2 /* RxSwift.framework in Frameworks */,
-				72EC74FD1D3A375C002AECE2 /* RxLocationManager.framework in Frameworks */,
+				72B752C91D424B8400E6E82B /* RxCocoa.framework in Frameworks */,
+				72B752CA1D424B8400E6E82B /* RxSwift.framework in Frameworks */,
+				72B752B61D4247F200E6E82B /* RxLocationManager.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		723044871D3E583100982952 /* ccexperiment */ = {
-			isa = PBXGroup;
-			children = (
-				723044DE1D3E8ACB00982952 /* RegionMonitoringService.swift */,
-				723044D91D3E81DF00982952 /* SignificantLocationUpdateService.swift */,
-				723044D31D3E748600982952 /* StandardLocationService.swift */,
-				723044B11D3E675D00982952 /* Info.plist */,
-				723044881D3E588700982952 /* Bridge.swift */,
-			);
-			name = ccexperiment;
-			sourceTree = "<group>";
-		};
-		729F25781D39FDAE00D835B6 /* watchOS */ = {
-			isa = PBXGroup;
-			children = (
-				729F257A1D39FDF800D835B6 /* Bridge.swift */,
-				729F257C1D39FDF800D835B6 /* Info-watchOS.plist */,
-				729F257F1D39FDF800D835B6 /* RxLocationManager.swift */,
-				729F25811D39FDF800D835B6 /* StandardLocationService.swift */,
-			);
-			name = watchOS;
-			sourceTree = "<group>";
-		};
-		729F25AA1D3A057F00D835B6 /* tvOS */ = {
-			isa = PBXGroup;
-			children = (
-				729F25991D3A057800D835B6 /* Bridge.swift */,
-				729F259B1D3A057800D835B6 /* Info-tvOS.plist */,
-				729F259E1D3A057800D835B6 /* RxLocationManager.swift */,
-				729F25A01D3A057800D835B6 /* StandardLocationService.swift */,
-			);
-			name = tvOS;
-			sourceTree = "<group>";
-		};
 		72B335D51D2BEE9E0002FB39 = {
 			isa = PBXGroup;
 			children = (
@@ -295,15 +178,11 @@
 		72B335E01D2BEE9E0002FB39 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				72B335DF1D2BEE9E0002FB39 /* RxLocationManager.framework */,
-				72B335EF1D2BF2960002FB39 /* RxLocationManager.framework */,
 				72FC15891D3256640051FB39 /* RxLocationManagerDemo.app */,
-				72F970621D39363B0020F65C /* RxLocationManager.framework */,
-				729F25901D3A03FB00D835B6 /* RxLocationManager.framework */,
-				7230449B1D3E58AF00982952 /* RxLocationManager_iOS_CC.framework */,
-				723044AC1D3E66B300982952 /* RxLocationManager_macOS_CC.framework */,
-				723044C01D3E714300982952 /* RxLocationManager_watchOS_CC.framework */,
-				723044D01D3E72CC00982952 /* RxLocationManager_tvOS_CC.framework */,
+				7230449B1D3E58AF00982952 /* RxLocationManager.framework */,
+				723044AC1D3E66B300982952 /* RxLocationManager.framework */,
+				723044C01D3E714300982952 /* RxLocationManager.framework */,
+				723044D01D3E72CC00982952 /* RxLocationManager.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -311,11 +190,14 @@
 		72B336001D2BF6C00002FB39 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				723044871D3E583100982952 /* ccexperiment */,
-				72F970781D3946360020F65C /* iOS */,
-				72F970951D3949A30020F65C /* macOS */,
-				729F25781D39FDAE00D835B6 /* watchOS */,
-				729F25AA1D3A057F00D835B6 /* tvOS */,
+				72B7528E1D42471300E6E82B /* RxLocationManager.swift */,
+				72B7528F1D42471300E6E82B /* RegionMonitoringService.swift */,
+				72B752901D42471300E6E82B /* BeaconRangingService.swift */,
+				72B752911D42471300E6E82B /* StandardLocationService.swift */,
+				72B752921D42471300E6E82B /* SignificantLocationUpdateService.swift */,
+				72B752931D42471300E6E82B /* Bridge.swift */,
+				72B752941D42471300E6E82B /* HeadingUpdateService.swift */,
+				72B752951D42471300E6E82B /* MonitoringVisitsService.swift */,
 				724DF72E1D2D5A1C0024AB3C /* nextId.swift */,
 			);
 			path = Sources;
@@ -334,47 +216,10 @@
 		72B3360A1D2C065D0002FB39 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				72EC75021D3A3773002AECE2 /* RxCocoa.framework */,
-				72EC74FB1D3A317C002AECE2 /* RxSwift.framework */,
-				72EC74F91D3A316B002AECE2 /* RxCocoa.framework */,
-				729F25BA1D3A05E600D835B6 /* RxSwift.framework */,
-				729F25B81D3A05D500D835B6 /* RxSwift.framework */,
-				72F970741D39370A0020F65C /* RxSwift.framework */,
-				724DF7211D2D57970024AB3C /* RxCocoa.framework */,
-				724DF7221D2D57970024AB3C /* RxSwift.framework */,
-				724DF7191D2D56580024AB3C /* RxCocoa.framework */,
-				72B336081D2C05990002FB39 /* RxSwift.framework */,
+				72B752C71D424B8400E6E82B /* RxCocoa.framework */,
+				72B752C81D424B8400E6E82B /* RxSwift.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		72F970781D3946360020F65C /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				72F970791D3946450020F65C /* BeaconRangingService.swift */,
-				72F9707A1D3946450020F65C /* Bridge.swift */,
-				72F9707B1D3946450020F65C /* HeadingUpdateService.swift */,
-				72F9707C1D3946450020F65C /* Info-iOS.plist */,
-				72F9707D1D3946450020F65C /* MonitoringVisitsService.swift */,
-				72F9707E1D3946450020F65C /* RegionMonitoringService.swift */,
-				72F970801D3946450020F65C /* RxLocationManager.swift */,
-				72F970811D3946450020F65C /* SignificantLocationUpdateService.swift */,
-				72F970821D3946450020F65C /* StandardLocationService.swift */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		72F970951D3949A30020F65C /* macOS */ = {
-			isa = PBXGroup;
-			children = (
-				72F970971D394A3A0020F65C /* Bridge.swift */,
-				72F970991D394A3A0020F65C /* Info-macOS.plist */,
-				72F9709B1D394A3A0020F65C /* RegionMonitoringService.swift */,
-				72F9709C1D394A3A0020F65C /* RxLocationManager.swift */,
-				72F9709D1D394A3A0020F65C /* SignificantLocationUpdateService.swift */,
-				72F9709E1D394A3A0020F65C /* StandardLocationService.swift */,
-			);
-			name = macOS;
 			sourceTree = "<group>";
 		};
 		72FC158A1D3256650051FB39 /* RxLocationManagerDemo */ = {
@@ -428,40 +273,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		729F258D1D3A03FB00D835B6 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		72B335DC1D2BEE9E0002FB39 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		72B335EC1D2BF2960002FB39 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		72F9705F1D39363B0020F65C /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		723044891D3E58AF00982952 /* RxLocationManager iOS cc */ = {
+		723044891D3E58AF00982952 /* RxLocationManager iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 723044981D3E58AF00982952 /* Build configuration list for PBXNativeTarget "RxLocationManager iOS cc" */;
+			buildConfigurationList = 723044981D3E58AF00982952 /* Build configuration list for PBXNativeTarget "RxLocationManager iOS" */;
 			buildPhases = (
 				7230448A1D3E58AF00982952 /* Sources */,
 				723044941D3E58AF00982952 /* Frameworks */,
@@ -472,14 +289,14 @@
 			);
 			dependencies = (
 			);
-			name = "RxLocationManager iOS cc";
+			name = "RxLocationManager iOS";
 			productName = RxLocationManager;
-			productReference = 7230449B1D3E58AF00982952 /* RxLocationManager_iOS_CC.framework */;
+			productReference = 7230449B1D3E58AF00982952 /* RxLocationManager.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		7230449D1D3E66B300982952 /* RxLocationManager macOS cc */ = {
+		7230449D1D3E66B300982952 /* RxLocationManager macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 723044A91D3E66B300982952 /* Build configuration list for PBXNativeTarget "RxLocationManager macOS cc" */;
+			buildConfigurationList = 723044A91D3E66B300982952 /* Build configuration list for PBXNativeTarget "RxLocationManager macOS" */;
 			buildPhases = (
 				7230449E1D3E66B300982952 /* Sources */,
 				723044A51D3E66B300982952 /* Frameworks */,
@@ -490,14 +307,14 @@
 			);
 			dependencies = (
 			);
-			name = "RxLocationManager macOS cc";
+			name = "RxLocationManager macOS";
 			productName = "RxLocationManager OSX";
-			productReference = 723044AC1D3E66B300982952 /* RxLocationManager_macOS_CC.framework */;
+			productReference = 723044AC1D3E66B300982952 /* RxLocationManager.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		723044B31D3E714300982952 /* RxLocationManager watchOS cc */ = {
+		723044B31D3E714300982952 /* RxLocationManager watchOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 723044BD1D3E714300982952 /* Build configuration list for PBXNativeTarget "RxLocationManager watchOS cc" */;
+			buildConfigurationList = 723044BD1D3E714300982952 /* Build configuration list for PBXNativeTarget "RxLocationManager watchOS" */;
 			buildPhases = (
 				723044B41D3E714300982952 /* Sources */,
 				723044B91D3E714300982952 /* Frameworks */,
@@ -508,14 +325,14 @@
 			);
 			dependencies = (
 			);
-			name = "RxLocationManager watchOS cc";
+			name = "RxLocationManager watchOS";
 			productName = "RxLocationManager watchOS";
-			productReference = 723044C01D3E714300982952 /* RxLocationManager_watchOS_CC.framework */;
+			productReference = 723044C01D3E714300982952 /* RxLocationManager.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		723044C31D3E72CC00982952 /* RxLocationManager tvOS cc */ = {
+		723044C31D3E72CC00982952 /* RxLocationManager tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 723044CD1D3E72CC00982952 /* Build configuration list for PBXNativeTarget "RxLocationManager tvOS cc" */;
+			buildConfigurationList = 723044CD1D3E72CC00982952 /* Build configuration list for PBXNativeTarget "RxLocationManager tvOS" */;
 			buildPhases = (
 				723044C41D3E72CC00982952 /* Sources */,
 				723044C91D3E72CC00982952 /* Frameworks */,
@@ -526,81 +343,9 @@
 			);
 			dependencies = (
 			);
-			name = "RxLocationManager tvOS cc";
-			productName = "RxLocationManager tvOS";
-			productReference = 723044D01D3E72CC00982952 /* RxLocationManager_tvOS_CC.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		729F258F1D3A03FB00D835B6 /* RxLocationManager tvOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 729F25951D3A03FB00D835B6 /* Build configuration list for PBXNativeTarget "RxLocationManager tvOS" */;
-			buildPhases = (
-				729F258B1D3A03FB00D835B6 /* Sources */,
-				729F258C1D3A03FB00D835B6 /* Frameworks */,
-				729F258D1D3A03FB00D835B6 /* Headers */,
-				729F258E1D3A03FB00D835B6 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
 			name = "RxLocationManager tvOS";
 			productName = "RxLocationManager tvOS";
-			productReference = 729F25901D3A03FB00D835B6 /* RxLocationManager.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		72B335DE1D2BEE9E0002FB39 /* RxLocationManager iOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 72B335E71D2BEE9E0002FB39 /* Build configuration list for PBXNativeTarget "RxLocationManager iOS" */;
-			buildPhases = (
-				72B335DA1D2BEE9E0002FB39 /* Sources */,
-				72B335DB1D2BEE9E0002FB39 /* Frameworks */,
-				72B335DC1D2BEE9E0002FB39 /* Headers */,
-				72B335DD1D2BEE9E0002FB39 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "RxLocationManager iOS";
-			productName = RxLocationManager;
-			productReference = 72B335DF1D2BEE9E0002FB39 /* RxLocationManager.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		72B335EE1D2BF2960002FB39 /* RxLocationManager watchOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 72B335F61D2BF2960002FB39 /* Build configuration list for PBXNativeTarget "RxLocationManager watchOS" */;
-			buildPhases = (
-				72B335EA1D2BF2960002FB39 /* Sources */,
-				72B335EB1D2BF2960002FB39 /* Frameworks */,
-				72B335EC1D2BF2960002FB39 /* Headers */,
-				72B335ED1D2BF2960002FB39 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "RxLocationManager watchOS";
-			productName = "RxLocationManager watchOS";
-			productReference = 72B335EF1D2BF2960002FB39 /* RxLocationManager.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		72F970611D39363B0020F65C /* RxLocationManager macOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 72F970671D39363B0020F65C /* Build configuration list for PBXNativeTarget "RxLocationManager macOS" */;
-			buildPhases = (
-				72F9705D1D39363B0020F65C /* Sources */,
-				72F9705E1D39363B0020F65C /* Frameworks */,
-				72F9705F1D39363B0020F65C /* Headers */,
-				72F970601D39363B0020F65C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "RxLocationManager macOS";
-			productName = "RxLocationManager OSX";
-			productReference = 72F970621D39363B0020F65C /* RxLocationManager.framework */;
+			productReference = 723044D01D3E72CC00982952 /* RxLocationManager.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		72FC15881D3256640051FB39 /* RxLocationManagerDemo */ = {
@@ -615,7 +360,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				72F970B81D3951750020F65C /* PBXTargetDependency */,
+				72B752B81D4248B700E6E82B /* PBXTargetDependency */,
 			);
 			name = RxLocationManagerDemo;
 			productName = RxLocationManagerDemo;
@@ -632,19 +377,6 @@
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = GFWGTH;
 				TargetAttributes = {
-					729F258F1D3A03FB00D835B6 = {
-						CreatedOnToolsVersion = 7.3;
-					};
-					72B335DE1D2BEE9E0002FB39 = {
-						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = EHSX39WJ93;
-					};
-					72B335EE1D2BF2960002FB39 = {
-						CreatedOnToolsVersion = 7.3.1;
-					};
-					72F970611D39363B0020F65C = {
-						CreatedOnToolsVersion = 7.3;
-					};
 					72FC15881D3256640051FB39 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = EHSX39WJ93;
@@ -669,15 +401,11 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				72B335DE1D2BEE9E0002FB39 /* RxLocationManager iOS */,
-				72F970611D39363B0020F65C /* RxLocationManager macOS */,
-				729F258F1D3A03FB00D835B6 /* RxLocationManager tvOS */,
-				72B335EE1D2BF2960002FB39 /* RxLocationManager watchOS */,
 				72FC15881D3256640051FB39 /* RxLocationManagerDemo */,
-				723044891D3E58AF00982952 /* RxLocationManager iOS cc */,
-				7230449D1D3E66B300982952 /* RxLocationManager macOS cc */,
-				723044B31D3E714300982952 /* RxLocationManager watchOS cc */,
-				723044C31D3E72CC00982952 /* RxLocationManager tvOS cc */,
+				723044891D3E58AF00982952 /* RxLocationManager iOS */,
+				7230449D1D3E66B300982952 /* RxLocationManager macOS */,
+				723044B31D3E714300982952 /* RxLocationManager watchOS */,
+				723044C31D3E72CC00982952 /* RxLocationManager tvOS */,
 			);
 		};
 /* End PBXProject section */
@@ -711,34 +439,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		729F258E1D3A03FB00D835B6 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		72B335DD1D2BEE9E0002FB39 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		72B335ED1D2BF2960002FB39 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		72F970601D39363B0020F65C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		72FC15871D3256640051FB39 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -756,11 +456,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				723044DF1D3E8ACB00982952 /* RegionMonitoringService.swift in Sources */,
-				723044D51D3E74AD00982952 /* StandardLocationService.swift in Sources */,
-				723044DA1D3E81DF00982952 /* SignificantLocationUpdateService.swift in Sources */,
-				723044AE1D3E66CF00982952 /* Bridge.swift in Sources */,
+				72B7529E1D42471300E6E82B /* BeaconRangingService.swift in Sources */,
+				72B752AE1D42471300E6E82B /* HeadingUpdateService.swift in Sources */,
+				72B752A21D42471300E6E82B /* StandardLocationService.swift in Sources */,
+				72B752AA1D42471300E6E82B /* Bridge.swift in Sources */,
+				72B752961D42471300E6E82B /* RxLocationManager.swift in Sources */,
+				72B752A61D42471300E6E82B /* SignificantLocationUpdateService.swift in Sources */,
 				723044931D3E58AF00982952 /* nextId.swift in Sources */,
+				72B7529A1D42471300E6E82B /* RegionMonitoringService.swift in Sources */,
+				72B752B21D42471300E6E82B /* MonitoringVisitsService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -768,11 +472,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				723044E01D3E8ACB00982952 /* RegionMonitoringService.swift in Sources */,
-				723044D61D3E777E00982952 /* StandardLocationService.swift in Sources */,
-				723044DB1D3E81DF00982952 /* SignificantLocationUpdateService.swift in Sources */,
-				723044AF1D3E66DE00982952 /* Bridge.swift in Sources */,
+				72B7529F1D42471300E6E82B /* BeaconRangingService.swift in Sources */,
+				72B752AF1D42471300E6E82B /* HeadingUpdateService.swift in Sources */,
+				72B752A31D42471300E6E82B /* StandardLocationService.swift in Sources */,
+				72B752AB1D42471300E6E82B /* Bridge.swift in Sources */,
+				72B752971D42471300E6E82B /* RxLocationManager.swift in Sources */,
+				72B752A71D42471300E6E82B /* SignificantLocationUpdateService.swift in Sources */,
 				723044B01D3E66DE00982952 /* nextId.swift in Sources */,
+				72B7529B1D42471300E6E82B /* RegionMonitoringService.swift in Sources */,
+				72B752B31D42471300E6E82B /* MonitoringVisitsService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -780,11 +488,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				723044E11D3E8ACB00982952 /* RegionMonitoringService.swift in Sources */,
-				723044D71D3E79AE00982952 /* StandardLocationService.swift in Sources */,
-				723044DC1D3E81DF00982952 /* SignificantLocationUpdateService.swift in Sources */,
-				723044C21D3E716600982952 /* Bridge.swift in Sources */,
+				72B752A01D42471300E6E82B /* BeaconRangingService.swift in Sources */,
+				72B752B01D42471300E6E82B /* HeadingUpdateService.swift in Sources */,
+				72B752A41D42471300E6E82B /* StandardLocationService.swift in Sources */,
+				72B752AC1D42471300E6E82B /* Bridge.swift in Sources */,
+				72B752981D42471300E6E82B /* RxLocationManager.swift in Sources */,
+				72B752A81D42471300E6E82B /* SignificantLocationUpdateService.swift in Sources */,
 				723044B81D3E714300982952 /* nextId.swift in Sources */,
+				72B7529C1D42471300E6E82B /* RegionMonitoringService.swift in Sources */,
+				72B752B41D42471300E6E82B /* MonitoringVisitsService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -792,62 +504,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				723044E21D3E8ACB00982952 /* RegionMonitoringService.swift in Sources */,
-				723044D81D3E79B300982952 /* StandardLocationService.swift in Sources */,
-				723044DD1D3E81DF00982952 /* SignificantLocationUpdateService.swift in Sources */,
-				723044D21D3E732400982952 /* Bridge.swift in Sources */,
+				72B752A11D42471300E6E82B /* BeaconRangingService.swift in Sources */,
+				72B752B11D42471300E6E82B /* HeadingUpdateService.swift in Sources */,
+				72B752A51D42471300E6E82B /* StandardLocationService.swift in Sources */,
+				72B752AD1D42471300E6E82B /* Bridge.swift in Sources */,
+				72B752991D42471300E6E82B /* RxLocationManager.swift in Sources */,
+				72B752A91D42471300E6E82B /* SignificantLocationUpdateService.swift in Sources */,
 				723044C81D3E72CC00982952 /* nextId.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		729F258B1D3A03FB00D835B6 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				729F25B01D3A05C700D835B6 /* Bridge.swift in Sources */,
-				729F25B41D3A05C700D835B6 /* RxLocationManager.swift in Sources */,
-				729F25B61D3A05C700D835B6 /* StandardLocationService.swift in Sources */,
-				729F25B71D3A05C700D835B6 /* nextId.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		72B335DA1D2BEE9E0002FB39 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				72F9708C1D3946620020F65C /* BeaconRangingService.swift in Sources */,
-				72F9708D1D3946620020F65C /* Bridge.swift in Sources */,
-				72F9708E1D3946620020F65C /* HeadingUpdateService.swift in Sources */,
-				72F9708F1D3946620020F65C /* MonitoringVisitsService.swift in Sources */,
-				72F970901D3946620020F65C /* RegionMonitoringService.swift in Sources */,
-				72F970921D3946620020F65C /* RxLocationManager.swift in Sources */,
-				72F970931D3946620020F65C /* SignificantLocationUpdateService.swift in Sources */,
-				72F970941D3946620020F65C /* StandardLocationService.swift in Sources */,
-				724DF72F1D2D5A1C0024AB3C /* nextId.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		72B335EA1D2BF2960002FB39 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				729F25AB1D3A05B400D835B6 /* Bridge.swift in Sources */,
-				729F25AC1D3A05B400D835B6 /* RxLocationManager.swift in Sources */,
-				729F25AD1D3A05B400D835B6 /* StandardLocationService.swift in Sources */,
-				729F25AE1D3A05B400D835B6 /* nextId.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		72F9705D1D39363B0020F65C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				72F970A81D394C5D0020F65C /* Bridge.swift in Sources */,
-				72F970AB1D394C5D0020F65C /* RegionMonitoringService.swift in Sources */,
-				72F970AC1D394C5D0020F65C /* RxLocationManager.swift in Sources */,
-				72F970AD1D394C5D0020F65C /* SignificantLocationUpdateService.swift in Sources */,
-				72F970AE1D394C5D0020F65C /* StandardLocationService.swift in Sources */,
-				72F9706A1D3936F50020F65C /* nextId.swift in Sources */,
+				72B7529D1D42471300E6E82B /* RegionMonitoringService.swift in Sources */,
+				72B752B51D42471300E6E82B /* MonitoringVisitsService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -869,10 +534,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		72F970B81D3951750020F65C /* PBXTargetDependency */ = {
+		72B752B81D4248B700E6E82B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 72B335DE1D2BEE9E0002FB39 /* RxLocationManager iOS */;
-			targetProxy = 72F970B71D3951750020F65C /* PBXContainerItemProxy */;
+			target = 723044891D3E58AF00982952 /* RxLocationManager iOS */;
+			targetProxy = 72B752B71D4248B700E6E82B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -911,11 +576,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Checkouts/RxSwift/build/Debug-iphoneos",
 				);
-				INFOPLIST_FILE = Sources/ccexperiment/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgotohell.RxLocationManager;
-				PRODUCT_NAME = RxLocationManager_iOS_CC;
+				PRODUCT_NAME = RxLocationManager;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -937,11 +602,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Checkouts/RxSwift/build/Debug-iphoneos",
 				);
-				INFOPLIST_FILE = Sources/ccexperiment/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgotohell.RxLocationManager;
-				PRODUCT_NAME = RxLocationManager_iOS_CC;
+				PRODUCT_NAME = RxLocationManager;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -961,12 +626,12 @@
 					"$(PROJECT_DIR)/Carthage/Checkouts/RxSwift/build/Debug",
 				);
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Sources/ccexperiment/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgotohell.RxLocationManager;
-				PRODUCT_NAME = RxLocationManager_macOS_CC;
+				PRODUCT_NAME = RxLocationManager;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 			};
@@ -986,12 +651,12 @@
 					"$(PROJECT_DIR)/Carthage/Checkouts/RxSwift/build/Debug",
 				);
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Sources/ccexperiment/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgotohell.RxLocationManager;
-				PRODUCT_NAME = RxLocationManager_macOS_CC;
+				PRODUCT_NAME = RxLocationManager;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 			};
@@ -1009,11 +674,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Checkouts/RxSwift/build/Debug-watchos",
 				);
-				INFOPLIST_FILE = Sources/ccexperiment/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgth.RxLocationManager;
-				PRODUCT_NAME = RxLocationManager_watchOS_CC;
+				PRODUCT_NAME = RxLocationManager;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -1033,11 +698,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Checkouts/RxSwift/build/Debug-watchos",
 				);
-				INFOPLIST_FILE = Sources/ccexperiment/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgth.RxLocationManager;
-				PRODUCT_NAME = RxLocationManager_watchOS_CC;
+				PRODUCT_NAME = RxLocationManager;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -1056,11 +721,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Checkouts/RxSwift/build/Debug-appletvos",
 				);
-				INFOPLIST_FILE = Sources/ccexperiment/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgotohell.RxLocationManager;
-				PRODUCT_NAME = RxLocationManager_tvOS_CC;
+				PRODUCT_NAME = RxLocationManager;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -1079,53 +744,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Checkouts/RxSwift/build/Debug-appletvos",
 				);
-				INFOPLIST_FILE = Sources/ccexperiment/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgotohell.RxLocationManager;
-				PRODUCT_NAME = RxLocationManager_tvOS_CC;
-				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.2;
-			};
-			name = Release;
-		};
-		729F25961D3A03FB00D835B6 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Checkouts/RxSwift/build/Debug-appletvos",
-				);
-				INFOPLIST_FILE = "Sources/tvOS/Info-tvOS.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgotohell.RxLocationManager;
-				PRODUCT_NAME = RxLocationManager;
-				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.2;
-			};
-			name = Debug;
-		};
-		729F25971D3A03FB00D835B6 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Checkouts/RxSwift/build/Debug-appletvos",
-				);
-				INFOPLIST_FILE = "Sources/tvOS/Info-tvOS.plist";
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgotohell.RxLocationManager;
@@ -1228,155 +847,6 @@
 			};
 			name = Release;
 		};
-		72B335E81D2BEE9E0002FB39 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Checkouts/RxSwift/build/Debug-iphoneos",
-				);
-				INFOPLIST_FILE = "Sources/iOS/Info-iOS.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgotohell.RxLocationManager;
-				PRODUCT_NAME = RxLocationManager;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		72B335E91D2BEE9E0002FB39 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Checkouts/RxSwift/build/Debug-iphoneos",
-				);
-				INFOPLIST_FILE = "Sources/iOS/Info-iOS.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgotohell.RxLocationManager;
-				PRODUCT_NAME = RxLocationManager;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		72B335F41D2BF2960002FB39 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Checkouts/RxSwift/build/Debug-watchos",
-				);
-				INFOPLIST_FILE = "Sources/watchOS/Info-watchOS.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgth.RxLocationManager;
-				PRODUCT_NAME = RxLocationManager;
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
-			};
-			name = Debug;
-		};
-		72B335F51D2BF2960002FB39 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Checkouts/RxSwift/build/Debug-watchos",
-				);
-				INFOPLIST_FILE = "Sources/watchOS/Info-watchOS.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgth.RxLocationManager;
-				PRODUCT_NAME = RxLocationManager;
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
-			};
-			name = Release;
-		};
-		72F970681D39363B0020F65C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
-				COMBINE_HIDPI_IMAGES = YES;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Checkouts/RxSwift/build/Debug",
-				);
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "Sources/macOS/Info-macOS.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgotohell.RxLocationManager;
-				PRODUCT_NAME = RxLocationManager;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		72F970691D39363B0020F65C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
-				COMBINE_HIDPI_IMAGES = YES;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Checkouts/RxSwift/build/Debug",
-				);
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "Sources/macOS/Info-macOS.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgotohell.RxLocationManager;
-				PRODUCT_NAME = RxLocationManager;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
 		72FC15991D3256650051FB39 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1422,7 +892,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		723044981D3E58AF00982952 /* Build configuration list for PBXNativeTarget "RxLocationManager iOS cc" */ = {
+		723044981D3E58AF00982952 /* Build configuration list for PBXNativeTarget "RxLocationManager iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				723044991D3E58AF00982952 /* Debug */,
@@ -1431,7 +901,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		723044A91D3E66B300982952 /* Build configuration list for PBXNativeTarget "RxLocationManager macOS cc" */ = {
+		723044A91D3E66B300982952 /* Build configuration list for PBXNativeTarget "RxLocationManager macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				723044AA1D3E66B300982952 /* Debug */,
@@ -1440,7 +910,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		723044BD1D3E714300982952 /* Build configuration list for PBXNativeTarget "RxLocationManager watchOS cc" */ = {
+		723044BD1D3E714300982952 /* Build configuration list for PBXNativeTarget "RxLocationManager watchOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				723044BE1D3E714300982952 /* Debug */,
@@ -1449,20 +919,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		723044CD1D3E72CC00982952 /* Build configuration list for PBXNativeTarget "RxLocationManager tvOS cc" */ = {
+		723044CD1D3E72CC00982952 /* Build configuration list for PBXNativeTarget "RxLocationManager tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				723044CE1D3E72CC00982952 /* Debug */,
 				723044CF1D3E72CC00982952 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		729F25951D3A03FB00D835B6 /* Build configuration list for PBXNativeTarget "RxLocationManager tvOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				729F25961D3A03FB00D835B6 /* Debug */,
-				729F25971D3A03FB00D835B6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1472,33 +933,6 @@
 			buildConfigurations = (
 				72B335E51D2BEE9E0002FB39 /* Debug */,
 				72B335E61D2BEE9E0002FB39 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		72B335E71D2BEE9E0002FB39 /* Build configuration list for PBXNativeTarget "RxLocationManager iOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				72B335E81D2BEE9E0002FB39 /* Debug */,
-				72B335E91D2BEE9E0002FB39 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		72B335F61D2BF2960002FB39 /* Build configuration list for PBXNativeTarget "RxLocationManager watchOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				72B335F41D2BF2960002FB39 /* Debug */,
-				72B335F51D2BF2960002FB39 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		72F970671D39363B0020F65C /* Build configuration list for PBXNativeTarget "RxLocationManager macOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				72F970681D39363B0020F65C /* Debug */,
-				72F970691D39363B0020F65C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

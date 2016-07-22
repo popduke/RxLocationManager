@@ -35,7 +35,6 @@ class RootViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let isAuthorized = RxLocationManager.authorizationStatus.map{return $0 == .AuthorizedAlways || $0 == .AuthorizedWhenInUse}
         
         isAuthorized.subscribe(standardLocationServiceBtn.rx_enabled).addDisposableTo(disposeBag)

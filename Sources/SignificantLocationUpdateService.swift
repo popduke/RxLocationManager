@@ -5,7 +5,7 @@
 //  Created by Hao Yu on 16/7/6.
 //  Copyright © 2016年 GFWGTH. All rights reserved.
 //
-#if os(iOS)
+#if os(iOS) || os(OSX)
     import Foundation
     import CoreLocation
     import RxSwift
@@ -44,7 +44,11 @@
                 mgr, locations in
                 if let copyOfObservers = self?.observers{
                     for (_,observer) in copyOfObservers{
-                        observer.onNext(locations)
+                        #if os(OSX)
+                            observer.onNext(locations as! [CLLocation])
+                        #else
+                            observer.onNext(locations)
+                        #endif
                     }
                 }
             }
