@@ -12,6 +12,7 @@
     
     //MARK: SignificantLocationUpdateService
     public protocol SignificantLocationUpdateService{
+        /// Observable of current significant location change
         var locating: Observable<[CLLocation]> {get}
     }
     

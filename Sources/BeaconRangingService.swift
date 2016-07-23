@@ -13,17 +13,47 @@
     
     //MARK: BeaconRangingServiceConfigurable
     public protocol BeaconRangingServiceConfigurable{
-        var rangedRegions: Set<CLRegion> {get}
+        /**
+         Unlike the official [version](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/instm/CLLocationManager/startRangingBeaconsInRegion:), this method allows you to start regioning multiple beacons at once
+         
+         - parameter regions: to start regioning
+         
+         - returns: self for chaining call
+         */
         func startRangingBeaconsInRegions(regions: [CLBeaconRegion]) -> BeaconRangingService
+        /**
+         Unlike the official [version](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/instm/CLLocationManager/stopRangingBeaconsInRegion:), this method allows you to stop regioning multiple beacons at once
+         
+         - parameter regions: to stop regioning
+         
+         - returns: self for chaining call
+         */
         func stopRangingBeaconsInRegions(regions: [CLBeaconRegion]) -> BeaconRangingService
+        /**
+         Convenient method to stop all regioned beacons at once
+         
+         - returns: self for chaining call
+         */
         func stopRangingBeaconsInAllRegions() -> BeaconRangingService
+        /**
+         Refer description in official [document](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/instm/CLLocationManager/requestStateForRegion:)
+         
+         - parameter regions: to request
+         
+         - returns: self for chaining call
+         */
         func requestRegionsState(regions:[CLBeaconRegion]) -> BeaconRangingService
     }
     //MARK: BeaconRangingService
     public protocol BeaconRangingService: BeaconRangingServiceConfigurable{
+        /// Observable of current ranged beacons
         var ranging: Observable<([CLBeacon], CLBeaconRegion)>{get}
+        /// Observable of possible error during regioning, errors won't trigger onError on each Observable, so caller have to manage subscription lifecycle explicitly
         var rangingError: Observable<(CLBeaconRegion, NSError)>{get}
+        /// Observable of determined state of requested region
         var determinedRegionState: Observable<(CLBeaconRegion, CLRegionState)> {get}
+        /// Observable of currently the set of regions being tracked using ranging
+        var rangedRegions: Set<CLRegion> {get}
     }
     //MARK: DefaultBeaconRagningService
     class DefaultBeaconRangingService: BeaconRangingService{

@@ -14,19 +14,60 @@
     
     //MARK: HeadingUpdateServiceConfigurable
     public protocol HeadingUpdateServiceConfigurable{
+        /**
+         Refer description in official [document](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/instp/CLLocationManager/headingFilter)
+         
+         - parameter degrees: to filter
+         
+         - returns: self for chaining call
+         */
         func headingFilter(degrees:CLLocationDegrees) -> HeadingUpdateService
+        /**
+         Refer description in official [document](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/instp/CLLocationManager/headingOrientation)
+         
+         - parameter degrees
+         
+         - returns: self for chaining call
+         */
         func headingOrientation(degrees:CLDeviceOrientation) -> HeadingUpdateService
+        /**
+         Should display heading calibration during monitoring heading update?
+         
+         - parameter should: display heading calibration
+         
+         - returns: self for chaining call
+         */
         func displayHeadingCalibration(should:Bool) -> HeadingUpdateService
+        /**
+         If reports true heading in CLHeading object, refer official [document](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLHeading_Class/index.html#//apple_ref/swift/cl/c:objc(cs)CLHeading) for description
+         
+         - parameter enable: true heading
+         
+         - returns: self for chaining call
+         */
         func trueHeading(enable:Bool) -> HeadingUpdateService
+        /// Current heading filter value
         var headingFilter: CLLocationDegrees{get}
+        /// Current heading orientation value
         var headingOrientation: CLDeviceOrientation{get}
+        /// Current value of displayHeadingCalibration
         var displayHeadingCalibration: Bool{get}
+        /// If currently enabled true heading in CLHeading object
         var trueHeading: Bool{get}
     }
     //MARK: HeadingUpdateService
     public protocol HeadingUpdateService: HeadingUpdateServiceConfigurable{
+        /// Observable of current heading update
         var heading: Observable<CLHeading>{get}
+        /**
+         Refer description in official [document](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/instm/CLLocationManager/dismissHeadingCalibrationDisplay)
+         */
         func dismissHeadingCalibrationDisplay() -> Void
+        /**
+         Return a cloned instance of current heading update service
+         
+         - returns: cloned instance
+         */
         func clone() -> HeadingUpdateService
     }
     

@@ -13,6 +13,7 @@
     
     //MARK: MonitoringVisitsService
     public protocol MonitoringVisitsService{
+        /// Observable of visit event
         var visiting: Observable<CLVisit>{get}
     }
     

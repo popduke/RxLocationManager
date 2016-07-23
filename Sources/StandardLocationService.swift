@@ -12,25 +12,78 @@ import RxSwift
 
 //MARK: StandardLocationServiceConfigurable
 public protocol StandardLocationServiceConfigurable{
+    /**
+     Set distance filter
+     
+     - parameter distance
+     
+     - returns: self for chaining call
+     */
     func distanceFilter(distance: CLLocationDistance) -> StandardLocationService
+    /**
+     Set desired accuracy
+     
+     - parameter desiredAccuracy
+     
+     - returns: self for chaining call
+     */
     func desiredAccuracy(desiredAccuracy: CLLocationAccuracy) -> StandardLocationService
     
     #if os(iOS)
+    /**
+     Refer description in official [document](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/instm/CLLocationManager/allowDeferredLocationUpdatesUntilTraveled:timeout:)
+     - parameter distance
+     - parameter timeout
+     
+     - returns: self for chaining call
+     */
     func allowDeferredLocationUpdates(untilTraveled distance: CLLocationDistance, timeout: NSTimeInterval) -> StandardLocationService
+    /**
+     Refer description in official [document](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/instm/CLLocationManager/disallowDeferredLocationUpdates)
+     
+     - returns: self for chaining call
+     */
     func disallowDeferredLocationUpdates() -> StandardLocationService
+    /**
+     Set Boolean value to [pausesLocationUpdatesAutomatically](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/instp/CLLocationManager/pausesLocationUpdatesAutomatically)
+     
+     - parameter pause: Boolean value
+     
+     - returns: self for chaining call
+     */
     func pausesLocationUpdatesAutomatically(pause : Bool) -> StandardLocationService
     @available(iOS 9.0, *)
+    
+    /**
+     Set Boolean value to [allowsBackgroundLocationUpdates](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/instp/CLLocationManager/allowsBackgroundLocationUpdates)
+     
+     - parameter allow: Boolean value
+     
+     - returns: self for chaining call
+     */
     func allowsBackgroundLocationUpdates(allow : Bool) -> StandardLocationService
+    /**
+     Set value to [activityType](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/instp/CLLocationManager/activityType)
+     
+     - parameter type
+     
+     - returns: self for chaining call
+     */
     func activityType(type: CLActivityType) -> StandardLocationService
     #endif
     
+    /// Current distance filter value
     var distanceFilter: CLLocationDistance {get}
+    /// Current desired accuracy value
     var desiredAccuracy: CLLocationAccuracy {get}
     
     #if os(iOS)
+    /// Current pausesLocationUpdatesAutomatically value
     var pausesLocationUpdatesAutomatically: Bool {get}
     @available(iOS 9.0, *)
+    /// Current allowsBackgroundLocationUpdates
     var allowsBackgroundLocationUpdates: Bool {get}
+    /// Current activityType
     var activityType: CLActivityType {get}
     #endif
 }
@@ -39,12 +92,12 @@ public protocol StandardLocationServiceConfigurable{
 //MARK: StandardLocationService
 public protocol StandardLocationService: StandardLocationServiceConfigurable{
     #if os(iOS) || os(OSX)
-    /// Observable of current changing location, series of CLLocation objects will be reported, intermittent LocationUnknown error will be ignored, other errors are reported as usual
+    /// Observable of current changing location, series of CLLocation objects will be reported, intermittent LocationUnknown error will be ignored and not stop subscriptions on this observable, other errors are reported as usual
     var locating: Observable<[CLLocation]>{get}
     #endif
     
     #if os(iOS) || os(watchOS) || os(tvOS)
-    /// Observable of current location, only report one CLLocation object and complete, or error if underlying CLLocationManager report error
+    /// Observable of current location, only report one CLLocation object and complete, or error if underlying CLLocationManager reports error
     var located: Observable<CLLocation>{get}
     #endif
     
@@ -56,7 +109,7 @@ public protocol StandardLocationService: StandardLocationServiceConfigurable{
     #endif
     
     /**
-     Return clone object of current standard location service
+     Return cloned instance
      
      - returns: cloned standard location service
      */

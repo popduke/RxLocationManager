@@ -12,18 +12,50 @@ import RxSwift
 
 //MARK: RegionMonitoringServiceConfigurable
 public protocol RegionMonitoringServiceConfigurable{
-    var maximumRegionMonitoringDistance: CLLocationDistance { get }
+    /**
+     Unlike the official [version](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/instm/CLLocationManager/startMonitoringForRegion:), this method allows you to start monitoring multiple regions at once
+     
+     - parameter regions: to start monitoring
+     
+     - returns: self for chaining call
+     */
     func startMonitoringForRegions(regions: [CLRegion]) -> RegionMonitoringService
+    /**
+     Unlike the official [version](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/instm/CLLocationManager/stopMonitoringForRegion:), this method allows you to stop monitoring multiple regions at once
+     
+     - parameter regions: to stop monitoring
+     
+     - returns: self for chaining call
+     */
     func stopMonitoringForRegions(regions: [CLRegion]) -> RegionMonitoringService
+    /**
+     convenient method to stop all monitored regions at once
+     
+     - returns: self for chaining call
+     */
     func stopMonitoringForAllRegions() -> RegionMonitoringService
+    /**
+     Refer description in official [document](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/instm/CLLocationManager/requestStateForRegion:)
+     
+     - parameter regions: to request
+     
+     - returns: self for chaining call
+     */
     func requestRegionsState(regions:[CLRegion]) -> RegionMonitoringService
 }
 //MARK: RegionMonitoringService
 public protocol RegionMonitoringService: RegionMonitoringServiceConfigurable{
+    /// Refer description in official [document](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/instp/CLLocationManager/maximumRegionMonitoringDistance)
+    var maximumRegionMonitoringDistance: CLLocationDistance { get }
+    /// Observable of current monitored regions
     var monitoredRegions: Observable<Set<CLRegion>> { get }
+    /// Observable of region entering event
     var entering: Observable<CLRegion>{get}
+    /// Observable of region exiting event
     var exiting: Observable<CLRegion>{get}
+    /// Observable of determined state of requested region
     var determinedRegionState: Observable<(CLRegion, CLRegionState)> {get}
+    /// Observable of possible errors during monitoring, errors won't trigger onError on each Observable, so caller have to manage subscription lifecycle explicitly
     var error: Observable<(CLRegion?, NSError)>{get}
 }
 

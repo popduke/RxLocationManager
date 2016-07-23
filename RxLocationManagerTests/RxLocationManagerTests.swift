@@ -1,14 +1,14 @@
 //
-//  RxLocationManagerTests_iOS.swift
-//  RxLocationManagerTests_iOS
+//  RxLocationManagerTests.swift
+//  RxLocationManagerTests
 //
-//  Created by HaoYu on 16/7/22.
+//  Created by HaoYu on 16/7/23.
 //  Copyright © 2016年 GFWGTH. All rights reserved.
 //
 
 import XCTest
 
-class RxLocationManagerTests_iOS: XCTestCase {
+class RxLocationManagerTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

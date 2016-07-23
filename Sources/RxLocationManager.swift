@@ -55,7 +55,7 @@ public class RxLocationManager{
     
     #if os(iOS) || os(watchOS) || os(tvOS)
     /**
-     same as the one in CLLocationManager
+     Refer description in official [document](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/instm/CLLocationManager/requestWhenInUseAuthorization)
      */
     public static func requestWhenInUseAuthorization(){
         defaultLocationMgr.manager.requestWhenInUseAuthorization()
@@ -64,7 +64,7 @@ public class RxLocationManager{
     
     #if os(iOS) || os(watchOS)
     /**
-     same as the one in CLLocationManager
+     Refer description in official [document](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/instm/CLLocationManager/requestAlwaysAuthorization)
      */
     public static func requestAlwaysAuthorization(){
         defaultLocationMgr.manager.requestAlwaysAuthorization()
@@ -72,41 +72,48 @@ public class RxLocationManager{
     #endif
     
     #if os(iOS) || os(OSX)
-    /// same in CLLocationManager
+    /// Refer description in official [document](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/clm/CLLocationManager/significantLocationChangeMonitoringAvailable)
     public static let significantLocationChangeMonitoringAvailable = CLLocationManager.significantLocationChangeMonitoringAvailable()
     
+    /**
+     Refer description in official [document](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/clm/CLLocationManager/isMonitoringAvailableForClass:)
+     
+     - parameter regionClass: to test
+     
+     - returns: self for chaining call
+     */
     public static func isMonitoringAvailableForClass(regionClass: AnyClass) -> Bool{
         return CLLocationManager.isMonitoringAvailableForClass(regionClass)
     }
     #endif
     
     #if os(iOS)
-    /// same in CLLocationManager
+    /// Refer description in official [document](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/clm/CLLocationManager/deferredLocationUpdatesAvailable)
     public static let deferredLocationUpdatesAvailable = CLLocationManager.deferredLocationUpdatesAvailable()
 
-    /// same in CLLocationManager
+    /// Refer description in official [document](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/clm/CLLocationManager/headingAvailable)
     public static let headingAvailable = CLLocationManager.headingAvailable()
     
-    /// same in CLLocationManager
+    /// Refer description in official [document](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/clm/CLLocationManager/isRangingAvailable)
     public static let isRangingAvailable = CLLocationManager.isRangingAvailable()
     #endif
     
-    /// shared standard location service
+    /// Shared standard location service
     public static let Standard: StandardLocationService = DefaultStandardLocationService()
     
     #if os(iOS) || os(OSX)
-    /// shared significant location update service
+    /// Shared significant location update service
     public static let SignificantLocation: SignificantLocationUpdateService = DefaultSignificantLocationUpdateService()
     
-    /// shared region monitoring service
+    /// Shared region monitoring service
     public static let RegionMonitoring: RegionMonitoringService = DefaultRegionMonitoringService()
     #endif
     
     #if os(iOS)
-    /// shared visit monitoring service
+    /// Shared visit monitoring service
     public static let VisitMonitoring: MonitoringVisitsService = DefaultMonitoringVisitsService()
     
-    /// shared heading update service
+    /// Shared heading update service
     public static let HeadingUpdate: HeadingUpdateService = DefaultHeadingUpdateService()
     #endif
 }
