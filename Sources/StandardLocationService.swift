@@ -52,7 +52,7 @@ public protocol StandardLocationServiceConfigurable{
      - returns: self for chaining call
      */
     func pausesLocationUpdatesAutomatically(pause : Bool) -> StandardLocationService
-    @available(iOS 9.0, *)
+    
     
     /**
      Set Boolean value to [allowsBackgroundLocationUpdates](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/instp/CLLocationManager/allowsBackgroundLocationUpdates)
@@ -61,6 +61,7 @@ public protocol StandardLocationServiceConfigurable{
      
      - returns: self for chaining call
      */
+    @available(iOS 9.0, *)
     func allowsBackgroundLocationUpdates(allow : Bool) -> StandardLocationService
     /**
      Set value to [activityType](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/instp/CLLocationManager/activityType)
@@ -119,12 +120,12 @@ public protocol StandardLocationService: StandardLocationServiceConfigurable{
 //MARK: DefaultStandardLocationService
 class DefaultStandardLocationService: StandardLocationService{
     #if os(iOS) || os(watchOS) || os(tvOS)
-    private let locMgrForLocation = Bridge()
+    private var locMgrForLocation:LocationManagerBridge = Bridge()
     private var locatedObservers = [(id: Int, observer: AnyObserver<CLLocation>)]()
     #endif
     
     #if os(iOS) || os(OSX)
-    private let locMgrForLocating = Bridge()
+    private var locMgrForLocating:LocationManagerBridge = Bridge()
     private var locatingObservers = [(id: Int, observer: AnyObserver<[CLLocation]>)]()
     #endif
     
@@ -136,18 +137,18 @@ class DefaultStandardLocationService: StandardLocationService{
     var distanceFilter:CLLocationDistance{
         get{
             #if os(OSX)
-                return locMgrForLocating.manager.distanceFilter
+                return locMgrForLocating.distanceFilter
             #else
-                return locMgrForLocation.manager.distanceFilter
+                return locMgrForLocation.distanceFilter
             #endif
         }
     }
     var desiredAccuracy: CLLocationAccuracy{
         get{
             #if os(OSX)
-                return locMgrForLocating.manager.desiredAccuracy
+                return locMgrForLocating.desiredAccuracy
             #else
-                return locMgrForLocation.manager.desiredAccuracy
+                return locMgrForLocation.desiredAccuracy
             #endif
         }
     }
@@ -155,19 +156,19 @@ class DefaultStandardLocationService: StandardLocationService{
     #if os(iOS)
     var pausesLocationUpdatesAutomatically: Bool{
         get{
-            return locMgrForLocation.manager.pausesLocationUpdatesAutomatically
+            return locMgrForLocation.pausesLocationUpdatesAutomatically
         }
     }
     
     @available(iOS 9.0, *)
     var allowsBackgroundLocationUpdates: Bool{
         get{
-            return locMgrForLocation.manager.allowsBackgroundLocationUpdates
+            return locMgrForLocation.allowsBackgroundLocationUpdates
         }
     }
     var activityType: CLActivityType{
         get{
-            return locMgrForLocation.manager.activityType
+            return locMgrForLocation.activityType
         }
     }
     #endif
@@ -175,8 +176,8 @@ class DefaultStandardLocationService: StandardLocationService{
     #if os(iOS) || os(watchOS) || os(tvOS)
     var located:Observable<CLLocation> {
         get{
-            if self.locMgrForLocation.manager.location != nil{
-                return Observable.just(self.locMgrForLocation.manager.location!)
+            if self.locMgrForLocation.location != nil{
+                return Observable.just(self.locMgrForLocation.location!)
             }else{
                 return Observable.create{
                     observer in
@@ -184,16 +185,16 @@ class DefaultStandardLocationService: StandardLocationService{
                     let id = nextId()
                     ownerService.locatedObservers.append((id, observer))
                     if #available(iOS 9.0, *) {
-                        ownerService.locMgrForLocation.manager.requestLocation()
+                        ownerService.locMgrForLocation.requestLocation()
                     } else {
                         #if os(iOS)
-                            ownerService.locMgrForLocation.manager.startUpdatingLocation()
+                            ownerService.locMgrForLocation.startUpdatingLocation()
                         #endif
                     }
                     return AnonymousDisposable{
                         ownerService.locatedObservers.removeAtIndex(ownerService.locatedObservers.indexOf{$0.id == id}!)
                         if(ownerService.locatedObservers.count == 0){
-                            ownerService.locMgrForLocation.manager.stopUpdatingLocation()
+                            ownerService.locMgrForLocation.stopUpdatingLocation()
                         }
                         ownerService = nil
                     }
@@ -244,11 +245,11 @@ class DefaultStandardLocationService: StandardLocationService{
                 let id = nextId()
                 ownerService.locatingObservers.append((id, observer))
                 //calling this method to start updating location anyway, it's no harm according to the doc
-                ownerService.locMgrForLocating.manager.startUpdatingLocation()
+                ownerService.locMgrForLocating.startUpdatingLocation()
                 return AnonymousDisposable{
                     ownerService.locatingObservers.removeAtIndex(ownerService.locatingObservers.indexOf{$0.id == id}!)
                     if(ownerService.locatingObservers.count == 0){
-                        ownerService.locMgrForLocating.manager.stopUpdatingLocation()
+                        ownerService.locMgrForLocating.stopUpdatingLocation()
                     }
                     ownerService = nil
                 }
@@ -269,7 +270,7 @@ class DefaultStandardLocationService: StandardLocationService{
                         observer.onCompleted()
                     }
                     guard #available(iOS 9.0, *) else {
-                        self?.locMgrForLocation.manager.stopUpdatingLocation()
+                        self?.locMgrForLocation.stopUpdatingLocation()
                         return
                     }
                     
@@ -352,53 +353,53 @@ class DefaultStandardLocationService: StandardLocationService{
     
     #if os(iOS)
     func allowDeferredLocationUpdates(untilTraveled distance: CLLocationDistance, timeout: NSTimeInterval) -> StandardLocationService{
-        locMgrForLocating.manager.allowDeferredLocationUpdatesUntilTraveled(distance, timeout: timeout)
+        locMgrForLocating.allowDeferredLocationUpdatesUntilTraveled(distance, timeout: timeout)
         return self
     }
     
     func disallowDeferredLocationUpdates() -> StandardLocationService{
-        locMgrForLocating.manager.disallowDeferredLocationUpdates()
+        locMgrForLocating.disallowDeferredLocationUpdates()
         return self
     }
     
     func pausesLocationUpdatesAutomatically(pause: Bool) -> StandardLocationService {
-        locMgrForLocation.manager.pausesLocationUpdatesAutomatically = pause
-        locMgrForLocating.manager.pausesLocationUpdatesAutomatically = pause
+        locMgrForLocation.pausesLocationUpdatesAutomatically = pause
+        locMgrForLocating.pausesLocationUpdatesAutomatically = pause
         return self
     }
     
     @available(iOS 9.0, *)
     func allowsBackgroundLocationUpdates(allow: Bool) -> StandardLocationService {
-        locMgrForLocation.manager.allowsBackgroundLocationUpdates = allow
-        locMgrForLocating.manager.allowsBackgroundLocationUpdates = allow
+        locMgrForLocation.allowsBackgroundLocationUpdates = allow
+        locMgrForLocating.allowsBackgroundLocationUpdates = allow
         return self
     }
     
     func activityType(type: CLActivityType) -> StandardLocationService {
-        locMgrForLocation.manager.activityType = type
-        locMgrForLocating.manager.activityType = type
+        locMgrForLocation.activityType = type
+        locMgrForLocating.activityType = type
         return self
     }
     #endif
     
     func distanceFilter(distance: CLLocationDistance) -> StandardLocationService {
         #if os(iOS) || os(watchOS) || os(tvOS)
-            locMgrForLocation.manager.distanceFilter = distance
+            locMgrForLocation.distanceFilter = distance
         #endif
         
         #if os(iOS) || os(OSX)
-            locMgrForLocating.manager.distanceFilter = distance
+            locMgrForLocating.distanceFilter = distance
         #endif
         return self
     }
     
     func desiredAccuracy(desiredAccuracy: CLLocationAccuracy) -> StandardLocationService {
         #if os(iOS) || os(watchOS) || os(tvOS)
-            locMgrForLocation.manager.distanceFilter = desiredAccuracy
+            locMgrForLocation.distanceFilter = desiredAccuracy
         #endif
         
         #if os(iOS) || os(OSX)
-            locMgrForLocating.manager.distanceFilter = desiredAccuracy
+            locMgrForLocating.distanceFilter = desiredAccuracy
         #endif
         return self
     }

@@ -57,7 +57,7 @@
     }
     //MARK: DefaultBeaconRagningService
     class DefaultBeaconRangingService: BeaconRangingService{
-        private let locMgr: Bridge = Bridge()
+        private let locMgr: LocationManagerBridge = Bridge()
         
         private var observers = [(id:Int, observer: AnyObserver<([CLBeacon], CLBeaconRegion)>)]()
         private var errorObservers = [(id:Int, observer: AnyObserver<(CLBeaconRegion, NSError)>)]()
@@ -65,7 +65,7 @@
         
         var rangedRegions: Set<CLRegion> {
             get{
-                return locMgr.manager.rangedRegions
+                return locMgr.rangedRegions
             }
         }
         var ranging: Observable<([CLBeacon], CLBeaconRegion)>{
@@ -147,28 +147,28 @@
         
         func startRangingBeaconsInRegions(regions: [CLBeaconRegion]) -> BeaconRangingService {
             for region in regions{
-                locMgr.manager.startRangingBeaconsInRegion(region)
+                locMgr.startRangingBeaconsInRegion(region)
             }
             return self
         }
         
         func stopRangingBeaconsInRegions(regions: [CLBeaconRegion]) -> BeaconRangingService {
             for region in regions{
-                locMgr.manager.stopRangingBeaconsInRegion(region)
+                locMgr.stopRangingBeaconsInRegion(region)
             }
             return self
         }
         
         func stopRangingBeaconsInAllRegions() -> BeaconRangingService {
             for region in rangedRegions as! Set<CLBeaconRegion>{
-                locMgr.manager.stopRangingBeaconsInRegion(region)
+                locMgr.stopRangingBeaconsInRegion(region)
             }
             return self
         }
         
         func requestRegionsState(regions: [CLBeaconRegion]) -> BeaconRangingService {
             for region in regions{
-                locMgr.manager.requestStateForRegion(region)
+                locMgr.requestStateForRegion(region)
             }
             return self
         }

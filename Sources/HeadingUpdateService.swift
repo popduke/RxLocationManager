@@ -73,7 +73,7 @@
     
     //MARK: DefaultHeadingUpdateService
     class DefaultHeadingUpdateService: HeadingUpdateService {
-        private let locMgr: Bridge = Bridge()
+        private var locMgr: LocationManagerBridge = Bridge()
         private var _trueHeading: Bool = false
         var trueHeading: Bool{
             get{
@@ -82,12 +82,12 @@
         }
         var headingFilter: CLLocationDegrees{
             get{
-                return locMgr.manager.headingFilter
+                return locMgr.headingFilter
             }
         }
         var headingOrientation: CLDeviceOrientation{
             get{
-                return locMgr.manager.headingOrientation
+                return locMgr.headingOrientation
             }
         }
         var displayHeadingCalibration: Bool{
@@ -105,14 +105,14 @@
                     let id = nextId()
                     ownerService.observers.append((id, observer))
                     if ownerService._trueHeading{
-                        ownerService.locMgr.manager.startUpdatingLocation()
+                        ownerService.locMgr.startUpdatingLocation()
                     }
-                    ownerService.locMgr.manager.startUpdatingHeading()
+                    ownerService.locMgr.startUpdatingHeading()
                     return AnonymousDisposable {
                         ownerService.observers.removeAtIndex(ownerService.observers.indexOf{$0.id == id}!)
                         if(ownerService.observers.count == 0){
-                            ownerService.locMgr.manager.stopUpdatingLocation()
-                            ownerService.locMgr.manager.stopUpdatingHeading()
+                            ownerService.locMgr.stopUpdatingLocation()
+                            ownerService.locMgr.stopUpdatingHeading()
                         }
                         ownerService = nil
                     }
@@ -142,12 +142,12 @@
         }
         
         func headingFilter(degrees: CLLocationDegrees) -> HeadingUpdateService {
-            locMgr.manager.headingFilter = degrees
+            locMgr.headingFilter = degrees
             return self
         }
         
         func headingOrientation(degrees: CLDeviceOrientation) -> HeadingUpdateService {
-            locMgr.manager.headingOrientation = degrees
+            locMgr.headingOrientation = degrees
             return self
         }
         
@@ -159,15 +159,15 @@
         func trueHeading(enable: Bool) -> HeadingUpdateService {
             _trueHeading = enable
             if enable{
-                locMgr.manager.startUpdatingLocation()
+                locMgr.startUpdatingLocation()
             }else{
-                locMgr.manager.stopUpdatingLocation()
+                locMgr.stopUpdatingLocation()
             }
             return self
         }
         
         func dismissHeadingCalibrationDisplay() {
-            locMgr.manager.dismissHeadingCalibrationDisplay()
+            locMgr.dismissHeadingCalibrationDisplay()
         }
         
         func clone() -> HeadingUpdateService {

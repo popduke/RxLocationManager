@@ -12,19 +12,19 @@ import CoreLocation
 
 //MARK: RxLocationManager
 public class RxLocationManager{
-    private static var defaultLocationMgr: Bridge = {
+    private static var defaultLocationMgr: LocationManagerBridge = {
         let locMgr = Bridge()
         locMgr.didChangeAuthorizationStatus = {
             clLocMgr, status in
             authorizationStatusSink.onNext(status)
-            enabledSink.onNext(CLLocationManager.locationServicesEnabled())
+            enabledSink.onNext(Bridge.locationServicesEnabled())
         }
         return locMgr
     }()
     
     private static var enabledSink:ReplaySubject<Bool> = {
         let replaySubject:ReplaySubject<Bool> = ReplaySubject.create(bufferSize: 1)
-        replaySubject.onNext(CLLocationManager.locationServicesEnabled())
+        replaySubject.onNext(Bridge.locationServicesEnabled())
         //Force initialize defaultLocationMgr, since it's always lazy
         defaultLocationMgr = defaultLocationMgr
         return replaySubject
@@ -58,7 +58,7 @@ public class RxLocationManager{
      Refer description in official [document](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/instm/CLLocationManager/requestWhenInUseAuthorization)
      */
     public static func requestWhenInUseAuthorization(){
-        defaultLocationMgr.manager.requestWhenInUseAuthorization()
+        defaultLocationMgr.requestWhenInUseAuthorization()
     }
     #endif
     
@@ -67,13 +67,13 @@ public class RxLocationManager{
      Refer description in official [document](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/instm/CLLocationManager/requestAlwaysAuthorization)
      */
     public static func requestAlwaysAuthorization(){
-        defaultLocationMgr.manager.requestAlwaysAuthorization()
+        defaultLocationMgr.requestAlwaysAuthorization()
     }
     #endif
     
     #if os(iOS) || os(OSX)
     /// Refer description in official [document](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/clm/CLLocationManager/significantLocationChangeMonitoringAvailable)
-    public static let significantLocationChangeMonitoringAvailable = CLLocationManager.significantLocationChangeMonitoringAvailable()
+    public static let significantLocationChangeMonitoringAvailable = Bridge.significantLocationChangeMonitoringAvailable()
     
     /**
      Refer description in official [document](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/clm/CLLocationManager/isMonitoringAvailableForClass:)
@@ -83,19 +83,19 @@ public class RxLocationManager{
      - returns: self for chaining call
      */
     public static func isMonitoringAvailableForClass(regionClass: AnyClass) -> Bool{
-        return CLLocationManager.isMonitoringAvailableForClass(regionClass)
+        return Bridge.isMonitoringAvailableForClass(regionClass)
     }
     #endif
     
     #if os(iOS)
     /// Refer description in official [document](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/clm/CLLocationManager/deferredLocationUpdatesAvailable)
-    public static let deferredLocationUpdatesAvailable = CLLocationManager.deferredLocationUpdatesAvailable()
+    public static let deferredLocationUpdatesAvailable = Bridge.deferredLocationUpdatesAvailable()
 
     /// Refer description in official [document](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/clm/CLLocationManager/headingAvailable)
-    public static let headingAvailable = CLLocationManager.headingAvailable()
+    public static let headingAvailable = Bridge.headingAvailable()
     
     /// Refer description in official [document](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/clm/CLLocationManager/isRangingAvailable)
-    public static let isRangingAvailable = CLLocationManager.isRangingAvailable()
+    public static let isRangingAvailable = Bridge.isRangingAvailable()
     #endif
     
     /// Shared standard location service

@@ -19,7 +19,7 @@
     
     //MARK: DefaultMonitoringVisitsService
     class DefaultMonitoringVisitsService: MonitoringVisitsService{
-        private let locMgr: Bridge = Bridge()
+        private let locMgr: LocationManagerBridge = Bridge()
         private var observers = [(id:Int, observer: AnyObserver<CLVisit>)]()
         
         var visiting: Observable<CLVisit>{
@@ -29,11 +29,11 @@
                     var ownerService:DefaultMonitoringVisitsService! = self
                     let id = nextId()
                     ownerService.observers.append((id, observer))
-                    ownerService.locMgr.manager.startMonitoringVisits()
+                    ownerService.locMgr.startMonitoringVisits()
                     return AnonymousDisposable{
                         ownerService.observers.removeAtIndex(ownerService.observers.indexOf{$0.id == id}!)
                         if ownerService.observers.count == 0{
-                            ownerService.locMgr.manager.stopMonitoringVisits()
+                            ownerService.locMgr.stopMonitoringVisits()
                         }
                         ownerService = nil
                     }

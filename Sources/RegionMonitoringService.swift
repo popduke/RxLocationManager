@@ -61,7 +61,7 @@ public protocol RegionMonitoringService: RegionMonitoringServiceConfigurable{
 
 //MARK: DefaultRegionMonitoringService
 class DefaultRegionMonitoringService: RegionMonitoringService{
-    private let locMgr: Bridge = Bridge()
+    private let locMgr: LocationManagerBridge = Bridge()
     
     private var enteringObservers = [(id:Int, observer: AnyObserver<CLRegion>)]()
     private var exitingObservers = [(id:Int, observer: AnyObserver<CLRegion>)]()
@@ -71,7 +71,7 @@ class DefaultRegionMonitoringService: RegionMonitoringService{
     
     var maximumRegionMonitoringDistance: CLLocationDistance{
         get{
-            return locMgr.manager.maximumRegionMonitoringDistance
+            return locMgr.maximumRegionMonitoringDistance
         }
     }
     
@@ -142,8 +142,8 @@ class DefaultRegionMonitoringService: RegionMonitoringService{
                 var ownerService:DefaultRegionMonitoringService! = self
                 let id = nextId()
                 ownerService.monitoredRegionsObservers.append((id, observer))
-                if !ownerService.locMgr.manager.monitoredRegions.isEmpty{
-                    observer.onNext(ownerService.locMgr.manager.monitoredRegions)
+                if !ownerService.locMgr.monitoredRegions.isEmpty{
+                    observer.onNext(ownerService.locMgr.monitoredRegions)
                 }
                 return AnonymousDisposable{
                     ownerService.monitoredRegionsObservers.removeAtIndex(ownerService.monitoredRegionsObservers.indexOf{$0.id == id}!)
@@ -186,7 +186,7 @@ class DefaultRegionMonitoringService: RegionMonitoringService{
             mgr, region in
             if let copyOfMonitoredRegionsObservers = self?.monitoredRegionsObservers{
                 for (_, observer) in copyOfMonitoredRegionsObservers{
-                    observer.onNext(self!.locMgr.manager.monitoredRegions)
+                    observer.onNext(self!.locMgr.monitoredRegions)
                 }
             }
         }
@@ -203,25 +203,25 @@ class DefaultRegionMonitoringService: RegionMonitoringService{
     
     func requestRegionsState(regions: [CLRegion]) -> RegionMonitoringService {
         for region in regions{
-            locMgr.manager.requestStateForRegion(region)
+            locMgr.requestStateForRegion(region)
         }
         return self
     }
     
     func startMonitoringForRegions(regions: [CLRegion]) -> RegionMonitoringService {
         for region in regions{
-            locMgr.manager.startMonitoringForRegion(region)
+            locMgr.startMonitoringForRegion(region)
         }
         return self
     }
     
     func stopMonitoringForRegions(regions: [CLRegion]) -> RegionMonitoringService {
         for region in regions{
-            locMgr.manager.stopMonitoringForRegion(region)
+            locMgr.stopMonitoringForRegion(region)
         }
         
         //Workaround for lacking knowledge about the time when regions actually stop monitored
-        let currentMonitoredRegions = locMgr.manager.monitoredRegions.subtract(regions)
+        let currentMonitoredRegions = locMgr.monitoredRegions.subtract(regions)
         for (_, observer) in monitoredRegionsObservers{
             observer.onNext(currentMonitoredRegions)
         }
@@ -229,8 +229,8 @@ class DefaultRegionMonitoringService: RegionMonitoringService{
     }
     
     func stopMonitoringForAllRegions() -> RegionMonitoringService {
-        for region in locMgr.manager.monitoredRegions{
-            locMgr.manager.stopMonitoringForRegion(region)
+        for region in locMgr.monitoredRegions{
+            locMgr.stopMonitoringForRegion(region)
         }
         return self
     }
