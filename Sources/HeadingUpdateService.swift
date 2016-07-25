@@ -74,7 +74,7 @@
     //MARK: DefaultHeadingUpdateService
     class DefaultHeadingUpdateService: HeadingUpdateService {
         private let bridgeClass: LocationManagerBridge.Type
-        private var locMgr: LocationManagerBridge
+        var locMgr: LocationManagerBridge
         private var _trueHeading: Bool = false
         var trueHeading: Bool{
             get{

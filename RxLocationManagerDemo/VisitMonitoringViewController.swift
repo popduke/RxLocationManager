@@ -2,7 +2,7 @@
 //  VisitMonitoringViewController.swift
 //  RxLocationManager
 //
-//  Created by Hao Yu on 16/7/15.
+//  Created by Yonny Hao on 16/7/15.
 //  Copyright © 2016年 GFWGTH. All rights reserved.
 //
 

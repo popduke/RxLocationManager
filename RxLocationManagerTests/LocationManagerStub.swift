@@ -30,6 +30,10 @@ class LocationManagerStub: LocationManagerBridge{
     var currentMonitoredRegions = Set<CLRegion>()
     var currentRangedRegions = Set<CLBeaconRegion>()
     
+    var updatingLocation = false
+    var locationRequested = false
+    var monitoringSignificantLocationChange = false
+    
     //instance methods on CLLocationManager instance
     #if os(iOS) || os(watchOS) || os(tvOS)
     func requestWhenInUseAuthorization(){
@@ -51,14 +55,14 @@ class LocationManagerStub: LocationManagerBridge{
     #endif
     
     func startUpdatingLocation(){
-        
+        updatingLocation = true
     }
     func stopUpdatingLocation(){
-        
+        updatingLocation = false
     }
     @available(iOSApplicationExtension 9.0, *)
     func requestLocation(){
-        
+        locationRequested = true
     }
     var distanceFilter: CLLocationDistance {
         get{
@@ -112,10 +116,10 @@ class LocationManagerStub: LocationManagerBridge{
     
     #if os(iOS) || os(OSX)
     func startMonitoringSignificantLocationChanges(){
-        
+        monitoringSignificantLocationChange = true
     }
     func stopMonitoringSignificantLocationChanges(){
-        
+        monitoringSignificantLocationChange = false
     }
     #endif
     

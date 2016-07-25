@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  RxLocationManagerDemo
 //
-//  Created by Hao Yu on 16/7/10.
+//  Created by Yonny Hao on 16/7/10.
 //  Copyright © 2016年 GFWGTH. All rights reserved.
 //
 

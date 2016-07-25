@@ -2,7 +2,7 @@
 //  SignificantLocationUpdateViewController.swift
 //  RxLocationManager
 //
-//  Created by HaoYu on 16/7/12.
+//  Created by Yonny Hao on 16/7/12.
 //  Copyright © 2016年 GFWGTH. All rights reserved.
 //
 

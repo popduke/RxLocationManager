@@ -54,6 +54,7 @@
 		72C9229E1D44DFC0008436D0 /* Fixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C9229D1D44DFC0008436D0 /* Fixtures.swift */; };
 		72C922A21D4517E1008436D0 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72C922A11D4517E1008436D0 /* Nimble.framework */; };
 		72C922A41D4663AC008436D0 /* SignificantLocationUpdateServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C922A31D4663AC008436D0 /* SignificantLocationUpdateServiceTest.swift */; };
+		72C922A61D4669F3008436D0 /* HeadingUpdateServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C922A51D4669F3008436D0 /* HeadingUpdateServiceTest.swift */; };
 		72F970AF1D3951570020F65C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC158B1D3256650051FB39 /* AppDelegate.swift */; };
 		72F970B01D3951570020F65C /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC158D1D3256650051FB39 /* RootViewController.swift */; };
 		72F970B11D3951570020F65C /* StandardLocationServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC15AC1D32A6650051FB39 /* StandardLocationServiceViewController.swift */; };
@@ -124,6 +125,7 @@
 		72C9229D1D44DFC0008436D0 /* Fixtures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fixtures.swift; sourceTree = "<group>"; };
 		72C922A11D4517E1008436D0 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = "../../Library/Developer/Xcode/DerivedData/RxLocationManager-forrdtavsxtttydggcxklgyodsnw/Build/Products/Debug-iphonesimulator/Nimble.framework"; sourceTree = "<group>"; };
 		72C922A31D4663AC008436D0 /* SignificantLocationUpdateServiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignificantLocationUpdateServiceTest.swift; sourceTree = "<group>"; };
+		72C922A51D4669F3008436D0 /* HeadingUpdateServiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadingUpdateServiceTest.swift; sourceTree = "<group>"; };
 		72EC75051D3A7EC3002AECE2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		72EC75061D3A7F0B002AECE2 /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		72F970571D378E2B0020F65C /* RegionMonitoringServiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionMonitoringServiceViewController.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				72C9229B1D449FF7008436D0 /* StandardLocationServiceTest.swift */,
 				72C9229D1D44DFC0008436D0 /* Fixtures.swift */,
 				72C922A31D4663AC008436D0 /* SignificantLocationUpdateServiceTest.swift */,
+				72C922A51D4669F3008436D0 /* HeadingUpdateServiceTest.swift */,
 			);
 			path = RxLocationManagerTests;
 			sourceTree = "<group>";
@@ -595,6 +598,7 @@
 				72C922941D447A7A008436D0 /* LocationManagerStub.swift in Sources */,
 				72C9229C1D449FF7008436D0 /* StandardLocationServiceTest.swift in Sources */,
 				72C9229E1D44DFC0008436D0 /* Fixtures.swift in Sources */,
+				72C922A61D4669F3008436D0 /* HeadingUpdateServiceTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
