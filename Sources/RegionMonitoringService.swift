@@ -2,7 +2,7 @@
 //  RegionMonitoringService.swift
 //  RxLocationManager
 //
-//  Created by Hao Yu on 16/7/6.
+//  Created by Yonny Hao on 16/7/6.
 //  Copyright © 2016年 GFWGTH. All rights reserved.
 //
 #if os(iOS) || os(OSX)
@@ -61,7 +61,7 @@ public protocol RegionMonitoringService: RegionMonitoringServiceConfigurable{
 
 //MARK: DefaultRegionMonitoringService
 class DefaultRegionMonitoringService: RegionMonitoringService{
-    private let locMgr: LocationManagerBridge = Bridge()
+    private let locMgr: LocationManagerBridge
     
     private var enteringObservers = [(id:Int, observer: AnyObserver<CLRegion>)]()
     private var exitingObservers = [(id:Int, observer: AnyObserver<CLRegion>)]()
@@ -153,7 +153,8 @@ class DefaultRegionMonitoringService: RegionMonitoringService{
         }
     }
     
-    init(){
+    init(bridgeClass: LocationManagerBridge.Type){
+        locMgr = bridgeClass.init()
         locMgr.didEnterRegion = {
             [weak self]
             mgr, region in

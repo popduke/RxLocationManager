@@ -25,6 +25,8 @@ protocol LocationManagerBridge{
     static func isRangingAvailable() -> Bool
     #endif
     
+    init()
+    
     //instance methods on CLLocationManager instance
     #if os(iOS) || os(watchOS) || os(tvOS)
     func requestWhenInUseAuthorization()
@@ -338,7 +340,7 @@ class Bridge:NSObject, LocationManagerBridge, CLLocationManagerDelegate{
     var didVisit:((CLLocationManager, CLVisit) -> Void)?
     #endif
     
-    override init(){
+    override required init(){
         manager = CLLocationManager()
         super.init()
         manager.delegate = self

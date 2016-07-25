@@ -73,7 +73,8 @@
     
     //MARK: DefaultHeadingUpdateService
     class DefaultHeadingUpdateService: HeadingUpdateService {
-        private var locMgr: LocationManagerBridge = Bridge()
+        private let bridgeClass: LocationManagerBridge.Type
+        private var locMgr: LocationManagerBridge
         private var _trueHeading: Bool = false
         var trueHeading: Bool{
             get{
@@ -120,7 +121,9 @@
             }
         }
         
-        init(){
+        init(bridgeClass: LocationManagerBridge.Type){
+            self.bridgeClass = bridgeClass
+            locMgr = bridgeClass.init()
             locMgr.didUpdateHeading = {
                 [weak self]
                 mgr, heading in
@@ -171,7 +174,7 @@
         }
         
         func clone() -> HeadingUpdateService {
-            let clone = DefaultHeadingUpdateService()
+            let clone = DefaultHeadingUpdateService(bridgeClass:bridgeClass)
             clone.headingFilter(self.headingFilter)
             clone.headingOrientation(self.headingOrientation)
             clone.displayHeadingCalibration(self.displayHeadingCalibration)

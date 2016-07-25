@@ -119,13 +119,15 @@ public protocol StandardLocationService: StandardLocationServiceConfigurable{
 
 //MARK: DefaultStandardLocationService
 class DefaultStandardLocationService: StandardLocationService{
+    private let bridgeClass: LocationManagerBridge.Type
+    
     #if os(iOS) || os(watchOS) || os(tvOS)
-    private var locMgrForLocation:LocationManagerBridge = Bridge()
+    var locMgrForLocation:LocationManagerBridge
     private var locatedObservers = [(id: Int, observer: AnyObserver<CLLocation>)]()
     #endif
     
     #if os(iOS) || os(OSX)
-    private var locMgrForLocating:LocationManagerBridge = Bridge()
+    var locMgrForLocating:LocationManagerBridge
     private var locatingObservers = [(id: Int, observer: AnyObserver<[CLLocation]>)]()
     #endif
     
@@ -156,19 +158,19 @@ class DefaultStandardLocationService: StandardLocationService{
     #if os(iOS)
     var pausesLocationUpdatesAutomatically: Bool{
         get{
-            return locMgrForLocation.pausesLocationUpdatesAutomatically
+            return locMgrForLocating.pausesLocationUpdatesAutomatically
         }
     }
     
     @available(iOS 9.0, *)
     var allowsBackgroundLocationUpdates: Bool{
         get{
-            return locMgrForLocation.allowsBackgroundLocationUpdates
+            return locMgrForLocating.allowsBackgroundLocationUpdates
         }
     }
     var activityType: CLActivityType{
         get{
-            return locMgrForLocation.activityType
+            return locMgrForLocating.activityType
         }
     }
     #endif
@@ -213,7 +215,7 @@ class DefaultStandardLocationService: StandardLocationService{
                 let id = nextId()
                 ownerService.isPausedObservers.append((id, observer))
                 return AnonymousDisposable{
-                    ownerService.locatingObservers.removeAtIndex(ownerService.isPausedObservers.indexOf{$0.id == id}!)
+                    ownerService.isPausedObservers.removeAtIndex(ownerService.isPausedObservers.indexOf{$0.id == id}!)
                     ownerService = nil
                 }
             }
@@ -259,7 +261,11 @@ class DefaultStandardLocationService: StandardLocationService{
     #endif
     
     
-    init(){
+    init(bridgeClass: LocationManagerBridge.Type){
+        self.bridgeClass = bridgeClass
+        locMgrForLocation = bridgeClass.init()
+        locMgrForLocating = bridgeClass.init()
+        
         #if os(iOS) || os(watchOS) || os(tvOS)
             locMgrForLocation.didUpdateLocations = {
                 [weak self]
@@ -363,20 +369,17 @@ class DefaultStandardLocationService: StandardLocationService{
     }
     
     func pausesLocationUpdatesAutomatically(pause: Bool) -> StandardLocationService {
-        locMgrForLocation.pausesLocationUpdatesAutomatically = pause
         locMgrForLocating.pausesLocationUpdatesAutomatically = pause
         return self
     }
     
     @available(iOS 9.0, *)
     func allowsBackgroundLocationUpdates(allow: Bool) -> StandardLocationService {
-        locMgrForLocation.allowsBackgroundLocationUpdates = allow
         locMgrForLocating.allowsBackgroundLocationUpdates = allow
         return self
     }
     
     func activityType(type: CLActivityType) -> StandardLocationService {
-        locMgrForLocation.activityType = type
         locMgrForLocating.activityType = type
         return self
     }
@@ -395,17 +398,17 @@ class DefaultStandardLocationService: StandardLocationService{
     
     func desiredAccuracy(desiredAccuracy: CLLocationAccuracy) -> StandardLocationService {
         #if os(iOS) || os(watchOS) || os(tvOS)
-            locMgrForLocation.distanceFilter = desiredAccuracy
+            locMgrForLocation.desiredAccuracy = desiredAccuracy
         #endif
         
         #if os(iOS) || os(OSX)
-            locMgrForLocating.distanceFilter = desiredAccuracy
+            locMgrForLocating.desiredAccuracy = desiredAccuracy
         #endif
         return self
     }
     
     func clone() -> StandardLocationService {
-        let cloned = DefaultStandardLocationService()
+        let cloned = DefaultStandardLocationService(bridgeClass: bridgeClass)
         #if os(iOS)
             cloned.activityType(self.activityType)
             if #available(iOS 9.0, *) {

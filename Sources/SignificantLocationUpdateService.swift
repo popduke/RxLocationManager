@@ -18,7 +18,7 @@
     
     //MARK: DefaultSignificantLocationUpdateService
     class DefaultSignificantLocationUpdateService: SignificantLocationUpdateService{
-        private let locMgr:LocationManagerBridge = Bridge()
+        let locMgr:LocationManagerBridge
         private var observers = [(id: Int, AnyObserver<[CLLocation]>)]()
         var locating: Observable<[CLLocation]>{
             get{
@@ -39,7 +39,8 @@
             }
         }
         
-        init(){
+        init(bridgeClass: LocationManagerBridge.Type){
+            locMgr = bridgeClass.init()
             locMgr.didUpdateLocations = {
                 [weak self]
                 mgr, locations in

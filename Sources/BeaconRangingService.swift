@@ -57,7 +57,7 @@
     }
     //MARK: DefaultBeaconRagningService
     class DefaultBeaconRangingService: BeaconRangingService{
-        private let locMgr: LocationManagerBridge = Bridge()
+        private let locMgr: LocationManagerBridge
         
         private var observers = [(id:Int, observer: AnyObserver<([CLBeacon], CLBeaconRegion)>)]()
         private var errorObservers = [(id:Int, observer: AnyObserver<(CLBeaconRegion, NSError)>)]()
@@ -113,7 +113,8 @@
             }
         }
         
-        init(){
+        init(bridgeClass:LocationManagerBridge.Type){
+            locMgr = bridgeClass.init()
             locMgr.didRangeBeaconsInRegion = {
                 [weak self]
                 mgr, beacons, region in

@@ -2,7 +2,7 @@
 //  RxLocationManager.swift
 //  PaperChat
 //
-//  Created by HaoYu on 16/6/14.
+//  Created by Yonny Hao on 16/6/14.
 //  Copyright © 2016年 HaoYu. All rights reserved.
 //
 
@@ -39,7 +39,7 @@ public class RxLocationManager{
     
     private static var authorizationStatusSink:ReplaySubject<CLAuthorizationStatus> = {
         let replaySubject:ReplaySubject<CLAuthorizationStatus> = ReplaySubject.create(bufferSize: 1)
-        replaySubject.onNext(CLLocationManager.authorizationStatus())
+        replaySubject.onNext(Bridge.authorizationStatus())
         //Force initialize defaultLocationMgr, since it's always lazy
         defaultLocationMgr = defaultLocationMgr
         return replaySubject
@@ -99,22 +99,22 @@ public class RxLocationManager{
     #endif
     
     /// Shared standard location service
-    public static let Standard: StandardLocationService = DefaultStandardLocationService()
+    public static let Standard: StandardLocationService = DefaultStandardLocationService(bridgeClass: Bridge.self)
     
     #if os(iOS) || os(OSX)
     /// Shared significant location update service
-    public static let SignificantLocation: SignificantLocationUpdateService = DefaultSignificantLocationUpdateService()
+    public static let SignificantLocation: SignificantLocationUpdateService = DefaultSignificantLocationUpdateService(bridgeClass: Bridge.self)
     
     /// Shared region monitoring service
-    public static let RegionMonitoring: RegionMonitoringService = DefaultRegionMonitoringService()
+    public static let RegionMonitoring: RegionMonitoringService = DefaultRegionMonitoringService(bridgeClass: Bridge.self)
     #endif
     
     #if os(iOS)
     /// Shared visit monitoring service
-    public static let VisitMonitoring: MonitoringVisitsService = DefaultMonitoringVisitsService()
+    public static let VisitMonitoring: MonitoringVisitsService = DefaultMonitoringVisitsService(bridgeClass: Bridge.self)
     
     /// Shared heading update service
-    public static let HeadingUpdate: HeadingUpdateService = DefaultHeadingUpdateService()
+    public static let HeadingUpdate: HeadingUpdateService = DefaultHeadingUpdateService(bridgeClass: Bridge.self)
     #endif
 }
 
