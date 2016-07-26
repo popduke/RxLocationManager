@@ -127,7 +127,7 @@ RxLocationManager.Standard.locating.subscribe{
         // series events will be delivered during subscription
         print("Current Location is \(location)")
     case .Completed:
-        // No complete event will be generated
+        // No complete event
     case .Error(let error):
         // LocationUnknown error will be ignored, and other errors reported
     }
