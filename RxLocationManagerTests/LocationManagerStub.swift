@@ -11,7 +11,7 @@ import CoreLocation
 @testable
 import RxLocationManager
 
-class LocationManagerStub: LocationManagerBridge{
+class LocationManagerStub: CLLocationManagerBridge{
     var whenInUseAuthorizationRequested = false
     var alwaysAuthorizationRequested = false
     
@@ -38,35 +38,35 @@ class LocationManagerStub: LocationManagerBridge{
     
     //instance methods on CLLocationManager instance
     #if os(iOS) || os(watchOS) || os(tvOS)
-    func requestWhenInUseAuthorization(){
+    override func requestWhenInUseAuthorization(){
         whenInUseAuthorizationRequested = true
     }
     #endif
     #if os(iOS) || os(watchOS)
-    func requestAlwaysAuthorization(){
+    override func requestAlwaysAuthorization(){
         alwaysAuthorizationRequested = true
     }
     #endif
     
     #if os(iOS) || os(watchOS) || os(tvOS)
-    var location: CLLocation? {
+    override var location: CLLocation? {
         get{
             return currentLocation
         }
     }
     #endif
     
-    func startUpdatingLocation(){
+    override func startUpdatingLocation(){
         updatingLocation = true
     }
-    func stopUpdatingLocation(){
+    override func stopUpdatingLocation(){
         updatingLocation = false
     }
     @available(iOS 9.0, *)
-    func requestLocation(){
+    override func requestLocation(){
         locationRequested = true
     }
-    var distanceFilter: CLLocationDistance {
+    override var distanceFilter: CLLocationDistance {
         get{
             return currentDistanceFilter
         }
@@ -74,7 +74,7 @@ class LocationManagerStub: LocationManagerBridge{
             currentDistanceFilter = newValue
         }
     }
-    var desiredAccuracy: CLLocationAccuracy {
+    override var desiredAccuracy: CLLocationAccuracy {
         get{
             return currentDesiredAccuracy
         }
@@ -83,7 +83,7 @@ class LocationManagerStub: LocationManagerBridge{
         }
     }
     #if os(iOS)
-    var pausesLocationUpdatesAutomatically: Bool {
+    override var pausesLocationUpdatesAutomatically: Bool {
         get{
            return currentPausesLocationUpdatesAutomatically
         }
@@ -91,8 +91,8 @@ class LocationManagerStub: LocationManagerBridge{
             currentPausesLocationUpdatesAutomatically = newValue
         }
     }
-    @available(iOSApplicationExtension 9.0, *)
-    var allowsBackgroundLocationUpdates: Bool {
+    @available(iOS 9.0, *)
+    override var allowsBackgroundLocationUpdates: Bool {
         get{
             return currentAllowsBackgroundLocationUpdates
         }
@@ -100,13 +100,13 @@ class LocationManagerStub: LocationManagerBridge{
             return currentAllowsBackgroundLocationUpdates = newValue
         }
     }
-    func allowDeferredLocationUpdatesUntilTraveled(distance: CLLocationDistance, timeout: NSTimeInterval){
+    override func allowDeferredLocationUpdatesUntilTraveled(distance: CLLocationDistance, timeout: NSTimeInterval){
         currentlyDeferedSetting = (distance, timeout)
     }
-    func disallowDeferredLocationUpdates(){
+    override func disallowDeferredLocationUpdates(){
         currentlyDeferedSetting = nil
     }
-    var activityType: CLActivityType {
+    override var activityType: CLActivityType {
         get{
             return currentActivityType
         }
@@ -117,25 +117,25 @@ class LocationManagerStub: LocationManagerBridge{
     #endif
     
     #if os(iOS) || os(OSX)
-    func startMonitoringSignificantLocationChanges(){
+    override func startMonitoringSignificantLocationChanges(){
         monitoringSignificantLocationChange = true
     }
-    func stopMonitoringSignificantLocationChanges(){
+    override func stopMonitoringSignificantLocationChanges(){
         monitoringSignificantLocationChange = false
     }
     #endif
     
     #if os(iOS)
-    func startUpdatingHeading(){
+    override func startUpdatingHeading(){
         updatingHeading = true
     }
-    func stopUpdatingHeading(){
+    override func stopUpdatingHeading(){
         updatingHeading = false
     }
-    func dismissHeadingCalibrationDisplay(){
+    override func dismissHeadingCalibrationDisplay(){
         
     }
-    var headingFilter: CLLocationDegrees {
+    override var headingFilter: CLLocationDegrees {
         get{
             return currentHeadingFilter
         }
@@ -143,7 +143,7 @@ class LocationManagerStub: LocationManagerBridge{
             currentHeadingFilter = newValue
         }
     }
-    var headingOrientation: CLDeviceOrientation {
+    override var headingOrientation: CLDeviceOrientation {
         get{
             return currentHeadingOrientation
         }
@@ -154,81 +154,52 @@ class LocationManagerStub: LocationManagerBridge{
     #endif
     
     #if os(iOS) || os(OSX)
-    func startMonitoringForRegion(region: CLRegion){
+    override func startMonitoringForRegion(region: CLRegion){
         currentMonitoredRegions.insert(region)
     }
-    func stopMonitoringForRegion(region: CLRegion){
+    override func stopMonitoringForRegion(region: CLRegion){
         currentMonitoredRegions.remove(region)
     }
-    var monitoredRegions: Set<CLRegion> {
+    override var monitoredRegions: Set<CLRegion> {
         get{
             return currentMonitoredRegions
         }
     }
-    var maximumRegionMonitoringDistance: CLLocationDistance {
+    override var maximumRegionMonitoringDistance: CLLocationDistance {
         get{
             return 200
         }
     }
-    func requestStateForRegion(region: CLRegion){
+    override func requestStateForRegion(region: CLRegion){
         currentRegionStateRequests.insert(region)
     }
     #endif
     
     #if os(iOS)
-    var rangedRegions: Set<CLRegion> {
+    override var rangedRegions: Set<CLRegion> {
         get{
             return currangRangedBeaconRegions
         }
     }
-    func startRangingBeaconsInRegion(region: CLBeaconRegion){
+    override func startRangingBeaconsInRegion(region: CLBeaconRegion){
         currangRangedBeaconRegions.insert(region)
     }
-    func stopRangingBeaconsInRegion(region: CLBeaconRegion){
+    override func stopRangingBeaconsInRegion(region: CLBeaconRegion){
         currangRangedBeaconRegions.remove(region)
     }
     #endif
     
     #if os(iOS)
-    func startMonitoringVisits(){
+    override func startMonitoringVisits(){
         
     }
-    func stopMonitoringVisits(){
+    override func stopMonitoringVisits(){
         
     }
-    #endif
-    
-    // bridged delegate methods
-    var didFailWithError: ((CLLocationManager, NSError) -> Void)?
-    var didChangeAuthorizationStatus: ((CLLocationManager, CLAuthorizationStatus)->Void)?
-    
-    #if os(OSX)
-    var didUpdateLocations: ((CLLocationManager, [AnyObject]) -> Void)?
-    #else
-    var didUpdateLocations: ((CLLocationManager, [CLLocation]) -> Void)?
-    #endif
-    
-    #if os(iOS) || os(OSX)
-    var didFinishDeferredUpdatesWithError: ((CLLocationManager, NSError?) -> Void)?
-    var didEnterRegion: ((CLLocationManager, CLRegion) -> Void)?
-    var didExitRegion: ((CLLocationManager, CLRegion) -> Void)?
-    var monitoringDidFailForRegion: ((CLLocationManager, CLRegion?, NSError) -> Void)?
-    var didDetermineState:((CLLocationManager, CLRegionState, CLRegion) -> Void)?
-    var didStartMonitoringForRegion:((CLLocationManager, CLRegion) -> Void)?
-    #endif
-    
-    #if os(iOS)
-    var didPausedUpdate:((CLLocationManager) -> Void)?
-    var didResumeUpdate:((CLLocationManager) -> Void)?
-    var displayHeadingCalibration:Bool = true
-    var didUpdateHeading: ((CLLocationManager, CLHeading) -> Void)?
-    var didRangeBeaconsInRegion:((CLLocationManager, [CLBeacon], CLBeaconRegion) -> Void)?
-    var rangingBeaconsDidFailForRegion:((CLLocationManager, CLBeaconRegion, NSError) -> Void)?
-    var didVisit:((CLLocationManager, CLVisit) -> Void)?
     #endif
     
     required init(){
-        
+        super.init()
     }
     
 }

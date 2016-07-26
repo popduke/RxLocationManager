@@ -19,7 +19,7 @@
     
     //MARK: DefaultMonitoringVisitsService
     class DefaultMonitoringVisitsService: MonitoringVisitsService{
-        private let locMgr: LocationManagerBridge
+        private let locMgr: CLLocationManagerBridge
         private var observers = [(id:Int, observer: AnyObserver<CLVisit>)]()
         
         var visiting: Observable<CLVisit>{
@@ -41,7 +41,7 @@
             }
         }
         
-        init(bridgeClass: LocationManagerBridge.Type){
+        init(bridgeClass: CLLocationManagerBridge.Type){
             locMgr = bridgeClass.init()
             locMgr.didVisit = {
                 [weak self]

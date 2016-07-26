@@ -73,8 +73,8 @@
     
     //MARK: DefaultHeadingUpdateService
     class DefaultHeadingUpdateService: HeadingUpdateService {
-        private let bridgeClass: LocationManagerBridge.Type
-        var locMgr: LocationManagerBridge
+        private let bridgeClass: CLLocationManagerBridge.Type
+        var locMgr: CLLocationManagerBridge
         private var _trueHeading: Bool = false
         var trueHeading: Bool{
             get{
@@ -121,7 +121,7 @@
             }
         }
         
-        init(bridgeClass: LocationManagerBridge.Type){
+        init(bridgeClass: CLLocationManagerBridge.Type){
             self.bridgeClass = bridgeClass
             locMgr = bridgeClass.init()
             locMgr.didUpdateHeading = {

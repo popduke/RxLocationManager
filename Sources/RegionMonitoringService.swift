@@ -88,7 +88,7 @@
     
     //MARK: DefaultRegionMonitoringService
     class DefaultRegionMonitoringService: RegionMonitoringService{
-        let locMgr: LocationManagerBridge
+        let locMgr: CLLocationManagerBridge
     
         private var enteringObservers = [(id:Int, observer: AnyObserver<CLRegion>)]()
         private var exitingObservers = [(id:Int, observer: AnyObserver<CLRegion>)]()
@@ -206,7 +206,7 @@
         }
         #endif
         
-        init(bridgeClass: LocationManagerBridge.Type){
+        init(bridgeClass: CLLocationManagerBridge.Type){
             locMgr = bridgeClass.init()
             locMgr.didEnterRegion = {
                 [weak self]

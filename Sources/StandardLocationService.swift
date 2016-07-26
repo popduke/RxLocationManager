@@ -119,15 +119,15 @@ public protocol StandardLocationService: StandardLocationServiceConfigurable{
 
 //MARK: DefaultStandardLocationService
 class DefaultStandardLocationService: StandardLocationService{
-    private let bridgeClass: LocationManagerBridge.Type
+    private let bridgeClass: CLLocationManagerBridge.Type
     
     #if os(iOS) || os(watchOS) || os(tvOS)
-    var locMgrForLocation:LocationManagerBridge
+    var locMgrForLocation:CLLocationManagerBridge
     private var locatedObservers = [(id: Int, observer: AnyObserver<CLLocation>)]()
     #endif
     
     #if os(iOS) || os(OSX)
-    var locMgrForLocating:LocationManagerBridge
+    var locMgrForLocating:CLLocationManagerBridge
     private var locatingObservers = [(id: Int, observer: AnyObserver<[CLLocation]>)]()
     #endif
     
@@ -261,7 +261,7 @@ class DefaultStandardLocationService: StandardLocationService{
     #endif
     
     
-    init(bridgeClass: LocationManagerBridge.Type){
+    init(bridgeClass: CLLocationManagerBridge.Type){
         self.bridgeClass = bridgeClass
         #if os(iOS) || os(watchOS) || os(tvOS)
         locMgrForLocation = bridgeClass.init()
