@@ -194,8 +194,8 @@ RxLocationManager.Standard.deferredUpdateFinished
 #### Multiple standard location services
 In some cases you need more than one standard location service in your app, which configured differently, you can create a clone one like below
 ```
-var locMgr = RxLocationManager.Standard.clone()
-locMgr.distanceFilter(100).desiredAccuracy(50)
+var anotherStandardLocationService = RxLocationManager.Standard.clone()
+anotherStandardLocationService.distanceFilter(100).desiredAccuracy(50)
 ```
 
 ### Significant Location Update Service
@@ -257,5 +257,27 @@ RxLocationManager.HeadingUpdate.trueHeading(enable:Bool) -> HeadingUpdateService
 
 #### Dismiss heading calibration display if any
 ```
+#if os(iOS)
 RxLocationManager.HeadingUpdate.dismissHeadingCalibrationDisplay() 
+#endif
+```
+
+#### Multiple heading update services
+In some cases you need more than one heading update service in your app, which configured differently, you can create a clone one like below
+```
+var anotherHeadingUpdateService = RxLocationManager.HeadingUpdate.clone()
+anotherHeadingUpdateService.distanceFilter(100).desiredAccuracy(50)
+```
+### Region Monitoring Service
+
+#### Observe the changes to the collection of current monitored regions 
+```
+#if os(iOS) || os(OSX)
+RxLocationManager.RegionMonitoringService.monitoredRegions.subscribeNext{
+    //happens no matter when new region is added or existing one gets removed from the monitored regions set
+    regions in
+    print("Current monitoring \(regions.count) regions")
+}
+.addDisposableTo(disposeBag)
+#endif
 ```
