@@ -346,10 +346,25 @@ RxLocationManager.BeaconRangingService.ranging.subscribeNext{
 
 #### Ask for the current state of monitored regions
 ```
+#if os(iOS)
 RxLocationManager.BeaconRangingService.requestRegionsState(regions:[CLRegion]) -> RegionMonitoringService
 RxLocationManager.BeaconRangingService.determinedRegionState.subscribeNext{
     region, state in
     print("the region: \(region.identifier) is in state: \(state.rawValue)")
 }
 .addDisposableTo(disposeBag)
+#endif
+```
+
+### Monitoring Visits Service
+
+#### Observe visit events
+```
+#if os(iOS)
+RxLocationManager.MonitoringVisitsService.visiting.subscribeNext{
+    visit in
+    print("coordinate: \(visit.coordinate.longitude),\(visit.coordinate.latitude)")
+}
+.addDisposableTo(disposeBag)
+#endif
 ```
