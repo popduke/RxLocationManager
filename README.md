@@ -368,3 +368,5 @@ RxLocationManager.MonitoringVisitsService.visiting.subscribeNext{
 .addDisposableTo(disposeBag)
 #endif
 ```
+
+## MIT License
