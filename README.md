@@ -1,4 +1,4 @@
-RxLocationManager: Reactive version of CLLocationManager in iOS/macOS/watchOS/tvOS
+RxLocationManager: A reactive styled LocationManager for iOS/macOS/watchOS/tvOS
 
 
 ## Introduction
