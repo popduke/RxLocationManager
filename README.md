@@ -101,6 +101,7 @@ RxLocationManager.isRangingAvailable
 
 ```
 // RxLocationManager.Standard is a shared standard location service instance
+#if os(iOS) || os(watchOS) || os(tvOS)
 RxLocationManager.Standard.located.subscribe{
     event in
     switch event{
@@ -114,5 +115,22 @@ RxLocationManager.Standard.located.subscribe{
         // in case some error occurred during determining device location, e.g. LocationUnknown
     }
 }
+#endif
+```
 
+```
+#if os(iOS) || os(OSX)
+RxLocationManager.Standard.locating.subscribe{
+    event in
+    switch event{
+    case .Next(let location):
+        // series events will be delivered during subscription
+        print("Current Location is \(location)")
+    case .Completed:
+        // No complete event will be generated
+    case .Error(let error):
+        // LocationUnknown error will be ignored, and other errors reported
+    }
+}
+#endif
 ```
