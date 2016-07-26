@@ -134,3 +134,7 @@ RxLocationManager.Standard.locating.subscribe{
 }
 #endif
 ```
+#### Configure Standard Location Service
+Before start subscribing to *located* or *locating*, you can configure the standard location service instance through some chaining style APIs
+```
+```
