@@ -203,8 +203,8 @@ anotherStandardLocationService.distanceFilter(100).desiredAccuracy(50)
 *SignificantLocationUpdateService* contains only one *Observable*: *locating*, which reports series of *CLLocation* objects upon observing, representing the significant location change of device. Multiple subscriptions share a single underlying CLLocationManager object, RxLocationManager starts monitoring significant location change when first subscription is made and stops it after last subscription is disposed.
 ```
 #if os(iOS) || os(OSX)
-// RxLocationManager.SignificantLocationUpdateService is the shared significant location update service instance
-RxLocationManager.SignificantLocationUpdateService.locating.subscribe{
+// RxLocationManager.SignificantLocation is the shared significant location update service instance
+RxLocationManager.SignificantLocation.locating.subscribe{
     event in
     switch event{
     case .Next(let location):
@@ -274,11 +274,11 @@ anotherHeadingUpdateService.distanceFilter(100).desiredAccuracy(50)
 ```
 #if os(iOS) || os(OSX)
 // methods to start|stop monitoring regions
-RxLocationManager.RegionMonitoringService.startMonitoringForRegions(regions: [CLRegion]) -> RegionMonitoringService
-RxLocationManager.RegionMonitoringService.stopMonitoringForRegions(regions: [CLRegion]) -> RegionMonitoringService
-RxLocationManager.RegionMonitoringService.stopMonitoringForAllRegions() -> RegionMonitoringService
+RxLocationManager.RegionMonitoring.startMonitoringForRegions(regions: [CLRegion]) -> RegionMonitoringService
+RxLocationManager.RegionMonitoring.stopMonitoringForRegions(regions: [CLRegion]) -> RegionMonitoringService
+RxLocationManager.RegionMonitoring.stopMonitoringForAllRegions() -> RegionMonitoringService
 
-RxLocationManager.RegionMonitoringService.monitoredRegions.subscribeNext{
+RxLocationManager.RegionMonitoring.monitoredRegions.subscribeNext{
     //happens no matter when new region is added or existing one gets removed from the monitored regions set
     regions in
     print("Current monitoring \(regions.count) regions")
@@ -290,13 +290,13 @@ RxLocationManager.RegionMonitoringService.monitoredRegions.subscribeNext{
 #### Observe region enter/exit event
 ```
 #if os(iOS) || os(OSX)
-RxLocationManager.RegionMonitoringService.entering.subscribeNext{
+RxLocationManager.RegionMonitoring.entering.subscribeNext{
     region in
     print("Device is entering the region: \(region.identifier)")
 }
 .addDisposableTo(disposeBag)
 
-RxLocationManager.RegionMonitoringService.exiting.subscribeNext{
+RxLocationManager.RegionMonitoring.exiting.subscribeNext{
     region in
     print("Device is leaving the region: \(region.identifier)")
 }
@@ -306,8 +306,8 @@ RxLocationManager.RegionMonitoringService.exiting.subscribeNext{
 
 #### Ask for the current state of monitored regions
 ```
-RxLocationManager.RegionMonitoringService.requestRegionsState(regions:[CLRegion]) -> RegionMonitoringService
-RxLocationManager.RegionMonitoringService.determinedRegionState.subscribeNext{
+RxLocationManager.RegionMonitoring.requestRegionsState(regions:[CLRegion]) -> RegionMonitoringService
+RxLocationManager.RegionMonitoring.determinedRegionState.subscribeNext{
     region, state in
     print("the region: \(region.identifier) is in state: \(state.rawValue)")
 }
@@ -320,11 +320,11 @@ RxLocationManager.RegionMonitoringService.determinedRegionState.subscribeNext{
 ```
 #if os(iOS)
 // methods to start|stop ranging beacons in regions
-RxLocationManager.BeaconRangingService.startRangingBeaconsInRegions(regions: [CLBeaconRegion]) -> BeaconRangingService
-RxLocationManager.BeaconRangingService.stopRangingBeaconsInRegions(regions: [CLBeaconRegion]) -> BeaconRangingService
-RxLocationManager.BeaconRangingService.stopRangingBeaconsInAllRegions() -> BeaconRangingService
+RxLocationManager.BeaconRanging.startRangingBeaconsInRegions(regions: [CLBeaconRegion]) -> BeaconRangingService
+RxLocationManager.BeaconRanging.stopRangingBeaconsInRegions(regions: [CLBeaconRegion]) -> BeaconRangingService
+RxLocationManager.BeaconRanging.stopRangingBeaconsInAllRegions() -> BeaconRangingService
 
-RxLocationManager.BeaconRangingService.rangedRegions.subscribeNext{
+RxLocationManager.BeaconRanging.rangedRegions.subscribeNext{
     //happens no matter when new region is added or existing one gets removed from the ranged regions set
     regions in
     print("Current ranging \(regions.count) regions")
@@ -336,7 +336,7 @@ RxLocationManager.BeaconRangingService.rangedRegions.subscribeNext{
 #### Observe ranged beacons
 ```
 #if os(iOS)
-RxLocationManager.BeaconRangingService.ranging.subscribeNext{
+RxLocationManager.BeaconRanging.ranging.subscribeNext{
     beacons, inRegion in
     print("\(beacons.count) beacons ranged in range:\(inRange.identifier)")
 }
@@ -347,8 +347,8 @@ RxLocationManager.BeaconRangingService.ranging.subscribeNext{
 #### Ask for the current state of monitored regions
 ```
 #if os(iOS)
-RxLocationManager.BeaconRangingService.requestRegionsState(regions:[CLRegion]) -> RegionMonitoringService
-RxLocationManager.BeaconRangingService.determinedRegionState.subscribeNext{
+RxLocationManager.BeaconRanging.requestRegionsState(regions:[CLRegion]) -> RegionMonitoringService
+RxLocationManager.BeaconRanging.determinedRegionState.subscribeNext{
     region, state in
     print("the region: \(region.identifier) is in state: \(state.rawValue)")
 }
@@ -361,7 +361,7 @@ RxLocationManager.BeaconRangingService.determinedRegionState.subscribeNext{
 #### Observe visit events
 ```
 #if os(iOS)
-RxLocationManager.MonitoringVisitsService.visiting.subscribeNext{
+RxLocationManager.VisitMonitoring.visiting.subscribeNext{
     visit in
     print("coordinate: \(visit.coordinate.longitude),\(visit.coordinate.latitude)")
 }
