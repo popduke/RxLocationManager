@@ -43,3 +43,40 @@ $ git submodule add git@github.com:popduke/RxLocationManager.git
 * Go to `Project > Targets > Build Phases > Link Binary With Libraries`, click `+` and select `RxLocationManager [Platform]` targets
 
 ## Usage
+Add below line to import RxLocationManager module
+```
+import RxLocationManager
+```
+
+### Listen to Location Service's enable/disable status change
+
+```
+RxLocationManager.enable
+.map{
+   //$0 is Boolean
+   return $0 ? "enabled" : "disabled"
+}
+.subscribeNext{
+   print("Location Service is \($0)")
+}
+.addDisposableTo(disposeBag)
+```
+
+### Listen to app's authorization status change
+
+```
+RxLocationManager.authorizationStatus
+.subscribeNext{
+   //$0 is CLAuthorizationStatus
+   print("Current authorization status is \($0)")
+}
+.addDisposableTo(disposeBag)
+```
+
+### Request Authorization
+```
+//ask for WhenInUse authorization
+RxLocationManager.requestWhenInUseAuthorization()
+//ask for Always authorization
+RxLocationManager.requestAlwaysAuthorization()
+```
