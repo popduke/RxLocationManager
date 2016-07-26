@@ -128,10 +128,10 @@ RxLocationManager.Standard.locating.subscribe{
     event in
     switch event{
     case .Next(let location):
-        // series events will be delivered during subscription
+        // series of events will be delivered during subscription
         print("Current Location is \(location)")
     case .Completed:
-        // No complete event
+        // no complete event
     case .Error(let error):
         // LocationUnknown error will be ignored, and other errors reported
     }
@@ -139,7 +139,7 @@ RxLocationManager.Standard.locating.subscribe{
 .addDisposableTo(disposeBag)
 #endif
 ```
-#### Configure Standard Location Service
+#### Configuration
 Before start subscribing to *located* or *locating*, you can also configure the standard location service instance through below chaining style APIs
 ```
 RxLocationManager.Standard.distanceFilter(distance: CLLocationDistance) -> StandardLocationService
@@ -189,4 +189,73 @@ RxLocationManager.Standard.deferredUpdateFinished
 }
 .addDisposableTo(disposeBag)
 #endif
+```
+
+#### Multiple standard location services
+In some cases you need more than one standard location service in your app, which configured differently, you can create a clone one like below
+```
+var locMgr = RxLocationManager.Standard.clone()
+locMgr.distanceFilter(100).desiredAccuracy(50)
+```
+
+### Significant Location Update Service
+
+*SignificantLocationUpdateService* contains only one *Observable*: *locating*, which reports series of *CLLocation* objects upon observing, representing the significant location change of device. Multiple subscriptions share a single underlying CLLocationManager object, RxLocationManager starts monitoring significant location change when first subscription is made and stops it after last subscription is disposed.
+```
+#if os(iOS) || os(OSX)
+// RxLocationManager.SignificantLocationUpdateService is the shared significant location update service instance
+RxLocationManager.SignificantLocationUpdateService.locating.subscribe{
+    event in
+    switch event{
+    case .Next(let location):
+        // series of events will be delivered during subscription
+        print("Current Location is \(location)")
+    case .Completed:
+        // no complete event
+    case .Error(let error):
+        // in case errors
+    }
+}
+.addDisposableTo(disposeBag)
+#endif
+```
+
+### Heading Update Service
+
+*HeadingUpdateService* contains only one *Observable*: *heading*, which reports series of *CLHeading* objects upon observing, representing heading change of device. Multiple subscriptions share a single underlying CLLocationManager object, RxLocationManager starts monitoring device heading change when first subscription is made and stops it after last subscription is disposed.
+
+#### Observe heading change of device
+```
+#if os(iOS)
+// RxLocationManager.HeadingUpdate is the shared heading update service instance
+RxLocationManager.HeadingUpdate.heading.subscribeNext{
+    event in
+    switch event{
+    case .Next(let heading):
+        // series of events will be delivered during subscription
+        print("Current heading is \(heading)")
+    case .Completed:
+        // no complete event
+    case .Error(let error):
+        // in case errors
+    }
+}
+.addDisposableTo(disposeBag)
+#endif
+```
+
+#### Configuration
+Before start subscribing to *heading*, you can also configure the heading update service instance through below chaining style APIs
+```
+#if os(iOS)
+RxLocationManager.HeadingUpdate.headingFilter(degrees:CLLocationDegrees) -> HeadingUpdateService
+RxLocationManager.HeadingUpdate.headingOrientation(degrees:CLDeviceOrientation) -> HeadingUpdateService
+RxLocationManager.HeadingUpdate.displayHeadingCalibration(should:Bool) -> HeadingUpdateService
+RxLocationManager.HeadingUpdate.trueHeading(enable:Bool) -> HeadingUpdateService
+#endif
+```
+
+#### Dismiss heading calibration display if any
+```
+RxLocationManager.HeadingUpdate.dismissHeadingCalibrationDisplay() 
 ```
