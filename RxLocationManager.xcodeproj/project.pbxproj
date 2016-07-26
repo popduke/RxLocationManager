@@ -11,6 +11,7 @@
 		723044B01D3E66DE00982952 /* nextId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF72E1D2D5A1C0024AB3C /* nextId.swift */; };
 		723044B81D3E714300982952 /* nextId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF72E1D2D5A1C0024AB3C /* nextId.swift */; };
 		723044C81D3E72CC00982952 /* nextId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF72E1D2D5A1C0024AB3C /* nextId.swift */; };
+		723994C81D47A04B003CCF20 /* RegionMonitoringServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723994C71D47A04B003CCF20 /* RegionMonitoringServiceTest.swift */; };
 		72B752961D42471300E6E82B /* RxLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B7528E1D42471300E6E82B /* RxLocationManager.swift */; };
 		72B752971D42471300E6E82B /* RxLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B7528E1D42471300E6E82B /* RxLocationManager.swift */; };
 		72B752981D42471300E6E82B /* RxLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B7528E1D42471300E6E82B /* RxLocationManager.swift */; };
@@ -19,10 +20,6 @@
 		72B7529B1D42471300E6E82B /* RegionMonitoringService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B7528F1D42471300E6E82B /* RegionMonitoringService.swift */; };
 		72B7529C1D42471300E6E82B /* RegionMonitoringService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B7528F1D42471300E6E82B /* RegionMonitoringService.swift */; };
 		72B7529D1D42471300E6E82B /* RegionMonitoringService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B7528F1D42471300E6E82B /* RegionMonitoringService.swift */; };
-		72B7529E1D42471300E6E82B /* BeaconRangingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B752901D42471300E6E82B /* BeaconRangingService.swift */; };
-		72B7529F1D42471300E6E82B /* BeaconRangingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B752901D42471300E6E82B /* BeaconRangingService.swift */; };
-		72B752A01D42471300E6E82B /* BeaconRangingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B752901D42471300E6E82B /* BeaconRangingService.swift */; };
-		72B752A11D42471300E6E82B /* BeaconRangingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B752901D42471300E6E82B /* BeaconRangingService.swift */; };
 		72B752A21D42471300E6E82B /* StandardLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B752911D42471300E6E82B /* StandardLocationService.swift */; };
 		72B752A31D42471300E6E82B /* StandardLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B752911D42471300E6E82B /* StandardLocationService.swift */; };
 		72B752A41D42471300E6E82B /* StandardLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B752911D42471300E6E82B /* StandardLocationService.swift */; };
@@ -105,11 +102,11 @@
 		723044C01D3E714300982952 /* RxLocationManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxLocationManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		723044D01D3E72CC00982952 /* RxLocationManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxLocationManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		723217051D3539A700F46CEC /* SignificantLocationUpdateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignificantLocationUpdateViewController.swift; path = RxLocationManagerDemo/SignificantLocationUpdateViewController.swift; sourceTree = SOURCE_ROOT; };
+		723994C71D47A04B003CCF20 /* RegionMonitoringServiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionMonitoringServiceTest.swift; sourceTree = "<group>"; };
 		724DF72E1D2D5A1C0024AB3C /* nextId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = nextId.swift; sourceTree = "<group>"; };
 		72B336071D2BFF980002FB39 /* RxLocationManager.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = RxLocationManager.podspec; sourceTree = "<group>"; };
 		72B7528E1D42471300E6E82B /* RxLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxLocationManager.swift; sourceTree = "<group>"; };
 		72B7528F1D42471300E6E82B /* RegionMonitoringService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionMonitoringService.swift; sourceTree = "<group>"; };
-		72B752901D42471300E6E82B /* BeaconRangingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconRangingService.swift; sourceTree = "<group>"; };
 		72B752911D42471300E6E82B /* StandardLocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardLocationService.swift; sourceTree = "<group>"; };
 		72B752921D42471300E6E82B /* SignificantLocationUpdateService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignificantLocationUpdateService.swift; sourceTree = "<group>"; };
 		72B752931D42471300E6E82B /* Bridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bridge.swift; sourceTree = "<group>"; };
@@ -223,7 +220,6 @@
 				72B752CD1D424D7800E6E82B /* Info.plist */,
 				72B7528E1D42471300E6E82B /* RxLocationManager.swift */,
 				72B7528F1D42471300E6E82B /* RegionMonitoringService.swift */,
-				72B752901D42471300E6E82B /* BeaconRangingService.swift */,
 				72B752911D42471300E6E82B /* StandardLocationService.swift */,
 				72B752921D42471300E6E82B /* SignificantLocationUpdateService.swift */,
 				72B752931D42471300E6E82B /* Bridge.swift */,
@@ -263,6 +259,7 @@
 				72C9229D1D44DFC0008436D0 /* Fixtures.swift */,
 				72C922A31D4663AC008436D0 /* SignificantLocationUpdateServiceTest.swift */,
 				72C922A51D4669F3008436D0 /* HeadingUpdateServiceTest.swift */,
+				723994C71D47A04B003CCF20 /* RegionMonitoringServiceTest.swift */,
 			);
 			path = RxLocationManagerTests;
 			sourceTree = "<group>";
@@ -530,7 +527,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72B7529E1D42471300E6E82B /* BeaconRangingService.swift in Sources */,
 				72B752AE1D42471300E6E82B /* HeadingUpdateService.swift in Sources */,
 				72B752A21D42471300E6E82B /* StandardLocationService.swift in Sources */,
 				72B752AA1D42471300E6E82B /* Bridge.swift in Sources */,
@@ -546,7 +542,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72B7529F1D42471300E6E82B /* BeaconRangingService.swift in Sources */,
 				72B752AF1D42471300E6E82B /* HeadingUpdateService.swift in Sources */,
 				72B752A31D42471300E6E82B /* StandardLocationService.swift in Sources */,
 				72B752AB1D42471300E6E82B /* Bridge.swift in Sources */,
@@ -562,7 +557,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72B752A01D42471300E6E82B /* BeaconRangingService.swift in Sources */,
 				72B752B01D42471300E6E82B /* HeadingUpdateService.swift in Sources */,
 				72B752A41D42471300E6E82B /* StandardLocationService.swift in Sources */,
 				72B752AC1D42471300E6E82B /* Bridge.swift in Sources */,
@@ -578,7 +572,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72B752A11D42471300E6E82B /* BeaconRangingService.swift in Sources */,
 				72B752B11D42471300E6E82B /* HeadingUpdateService.swift in Sources */,
 				72B752A51D42471300E6E82B /* StandardLocationService.swift in Sources */,
 				72B752AD1D42471300E6E82B /* Bridge.swift in Sources */,
@@ -599,6 +592,7 @@
 				72C9229C1D449FF7008436D0 /* StandardLocationServiceTest.swift in Sources */,
 				72C9229E1D44DFC0008436D0 /* Fixtures.swift in Sources */,
 				72C922A61D4669F3008436D0 /* HeadingUpdateServiceTest.swift in Sources */,
+				723994C81D47A04B003CCF20 /* RegionMonitoringServiceTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

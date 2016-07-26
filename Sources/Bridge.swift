@@ -39,15 +39,20 @@ protocol LocationManagerBridge{
     var location: CLLocation? { get }
     #endif
     
+    #if os(iOS) || os(OSX)
     func startUpdatingLocation()
+    #endif
+    
     func stopUpdatingLocation()
-    @available(iOSApplicationExtension 9.0, *)
+    #if os(iOS) || os(watchOS) || os(tvOS)
+    @available(iOS 9.0, *)
     func requestLocation()
+    #endif
     var distanceFilter: CLLocationDistance {get set}
     var desiredAccuracy: CLLocationAccuracy {get set}
     #if os(iOS)
     var pausesLocationUpdatesAutomatically: Bool {get set}
-    @available(iOSApplicationExtension 9.0, *)
+    @available(iOS 9.0, *)
     var allowsBackgroundLocationUpdates: Bool {get set}
     func allowDeferredLocationUpdatesUntilTraveled(distance: CLLocationDistance, timeout: NSTimeInterval)
     func disallowDeferredLocationUpdates()
@@ -169,16 +174,21 @@ class Bridge:NSObject, LocationManagerBridge, CLLocationManagerDelegate{
     }
     #endif
     
+    #if os(iOS) || os(OSX)
     func startUpdatingLocation(){
         manager.startUpdatingLocation()
     }
+    #endif
+    
     func stopUpdatingLocation(){
         manager.stopUpdatingLocation()
     }
-    @available(iOSApplicationExtension 9.0, *)
+    #if os(iOS) || os(watchOS) || os(tvOS)
+    @available(iOS 9.0, *)
     func requestLocation(){
         manager.requestLocation()
     }
+    #endif
     var distanceFilter: CLLocationDistance{
         get{
             return manager.distanceFilter

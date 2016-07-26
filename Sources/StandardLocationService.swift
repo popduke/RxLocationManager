@@ -104,7 +104,7 @@ public protocol StandardLocationService: StandardLocationServiceConfigurable{
     
     #if os(iOS)
     /// Observable of possible error when calling allowDeferredLocationUpdates method
-    var deferredUpdateError: Observable<NSError?>{get}
+    var deferredUpdateFinished: Observable<NSError?>{get}
     /// Observable of pause status
     var isPaused: Observable<Bool>{get}
     #endif
@@ -222,7 +222,7 @@ class DefaultStandardLocationService: StandardLocationService{
         }
     }
     
-    var deferredUpdateError:Observable<NSError?>{
+    var deferredUpdateFinished:Observable<NSError?>{
         get{
             return Observable.create {
                 observer in
@@ -263,9 +263,12 @@ class DefaultStandardLocationService: StandardLocationService{
     
     init(bridgeClass: LocationManagerBridge.Type){
         self.bridgeClass = bridgeClass
+        #if os(iOS) || os(watchOS) || os(tvOS)
         locMgrForLocation = bridgeClass.init()
+        #endif
+        #if os(iOS) || os(OSX)
         locMgrForLocating = bridgeClass.init()
-        
+        #endif
         #if os(iOS) || os(watchOS) || os(tvOS)
             locMgrForLocation.didUpdateLocations = {
                 [weak self]

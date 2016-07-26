@@ -255,7 +255,7 @@ class StandardLocationServiceTest: XCTestCase{
     
     func testDeferredUpdateErrorObservable(){
         let xcTextExpectation = self.expectationWithDescription("ObservableOfIsPaused")
-        standardLocationService.deferredUpdateError
+        standardLocationService.deferredUpdateFinished
             .subscribe{
                 event in
                 switch event{

@@ -28,10 +28,12 @@ class LocationManagerStub: LocationManagerBridge{
     var currentHeadingOrientation = CLDeviceOrientation.Portrait
     
     var currentMonitoredRegions = Set<CLRegion>()
-    var currentRangedRegions = Set<CLBeaconRegion>()
+    var currentRegionStateRequests = Set<CLRegion>()
+    var currangRangedBeaconRegions = Set<CLBeaconRegion>()
     
     var updatingLocation = false
     var locationRequested = false
+    var updatingHeading = false
     var monitoringSignificantLocationChange = false
     
     //instance methods on CLLocationManager instance
@@ -60,7 +62,7 @@ class LocationManagerStub: LocationManagerBridge{
     func stopUpdatingLocation(){
         updatingLocation = false
     }
-    @available(iOSApplicationExtension 9.0, *)
+    @available(iOS 9.0, *)
     func requestLocation(){
         locationRequested = true
     }
@@ -125,10 +127,10 @@ class LocationManagerStub: LocationManagerBridge{
     
     #if os(iOS)
     func startUpdatingHeading(){
-        
+        updatingHeading = true
     }
     func stopUpdatingHeading(){
-        
+        updatingHeading = false
     }
     func dismissHeadingCalibrationDisplay(){
         
@@ -153,10 +155,10 @@ class LocationManagerStub: LocationManagerBridge{
     
     #if os(iOS) || os(OSX)
     func startMonitoringForRegion(region: CLRegion){
-        
+        currentMonitoredRegions.insert(region)
     }
     func stopMonitoringForRegion(region: CLRegion){
-        
+        currentMonitoredRegions.remove(region)
     }
     var monitoredRegions: Set<CLRegion> {
         get{
@@ -165,25 +167,25 @@ class LocationManagerStub: LocationManagerBridge{
     }
     var maximumRegionMonitoringDistance: CLLocationDistance {
         get{
-            return 20
+            return 200
         }
     }
     func requestStateForRegion(region: CLRegion){
-        
+        currentRegionStateRequests.insert(region)
     }
     #endif
     
     #if os(iOS)
     var rangedRegions: Set<CLRegion> {
         get{
-            return currentRangedRegions
+            return currangRangedBeaconRegions
         }
     }
     func startRangingBeaconsInRegion(region: CLBeaconRegion){
-        
+        currangRangedBeaconRegions.insert(region)
     }
     func stopRangingBeaconsInRegion(region: CLBeaconRegion){
-        
+        currangRangedBeaconRegions.remove(region)
     }
     #endif
     

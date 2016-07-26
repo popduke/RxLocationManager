@@ -50,5 +50,6 @@ import RxLocationManager
             expect(self.headingUpdateService.trueHeading).to(beFalse())
             expect(self.bridge.updatingLocation).to(beFalse())
         }
+        //TODO - Figure out a way to mock CLHeading object
     }
 #endif

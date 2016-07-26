@@ -75,6 +75,9 @@ public class RxLocationManager{
     /// Refer description in official [document](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/clm/CLLocationManager/significantLocationChangeMonitoringAvailable)
     public static let significantLocationChangeMonitoringAvailable = Bridge.significantLocationChangeMonitoringAvailable()
     
+    /// Refer description in official [document](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/clm/CLLocationManager/headingAvailable)
+    public static let headingAvailable = Bridge.headingAvailable()
+    
     /**
      Refer description in official [document](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/clm/CLLocationManager/isMonitoringAvailableForClass:)
      
@@ -91,8 +94,7 @@ public class RxLocationManager{
     /// Refer description in official [document](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/clm/CLLocationManager/deferredLocationUpdatesAvailable)
     public static let deferredLocationUpdatesAvailable = Bridge.deferredLocationUpdatesAvailable()
 
-    /// Refer description in official [document](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/clm/CLLocationManager/headingAvailable)
-    public static let headingAvailable = Bridge.headingAvailable()
+
     
     /// Refer description in official [document](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/clm/CLLocationManager/isRangingAvailable)
     public static let isRangingAvailable = Bridge.isRangingAvailable()
@@ -112,8 +114,6 @@ public class RxLocationManager{
     #if os(iOS)
     /// Shared visit monitoring service
     public static let VisitMonitoring: MonitoringVisitsService = DefaultMonitoringVisitsService(bridgeClass: Bridge.self)
-    /// Shared beacon ranging service
-    public static let BeaconRanging: BeaconRangingService = DefaultBeaconRangingService(bridgeClass: Bridge.self)
     /// Shared heading update service
     public static let HeadingUpdate: HeadingUpdateService = DefaultHeadingUpdateService(bridgeClass: Bridge.self)
     #endif
