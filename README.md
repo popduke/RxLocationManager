@@ -50,7 +50,7 @@ Add below line to import RxLocationManager module
 import RxLocationManager
 ```
 
-### Listen to Location Service's enable/disable status change
+### Observe Location Service's enable/disable status change
 
 ```
 RxLocationManager.enable
@@ -64,7 +64,7 @@ RxLocationManager.enable
 .addDisposableTo(disposeBag)
 ```
 
-### Listen to app's authorization status change
+### Observe app's authorization status change
 
 ```
 RxLocationManager.authorizationStatus
