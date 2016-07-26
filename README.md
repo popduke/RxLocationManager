@@ -2,7 +2,7 @@ RxLocationManager: A reactive styled LocationManager for iOS/macOS/watchOS/tvOS
 
 
 ## Introduction
-You may find CLLocationManager awkward to use if you adopt [FRP](http://reactivex.io/)([RxSwift](https://github.com/ReactiveX/RxSwift)) paradigm to develop apps. RxLocationManager is an attempt to simplify all of these into consistent reactive-styled APIs, so that you don't need to worry about things like conform your view controller to CLLocationManagerDelegate which sometimes feel unnatural, save CLLocationManager instance somewhere(e.g. AppDelegate) for sharing globally, etc. Everything is behind RxLocationManager class and its static methods and variables. Internally RxLocationManager has multiple sharing CLLocationManager+Delegate instances, and manage them efficiently in terms of memory usage and battery life. Instead of providing an "all-in-one" class like CLLocationManager does, RxLocationManager divides properties/methods into several groups based on their relativity, for example, location related APIs go into *StandardLocationService* class, heading update related APIs go into *HeadingUpdateService* class, region monitoring related APIs go into *RegionMonitoringService* class, so it's more clear to use.
+You may find CLLocationManager awkward to use if you adopt [FRP](http://reactivex.io/)([RxSwift](https://github.com/ReactiveX/RxSwift)) paradigm to develop apps. RxLocationManager is an attempt to simplify all of these into consistent reactive-styled APIs, so that you don't need to worry about things like conform your view controller to CLLocationManagerDelegate which sometimes feel unnatural, save CLLocationManager instance somewhere(e.g. AppDelegate) for sharing globally, etc. Everything is behind RxLocationManager class and its static methods and variables. Internally RxLocationManager has multiple sharing CLLocationManager+Delegate instances, and manage them efficiently in terms of memory usage and battery life. Instead of providing an "all-in-one" class like CLLocationManager does, RxLocationManager divides properties/methods into several groups based on their relativity, for example, location related APIs go into *StandardLocationService* class, heading update related APIs go into *HeadingUpdateService* class, region monitoring related APIs go into *RegionMonitoringService* class which also includes ranging beacons capability, and visits monitoring related APIs go into *MonitoringVisitsService*, so it's more clear to use.
 
 ## Installation
 ### [CocoaPods](https://guides.cocoapods.org/using/using-cocoapods.html)
@@ -314,17 +314,15 @@ RxLocationManager.RegionMonitoring.determinedRegionState.subscribeNext{
 .addDisposableTo(disposeBag)
 ```
 
-### Beacon Ranging Service
-
 #### Observe the changes to the collection of current ranged regions 
 ```
 #if os(iOS)
 // methods to start|stop ranging beacons in regions
-RxLocationManager.BeaconRanging.startRangingBeaconsInRegions(regions: [CLBeaconRegion]) -> BeaconRangingService
-RxLocationManager.BeaconRanging.stopRangingBeaconsInRegions(regions: [CLBeaconRegion]) -> BeaconRangingService
-RxLocationManager.BeaconRanging.stopRangingBeaconsInAllRegions() -> BeaconRangingService
+RxLocationManager.RegionMonitoring.startRangingBeaconsInRegions(regions: [CLBeaconRegion]) -> BeaconRangingService
+RxLocationManager.RegionMonitoring.stopRangingBeaconsInRegions(regions: [CLBeaconRegion]) -> BeaconRangingService
+RxLocationManager.RegionMonitoring.stopRangingBeaconsInAllRegions() -> BeaconRangingService
 
-RxLocationManager.BeaconRanging.rangedRegions.subscribeNext{
+RxLocationManager.RegionMonitoring.rangedRegions.subscribeNext{
     //happens no matter when new region is added or existing one gets removed from the ranged regions set
     regions in
     print("Current ranging \(regions.count) regions")
@@ -336,21 +334,9 @@ RxLocationManager.BeaconRanging.rangedRegions.subscribeNext{
 #### Observe ranged beacons
 ```
 #if os(iOS)
-RxLocationManager.BeaconRanging.ranging.subscribeNext{
+RxLocationManager.RegionMonitoring.ranging.subscribeNext{
     beacons, inRegion in
     print("\(beacons.count) beacons ranged in range:\(inRange.identifier)")
-}
-.addDisposableTo(disposeBag)
-#endif
-```
-
-#### Ask for the current state of monitored regions
-```
-#if os(iOS)
-RxLocationManager.BeaconRanging.requestRegionsState(regions:[CLRegion]) -> RegionMonitoringService
-RxLocationManager.BeaconRanging.determinedRegionState.subscribeNext{
-    region, state in
-    print("the region: \(region.identifier) is in state: \(state.rawValue)")
 }
 .addDisposableTo(disposeBag)
 #endif
