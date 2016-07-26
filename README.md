@@ -43,6 +43,8 @@ $ git submodule add git@github.com:popduke/RxLocationManager.git
 * Go to `Project > Targets > Build Phases > Link Binary With Libraries`, click `+` and select `RxLocationManager [Platform]` targets
 
 ## Usage
+**:pushpin: Always consult official document of [*CLLocationManager*](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/index.html#//apple_ref/occ/cl/CLLocationManager) to learn how to configure it to work in different modes :pushpin:**
+
 Add below line to import RxLocationManager module
 ```
 import RxLocationManager
@@ -115,9 +117,11 @@ RxLocationManager.Standard.located.subscribe{
         // in case some error occurred during determining device location, e.g. LocationUnknown
     }
 }
+.addDisposableTo(disposeBag)
 #endif
 ```
 
+#### Monitoring location update of device
 ```
 #if os(iOS) || os(OSX)
 RxLocationManager.Standard.locating.subscribe{
@@ -132,9 +136,57 @@ RxLocationManager.Standard.locating.subscribe{
         // LocationUnknown error will be ignored, and other errors reported
     }
 }
+.addDisposableTo(disposeBag)
 #endif
 ```
 #### Configure Standard Location Service
-Before start subscribing to *located* or *locating*, you can configure the standard location service instance through some chaining style APIs
+Before start subscribing to *located* or *locating*, you can also configure the standard location service instance through below chaining style APIs
 ```
+RxLocationManager.Standard.distanceFilter(distance: CLLocationDistance) -> StandardLocationService
+RxLocationManager.Standard.desiredAccuracy(desiredAccuracy: CLLocationAccuracy) -> StandardLocationService
+
+#if os(iOS)
+RxLocationManager.Standard.allowsBackgroundLocationUpdates(allow : Bool) -> StandardLocationService
+RxLocationManager.Standard.activityType(type: CLActivityType) -> StandardLocationService
+#endif
+```
+
+#### Enable auto-paused mode for location delivery, and observe the notification of pausing state change
+```
+#if os(iOS)
+RxLocationManager.Standard.pausesLocationUpdatesAutomatically(true)
+
+RxLocationManager.Standard.isPaused
+.map{
+    //$0 is Boolean
+    return $0 ? "Paused" : "Resumed"
+}
+.subscribeNext{
+   print("Location Updating is \($0)")
+}
+.addDisposableTo(disposeBag)
+#endif
+```
+
+#### Setup/remove deferred location update condition and observe when condition is satisfied or finished with error
+```
+#if os(iOS)
+//Setup deferred location update condition
+RxLocationManager.Standard.allowDeferredLocationUpdates(untilTraveled:100, timeout: 120)
+
+//Remove current deferred update condition
+RxLocationManager.Standard.disallowDeferredLocationUpdates()
+
+//Observe the event when condition is satisfied or finished with error
+RxLocationManager.Standard.deferredUpdateFinished
+.map{
+    //$0 is NSError?
+    return $0 == nil ? "Finished" : "Finished with error code \($0.code) in \($0.domain)"
+}
+.subscribeNext{
+    error in
+    print("Location Updating is \($0)")
+}
+.addDisposableTo(disposeBag)
+#endif
 ```
