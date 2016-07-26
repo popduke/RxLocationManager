@@ -112,7 +112,8 @@ public class RxLocationManager{
     #if os(iOS)
     /// Shared visit monitoring service
     public static let VisitMonitoring: MonitoringVisitsService = DefaultMonitoringVisitsService(bridgeClass: Bridge.self)
-    
+    /// Shared beacon ranging service
+    public static let BeaconRanging: BeaconRangingService = DefaultBeaconRangingService(bridgeClass: Bridge.self)
     /// Shared heading update service
     public static let HeadingUpdate: HeadingUpdateService = DefaultHeadingUpdateService(bridgeClass: Bridge.self)
     #endif
