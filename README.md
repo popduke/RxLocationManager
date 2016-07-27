@@ -251,7 +251,8 @@ Before start subscribing to *heading*, you can also configure the heading update
 RxLocationManager.HeadingUpdate.headingFilter(degrees:CLLocationDegrees) -> HeadingUpdateService
 RxLocationManager.HeadingUpdate.headingOrientation(degrees:CLDeviceOrientation) -> HeadingUpdateService
 RxLocationManager.HeadingUpdate.displayHeadingCalibration(should:Bool) -> HeadingUpdateService
-RxLocationManager.HeadingUpdate.trueHeading(enable:Bool) -> HeadingUpdateService
+RxLocationManager.HeadingUpdate.startTrueHeading(withParams:(distanceFilter:CLLocationDistance, desiredAccuracy:CLLocationAccuracy))
+RxLocationManager.HeadingUpdate.stopTrueHeading()
 #endif
 ```
 
@@ -318,9 +319,8 @@ RxLocationManager.RegionMonitoring.determinedRegionState.subscribeNext{
 ```
 #if os(iOS)
 // methods to start|stop ranging beacons in regions
-RxLocationManager.RegionMonitoring.startRangingBeaconsInRegions(regions: [CLBeaconRegion]) -> BeaconRangingService
-RxLocationManager.RegionMonitoring.stopRangingBeaconsInRegions(regions: [CLBeaconRegion]) -> BeaconRangingService
-RxLocationManager.RegionMonitoring.stopRangingBeaconsInAllRegions() -> BeaconRangingService
+RxLocationManager.RegionMonitoring.startRangingBeaconsInRegion(regions: CLBeaconRegion) -> BeaconRangingService
+RxLocationManager.RegionMonitoring.stopRangingBeaconsInRegion(regions: CLBeaconRegion) -> BeaconRangingService
 
 RxLocationManager.RegionMonitoring.rangedRegions.subscribeNext{
     //happens no matter when new region is added or existing one gets removed from the ranged regions set
