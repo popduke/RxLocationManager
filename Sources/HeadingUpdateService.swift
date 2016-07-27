@@ -38,22 +38,12 @@
          - returns: self for chaining call
          */
         func displayHeadingCalibration(should:Bool) -> HeadingUpdateService
-        /**
-         If reports true heading in CLHeading object, refer official [document](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLHeading_Class/index.html#//apple_ref/swift/cl/c:objc(cs)CLHeading) for description
-         
-         - parameter enable: true heading
-         
-         - returns: self for chaining call
-         */
-        func trueHeading(enable:Bool) -> HeadingUpdateService
         /// Current heading filter value
         var headingFilter: CLLocationDegrees{get}
         /// Current heading orientation value
         var headingOrientation: CLDeviceOrientation{get}
         /// Current value of displayHeadingCalibration
         var displayHeadingCalibration: Bool{get}
-        /// If currently enabled true heading in CLHeading object
-        var trueHeading: Bool{get}
     }
     //MARK: HeadingUpdateService
     public protocol HeadingUpdateService: HeadingUpdateServiceConfigurable{
@@ -63,6 +53,17 @@
          Refer description in official [document](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/instm/CLLocationManager/dismissHeadingCalibrationDisplay)
          */
         func dismissHeadingCalibrationDisplay() -> Void
+        
+        /**
+         Start generating true heading with the specified parameters to start location updating
+         
+         - parameter withParams: setting distance filter and desired accuracy for the location update
+         */
+        func startTrueHeading(withParams: (distanceFilter:CLLocationDistance, desiredAccuracy:CLLocationAccuracy)?)
+        /**
+         Stop generating true heading
+         */
+        func stopTrueHeading()
         /**
          Return a cloned instance of current heading update service
          
@@ -75,12 +76,8 @@
     class DefaultHeadingUpdateService: HeadingUpdateService {
         private let bridgeClass: CLLocationManagerBridge.Type
         var locMgr: CLLocationManagerBridge
-        private var _trueHeading: Bool = false
-        var trueHeading: Bool{
-            get{
-                return _trueHeading
-            }
-        }
+        private var trueHeadingParams: (distanceFilter:CLLocationDistance, desiredAccuracy:CLLocationAccuracy)?
+
         var headingFilter: CLLocationDegrees{
             get{
                 return locMgr.headingFilter
@@ -105,7 +102,9 @@
                     var ownerService: DefaultHeadingUpdateService! = self
                     let id = nextId()
                     ownerService.observers.append((id, observer))
-                    if ownerService._trueHeading{
+                    if ownerService.trueHeadingParams != nil{
+                        ownerService.locMgr.distanceFilter = ownerService.trueHeadingParams!.distanceFilter
+                        ownerService.locMgr.desiredAccuracy = ownerService.trueHeadingParams!.desiredAccuracy
                         ownerService.locMgr.startUpdatingLocation()
                     }
                     ownerService.locMgr.startUpdatingHeading()
@@ -159,14 +158,20 @@
             return self
         }
         
-        func trueHeading(enable: Bool) -> HeadingUpdateService {
-            _trueHeading = enable
-            if enable{
-                locMgr.startUpdatingLocation()
+        func startTrueHeading(withParams: (distanceFilter: CLLocationDistance, desiredAccuracy: CLLocationAccuracy)?) {
+            if withParams == nil{
+                trueHeadingParams = (1000, kCLLocationAccuracyKilometer)
             }else{
-                locMgr.stopUpdatingLocation()
+                trueHeadingParams = withParams
             }
-            return self
+            locMgr.distanceFilter = trueHeadingParams!.distanceFilter
+            locMgr.desiredAccuracy = trueHeadingParams!.desiredAccuracy
+            locMgr.startUpdatingLocation()
+            
+        }
+        
+        func stopTrueHeading() {
+            locMgr.stopUpdatingLocation()
         }
         
         func dismissHeadingCalibrationDisplay() {

@@ -19,7 +19,7 @@
     
     //MARK: DefaultMonitoringVisitsService
     class DefaultMonitoringVisitsService: MonitoringVisitsService{
-        private let locMgr: CLLocationManagerBridge
+        let locMgr: CLLocationManagerBridge
         private var observers = [(id:Int, observer: AnyObserver<CLVisit>)]()
         
         var visiting: Observable<CLVisit>{

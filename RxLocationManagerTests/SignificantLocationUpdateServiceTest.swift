@@ -15,12 +15,10 @@ import RxLocationManager
     class SignificantLocationUpdateServiceTest: XCTestCase {
         var significantLocationUpdateService:DefaultSignificantLocationUpdateService!
         var bridge:LocationManagerStub!
-        var dummyLocationMgr:CLLocationManager!
         var disposeBag: DisposeBag!
         override func setUp() {
             significantLocationUpdateService = DefaultSignificantLocationUpdateService(bridgeClass:LocationManagerStub.self)
             bridge = significantLocationUpdateService.locMgr as! LocationManagerStub
-            dummyLocationMgr = CLLocationManager()
             disposeBag = DisposeBag()
         }
         
@@ -29,7 +27,7 @@ import RxLocationManager
         }
         
         func testLocatingObservableWithoutError() {
-            let xcTextExpectation = self.expectationWithDescription("GotSeriesOfLocations")
+            let xcTestExpectation = self.expectationWithDescription("GotSeriesOfLocations")
             var n = 1
             significantLocationUpdateService.locating
                 .subscribe{
@@ -45,7 +43,7 @@ import RxLocationManager
                             n += 1
                         case 3:
                             expect(location.last!).to(equal(Locations.Moscow))
-                            xcTextExpectation.fulfill()
+                            xcTestExpectation.fulfill()
                         default:
                             expect(true).to(beFalse(), description: "You should not be here")
                         }
@@ -57,9 +55,9 @@ import RxLocationManager
                 }
                 .addDisposableTo(disposeBag)
             expect(self.bridge.monitoringSignificantLocationChange).to(beTrue())
-            bridge.didUpdateLocations!(dummyLocationMgr, [Locations.London])
-            bridge.didUpdateLocations!(dummyLocationMgr, [Locations.Johnannesburg])
-            bridge.didUpdateLocations!(dummyLocationMgr, [Locations.Moscow])
+            bridge.didUpdateLocations!(dummyLocationManager, [Locations.London])
+            bridge.didUpdateLocations!(dummyLocationManager, [Locations.Johnannesburg])
+            bridge.didUpdateLocations!(dummyLocationManager, [Locations.Moscow])
             self.waitForExpectationsWithTimeout(100, handler:nil)
         }
         
@@ -94,10 +92,10 @@ import RxLocationManager
                     }
                 }
                 .addDisposableTo(disposeBag)
-            bridge.didUpdateLocations!(dummyLocationMgr, [Locations.London])
-            bridge.didUpdateLocations!(dummyLocationMgr, [Locations.Johnannesburg])
-            bridge.didFailWithError!(dummyLocationMgr, CLError.Network.toNSError())
-            bridge.didUpdateLocations!(dummyLocationMgr, [Locations.Moscow])
+            bridge.didUpdateLocations!(dummyLocationManager, [Locations.London])
+            bridge.didUpdateLocations!(dummyLocationManager, [Locations.Johnannesburg])
+            bridge.didFailWithError!(dummyLocationManager, CLError.Network.toNSError())
+            bridge.didUpdateLocations!(dummyLocationManager, [Locations.Moscow])
             self.waitForExpectationsWithTimeout(100, handler:nil)
         }
     }

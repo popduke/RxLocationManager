@@ -43,13 +43,24 @@ import RxLocationManager
             expect(self.headingUpdateService.displayHeadingCalibration).to(beFalse())
         }
         func testGetSetTrueHeading() {
-            headingUpdateService.trueHeading(true)
-            expect(self.headingUpdateService.trueHeading).to(beTrue())
+            headingUpdateService.startTrueHeading((100, kCLLocationAccuracyKilometer))
+            expect(self.bridge.currentDistanceFilter).to(equal(100))
+            expect(self.bridge.currentDesiredAccuracy).to(equal(kCLLocationAccuracyKilometer))
             expect(self.bridge.updatingLocation).to(beTrue())
-            headingUpdateService.trueHeading(false)
-            expect(self.headingUpdateService.trueHeading).to(beFalse())
+            headingUpdateService.stopTrueHeading()
             expect(self.bridge.updatingLocation).to(beFalse())
         }
-        //TODO - Figure out a way to mock CLHeading object
+        func testHeadingObservable() {
+            let xcTestExpectation = self.expectationWithDescription("Get one heading update")
+            headingUpdateService.heading
+                .subscribeNext{
+                    heading in
+                    expect(heading == Headings.north).to(beTrue())
+                    xcTestExpectation.fulfill()
+                }
+                .addDisposableTo(disposeBag)
+            self.bridge.didUpdateHeading!(dummyLocationManager, Headings.north)
+            self.waitForExpectationsWithTimeout(50, handler: nil)
+        }
     }
 #endif

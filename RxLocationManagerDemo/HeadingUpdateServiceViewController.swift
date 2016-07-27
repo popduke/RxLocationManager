@@ -37,7 +37,12 @@ class HeadingUpdateServiceViewController: UIViewController {
         disposeBag = DisposeBag()
         trueHeadingSwitch.rx_value
             .subscribeNext{
-                RxLocationManager.HeadingUpdate.trueHeading($0)
+                if $0{
+                    RxLocationManager.HeadingUpdate.startTrueHeading(nil)
+                }else{
+                    RxLocationManager.HeadingUpdate.stopTrueHeading()
+                }
+                
             }
             .addDisposableTo(disposeBag)
         

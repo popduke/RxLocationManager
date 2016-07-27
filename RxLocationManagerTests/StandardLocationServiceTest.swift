@@ -18,12 +18,10 @@ class StandardLocationServiceTest: XCTestCase{
     var disposeBag: DisposeBag!
     var bridgeForLocation:LocationManagerStub!
     var bridgeForLocating:LocationManagerStub!
-    var dummyLocationMgr:CLLocationManager!
     override func setUp() {
         standardLocationService = DefaultStandardLocationService(bridgeClass:LocationManagerStub.self)
         bridgeForLocation = standardLocationService.locMgrForLocation as! LocationManagerStub
         bridgeForLocating = standardLocationService.locMgrForLocating as! LocationManagerStub
-        dummyLocationMgr = CLLocationManager()
         disposeBag = DisposeBag()
     }
     
@@ -87,7 +85,7 @@ class StandardLocationServiceTest: XCTestCase{
                 }
             }
             .addDisposableTo(disposeBag)
-        bridgeForLocation.didUpdateLocations!(dummyLocationMgr, [Locations.London])
+        bridgeForLocation.didUpdateLocations!(dummyLocationManager, [Locations.London])
         self.waitForExpectationsWithTimeout(5, handler:nil)
         
         let xcTextExpectation2 = self.expectationWithDescription("GotError")
@@ -108,7 +106,7 @@ class StandardLocationServiceTest: XCTestCase{
                 }
             }
             .addDisposableTo(disposeBag)
-        bridgeForLocation.didFailWithError!(dummyLocationMgr, CLError.LocationUnknown.toNSError())
+        bridgeForLocation.didFailWithError!(dummyLocationManager, CLError.LocationUnknown.toNSError())
         self.waitForExpectationsWithTimeout(5, handler:nil)
     }
     #endif
@@ -142,9 +140,9 @@ class StandardLocationServiceTest: XCTestCase{
             }
             .addDisposableTo(disposeBag)
         expect(self.bridgeForLocating.updatingLocation).to(beTrue())
-        bridgeForLocating.didUpdateLocations!(dummyLocationMgr, [Locations.London])
-        bridgeForLocating.didUpdateLocations!(dummyLocationMgr, [Locations.Johnannesburg])
-        bridgeForLocating.didUpdateLocations!(dummyLocationMgr, [Locations.Moscow])
+        bridgeForLocating.didUpdateLocations!(dummyLocationManager, [Locations.London])
+        bridgeForLocating.didUpdateLocations!(dummyLocationManager, [Locations.Johnannesburg])
+        bridgeForLocating.didUpdateLocations!(dummyLocationManager, [Locations.Moscow])
         self.waitForExpectationsWithTimeout(100, handler:nil)
     }
     
@@ -176,12 +174,12 @@ class StandardLocationServiceTest: XCTestCase{
                 }
             }
             .addDisposableTo(disposeBag)
-        bridgeForLocating.didUpdateLocations!(dummyLocationMgr, [Locations.London])
-        bridgeForLocating.didFailWithError!(dummyLocationMgr, CLError.LocationUnknown.toNSError())
-        bridgeForLocating.didUpdateLocations!(dummyLocationMgr, [Locations.Johnannesburg])
-        bridgeForLocating.didFailWithError!(dummyLocationMgr, CLError.LocationUnknown.toNSError())
-        bridgeForLocating.didUpdateLocations!(dummyLocationMgr, [Locations.Moscow])
-        bridgeForLocating.didFailWithError!(dummyLocationMgr, CLError.LocationUnknown.toNSError())
+        bridgeForLocating.didUpdateLocations!(dummyLocationManager, [Locations.London])
+        bridgeForLocating.didFailWithError!(dummyLocationManager, CLError.LocationUnknown.toNSError())
+        bridgeForLocating.didUpdateLocations!(dummyLocationManager, [Locations.Johnannesburg])
+        bridgeForLocating.didFailWithError!(dummyLocationManager, CLError.LocationUnknown.toNSError())
+        bridgeForLocating.didUpdateLocations!(dummyLocationManager, [Locations.Moscow])
+        bridgeForLocating.didFailWithError!(dummyLocationManager, CLError.LocationUnknown.toNSError())
         self.waitForExpectationsWithTimeout(5, handler:nil)
     }
     
@@ -212,11 +210,11 @@ class StandardLocationServiceTest: XCTestCase{
                 }
             }
             .addDisposableTo(disposeBag)
-        bridgeForLocating.didUpdateLocations!(dummyLocationMgr, [Locations.London])
-        bridgeForLocating.didFailWithError!(dummyLocationMgr, CLError.LocationUnknown.toNSError())
-        bridgeForLocating.didUpdateLocations!(dummyLocationMgr, [Locations.Johnannesburg])
-        bridgeForLocating.didFailWithError!(dummyLocationMgr, CLError.Denied.toNSError())
-        bridgeForLocating.didUpdateLocations!(dummyLocationMgr, [Locations.Moscow])
+        bridgeForLocating.didUpdateLocations!(dummyLocationManager, [Locations.London])
+        bridgeForLocating.didFailWithError!(dummyLocationManager, CLError.LocationUnknown.toNSError())
+        bridgeForLocating.didUpdateLocations!(dummyLocationManager, [Locations.Johnannesburg])
+        bridgeForLocating.didFailWithError!(dummyLocationManager, CLError.Denied.toNSError())
+        bridgeForLocating.didUpdateLocations!(dummyLocationManager, [Locations.Moscow])
         self.waitForExpectationsWithTimeout(5, handler:nil)
     }
     #endif
@@ -248,8 +246,8 @@ class StandardLocationServiceTest: XCTestCase{
                 }
             }
             .addDisposableTo(disposeBag)
-        bridgeForLocating.didPausedUpdate!(dummyLocationMgr)
-        bridgeForLocating.didResumeUpdate!(dummyLocationMgr)
+        bridgeForLocating.didPausedUpdate!(dummyLocationManager)
+        bridgeForLocating.didResumeUpdate!(dummyLocationManager)
         self.waitForExpectationsWithTimeout(5, handler:nil)
     }
     
@@ -269,7 +267,7 @@ class StandardLocationServiceTest: XCTestCase{
                 }
             }
             .addDisposableTo(disposeBag)
-        bridgeForLocating.didFinishDeferredUpdatesWithError!(dummyLocationMgr, CLError.DeferredAccuracyTooLow.toNSError())
+        bridgeForLocating.didFinishDeferredUpdatesWithError!(dummyLocationManager, CLError.DeferredAccuracyTooLow.toNSError())
         self.waitForExpectationsWithTimeout(5, handler:nil)
     }
     #endif

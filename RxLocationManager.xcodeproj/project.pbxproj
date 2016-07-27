@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		722C7C4C1D49097D008895C7 /* MonitoringVisitsServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722C7C4B1D49097D008895C7 /* MonitoringVisitsServiceTest.swift */; };
 		723044931D3E58AF00982952 /* nextId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF72E1D2D5A1C0024AB3C /* nextId.swift */; };
 		723044B01D3E66DE00982952 /* nextId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF72E1D2D5A1C0024AB3C /* nextId.swift */; };
 		723044B81D3E714300982952 /* nextId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724DF72E1D2D5A1C0024AB3C /* nextId.swift */; };
@@ -97,6 +98,7 @@
 
 /* Begin PBXFileReference section */
 		721AD1181D367F2000744B42 /* HeadingUpdateServiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadingUpdateServiceViewController.swift; sourceTree = "<group>"; };
+		722C7C4B1D49097D008895C7 /* MonitoringVisitsServiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitoringVisitsServiceTest.swift; sourceTree = "<group>"; };
 		7230449B1D3E58AF00982952 /* RxLocationManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxLocationManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		723044AC1D3E66B300982952 /* RxLocationManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxLocationManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		723044C01D3E714300982952 /* RxLocationManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxLocationManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -260,6 +262,7 @@
 				72C922A31D4663AC008436D0 /* SignificantLocationUpdateServiceTest.swift */,
 				72C922A51D4669F3008436D0 /* HeadingUpdateServiceTest.swift */,
 				723994C71D47A04B003CCF20 /* RegionMonitoringServiceTest.swift */,
+				722C7C4B1D49097D008895C7 /* MonitoringVisitsServiceTest.swift */,
 			);
 			path = RxLocationManagerTests;
 			sourceTree = "<group>";
@@ -590,6 +593,7 @@
 				72C922A41D4663AC008436D0 /* SignificantLocationUpdateServiceTest.swift in Sources */,
 				72C922941D447A7A008436D0 /* LocationManagerStub.swift in Sources */,
 				72C9229C1D449FF7008436D0 /* StandardLocationServiceTest.swift in Sources */,
+				722C7C4C1D49097D008895C7 /* MonitoringVisitsServiceTest.swift in Sources */,
 				72C9229E1D44DFC0008436D0 /* Fixtures.swift in Sources */,
 				72C922A61D4669F3008436D0 /* HeadingUpdateServiceTest.swift in Sources */,
 				723994C81D47A04B003CCF20 /* RegionMonitoringServiceTest.swift in Sources */,
