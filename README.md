@@ -1,4 +1,4 @@
-A Reactive LocationManager in Swift
+# A Reactive LocationManager in Swift
 
 [![CocoaPods Compatible](https://img.shields.io/badge/cocoapod-v1.0-brightgreen.svg)](https://cocoapods.org)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-brightgreen.svg)](https://github.com/Carthage/Carthage)
