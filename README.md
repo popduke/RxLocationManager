@@ -1,24 +1,27 @@
-RxLocationManager: A Reactive LocationManager for iOS/macOS/watchOS/tvOS
+A Reactive LocationManager in Swift
 
+[![CocoaPods Compatible](https://img.shields.io/badge/cocoapod-v1.0-brightgreen.svg)](https://cocoapods.org)
+[![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-brightgreen.svg)](https://github.com/Carthage/Carthage)
+[![Platform](https://img.shields.io/badge/Platform-%20iOS%20%7C%20macOS%20%7C%20watchOS%20%7C%20tvOS-lightgrey.svg)](https://github.com/popduke/RxLocationManager)
 
 ## Introduction
-You may find CLLocationManager awkward to use if you adopt [FRP](http://reactivex.io/)([RxSwift](https://github.com/ReactiveX/RxSwift)) paradigm to develop apps. RxLocationManager is an attempt to simplify all of these into consistent reactive-styled APIs, so that you don't need to worry about things like conform your view controller to CLLocationManagerDelegate which sometimes feel unnatural, save CLLocationManager instance somewhere(e.g. AppDelegate) for sharing globally, etc. Everything is behind RxLocationManager class and its static methods and variables. Internally RxLocationManager has multiple sharing CLLocationManager+Delegate instances, and manage them efficiently in terms of memory usage and battery life. Instead of providing an "all-in-one" class like CLLocationManager does, RxLocationManager divides properties/methods into several groups based on their relativity, for example, location related APIs go into *StandardLocationService* class, heading update related APIs go into *HeadingUpdateService* class, region monitoring related APIs go into *RegionMonitoringService* class which also includes ranging beacons capability, and visits monitoring related APIs go into *MonitoringVisitsService*, so it's more clear to use.
+You may find CLLocationManager awkward to use if you adopt [FRP](http://reactivex.io/)([RxSwift](https://github.com/ReactiveX/RxSwift)) paradigm to develop apps. RxLocationManager is an attempt to create a "reactive" skin around CLLocationManager, so that you don't need to worry about things like conform your view controller to CLLocationManagerDelegate which sometimes feels unnatural, where to put CLLocationManager instance(e.g. AppDelegate) for easily referencing, etc. Everything is behind RxLocationManager class and its static methods and variables. Internally RxLocationManager has multiple sharing CLLocationManager+Delegate instances, and manage them efficiently in terms of memory usage and battery life. Instead of providing an "all-in-one" class like CLLocationManager does, RxLocationManager divides properties/methods into several groups based on their relativity, for example, location related APIs go into *StandardLocationService* class, heading update related APIs go into *HeadingUpdateService* class, region monitoring related APIs go into *RegionMonitoringService* class which also includes ranging beacons capability, and visits monitoring related APIs go into *MonitoringVisitsService*, so it's more clear to use.
 
 ## Installation
 ### [CocoaPods](https://guides.cocoapods.org/using/using-cocoapods.html)
-Choose subspec based on your app's target platform, and replace 'YOUR\_TARGET\_NAME'
-
+Add RxLocationManager dependency to your Podfile
 ```
 # Podfile
 use_frameworks!
 
+# replace YOUR_TARGET_NAME with yours
 target 'YOUR_TARGET_NAME' do
-    pod 'RxLocationManager/iOS',    '~> 1.0'
-#   pod 'RxLocationManager/macOS',  '~> 1.0'
-#   pod 'RxLocationManager/watchOS','~> 1.0'
-#   pod 'RxLocationManager/tvOS',   '~> 1.0'
+    pod 'RxLocationManager',    '~> 1.0'
 end
-
+```
+and run 
+```
+$ pod install
 ```
 
 ### [Carthage](https://github.com/Carthage/Carthage)
@@ -192,7 +195,7 @@ RxLocationManager.Standard.deferredUpdateFinished
 ```
 
 #### Multiple standard location services
-In some cases you need more than one standard location service in your app, which configured differently, you can create a clone one like below
+In some cases you need more than one standard location service in your app, which configured differently, you can create a new one by cloning from the shared
 ```
 var anotherStandardLocationService = RxLocationManager.Standard.clone()
 anotherStandardLocationService.distanceFilter(100).desiredAccuracy(50)
@@ -251,6 +254,8 @@ Before start subscribing to *heading*, you can also configure the heading update
 RxLocationManager.HeadingUpdate.headingFilter(degrees:CLLocationDegrees) -> HeadingUpdateService
 RxLocationManager.HeadingUpdate.headingOrientation(degrees:CLDeviceOrientation) -> HeadingUpdateService
 RxLocationManager.HeadingUpdate.displayHeadingCalibration(should:Bool) -> HeadingUpdateService
+
+//Use following to methods to start/stop location updating, so that true heading value will be reported
 RxLocationManager.HeadingUpdate.startTrueHeading(withParams:(distanceFilter:CLLocationDistance, desiredAccuracy:CLLocationAccuracy))
 RxLocationManager.HeadingUpdate.stopTrueHeading()
 #endif
@@ -264,7 +269,7 @@ RxLocationManager.HeadingUpdate.dismissHeadingCalibrationDisplay()
 ```
 
 #### Multiple heading update services
-In some cases you need more than one heading update service in your app, which configured differently, you can create a clone one like below
+In some cases you need more than one heading update service in your app, which configured differently, you can create a new one by cloning from the shared
 ```
 var anotherHeadingUpdateService = RxLocationManager.HeadingUpdate.clone()
 anotherHeadingUpdateService.distanceFilter(100).desiredAccuracy(50)
@@ -315,19 +320,11 @@ RxLocationManager.RegionMonitoring.determinedRegionState.subscribeNext{
 .addDisposableTo(disposeBag)
 ```
 
-#### Observe the changes to the collection of current ranged regions 
+#### Start/stop ranging beacons in range
 ```
 #if os(iOS)
-// methods to start|stop ranging beacons in regions
-RxLocationManager.RegionMonitoring.startRangingBeaconsInRegion(regions: CLBeaconRegion) -> BeaconRangingService
-RxLocationManager.RegionMonitoring.stopRangingBeaconsInRegion(regions: CLBeaconRegion) -> BeaconRangingService
-
-RxLocationManager.RegionMonitoring.rangedRegions.subscribeNext{
-    //happens no matter when new region is added or existing one gets removed from the ranged regions set
-    regions in
-    print("Current ranging \(regions.count) regions")
-}
-.addDisposableTo(disposeBag)
+RxLocationManager.RegionMonitoring.startRangingBeaconsInRegion(region: CLBeaconRegion)
+RxLocationManager.RegionMonitoring.stopRangingBeaconsInRegion(region: CLBeaconRegion)
 #endif
 ```
 
@@ -343,6 +340,14 @@ RxLocationManager.RegionMonitoring.ranging.subscribeNext{
 ```
 
 ### Monitoring Visits Service
+
+#### Start/stop monitoring visits
+```
+#if os(iOS)
+RxLocationManager.VisitMonitoring.startMonitoringVisits()
+RxLocationManager.VisitMonitoring.stopMonitoringVisits()
+#endif
+```
 
 #### Observe visit events
 ```
