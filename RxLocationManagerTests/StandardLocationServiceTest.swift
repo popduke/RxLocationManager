@@ -20,8 +20,12 @@ class StandardLocationServiceTest: XCTestCase{
     var bridgeForLocating:LocationManagerStub!
     override func setUp() {
         standardLocationService = DefaultStandardLocationService(bridgeClass:LocationManagerStub.self)
-        bridgeForLocation = standardLocationService.locMgrForLocation as! LocationManagerStub
-        bridgeForLocating = standardLocationService.locMgrForLocating as! LocationManagerStub
+        #if os(iOS) || os(watchOS) || os(tvOS)
+            bridgeForLocation = standardLocationService.locMgrForLocation as! LocationManagerStub
+        #endif
+        #if os(iOS) || os(OSX)
+            bridgeForLocating = standardLocationService.locMgrForLocating as! LocationManagerStub
+        #endif
         disposeBag = DisposeBag()
     }
     
@@ -31,8 +35,13 @@ class StandardLocationServiceTest: XCTestCase{
     
     func testGetSetDistanceFilter(){
         standardLocationService.distanceFilter(10.0)
-        expect(self.standardLocationService.locMgrForLocation.distanceFilter).to(equal(standardLocationService.locMgrForLocating.distanceFilter))
-        expect(self.standardLocationService.locMgrForLocation.distanceFilter).to(equal(10.0))
+        #if os(iOS) || os(watchOS) || os(tvOS)
+            expect(self.standardLocationService.locMgrForLocation.distanceFilter).to(equal(10.0))
+        #endif
+        
+        #if os(iOS) || os(OSX)
+            expect(self.standardLocationService.locMgrForLocating.distanceFilter).to(equal(10.0))
+        #endif
     }
     
     func testGetSetDesiredAccuracy(){

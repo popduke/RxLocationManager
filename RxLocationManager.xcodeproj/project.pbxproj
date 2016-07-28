@@ -61,6 +61,21 @@
 		72F970B41D3951570020F65C /* RegionMonitoringServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F970571D378E2B0020F65C /* RegionMonitoringServiceViewController.swift */; };
 		72F970B51D3951570020F65C /* MonitoredCircleRegionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F970591D37B9A70020F65C /* MonitoredCircleRegionTableViewCell.swift */; };
 		72F970B61D3951570020F65C /* VisitMonitoringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F9705B1D3913F90020F65C /* VisitMonitoringViewController.swift */; };
+		72FB5BAB1D4A2343008606E7 /* RxLocationManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 723044D01D3E72CC00982952 /* RxLocationManager.framework */; };
+		72FB5BB41D4A23E8008606E7 /* LocationManagerStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C922931D447A79008436D0 /* LocationManagerStub.swift */; };
+		72FB5BB51D4A23E8008606E7 /* StandardLocationServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C9229B1D449FF7008436D0 /* StandardLocationServiceTest.swift */; };
+		72FB5BB61D4A23E8008606E7 /* Fixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C9229D1D44DFC0008436D0 /* Fixtures.swift */; };
+		72FB5BBC1D4A23F9008606E7 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72FB5BBB1D4A23F9008606E7 /* Nimble.framework */; };
+		72FB5BBE1D4A25E0008606E7 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72FB5BBD1D4A25E0008606E7 /* RxSwift.framework */; };
+		72FB5BC81D4A336B008606E7 /* RxLocationManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 723044AC1D3E66B300982952 /* RxLocationManager.framework */; };
+		72FB5BCE1D4A33AE008606E7 /* LocationManagerStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C922931D447A79008436D0 /* LocationManagerStub.swift */; };
+		72FB5BCF1D4A33AE008606E7 /* StandardLocationServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C9229B1D449FF7008436D0 /* StandardLocationServiceTest.swift */; };
+		72FB5BD01D4A33AE008606E7 /* Fixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C9229D1D44DFC0008436D0 /* Fixtures.swift */; };
+		72FB5BD11D4A33AE008606E7 /* RegionMonitoringServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723994C71D47A04B003CCF20 /* RegionMonitoringServiceTest.swift */; };
+		72FB5BD61D4A3407008606E7 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72FB5BD51D4A3407008606E7 /* RxSwift.framework */; };
+		72FB5BD81D4A3411008606E7 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72FB5BD71D4A3411008606E7 /* Nimble.framework */; };
+		72FB5BDA1D4A345E008606E7 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72FB5BD91D4A345E008606E7 /* RxSwift.framework */; };
+		72FB5BDB1D4A3492008606E7 /* SignificantLocationUpdateServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C922A31D4663AC008436D0 /* SignificantLocationUpdateServiceTest.swift */; };
 		72FC15911D3256650051FB39 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72FC158F1D3256650051FB39 /* Main.storyboard */; };
 		72FC15961D3256650051FB39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72FC15941D3256650051FB39 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -79,6 +94,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 723044891D3E58AF00982952;
 			remoteInfo = "RxLocationManager iOS";
+		};
+		72FB5BAC1D4A2343008606E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 72B335D61D2BEE9E0002FB39 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 723044C31D3E72CC00982952;
+			remoteInfo = "RxLocationManager tvOS";
+		};
+		72FB5BC91D4A336B008606E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 72B335D61D2BEE9E0002FB39 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7230449D1D3E66B300982952;
+			remoteInfo = "RxLocationManager macOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -130,6 +159,13 @@
 		72F970571D378E2B0020F65C /* RegionMonitoringServiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionMonitoringServiceViewController.swift; sourceTree = "<group>"; };
 		72F970591D37B9A70020F65C /* MonitoredCircleRegionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitoredCircleRegionTableViewCell.swift; sourceTree = "<group>"; };
 		72F9705B1D3913F90020F65C /* VisitMonitoringViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitMonitoringViewController.swift; sourceTree = "<group>"; };
+		72FB5BA61D4A2342008606E7 /* RxLocationManager tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RxLocationManager tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		72FB5BBB1D4A23F9008606E7 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = "../../Library/Developer/Xcode/DerivedData/RxLocationManager-forrdtavsxtttydggcxklgyodsnw/Build/Products/Debug-appletvsimulator/Nimble.framework"; sourceTree = "<group>"; };
+		72FB5BBD1D4A25E0008606E7 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/RxLocationManager-forrdtavsxtttydggcxklgyodsnw/Build/Products/Debug-appletvsimulator/RxSwift.framework"; sourceTree = "<group>"; };
+		72FB5BC31D4A336A008606E7 /* RxLocationManager macOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RxLocationManager macOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		72FB5BD51D4A3407008606E7 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/RxLocationManager-forrdtavsxtttydggcxklgyodsnw/Build/Products/Debug-iphoneos/RxSwift.framework"; sourceTree = "<group>"; };
+		72FB5BD71D4A3411008606E7 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = "../../Library/Developer/Xcode/DerivedData/RxLocationManager-forrdtavsxtttydggcxklgyodsnw/Build/Products/Debug/Nimble.framework"; sourceTree = "<group>"; };
+		72FB5BD91D4A345E008606E7 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/RxLocationManager-forrdtavsxtttydggcxklgyodsnw/Build/Products/Debug/RxSwift.framework"; sourceTree = "<group>"; };
 		72FC15891D3256640051FB39 /* RxLocationManagerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxLocationManagerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72FC158B1D3256650051FB39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		72FC158D1D3256650051FB39 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -173,8 +209,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72FB5BD61D4A3407008606E7 /* RxSwift.framework in Frameworks */,
 				72C922A21D4517E1008436D0 /* Nimble.framework in Frameworks */,
 				72BB83B31D42836B00225B40 /* RxLocationManager.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		72FB5BA31D4A2342008606E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72FB5BBE1D4A25E0008606E7 /* RxSwift.framework in Frameworks */,
+				72FB5BBC1D4A23F9008606E7 /* Nimble.framework in Frameworks */,
+				72FB5BAB1D4A2343008606E7 /* RxLocationManager.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		72FB5BC01D4A336A008606E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72FB5BD81D4A3411008606E7 /* Nimble.framework in Frameworks */,
+				72FB5BDA1D4A345E008606E7 /* RxSwift.framework in Frameworks */,
+				72FB5BC81D4A336B008606E7 /* RxLocationManager.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,6 +269,8 @@
 				723044C01D3E714300982952 /* RxLocationManager.framework */,
 				723044D01D3E72CC00982952 /* RxLocationManager.framework */,
 				72BB83AE1D42836B00225B40 /* RxLocationManager iOSTests.xctest */,
+				72FB5BA61D4A2342008606E7 /* RxLocationManager tvOSTests.xctest */,
+				72FB5BC31D4A336A008606E7 /* RxLocationManager macOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -245,6 +304,11 @@
 		72B3360A1D2C065D0002FB39 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				72FB5BD91D4A345E008606E7 /* RxSwift.framework */,
+				72FB5BD71D4A3411008606E7 /* Nimble.framework */,
+				72FB5BD51D4A3407008606E7 /* RxSwift.framework */,
+				72FB5BBD1D4A25E0008606E7 /* RxSwift.framework */,
+				72FB5BBB1D4A23F9008606E7 /* Nimble.framework */,
 				72C922A11D4517E1008436D0 /* Nimble.framework */,
 				72C922911D4477F1008436D0 /* RxSwift.framework */,
 				72C9228F1D4477EB008436D0 /* RxCocoa.framework */,
@@ -411,6 +475,42 @@
 			productReference = 72BB83AE1D42836B00225B40 /* RxLocationManager iOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		72FB5BA51D4A2342008606E7 /* RxLocationManager tvOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 72FB5BB01D4A2343008606E7 /* Build configuration list for PBXNativeTarget "RxLocationManager tvOSTests" */;
+			buildPhases = (
+				72FB5BA21D4A2342008606E7 /* Sources */,
+				72FB5BA31D4A2342008606E7 /* Frameworks */,
+				72FB5BA41D4A2342008606E7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				72FB5BAD1D4A2343008606E7 /* PBXTargetDependency */,
+			);
+			name = "RxLocationManager tvOSTests";
+			productName = "RxLocationManager tvOSTests";
+			productReference = 72FB5BA61D4A2342008606E7 /* RxLocationManager tvOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		72FB5BC21D4A336A008606E7 /* RxLocationManager macOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 72FB5BCB1D4A336B008606E7 /* Build configuration list for PBXNativeTarget "RxLocationManager macOSTests" */;
+			buildPhases = (
+				72FB5BBF1D4A336A008606E7 /* Sources */,
+				72FB5BC01D4A336A008606E7 /* Frameworks */,
+				72FB5BC11D4A336A008606E7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				72FB5BCA1D4A336B008606E7 /* PBXTargetDependency */,
+			);
+			name = "RxLocationManager macOSTests";
+			productName = "RxLocationManager macOSTests";
+			productReference = 72FB5BC31D4A336A008606E7 /* RxLocationManager macOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		72FC15881D3256640051FB39 /* RxLocationManagerDemo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 72FC15981D3256650051FB39 /* Build configuration list for PBXNativeTarget "RxLocationManagerDemo" */;
@@ -443,6 +543,12 @@
 					72BB83AD1D42836B00225B40 = {
 						CreatedOnToolsVersion = 7.3.1;
 					};
+					72FB5BA51D4A2342008606E7 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					72FB5BC21D4A336A008606E7 = {
+						CreatedOnToolsVersion = 7.3;
+					};
 					72FC15881D3256640051FB39 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = EHSX39WJ93;
@@ -473,6 +579,8 @@
 				723044B31D3E714300982952 /* RxLocationManager watchOS */,
 				723044C31D3E72CC00982952 /* RxLocationManager tvOS */,
 				72BB83AD1D42836B00225B40 /* RxLocationManager iOSTests */,
+				72FB5BA51D4A2342008606E7 /* RxLocationManager tvOSTests */,
+				72FB5BC21D4A336A008606E7 /* RxLocationManager macOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -507,6 +615,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		72BB83AC1D42836B00225B40 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		72FB5BA41D4A2342008606E7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		72FB5BC11D4A336A008606E7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -600,6 +722,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		72FB5BA21D4A2342008606E7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72FB5BB41D4A23E8008606E7 /* LocationManagerStub.swift in Sources */,
+				72FB5BB51D4A23E8008606E7 /* StandardLocationServiceTest.swift in Sources */,
+				72FB5BB61D4A23E8008606E7 /* Fixtures.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		72FB5BBF1D4A336A008606E7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72FB5BDB1D4A3492008606E7 /* SignificantLocationUpdateServiceTest.swift in Sources */,
+				72FB5BCE1D4A33AE008606E7 /* LocationManagerStub.swift in Sources */,
+				72FB5BCF1D4A33AE008606E7 /* StandardLocationServiceTest.swift in Sources */,
+				72FB5BD01D4A33AE008606E7 /* Fixtures.swift in Sources */,
+				72FB5BD11D4A33AE008606E7 /* RegionMonitoringServiceTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		72FC15851D3256640051FB39 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -627,6 +771,16 @@
 			isa = PBXTargetDependency;
 			target = 723044891D3E58AF00982952 /* RxLocationManager iOS */;
 			targetProxy = 72BB83B41D42836B00225B40 /* PBXContainerItemProxy */;
+		};
+		72FB5BAD1D4A2343008606E7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 723044C31D3E72CC00982952 /* RxLocationManager tvOS */;
+			targetProxy = 72FB5BAC1D4A2343008606E7 /* PBXContainerItemProxy */;
+		};
+		72FB5BCA1D4A336B008606E7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7230449D1D3E66B300982952 /* RxLocationManager macOS */;
+			targetProxy = 72FB5BC91D4A336B008606E7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -668,7 +822,7 @@
 				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgotohell.RxLocationManager;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgth.RxLocationManager;
 				PRODUCT_NAME = RxLocationManager;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -694,7 +848,7 @@
 				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgotohell.RxLocationManager;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgth.RxLocationManager;
 				PRODUCT_NAME = RxLocationManager;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -719,7 +873,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgotohell.RxLocationManager;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgth.RxLocationManager;
 				PRODUCT_NAME = RxLocationManager;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -744,7 +898,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgotohell.RxLocationManager;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgth.RxLocationManager;
 				PRODUCT_NAME = RxLocationManager;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -813,12 +967,12 @@
 				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgotohell.RxLocationManager;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgth.RxLocationManager;
 				PRODUCT_NAME = RxLocationManager;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.2;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Debug;
 		};
@@ -836,12 +990,12 @@
 				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgotohell.RxLocationManager;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgth.RxLocationManager;
 				PRODUCT_NAME = RxLocationManager;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.2;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Release;
 		};
@@ -968,6 +1122,74 @@
 			};
 			name = Release;
 		};
+		72FB5BAE1D4A2343008606E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Checkouts/Nimble/build/Debug-appletvos",
+				);
+				INFOPLIST_FILE = RxLocationManagerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgth.RxLocationManagerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+			};
+			name = Debug;
+		};
+		72FB5BAF1D4A2343008606E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Checkouts/Nimble/build/Debug-appletvos",
+				);
+				INFOPLIST_FILE = RxLocationManagerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgth.RxLocationManagerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+			};
+			name = Release;
+		};
+		72FB5BCC1D4A336B008606E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Checkouts/Nimble/build/Debug",
+				);
+				INFOPLIST_FILE = RxLocationManagerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgth.RxLocationManagerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		72FB5BCD1D4A336B008606E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Checkouts/Nimble/build/Debug",
+				);
+				INFOPLIST_FILE = RxLocationManagerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gfwgth.RxLocationManagerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 		72FC15991D3256650051FB39 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1066,6 +1288,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		72FB5BB01D4A2343008606E7 /* Build configuration list for PBXNativeTarget "RxLocationManager tvOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				72FB5BAE1D4A2343008606E7 /* Debug */,
+				72FB5BAF1D4A2343008606E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		72FB5BCB1D4A336B008606E7 /* Build configuration list for PBXNativeTarget "RxLocationManager macOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				72FB5BCC1D4A336B008606E7 /* Debug */,
+				72FB5BCD1D4A336B008606E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		72FC15981D3256650051FB39 /* Build configuration list for PBXNativeTarget "RxLocationManagerDemo" */ = {
 			isa = XCConfigurationList;

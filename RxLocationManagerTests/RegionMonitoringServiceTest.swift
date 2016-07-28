@@ -49,6 +49,7 @@ import RxLocationManager
             expect(self.bridge.currentRegionStateRequests).to(equal([GeoRegions.London, GeoRegions.Johnannesburg]))
         }
         
+        #if os(iOS)
         func testStartRangingBeaconsInRegion(){
             regionMonitoringService.startRangingBeaconsInRegion(BeaconRegions.one)
             regionMonitoringService.startRangingBeaconsInRegion(BeaconRegions.two)
@@ -63,6 +64,7 @@ import RxLocationManager
             regionMonitoringService.stopRangingBeaconsInRegion(BeaconRegions.three)
             expect(self.bridge.currangRangedBeaconRegions).to(equal([BeaconRegions.one, BeaconRegions.two]))
         }
+        #endif
         
         func testGetMaximumRegionMonitoringDistance(){
             expect(self.regionMonitoringService.maximumRegionMonitoringDistance).to(equal(200))
@@ -131,24 +133,30 @@ import RxLocationManager
             self.waitForExpectationsWithTimeout(50, handler: nil)
         }
         
-        func testErrorObservable(){
+        func testErrorObservableWithMonitoringError(){
             let xcTestExpectation = self.expectationWithDescription("Get error during monitoring region")
-            var n = 1
             regionMonitoringService.error
                 .subscribeNext{
                     region, error in
-                    if n == 1{
-                        expect(region!).to(equal(GeoRegions.London))
-                        expect(error).to(equal(CLError.RegionMonitoringFailure.toNSError()))
-                        n += 1
-                    }else{
-                        expect(region!).to(equal(BeaconRegions.one))
-                        expect(error).to(equal(CLError.RangingFailure.toNSError()))
-                        xcTestExpectation.fulfill()
-                    }
+                    expect(region!).to(equal(GeoRegions.London))
+                    expect(error).to(equal(CLError.RegionMonitoringFailure.toNSError()))
+                    xcTestExpectation.fulfill()
                 }
                 .addDisposableTo(disposeBag)
             self.bridge.monitoringDidFailForRegion!(dummyLocationManager, GeoRegions.London, CLError.RegionMonitoringFailure.toNSError())
+            self.waitForExpectationsWithTimeout(50, handler: nil)
+        }
+        
+        #if os(iOS)
+        func testErrorObservableWithRangingError(){
+            let xcTestExpectation = self.expectationWithDescription("Get error during ranging beacons")
+            regionMonitoringService.error.subscribeNext{
+                region, error in
+                expect(region!).to(equal(BeaconRegions.one))
+                expect(error).to(equal(CLError.RangingFailure.toNSError()))
+                xcTestExpectation.fulfill()
+            }
+            .addDisposableTo(disposeBag)
             self.bridge.rangingBeaconsDidFailForRegion!(dummyLocationManager, BeaconRegions.one, CLError.RangingFailure.toNSError())
             self.waitForExpectationsWithTimeout(50, handler: nil)
         }
@@ -166,5 +174,6 @@ import RxLocationManager
             self.bridge.didRangeBeaconsInRegion!(dummyLocationManager, [], BeaconRegions.one)
             self.waitForExpectationsWithTimeout(50, handler: nil)
         }
+        #endif
     }
 #endif

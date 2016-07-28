@@ -29,7 +29,10 @@ class LocationManagerStub: CLLocationManagerBridge{
     
     var currentMonitoredRegions = Set<CLRegion>()
     var currentRegionStateRequests = Set<CLRegion>()
+    
+    #if os(iOS)
     var currangRangedBeaconRegions = Set<CLBeaconRegion>()
+    #endif
     
     var updatingLocation = false
     var locationRequested = false
@@ -56,16 +59,23 @@ class LocationManagerStub: CLLocationManagerBridge{
     }
     #endif
     
+    #if os(iOS) || os(OSX)
     override func startUpdatingLocation(){
         updatingLocation = true
     }
+    #endif
+    
     override func stopUpdatingLocation(){
         updatingLocation = false
     }
+    
+    #if os(iOS) || os(watchOS) || os(tvOS)
     @available(iOS 9.0, *)
     override func requestLocation(){
         locationRequested = true
     }
+    #endif
+    
     override var distanceFilter: CLLocationDistance {
         get{
             return currentDistanceFilter

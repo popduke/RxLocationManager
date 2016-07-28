@@ -61,59 +61,67 @@ class CLLocationManagerBridge: CLLocationManager, CLLocationManagerDelegate{
     }
     #endif
     
-    #if os(iOS) || os(OSX)
+    
+}
+
+#if os(iOS) || os(OSX)
+extension CLLocationManagerBridge{
+
     func locationManager(manager: CLLocationManager, didDetermineState state: CLRegionState, forRegion region: CLRegion) {
-        didDetermineState?(manager, state, region)
+    didDetermineState?(manager, state, region)
     }
     
     func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
-        didEnterRegion?(manager, region)
+    didEnterRegion?(manager, region)
     }
     
     func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {
-        didExitRegion?(manager, region)
+    didExitRegion?(manager, region)
     }
     
     func locationManager(manager: CLLocationManager, monitoringDidFailForRegion region: CLRegion?, withError error: NSError) {
-        monitoringDidFailForRegion?(manager, region, error)
+    monitoringDidFailForRegion?(manager, region, error)
     }
     
     func locationManager(manager: CLLocationManager, didStartMonitoringForRegion region: CLRegion) {
-        didStartMonitoringForRegion?(manager, region)
+    didStartMonitoringForRegion?(manager, region)
     }
-    #endif
-    
-    #if os(iOS)
+}
+#endif
+
+#if os(iOS)
+extension CLLocationManagerBridge{
+
     func locationManager(manager: CLLocationManager, didFinishDeferredUpdatesWithError error: NSError?) {
-        didFinishDeferredUpdatesWithError?(manager, error)
+    didFinishDeferredUpdatesWithError?(manager, error)
     }
     
     func locationManagerDidPauseLocationUpdates(manager: CLLocationManager) {
-        didPausedUpdate?(manager)
+    didPausedUpdate?(manager)
     }
     
     func locationManagerDidResumeLocationUpdates(manager: CLLocationManager) {
-        didResumeUpdate?(manager)
+    didResumeUpdate?(manager)
     }
     
     func locationManagerShouldDisplayHeadingCalibration(manager: CLLocationManager) -> Bool {
-        return displayHeadingCalibration
+    return displayHeadingCalibration
     }
     
     func locationManager(manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-        didUpdateHeading?(manager, newHeading)
+    didUpdateHeading?(manager, newHeading)
     }
     
     func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
-        didRangeBeaconsInRegion?(manager, beacons, region)
+    didRangeBeaconsInRegion?(manager, beacons, region)
     }
     
     func locationManager(manager: CLLocationManager, rangingBeaconsDidFailForRegion region: CLBeaconRegion, withError error: NSError){
-        rangingBeaconsDidFailForRegion?(manager, region, error)
+    rangingBeaconsDidFailForRegion?(manager, region, error)
     }
     
     func locationManager(manager: CLLocationManager, didVisit visit: CLVisit) {
-        didVisit?(manager, visit)
+    didVisit?(manager, visit)
     }
-    #endif
 }
+#endif
