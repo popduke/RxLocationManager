@@ -45,8 +45,11 @@
 		72B752C61D424B1200E6E82B /* RxLocationManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7230449B1D3E58AF00982952 /* RxLocationManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		72BB83B31D42836B00225B40 /* RxLocationManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7230449B1D3E58AF00982952 /* RxLocationManager.framework */; };
 		72BB83BD1D4285AF00225B40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72FC15921D3256650051FB39 /* Assets.xcassets */; };
-		72C922901D4477EB008436D0 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72C9228F1D4477EB008436D0 /* RxCocoa.framework */; };
-		72C922921D4477F1008436D0 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72C922911D4477F1008436D0 /* RxSwift.framework */; };
+		72C53EC81D56E69B007B8624 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72C53EC71D56E69B007B8624 /* RxSwift.framework */; };
+		72C53ECA1D56E6D7007B8624 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72C53EC91D56E6D7007B8624 /* RxSwift.framework */; };
+		72C53ECC1D56E728007B8624 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72C53ECB1D56E728007B8624 /* RxSwift.framework */; };
+		72C53ECE1D56EE67007B8624 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72C53ECD1D56EE67007B8624 /* RxSwift.framework */; };
+		72C53ED01D56EE7A007B8624 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72C53ECF1D56EE7A007B8624 /* RxCocoa.framework */; };
 		72C922941D447A7A008436D0 /* LocationManagerStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C922931D447A79008436D0 /* LocationManagerStub.swift */; };
 		72C9229C1D449FF7008436D0 /* StandardLocationServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C9229B1D449FF7008436D0 /* StandardLocationServiceTest.swift */; };
 		72C9229E1D44DFC0008436D0 /* Fixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C9229D1D44DFC0008436D0 /* Fixtures.swift */; };
@@ -146,6 +149,13 @@
 		72B752CD1D424D7800E6E82B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		72BB83AE1D42836B00225B40 /* RxLocationManager iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RxLocationManager iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		72BB83B21D42836B00225B40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		72C53EC31D56E5A3007B8624 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/RxLocationManager-adtaorgvupmwkpdcuooaxijwotft/Build/Products/Debug-iphonesimulator/RxSwift.framework"; sourceTree = "<group>"; };
+		72C53EC51D56E62F007B8624 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "Carthage/Checkouts/RxSwift/build/Debug-iphoneos/RxSwift.framework"; sourceTree = "<group>"; };
+		72C53EC71D56E69B007B8624 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Checkouts/RxSwift/build/Debug/RxSwift.framework; sourceTree = "<group>"; };
+		72C53EC91D56E6D7007B8624 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "Carthage/Checkouts/RxSwift/build/Debug-appletvos/RxSwift.framework"; sourceTree = "<group>"; };
+		72C53ECB1D56E728007B8624 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/RxLocationManager-adtaorgvupmwkpdcuooaxijwotft/Build/Products/Debug-watchsimulator/RxSwift.framework"; sourceTree = "<group>"; };
+		72C53ECD1D56EE67007B8624 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "Carthage/Checkouts/RxSwift/build/Debug-iphoneos/RxSwift.framework"; sourceTree = "<group>"; };
+		72C53ECF1D56EE7A007B8624 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = "Carthage/Checkouts/RxSwift/build/Debug-iphoneos/RxCocoa.framework"; sourceTree = "<group>"; };
 		72C9228F1D4477EB008436D0 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = "../../Library/Developer/Xcode/DerivedData/RxLocationManager-forrdtavsxtttydggcxklgyodsnw/Build/Products/Debug-iphonesimulator/RxCocoa.framework"; sourceTree = "<group>"; };
 		72C922911D4477F1008436D0 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/RxLocationManager-forrdtavsxtttydggcxklgyodsnw/Build/Products/Debug-iphonesimulator/RxSwift.framework"; sourceTree = "<group>"; };
 		72C922931D447A79008436D0 /* LocationManagerStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManagerStub.swift; sourceTree = "<group>"; };
@@ -181,6 +191,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72C53ECE1D56EE67007B8624 /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,6 +199,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72C53EC81D56E69B007B8624 /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +207,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72C53ECC1D56E728007B8624 /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,6 +215,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72C53ECA1D56E6D7007B8624 /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,8 +253,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72C922921D4477F1008436D0 /* RxSwift.framework in Frameworks */,
-				72C922901D4477EB008436D0 /* RxCocoa.framework in Frameworks */,
+				72C53ED01D56EE7A007B8624 /* RxCocoa.framework in Frameworks */,
 				72B752B61D4247F200E6E82B /* RxLocationManager.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,6 +317,13 @@
 		72B3360A1D2C065D0002FB39 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				72C53ECF1D56EE7A007B8624 /* RxCocoa.framework */,
+				72C53ECD1D56EE67007B8624 /* RxSwift.framework */,
+				72C53ECB1D56E728007B8624 /* RxSwift.framework */,
+				72C53EC91D56E6D7007B8624 /* RxSwift.framework */,
+				72C53EC71D56E69B007B8624 /* RxSwift.framework */,
+				72C53EC51D56E62F007B8624 /* RxSwift.framework */,
+				72C53EC31D56E5A3007B8624 /* RxSwift.framework */,
 				72FB5BD91D4A345E008606E7 /* RxSwift.framework */,
 				72FB5BD71D4A3411008606E7 /* Nimble.framework */,
 				72FB5BD51D4A3407008606E7 /* RxSwift.framework */,
@@ -1296,6 +1316,7 @@
 				72FB5BAF1D4A2343008606E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		72FB5BCB1D4A336B008606E7 /* Build configuration list for PBXNativeTarget "RxLocationManager macOSTests" */ = {
 			isa = XCConfigurationList;
@@ -1304,6 +1325,7 @@
 				72FB5BCD1D4A336B008606E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		72FC15981D3256650051FB39 /* Build configuration list for PBXNativeTarget "RxLocationManagerDemo" */ = {
 			isa = XCConfigurationList;
