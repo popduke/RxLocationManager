@@ -46,11 +46,7 @@
                 mgr, locations in
                 if let copyOfObservers = self?.observers{
                     for (_,observer) in copyOfObservers{
-                        #if os(OSX)
-                            observer.onNext(locations as! [CLLocation])
-                        #else
-                            observer.onNext(locations)
-                        #endif
+                        observer.onNext(locations)
                     }
                 }
             }

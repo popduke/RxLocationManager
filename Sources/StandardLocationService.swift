@@ -302,12 +302,7 @@ class DefaultStandardLocationService: StandardLocationService{
                 mgr, locations in
                 if let copyOfLocatingObservers = self?.locatingObservers{
                     for (_, observer) in copyOfLocatingObservers{
-                        #if os(OSX)
-                            //locations is [AnyObject] here in macOS
-                            observer.onNext(locations as! [CLLocation])
-                        #else
-                            observer.onNext(locations)
-                        #endif
+                        observer.onNext(locations)
                     }
                 }
             }

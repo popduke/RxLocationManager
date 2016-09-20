@@ -12,12 +12,7 @@ import CoreLocation
 class CLLocationManagerBridge: CLLocationManager, CLLocationManagerDelegate{
     var didFailWithError: ((CLLocationManager, NSError) -> Void)?
     var didChangeAuthorizationStatus: ((CLLocationManager, CLAuthorizationStatus)->Void)?
-    
-    #if os(OSX)
-    var didUpdateLocations: ((CLLocationManager, [AnyObject]) -> Void)?
-    #else
     var didUpdateLocations: ((CLLocationManager, [CLLocation]) -> Void)?
-    #endif
     
     #if os(iOS) || os(OSX)
     var didFinishDeferredUpdatesWithError: ((CLLocationManager, NSError?) -> Void)?
@@ -51,17 +46,9 @@ class CLLocationManagerBridge: CLLocationManager, CLLocationManagerDelegate{
         didChangeAuthorizationStatus?(manager, status)
     }
     
-    #if os(OSX)
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [AnyObject]) {
-        didUpdateLocations?(manager, locations)
-    }
-    #else
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         didUpdateLocations?(manager, locations)
     }
-    #endif
-    
-    
 }
 
 #if os(iOS) || os(OSX)
