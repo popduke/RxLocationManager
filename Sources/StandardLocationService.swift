@@ -92,8 +92,9 @@ public protocol StandardLocationServiceConfigurable{
 
 //MARK: StandardLocationService
 public protocol StandardLocationService: StandardLocationServiceConfigurable{
-    #if os(iOS) || os(OSX)
+    #if os(iOS) || os(OSX) || os(watchOS)
     /// Observable of current changing location, series of CLLocation objects will be reported, intermittent LocationUnknown error will be ignored and not stop subscriptions on this observable, other errors are reported as usual
+    @available(watchOS 3.0, *)
     var locating: Observable<[CLLocation]>{get}
     #endif
     
@@ -122,12 +123,12 @@ class DefaultStandardLocationService: StandardLocationService{
     private let bridgeClass: CLLocationManagerBridge.Type
     
     #if os(iOS) || os(watchOS) || os(tvOS)
-    var locMgrForLocation:CLLocationManagerBridge
+    var locMgrForLocation:CLLocationManagerBridge!
     private var locatedObservers = [(id: Int, observer: AnyObserver<CLLocation>)]()
     #endif
     
-    #if os(iOS) || os(OSX)
-    var locMgrForLocating:CLLocationManagerBridge
+    #if os(iOS) || os(OSX) || os(watchOS)
+    var locMgrForLocating:CLLocationManagerBridge!
     private var locatingObservers = [(id: Int, observer: AnyObserver<[CLLocation]>)]()
     #endif
     
@@ -238,7 +239,8 @@ class DefaultStandardLocationService: StandardLocationService{
     }
     #endif
     
-    #if os(iOS) || os(OSX)
+    #if os(iOS) || os(OSX) || os(watchOS)
+    @available(watchOS 3.0, *)
     var locating:Observable<[CLLocation]> {
         get{
             return Observable.create {
@@ -266,9 +268,13 @@ class DefaultStandardLocationService: StandardLocationService{
         #if os(iOS) || os(watchOS) || os(tvOS)
         locMgrForLocation = bridgeClass.init()
         #endif
-        #if os(iOS) || os(OSX)
-        locMgrForLocating = bridgeClass.init()
+        
+        #if os(iOS) || os(OSX) || os(watchOS)
+            if #available(watchOS 3.0, *) {
+                locMgrForLocating = bridgeClass.init()
+            }
         #endif
+        
         #if os(iOS) || os(watchOS) || os(tvOS)
             locMgrForLocation.didUpdateLocations = {
                 [weak self]
@@ -296,27 +302,29 @@ class DefaultStandardLocationService: StandardLocationService{
             }
         #endif
         
-        #if os(iOS) || os(OSX)
-            locMgrForLocating.didUpdateLocations = {
-                [weak self]
-                mgr, locations in
-                if let copyOfLocatingObservers = self?.locatingObservers{
-                    for (_, observer) in copyOfLocatingObservers{
-                        observer.onNext(locations)
+        #if os(iOS) || os(OSX) || os(watchOS)
+            if #available(watchOS 3.0, *){
+                locMgrForLocating.didUpdateLocations = {
+                    [weak self]
+                    mgr, locations in
+                    if let copyOfLocatingObservers = self?.locatingObservers{
+                        for (_, observer) in copyOfLocatingObservers{
+                            observer.onNext(locations)
+                        }
                     }
                 }
-            }
-            
-            locMgrForLocating.didFailWithError = {
-                [weak self]
-                mgr, err in
-                if err.domain == "kCLErrorDomain" && CLError.LocationUnknown.rawValue == err.code{
-                    //ignore location update error, since new update event may come
-                    return
-                }
-                if let copyOfLocatingObservers = self?.locatingObservers{
-                    for (_, observer) in copyOfLocatingObservers{
-                        observer.onError(err)
+                
+                locMgrForLocating.didFailWithError = {
+                    [weak self]
+                    mgr, err in
+                    if err.domain == "kCLErrorDomain" && CLError.LocationUnknown.rawValue == err.code{
+                        //ignore location update error, since new update event may come
+                        return
+                    }
+                    if let copyOfLocatingObservers = self?.locatingObservers{
+                        for (_, observer) in copyOfLocatingObservers{
+                            observer.onError(err)
+                        }
                     }
                 }
             }
