@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
     spec.name = "RxLocationManager"
-    spec.version = "1.0.1"
+    spec.version = "1.1.0"
     spec.summary = "Reactive Style Location Manager for iOS, macOS, watchOS, tvOS"
     spec.description = "If you programs in functional reactive style in iOS, RxLocationManager makes location management a lot easier comparing to CLLocationManager"
     spec.homepage = "https://github.com/popduke/RxLocationManager"
