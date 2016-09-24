@@ -126,7 +126,8 @@ RxLocationManager.Standard.located.subscribe{
 
 #### Monitoring location update of device
 ```
-#if os(iOS) || os(OSX)
+#if os(iOS) || os(OSX) || os(watchOS)
+//available in watchOS 3.0
 RxLocationManager.Standard.locating.subscribe{
     event in
     switch event{
