@@ -20,7 +20,7 @@
     //MARK: DefaultMonitoringVisitsService
     class DefaultMonitoringVisitsService: MonitoringVisitsService{
         let locMgr: CLLocationManagerBridge
-        private var observers = [(id:Int, observer: AnyObserver<CLVisit>)]()
+        fileprivate var observers = [(id:Int, observer: AnyObserver<CLVisit>)]()
         
         var visiting: Observable<CLVisit>{
             get{
@@ -30,8 +30,8 @@
                     let id = nextId()
                     ownerService.observers.append((id, observer))
                     ownerService.locMgr.startMonitoringVisits()
-                    return AnonymousDisposable{
-                        ownerService.observers.removeAtIndex(ownerService.observers.indexOf{$0.id == id}!)
+                    return Disposables.create {
+                        ownerService.observers.remove(at: ownerService.observers.index(where: {$0.id == id})!)
                         if ownerService.observers.count == 0{
                             ownerService.locMgr.stopMonitoringVisits()
                         }

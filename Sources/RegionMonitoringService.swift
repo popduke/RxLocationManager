@@ -19,7 +19,7 @@
          
          - returns: self for chaining call
          */
-        func startMonitoringForRegions(regions: [CLRegion]) -> RegionMonitoringService
+        func startMonitoringForRegions(_ regions: [CLRegion]) -> RegionMonitoringService
         /**
          Unlike the official [version](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/instm/CLLocationManager/stopMonitoringForRegion:), this method allows you to stop monitoring multiple regions at once
          
@@ -27,7 +27,7 @@
          
          - returns: self for chaining call
          */
-        func stopMonitoringForRegions(regions: [CLRegion]) -> RegionMonitoringService
+        func stopMonitoringForRegions(_ regions: [CLRegion]) -> RegionMonitoringService
         /**
          convenient method to stop all monitored regions at once
          
@@ -41,7 +41,7 @@
          
          - returns: self for chaining call
          */
-        func requestRegionsState(regions:[CLRegion]) -> RegionMonitoringService
+        func requestRegionsState(_ regions:[CLRegion]) -> RegionMonitoringService
         
         #if os(iOS)
         /**
@@ -51,7 +51,7 @@
          
          - returns: self for chaining call
          */
-        func startRangingBeaconsInRegion(region: CLBeaconRegion) -> RegionMonitoringService
+        func startRangingBeaconsInRegion(_ region: CLBeaconRegion) -> RegionMonitoringService
         /**
          Refer to official [document](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/instm/CLLocationManager/stopRangingBeaconsInRegion:)
          
@@ -59,7 +59,7 @@
          
          - returns: self for chaining call
          */
-        func stopRangingBeaconsInRegion(region: CLBeaconRegion) -> RegionMonitoringService
+        func stopRangingBeaconsInRegion(_ region: CLBeaconRegion) -> RegionMonitoringService
         #endif
     }
     //MARK: RegionMonitoringService
@@ -90,14 +90,14 @@
     class DefaultRegionMonitoringService: RegionMonitoringService{
         let locMgr: CLLocationManagerBridge
     
-        private var enteringObservers = [(id:Int, observer: AnyObserver<CLRegion>)]()
-        private var exitingObservers = [(id:Int, observer: AnyObserver<CLRegion>)]()
-        private var determinedRegionStateObservers = [(id:Int, observer: AnyObserver<(CLRegion, CLRegionState)>)]()
-        private var errorObservers = [(id:Int, observer: AnyObserver<(CLRegion?, NSError)>)]()
-        private var monitoredRegionsObservers = [(id:Int, observer: AnyObserver<Set<CLRegion>>)]()
+        fileprivate var enteringObservers = [(id:Int, observer: AnyObserver<CLRegion>)]()
+        fileprivate var exitingObservers = [(id:Int, observer: AnyObserver<CLRegion>)]()
+        fileprivate var determinedRegionStateObservers = [(id:Int, observer: AnyObserver<(CLRegion, CLRegionState)>)]()
+        fileprivate var errorObservers = [(id:Int, observer: AnyObserver<(CLRegion?, NSError)>)]()
+        fileprivate var monitoredRegionsObservers = [(id:Int, observer: AnyObserver<Set<CLRegion>>)]()
         
         #if os(iOS)
-        private var rangingObservers = [(id:Int, observer: AnyObserver<([CLBeacon], CLBeaconRegion)>)]()
+        fileprivate var rangingObservers = [(id:Int, observer: AnyObserver<([CLBeacon], CLBeaconRegion)>)]()
         #endif
         
         var maximumRegionMonitoringDistance: CLLocationDistance{
@@ -113,8 +113,8 @@
                     var ownerService:DefaultRegionMonitoringService! = self
                     let id = nextId()
                     ownerService.enteringObservers.append((id, observer))
-                    return AnonymousDisposable{
-                        ownerService.enteringObservers.removeAtIndex(ownerService.enteringObservers.indexOf{$0.id == id}!)
+                    return Disposables.create {
+                        ownerService.enteringObservers.remove(at: ownerService.enteringObservers.index(where: {$0.id == id})!)
                         ownerService = nil
                     }
                 }
@@ -128,8 +128,8 @@
                     var ownerService:DefaultRegionMonitoringService! = self
                     let id = nextId()
                     ownerService.exitingObservers.append((id, observer))
-                    return AnonymousDisposable{
-                        ownerService.exitingObservers.removeAtIndex(ownerService.exitingObservers.indexOf{$0.id == id}!)
+                    return Disposables.create {
+                        ownerService.exitingObservers.remove(at: ownerService.exitingObservers.index(where: {$0.id == id})!)
                         ownerService = nil
                     }
                 }
@@ -143,8 +143,8 @@
                     var ownerService:DefaultRegionMonitoringService! = self
                     let id = nextId()
                     ownerService.determinedRegionStateObservers.append((id, observer))
-                    return AnonymousDisposable{
-                        ownerService.determinedRegionStateObservers.removeAtIndex(ownerService.determinedRegionStateObservers.indexOf{$0.id == id}!)
+                    return Disposables.create {
+                        ownerService.determinedRegionStateObservers.remove(at: ownerService.determinedRegionStateObservers.index(where: {$0.id == id})!)
                         ownerService = nil
                     }
                 }
@@ -158,8 +158,8 @@
                     var ownerService:DefaultRegionMonitoringService! = self
                     let id = nextId()
                     ownerService.errorObservers.append((id, observer))
-                    return AnonymousDisposable{
-                        ownerService.errorObservers.removeAtIndex(ownerService.errorObservers.indexOf{$0.id == id}!)
+                    return Disposables.create {
+                        ownerService.errorObservers.remove(at: ownerService.errorObservers.index(where: {$0.id == id})!)
                         ownerService = nil
                     }
                 }
@@ -176,8 +176,8 @@
                     if !ownerService.locMgr.monitoredRegions.isEmpty{
                         observer.onNext(ownerService.locMgr.monitoredRegions)
                     }
-                    return AnonymousDisposable{
-                        ownerService.monitoredRegionsObservers.removeAtIndex(ownerService.monitoredRegionsObservers.indexOf{$0.id == id}!)
+                    return Disposables.create {
+                        ownerService.monitoredRegionsObservers.remove(at: ownerService.monitoredRegionsObservers.index(where:{$0.id == id})!)
                         ownerService = nil
                     }
                 }
@@ -197,8 +197,8 @@
                     var ownerService:DefaultRegionMonitoringService! = self
                     let id = nextId()
                     ownerService.rangingObservers.append((id, observer))
-                    return AnonymousDisposable{
-                        ownerService.rangingObservers.removeAtIndex(ownerService.rangingObservers.indexOf{$0.id == id}!)
+                    return Disposables.create {
+                        ownerService.rangingObservers.remove(at: ownerService.rangingObservers.index(where: {$0.id == id})!)
                         ownerService = nil
                     }
                 }
@@ -276,27 +276,27 @@
             #endif
         }
         
-        func requestRegionsState(regions: [CLRegion]) -> RegionMonitoringService {
+        func requestRegionsState(_ regions: [CLRegion]) -> RegionMonitoringService {
             for region in regions{
-                locMgr.requestStateForRegion(region)
+                locMgr.requestState(for: region)
             }
             return self
         }
         
-        func startMonitoringForRegions(regions: [CLRegion]) -> RegionMonitoringService {
+        func startMonitoringForRegions(_ regions: [CLRegion]) -> RegionMonitoringService {
             for region in regions{
-                locMgr.startMonitoringForRegion(region)
+                locMgr.startMonitoring(for: region)
             }
             return self
         }
         
-        func stopMonitoringForRegions(regions: [CLRegion]) -> RegionMonitoringService {
+        func stopMonitoringForRegions(_ regions: [CLRegion]) -> RegionMonitoringService {
             for region in regions{
-                locMgr.stopMonitoringForRegion(region)
+                locMgr.stopMonitoring(for: region)
             }
             
             //Workaround for lacking knowledge about the time when regions actually stop monitored
-            let currentMonitoredRegions = locMgr.monitoredRegions.subtract(regions)
+            let currentMonitoredRegions = locMgr.monitoredRegions.subtracting(regions)
             for (_, observer) in monitoredRegionsObservers{
                 observer.onNext(currentMonitoredRegions)
             }
@@ -305,19 +305,19 @@
         
         func stopMonitoringForAllRegions() -> RegionMonitoringService {
             for region in locMgr.monitoredRegions{
-                locMgr.stopMonitoringForRegion(region)
+                locMgr.stopMonitoring(for: region)
             }
             return self
         }
         
         #if os(iOS)
-        func startRangingBeaconsInRegion(region: CLBeaconRegion) -> RegionMonitoringService {
-            locMgr.startRangingBeaconsInRegion(region)
+        func startRangingBeaconsInRegion(_ region: CLBeaconRegion) -> RegionMonitoringService {
+            locMgr.startRangingBeacons(in: region)
             return self
         }
         
-        func stopRangingBeaconsInRegion(region: CLBeaconRegion) -> RegionMonitoringService {
-            locMgr.stopRangingBeaconsInRegion(region)
+        func stopRangingBeaconsInRegion(_ region: CLBeaconRegion) -> RegionMonitoringService {
+            locMgr.stopRangingBeacons(in: region)
             return self
         }
         #endif
