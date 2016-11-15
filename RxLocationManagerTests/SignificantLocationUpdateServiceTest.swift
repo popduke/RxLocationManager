@@ -27,13 +27,13 @@ import RxLocationManager
         }
         
         func testLocatingObservableWithoutError() {
-            let xcTestExpectation = self.expectationWithDescription("GotSeriesOfLocations")
+            let xcTestExpectation = self.expectation(description: "GotSeriesOfLocations")
             var n = 1
             significantLocationUpdateService.locating
                 .subscribe{
                     event in
                     switch event{
-                    case .Next(let location):
+                    case .next(let location):
                         switch n{
                         case 1:
                             expect(location.last!).to(equal(Locations.London))
@@ -47,9 +47,9 @@ import RxLocationManager
                         default:
                             expect(true).to(beFalse(), description: "You should not be here")
                         }
-                    case .Completed:
+                    case .completed:
                         expect(true).to(beFalse(), description: "Completed should not get called when observing location updating")
-                    case .Error:
+                    case .error:
                         expect(true).to(beFalse(), description: "Error should not get called when location is reported")
                     }
                 }
@@ -58,17 +58,17 @@ import RxLocationManager
             bridge.didUpdateLocations!(dummyLocationManager, [Locations.London])
             bridge.didUpdateLocations!(dummyLocationManager, [Locations.Johnannesburg])
             bridge.didUpdateLocations!(dummyLocationManager, [Locations.Moscow])
-            self.waitForExpectationsWithTimeout(100, handler:nil)
+            self.waitForExpectations(timeout: 100, handler:nil)
         }
         
         func testLocatingObservableWithError() {
-            let xcTextExpectation = self.expectationWithDescription("GotSeriesOfLocationsAndError")
+            let xcTextExpectation = self.expectation(description: "GotSeriesOfLocationsAndError")
             var n = 1
             significantLocationUpdateService.locating
                 .subscribe{
                     event in
                     switch event{
-                    case .Next(let location):
+                    case .next(let location):
                         switch n{
                         case 1:
                             expect(location.last!).to(equal(Locations.London))
@@ -81,11 +81,11 @@ import RxLocationManager
                         default:
                             expect(true).to(beFalse(), description: "You should not be here")
                         }
-                    case .Completed:
+                    case .completed:
                         expect(true).to(beFalse(), description: "Completed should not get called when observing location updating")
-                    case .Error(let error as NSError):
-                        expect(error.domain == CLError.Network.toNSError().domain).to(beTrue())
-                        expect(error.code == CLError.Network.toNSError().code).to(beTrue())
+                    case .error(let error as NSError):
+                        expect(error.domain == CLError.network.toNSError().domain).to(beTrue())
+                        expect(error.code == CLError.network.toNSError().code).to(beTrue())
                         xcTextExpectation.fulfill()
                     default:
                         expect(true).to(beFalse(), description: "You should not be here")
@@ -94,9 +94,9 @@ import RxLocationManager
                 .addDisposableTo(disposeBag)
             bridge.didUpdateLocations!(dummyLocationManager, [Locations.London])
             bridge.didUpdateLocations!(dummyLocationManager, [Locations.Johnannesburg])
-            bridge.didFailWithError!(dummyLocationManager, CLError.Network.toNSError())
+            bridge.didFailWithError!(dummyLocationManager, CLError.network.toNSError())
             bridge.didUpdateLocations!(dummyLocationManager, [Locations.Moscow])
-            self.waitForExpectationsWithTimeout(100, handler:nil)
+            self.waitForExpectations(timeout: 100, handler:nil)
         }
     }
 #endif

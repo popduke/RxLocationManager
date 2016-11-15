@@ -19,7 +19,7 @@
     //MARK: DefaultSignificantLocationUpdateService
     class DefaultSignificantLocationUpdateService: SignificantLocationUpdateService{
         let locMgr:CLLocationManagerBridge
-        private var observers = [(id: Int, AnyObserver<[CLLocation]>)]()
+        fileprivate var observers = [(id: Int, AnyObserver<[CLLocation]>)]()
         var locating: Observable<[CLLocation]>{
             get{
                 return Observable.create {
@@ -28,8 +28,8 @@
                     let id = nextId()
                     ownerService.observers.append((id, observer))
                     ownerService.locMgr.startMonitoringSignificantLocationChanges()
-                    return AnonymousDisposable {
-                        ownerService.observers.removeAtIndex(ownerService.observers.indexOf{$0.id == id}!)
+                    return Disposables.create {
+                        ownerService.observers.remove(at: ownerService.observers.index(where: {$0.id == id})!)
                         if(ownerService.observers.count == 0){
                             ownerService.locMgr.stopMonitoringSignificantLocationChanges()
                         }

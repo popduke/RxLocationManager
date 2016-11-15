@@ -20,12 +20,12 @@ class LocationManagerStub: CLLocationManagerBridge{
     var currentDesiredAccuracy: CLLocationAccuracy = 0.0
     var currentPausesLocationUpdatesAutomatically = false
     var currentAllowsBackgroundLocationUpdates = false
-    var currentActivityType = CLActivityType.Other
+    var currentActivityType = CLActivityType.other
     
-    var currentlyDeferedSetting:(CLLocationDistance, NSTimeInterval)?
+    var currentlyDeferedSetting:(CLLocationDistance, TimeInterval)?
     
     var currentHeadingFilter = 0.0
-    var currentHeadingOrientation = CLDeviceOrientation.Portrait
+    var currentHeadingOrientation = CLDeviceOrientation.portrait
     
     var currentMonitoredRegions = Set<CLRegion>()
     var currentRegionStateRequests = Set<CLRegion>()
@@ -110,7 +110,7 @@ class LocationManagerStub: CLLocationManagerBridge{
             return currentAllowsBackgroundLocationUpdates = newValue
         }
     }
-    override func allowDeferredLocationUpdatesUntilTraveled(distance: CLLocationDistance, timeout: NSTimeInterval){
+    override func allowDeferredLocationUpdates(untilTraveled distance: CLLocationDistance, timeout: TimeInterval){
         currentlyDeferedSetting = (distance, timeout)
     }
     override func disallowDeferredLocationUpdates(){
@@ -164,10 +164,10 @@ class LocationManagerStub: CLLocationManagerBridge{
     #endif
     
     #if os(iOS) || os(OSX)
-    override func startMonitoringForRegion(region: CLRegion){
+    override func startMonitoring(for region: CLRegion){
         currentMonitoredRegions.insert(region)
     }
-    override func stopMonitoringForRegion(region: CLRegion){
+    override func stopMonitoring(for region: CLRegion){
         currentMonitoredRegions.remove(region)
     }
     override var monitoredRegions: Set<CLRegion> {
@@ -180,7 +180,7 @@ class LocationManagerStub: CLLocationManagerBridge{
             return 200
         }
     }
-    override func requestStateForRegion(region: CLRegion){
+    override func requestState(for region: CLRegion){
         currentRegionStateRequests.insert(region)
     }
     #endif
@@ -191,10 +191,10 @@ class LocationManagerStub: CLLocationManagerBridge{
             return currangRangedBeaconRegions
         }
     }
-    override func startRangingBeaconsInRegion(region: CLBeaconRegion){
+    override func startRangingBeacons(in region: CLBeaconRegion){
         currangRangedBeaconRegions.insert(region)
     }
-    override func stopRangingBeaconsInRegion(region: CLBeaconRegion){
+    override func stopRangingBeacons(in region: CLBeaconRegion){
         currangRangedBeaconRegions.remove(region)
     }
     #endif

@@ -28,22 +28,22 @@ import RxLocationManager
         }
         
         func testGetSetHeadingFilter() {
-            headingUpdateService.headingFilter(20.0)
+            _ = headingUpdateService.headingFilter(20.0)
             expect(self.headingUpdateService.headingFilter).to(equal(bridge.headingFilter))
             expect(self.headingUpdateService.headingFilter).to(equal(20.0))
         }
         func testGetSetHeadingOrientation() {
-            headingUpdateService.headingOrientation(CLDeviceOrientation.FaceDown)
+            _ = headingUpdateService.headingOrientation(CLDeviceOrientation.faceDown)
             expect(self.headingUpdateService.headingOrientation).to(equal(bridge.headingOrientation))
-            expect(self.headingUpdateService.headingOrientation).to(equal(CLDeviceOrientation.FaceDown))
+            expect(self.headingUpdateService.headingOrientation).to(equal(CLDeviceOrientation.faceDown))
         }
         func testGetSetDisplayHeadingCalibration() {
-            headingUpdateService.displayHeadingCalibration(false)
+            _ = headingUpdateService.displayHeadingCalibration(false)
             expect(self.headingUpdateService.displayHeadingCalibration).to(equal(bridge.displayHeadingCalibration))
             expect(self.headingUpdateService.displayHeadingCalibration).to(beFalse())
         }
         func testGetSetTrueHeading() {
-            headingUpdateService.startTrueHeading((100, kCLLocationAccuracyKilometer))
+            _ = headingUpdateService.startTrueHeading((100, kCLLocationAccuracyKilometer))
             expect(self.bridge.currentDistanceFilter).to(equal(100))
             expect(self.bridge.currentDesiredAccuracy).to(equal(kCLLocationAccuracyKilometer))
             expect(self.bridge.updatingLocation).to(beTrue())
@@ -51,16 +51,16 @@ import RxLocationManager
             expect(self.bridge.updatingLocation).to(beFalse())
         }
         func testHeadingObservable() {
-            let xcTestExpectation = self.expectationWithDescription("Get one heading update")
+            let xcTestExpectation = self.expectation(description: "Get one heading update")
             headingUpdateService.heading
-                .subscribeNext{
+                .subscribe(onNext: {
                     heading in
                     expect(heading == Headings.north).to(beTrue())
                     xcTestExpectation.fulfill()
-                }
+                })
                 .addDisposableTo(disposeBag)
             self.bridge.didUpdateHeading!(dummyLocationManager, Headings.north)
-            self.waitForExpectationsWithTimeout(50, handler: nil)
+            self.waitForExpectations(timeout: 50, handler: nil)
         }
     }
 #endif

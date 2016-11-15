@@ -21,7 +21,7 @@
          
          - returns: self for chaining call
          */
-        func headingFilter(degrees:CLLocationDegrees) -> HeadingUpdateService
+        func headingFilter(_ degrees:CLLocationDegrees) -> HeadingUpdateService
         /**
          Refer description in official [document](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/instp/CLLocationManager/headingOrientation)
          
@@ -29,7 +29,7 @@
          
          - returns: self for chaining call
          */
-        func headingOrientation(degrees:CLDeviceOrientation) -> HeadingUpdateService
+        func headingOrientation(_ degrees:CLDeviceOrientation) -> HeadingUpdateService
         /**
          Should display heading calibration during monitoring heading update?
          
@@ -37,7 +37,7 @@
          
          - returns: self for chaining call
          */
-        func displayHeadingCalibration(should:Bool) -> HeadingUpdateService
+        func displayHeadingCalibration(_ should:Bool) -> HeadingUpdateService
         /// Current heading filter value
         var headingFilter: CLLocationDegrees{get}
         /// Current heading orientation value
@@ -59,7 +59,7 @@
          
          - parameter withParams: setting distance filter and desired accuracy for the location update
          */
-        func startTrueHeading(withParams: (distanceFilter:CLLocationDistance, desiredAccuracy:CLLocationAccuracy)?)
+        func startTrueHeading(_ withParams: (distanceFilter:CLLocationDistance, desiredAccuracy:CLLocationAccuracy)?)
         /**
          Stop generating true heading
          */
@@ -74,9 +74,9 @@
     
     //MARK: DefaultHeadingUpdateService
     class DefaultHeadingUpdateService: HeadingUpdateService {
-        private let bridgeClass: CLLocationManagerBridge.Type
+        fileprivate let bridgeClass: CLLocationManagerBridge.Type
         var locMgr: CLLocationManagerBridge
-        private var trueHeadingParams: (distanceFilter:CLLocationDistance, desiredAccuracy:CLLocationAccuracy)?
+        fileprivate var trueHeadingParams: (distanceFilter:CLLocationDistance, desiredAccuracy:CLLocationAccuracy)?
 
         var headingFilter: CLLocationDegrees{
             get{
@@ -108,8 +108,8 @@
                         ownerService.locMgr.startUpdatingLocation()
                     }
                     ownerService.locMgr.startUpdatingHeading()
-                    return AnonymousDisposable {
-                        ownerService.observers.removeAtIndex(ownerService.observers.indexOf{$0.id == id}!)
+                    return Disposables.create {
+                        ownerService.observers.remove(at: ownerService.observers.index(where: {$0.id == id})!)
                         if(ownerService.observers.count == 0){
                             ownerService.locMgr.stopUpdatingLocation()
                             ownerService.locMgr.stopUpdatingHeading()
@@ -143,22 +143,22 @@
             }
         }
         
-        func headingFilter(degrees: CLLocationDegrees) -> HeadingUpdateService {
+        func headingFilter(_ degrees: CLLocationDegrees) -> HeadingUpdateService {
             locMgr.headingFilter = degrees
             return self
         }
         
-        func headingOrientation(degrees: CLDeviceOrientation) -> HeadingUpdateService {
+        func headingOrientation(_ degrees: CLDeviceOrientation) -> HeadingUpdateService {
             locMgr.headingOrientation = degrees
             return self
         }
         
-        func displayHeadingCalibration(should: Bool) -> HeadingUpdateService {
+        func displayHeadingCalibration(_ should: Bool) -> HeadingUpdateService {
             locMgr.displayHeadingCalibration = should
             return self
         }
         
-        func startTrueHeading(withParams: (distanceFilter: CLLocationDistance, desiredAccuracy: CLLocationAccuracy)?) {
+        func startTrueHeading(_ withParams: (distanceFilter: CLLocationDistance, desiredAccuracy: CLLocationAccuracy)?) {
             if withParams == nil{
                 trueHeadingParams = (1000, kCLLocationAccuracyKilometer)
             }else{
@@ -180,9 +180,9 @@
         
         func clone() -> HeadingUpdateService {
             let clone = DefaultHeadingUpdateService(bridgeClass:bridgeClass)
-            clone.headingFilter(self.headingFilter)
-            clone.headingOrientation(self.headingOrientation)
-            clone.displayHeadingCalibration(self.displayHeadingCalibration)
+            _ = clone.headingFilter(self.headingFilter)
+            _ = clone.headingOrientation(self.headingOrientation)
+            _ = clone.displayHeadingCalibration(self.displayHeadingCalibration)
             return clone
         }
     }

@@ -38,15 +38,15 @@ class CLLocationManagerBridge: CLLocationManager, CLLocationManagerDelegate{
         self.delegate = self
     }
     
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        didFailWithError?(manager, error)
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        didFailWithError?(manager, error as NSError)
     }
     
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         didChangeAuthorizationStatus?(manager, status)
     }
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         didUpdateLocations?(manager, locations)
     }
 }

@@ -19,7 +19,7 @@ public protocol StandardLocationServiceConfigurable{
      
      - returns: self for chaining call
      */
-    func distanceFilter(distance: CLLocationDistance) -> StandardLocationService
+    func distanceFilter(_ distance: CLLocationDistance) -> StandardLocationService
     /**
      Set desired accuracy
      
@@ -27,7 +27,7 @@ public protocol StandardLocationServiceConfigurable{
      
      - returns: self for chaining call
      */
-    func desiredAccuracy(desiredAccuracy: CLLocationAccuracy) -> StandardLocationService
+    func desiredAccuracy(_ desiredAccuracy: CLLocationAccuracy) -> StandardLocationService
     
     #if os(iOS)
     /**
@@ -37,7 +37,7 @@ public protocol StandardLocationServiceConfigurable{
      
      - returns: self for chaining call
      */
-    func allowDeferredLocationUpdates(untilTraveled distance: CLLocationDistance, timeout: NSTimeInterval) -> StandardLocationService
+    func allowDeferredLocationUpdates(untilTraveled distance: CLLocationDistance, timeout: TimeInterval) -> StandardLocationService
     /**
      Refer description in official [document](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/instm/CLLocationManager/disallowDeferredLocationUpdates)
      
@@ -51,7 +51,7 @@ public protocol StandardLocationServiceConfigurable{
      
      - returns: self for chaining call
      */
-    func pausesLocationUpdatesAutomatically(pause : Bool) -> StandardLocationService
+    func pausesLocationUpdatesAutomatically(_ pause : Bool) -> StandardLocationService
     
     
     /**
@@ -62,7 +62,7 @@ public protocol StandardLocationServiceConfigurable{
      - returns: self for chaining call
      */
     @available(iOS 9.0, *)
-    func allowsBackgroundLocationUpdates(allow : Bool) -> StandardLocationService
+    func allowsBackgroundLocationUpdates(_ allow : Bool) -> StandardLocationService
     /**
      Set value to [activityType](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/#//apple_ref/occ/instp/CLLocationManager/activityType)
      
@@ -70,7 +70,7 @@ public protocol StandardLocationServiceConfigurable{
      
      - returns: self for chaining call
      */
-    func activityType(type: CLActivityType) -> StandardLocationService
+    func activityType(_ type: CLActivityType) -> StandardLocationService
     #endif
     
     /// Current distance filter value
@@ -120,21 +120,21 @@ public protocol StandardLocationService: StandardLocationServiceConfigurable{
 
 //MARK: DefaultStandardLocationService
 class DefaultStandardLocationService: StandardLocationService{
-    private let bridgeClass: CLLocationManagerBridge.Type
+    fileprivate let bridgeClass: CLLocationManagerBridge.Type
     
     #if os(iOS) || os(watchOS) || os(tvOS)
     var locMgrForLocation:CLLocationManagerBridge!
-    private var locatedObservers = [(id: Int, observer: AnyObserver<CLLocation>)]()
+    fileprivate var locatedObservers = [(id: Int, observer: AnyObserver<CLLocation>)]()
     #endif
     
     #if os(iOS) || os(OSX) || os(watchOS)
     var locMgrForLocating:CLLocationManagerBridge!
-    private var locatingObservers = [(id: Int, observer: AnyObserver<[CLLocation]>)]()
+    fileprivate var locatingObservers = [(id: Int, observer: AnyObserver<[CLLocation]>)]()
     #endif
     
     #if os(iOS)
-    private var deferredUpdateErrorObservers = [(id: Int, observer: AnyObserver<NSError?>)]()
-    private var isPausedObservers = [(id: Int, observer: AnyObserver<Bool>)]()
+    fileprivate var deferredUpdateErrorObservers = [(id: Int, observer: AnyObserver<NSError?>)]()
+    fileprivate var isPausedObservers = [(id: Int, observer: AnyObserver<Bool>)]()
     #endif
     
     var distanceFilter:CLLocationDistance{
@@ -194,8 +194,8 @@ class DefaultStandardLocationService: StandardLocationService{
                             ownerService.locMgrForLocation.startUpdatingLocation()
                         #endif
                     }
-                    return AnonymousDisposable{
-                        ownerService.locatedObservers.removeAtIndex(ownerService.locatedObservers.indexOf{$0.id == id}!)
+                    return Disposables.create {
+                        ownerService.locatedObservers.remove(at: ownerService.locatedObservers.index(where: {$0.id == id})!)
                         if(ownerService.locatedObservers.count == 0){
                             ownerService.locMgrForLocation.stopUpdatingLocation()
                         }
@@ -215,8 +215,8 @@ class DefaultStandardLocationService: StandardLocationService{
                 var ownerService: DefaultStandardLocationService! = self
                 let id = nextId()
                 ownerService.isPausedObservers.append((id, observer))
-                return AnonymousDisposable{
-                    ownerService.isPausedObservers.removeAtIndex(ownerService.isPausedObservers.indexOf{$0.id == id}!)
+                return Disposables.create {
+                    ownerService.isPausedObservers.remove(at: ownerService.isPausedObservers.index(where: {$0.id == id})!)
                     ownerService = nil
                 }
             }
@@ -230,8 +230,8 @@ class DefaultStandardLocationService: StandardLocationService{
                 var ownerService: DefaultStandardLocationService! = self
                 let id = nextId()
                 ownerService.deferredUpdateErrorObservers.append((id, observer))
-                return AnonymousDisposable{
-                    ownerService.deferredUpdateErrorObservers.removeAtIndex(ownerService.deferredUpdateErrorObservers.indexOf{$0.id == id}!)
+                return Disposables.create {
+                    ownerService.deferredUpdateErrorObservers.remove(at: ownerService.deferredUpdateErrorObservers.index(where: {$0.id == id})!)
                     ownerService = nil
                 }
             }
@@ -250,8 +250,8 @@ class DefaultStandardLocationService: StandardLocationService{
                 ownerService.locatingObservers.append((id, observer))
                 //calling this method to start updating location anyway, it's no harm according to the doc
                 ownerService.locMgrForLocating.startUpdatingLocation()
-                return AnonymousDisposable{
-                    ownerService.locatingObservers.removeAtIndex(ownerService.locatingObservers.indexOf{$0.id == id}!)
+                return Disposables.create {
+                    ownerService.locatingObservers.remove(at: ownerService.locatingObservers.index(where: {$0.id == id})!)
                     if(ownerService.locatingObservers.count == 0){
                         ownerService.locMgrForLocating.stopUpdatingLocation()
                     }
@@ -317,7 +317,7 @@ class DefaultStandardLocationService: StandardLocationService{
                 locMgrForLocating.didFailWithError = {
                     [weak self]
                     mgr, err in
-                    if err.domain == "kCLErrorDomain" && CLError.LocationUnknown.rawValue == err.code{
+                    if err.domain == "kCLErrorDomain" && CLError.locationUnknown.rawValue == err.code{
                         //ignore location update error, since new update event may come
                         return
                     }
@@ -364,8 +364,8 @@ class DefaultStandardLocationService: StandardLocationService{
     }
     
     #if os(iOS)
-    func allowDeferredLocationUpdates(untilTraveled distance: CLLocationDistance, timeout: NSTimeInterval) -> StandardLocationService{
-        locMgrForLocating.allowDeferredLocationUpdatesUntilTraveled(distance, timeout: timeout)
+    func allowDeferredLocationUpdates(untilTraveled distance: CLLocationDistance, timeout: TimeInterval) -> StandardLocationService{
+        locMgrForLocating.allowDeferredLocationUpdates(untilTraveled: distance, timeout: timeout)
         return self
     }
     
@@ -374,24 +374,24 @@ class DefaultStandardLocationService: StandardLocationService{
         return self
     }
     
-    func pausesLocationUpdatesAutomatically(pause: Bool) -> StandardLocationService {
+    func pausesLocationUpdatesAutomatically(_ pause: Bool) -> StandardLocationService {
         locMgrForLocating.pausesLocationUpdatesAutomatically = pause
         return self
     }
     
     @available(iOS 9.0, *)
-    func allowsBackgroundLocationUpdates(allow: Bool) -> StandardLocationService {
+    func allowsBackgroundLocationUpdates(_ allow: Bool) -> StandardLocationService {
         locMgrForLocating.allowsBackgroundLocationUpdates = allow
         return self
     }
     
-    func activityType(type: CLActivityType) -> StandardLocationService {
+    func activityType(_ type: CLActivityType) -> StandardLocationService {
         locMgrForLocating.activityType = type
         return self
     }
     #endif
     
-    func distanceFilter(distance: CLLocationDistance) -> StandardLocationService {
+    func distanceFilter(_ distance: CLLocationDistance) -> StandardLocationService {
         #if os(iOS) || os(watchOS) || os(tvOS)
             locMgrForLocation.distanceFilter = distance
         #endif
@@ -402,7 +402,7 @@ class DefaultStandardLocationService: StandardLocationService{
         return self
     }
     
-    func desiredAccuracy(desiredAccuracy: CLLocationAccuracy) -> StandardLocationService {
+    func desiredAccuracy(_ desiredAccuracy: CLLocationAccuracy) -> StandardLocationService {
         #if os(iOS) || os(watchOS) || os(tvOS)
             locMgrForLocation.desiredAccuracy = desiredAccuracy
         #endif
@@ -416,15 +416,15 @@ class DefaultStandardLocationService: StandardLocationService{
     func clone() -> StandardLocationService {
         let cloned = DefaultStandardLocationService(bridgeClass: bridgeClass)
         #if os(iOS)
-            cloned.activityType(self.activityType)
+            _ = cloned.activityType(self.activityType)
             if #available(iOS 9.0, *) {
-                cloned.allowsBackgroundLocationUpdates(self.allowsBackgroundLocationUpdates)
+                _ = cloned.allowsBackgroundLocationUpdates(self.allowsBackgroundLocationUpdates)
             }
-            cloned.pausesLocationUpdatesAutomatically(self.pausesLocationUpdatesAutomatically)
+            _ = cloned.pausesLocationUpdatesAutomatically(self.pausesLocationUpdatesAutomatically)
         #endif
         
-        cloned.desiredAccuracy(self.desiredAccuracy)
-        cloned.distanceFilter(self.distanceFilter)
+        _ = cloned.desiredAccuracy(self.desiredAccuracy)
+        _ = cloned.distanceFilter(self.distanceFilter)
         
         return cloned
     }
