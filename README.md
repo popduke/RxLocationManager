@@ -7,6 +7,12 @@
 ## Introduction
 You may find CLLocationManager awkward to use if you adopt [RP](http://reactivex.io/)([RxSwift](https://github.com/ReactiveX/RxSwift)) paradigm to develop apps. RxLocationManager is an attempt to create a "reactive" skin around CLLocationManager, so that you don't need to worry about things like conform your view controller to CLLocationManagerDelegate which sometimes feels unnatural, where to put CLLocationManager instance(e.g. AppDelegate) for easily referencing, etc. Everything is behind RxLocationManager class and its static methods and variables. Internally RxLocationManager has multiple sharing CLLocationManager+Delegate instances, and manage them efficiently in terms of memory usage and battery life. Instead of providing an "all-in-one" class like CLLocationManager does, RxLocationManager divides properties/methods into several groups based on their relativity, for example, location related APIs go into *StandardLocationService* class, heading update related APIs go into *HeadingUpdateService* class, region monitoring related APIs go into *RegionMonitoringService* class which also includes ranging beacons capability, and visits monitoring related APIs go into *MonitoringVisitsService*, so it's more clear to use.
 
+## Requirement
+* iOS 8.0+ | macOS 10.10+ | tvOS 9.0+ | watchOS 2.0+
+* Xcode 8.1+
+* Swift 3.0+ (for Swift 2 support, see branch [Swift-2.X](https://github.com/popduke/RxLocationManager/tree/Swift-2.x))
+* RxSwift 3.0+
+
 ## Installation
 ### [CocoaPods](https://guides.cocoapods.org/using/using-cocoapods.html)
 Add RxLocationManager dependency to your Podfile
@@ -61,9 +67,9 @@ RxLocationManager.enable
    //$0 is Boolean
    return $0 ? "enabled" : "disabled"
 }
-.subscribeNext{
+.subscribe(onNext:{
    print("Location Service is \($0)")
-}
+})
 .addDisposableTo(disposeBag)
 ```
 
@@ -71,10 +77,10 @@ RxLocationManager.enable
 
 ```
 RxLocationManager.authorizationStatus
-.subscribeNext{
+.subscribe(onNext:{
    //$0 is CLAuthorizationStatus
    print("Current authorization status is \($0)")
-}
+})
 .addDisposableTo(disposeBag)
 ```
 
@@ -107,20 +113,19 @@ RxLocationManager.isRangingAvailable
 ```
 // RxLocationManager.Standard is a shared standard location service instance
 #if os(iOS) || os(watchOS) || os(tvOS)
-RxLocationManager.Standard.located.subscribe{
-    event in
-    switch event{
-    case .Next(let location):
+RxLocationManager.Standard.located.subscribe(
+    onNext:{
         // the event will only be triggered once to report current determined location of device
-        print("Current Location is \(location)")
-    case .Completed:
-        // completed event will get triggered after location is reported successfully
-        print("Subscription is Completed")
-    case .Error(let error):
+        print("Current Location is \($0)")
+    },
+    onError:{
         // in case some error occurred during determining device location, e.g. LocationUnknown
-    }
-}
-.addDisposableTo(disposeBag)
+    },
+    onCompleted:{
+        // completed event will get triggered after location is reported successfully
+        print("Subscription is Completed")    
+    })
+    .addDisposableTo(disposeBag)
 #endif
 ```
 
@@ -128,19 +133,18 @@ RxLocationManager.Standard.located.subscribe{
 ```
 #if os(iOS) || os(OSX) || os(watchOS)
 //available in watchOS 3.0
-RxLocationManager.Standard.locating.subscribe{
-    event in
-    switch event{
-    case .Next(let location):
+RxLocationManager.Standard.locating.subscribe(
+    onNext:{
         // series of events will be delivered during subscription
-        print("Current Location is \(location)")
-    case .Completed:
-        // no complete event
-    case .Error(let error):
-        // LocationUnknown error will be ignored, and other errors reported
-    }
-}
-.addDisposableTo(disposeBag)
+        print("Current Location is \($0)")        
+    },
+    onError:{
+        // LocationUnknown error will be ignored, and other errors reported    
+    },
+    onCompleted:{
+        // no complete event    
+    })
+    .addDisposableTo(disposeBag)
 #endif
 ```
 #### Configuration
@@ -165,9 +169,11 @@ RxLocationManager.Standard.isPaused
     //$0 is Boolean
     return $0 ? "Paused" : "Resumed"
 }
-.subscribeNext{
-   print("Location Updating is \($0)")
-}
+.subscribe(
+    onNext:{
+        print("Location Updating is \($0)")
+    }
+)
 .addDisposableTo(disposeBag)
 #endif
 ```
@@ -187,10 +193,12 @@ RxLocationManager.Standard.deferredUpdateFinished
     //$0 is NSError?
     return $0 == nil ? "Finished" : "Finished with error code \($0.code) in \($0.domain)"
 }
-.subscribeNext{
-    error in
-    print("Location Updating is \($0)")
-}
+.subscribe(
+    onNext:{
+        error in
+        print("Location Updating is \($0)")
+    }
+)
 .addDisposableTo(disposeBag)
 #endif
 ```
@@ -208,18 +216,17 @@ anotherStandardLocationService.distanceFilter(100).desiredAccuracy(50)
 ```
 #if os(iOS) || os(OSX)
 // RxLocationManager.SignificantLocation is the shared significant location update service instance
-RxLocationManager.SignificantLocation.locating.subscribe{
-    event in
-    switch event{
-    case .Next(let location):
-        // series of events will be delivered during subscription
-        print("Current Location is \(location)")
-    case .Completed:
-        // no complete event
-    case .Error(let error):
+RxLocationManager.SignificantLocation.locating.subscribe(
+    onNext:{
+        print("Current Location is \($0)")
+    },
+    onError:{        
         // in case errors
+    },
+    onCompleted:{
+        // no complete event        
     }
-}
+)
 .addDisposableTo(disposeBag)
 #endif
 ```
@@ -232,18 +239,18 @@ RxLocationManager.SignificantLocation.locating.subscribe{
 ```
 #if os(iOS)
 // RxLocationManager.HeadingUpdate is the shared heading update service instance
-RxLocationManager.HeadingUpdate.heading.subscribeNext{
-    event in
-    switch event{
-    case .Next(let heading):
+RxLocationManager.HeadingUpdate.heading.subscribe(
+    onNext:{
         // series of events will be delivered during subscription
-        print("Current heading is \(heading)")
-    case .Completed:
+        print("Current heading is \($0)")
+    },
+    onCompleted:{
         // no complete event
-    case .Error(let error):
-        // in case errors
+    },
+    onError:{
+        // in case errors    
     }
-}
+)
 .addDisposableTo(disposeBag)
 #endif
 ```
@@ -285,11 +292,13 @@ RxLocationManager.RegionMonitoring.startMonitoringForRegions(regions: [CLRegion]
 RxLocationManager.RegionMonitoring.stopMonitoringForRegions(regions: [CLRegion]) -> RegionMonitoringService
 RxLocationManager.RegionMonitoring.stopMonitoringForAllRegions() -> RegionMonitoringService
 
-RxLocationManager.RegionMonitoring.monitoredRegions.subscribeNext{
-    //happens no matter when new region is added or existing one gets removed from the monitored regions set
-    regions in
-    print("Current monitoring \(regions.count) regions")
-}
+RxLocationManager.RegionMonitoring.monitoredRegions.subscribe(
+    onNext:{
+        //happens no matter when new region is added or existing one gets removed from the monitored regions set
+        regions in
+        print("Current monitoring \(regions.count) regions")
+    }
+)
 .addDisposableTo(disposeBag)
 #endif
 ```
@@ -297,16 +306,20 @@ RxLocationManager.RegionMonitoring.monitoredRegions.subscribeNext{
 #### Observe region enter/exit event
 ```
 #if os(iOS) || os(OSX)
-RxLocationManager.RegionMonitoring.entering.subscribeNext{
-    region in
-    print("Device is entering the region: \(region.identifier)")
-}
+RxLocationManager.RegionMonitoring.entering.subscribe(
+    onNext:{
+        region in
+        print("Device is entering the region: \(region.identifier)")
+    }
+)    
 .addDisposableTo(disposeBag)
 
-RxLocationManager.RegionMonitoring.exiting.subscribeNext{
-    region in
-    print("Device is leaving the region: \(region.identifier)")
-}
+RxLocationManager.RegionMonitoring.exiting.subscribe(
+    onNext:{
+        region in
+        print("Device is leaving the region: \(region.identifier)")
+    }
+)   
 .addDisposableTo(disposeBag)
 #endif
 ```
@@ -314,10 +327,12 @@ RxLocationManager.RegionMonitoring.exiting.subscribeNext{
 #### Ask for the current state of monitored regions
 ```
 RxLocationManager.RegionMonitoring.requestRegionsState(regions:[CLRegion]) -> RegionMonitoringService
-RxLocationManager.RegionMonitoring.determinedRegionState.subscribeNext{
-    region, state in
-    print("the region: \(region.identifier) is in state: \(state.rawValue)")
-}
+RxLocationManager.RegionMonitoring.determinedRegionState.subscribe(
+    onNext:{
+        region, state in
+        print("the region: \(region.identifier) is in state: \(state.rawValue)")
+    }
+)
 .addDisposableTo(disposeBag)
 ```
 
@@ -332,10 +347,12 @@ RxLocationManager.RegionMonitoring.stopRangingBeaconsInRegion(region: CLBeaconRe
 #### Observe ranged beacons
 ```
 #if os(iOS)
-RxLocationManager.RegionMonitoring.ranging.subscribeNext{
-    beacons, inRegion in
-    print("\(beacons.count) beacons ranged in range:\(inRange.identifier)")
-}
+RxLocationManager.RegionMonitoring.ranging.subscribe(
+    onNext:{
+        beacons, inRegion in
+        print("\(beacons.count) beacons ranged in range:\(inRange.identifier)")
+    }
+)    
 .addDisposableTo(disposeBag)
 #endif
 ```
@@ -353,10 +370,12 @@ RxLocationManager.VisitMonitoring.stopMonitoringVisits()
 #### Observe visit events
 ```
 #if os(iOS)
-RxLocationManager.VisitMonitoring.visiting.subscribeNext{
-    visit in
-    print("coordinate: \(visit.coordinate.longitude),\(visit.coordinate.latitude)")
-}
+RxLocationManager.VisitMonitoring.visiting.subscribe(
+    onNext:{
+        visit in
+        print("coordinate: \(visit.coordinate.longitude),\(visit.coordinate.latitude)")
+    }
+)    
 .addDisposableTo(disposeBag)
 #endif
 ```
