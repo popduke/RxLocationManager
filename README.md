@@ -16,7 +16,7 @@ use_frameworks!
 
 # replace YOUR_TARGET_NAME with yours
 target 'YOUR_TARGET_NAME' do
-    pod 'RxLocationManager',    '~> 1.0'
+    pod 'RxLocationManager',    '~> 2.0'
 end
 ```
 and run 
@@ -28,7 +28,7 @@ $ pod install
 Add following line to `Cartfile`
 
 ```
-github "popduke/RxLocationManager" ~> 1.0
+github "popduke/RxLocationManager" ~> 2.0
 ```
 and run
 
