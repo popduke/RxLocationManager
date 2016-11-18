@@ -35,63 +35,69 @@ class RootViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let isAuthorized = RxLocationManager.authorizationStatus.map{return $0 == .AuthorizedAlways || $0 == .AuthorizedWhenInUse}
+        let isAuthorized = RxLocationManager.authorizationStatus.map{return $0 == .authorizedAlways || $0 == .authorizedWhenInUse}
         
-        isAuthorized.subscribe(standardLocationServiceBtn.rx_enabled).addDisposableTo(disposeBag)
-        isAuthorized.subscribe(visitMonitoringServiceBtn.rx_enabled).addDisposableTo(disposeBag)
+        isAuthorized.subscribe(standardLocationServiceBtn.rx.isEnabled).addDisposableTo(disposeBag)
+        isAuthorized.subscribe(visitMonitoringServiceBtn.rx.isEnabled).addDisposableTo(disposeBag)
         
         isAuthorized.map{
             $0 && RxLocationManager.significantLocationChangeMonitoringAvailable
             }
-            .subscribe(significantLocationUpdateBtn.rx_enabled)
+            .bindTo(significantLocationUpdateBtn.rx.isEnabled)
             .addDisposableTo(disposeBag)
         
         isAuthorized.map{
             $0 && RxLocationManager.headingAvailable
             }
-            .subscribe(headingUpdateServiceBtn.rx_enabled)
+            .bindTo(headingUpdateServiceBtn.rx.isEnabled)
             .addDisposableTo(disposeBag)
         
         isAuthorized.map{
-            $0 && RxLocationManager.isMonitoringAvailableForClass(CLCircularRegion)
+            $0 && RxLocationManager.isMonitoringAvailableForClass(regionClass: CLCircularRegion.self)
             }
-            .subscribe(regionMonitoringServiceBtn.rx_enabled)
+            .bindTo(regionMonitoringServiceBtn.rx.isEnabled)
             .addDisposableTo(disposeBag)
         
-        requestWhenInUseBtn.rx_tap.subscribeNext{
-            RxLocationManager.requestWhenInUseAuthorization()
-            }
+        requestWhenInUseBtn.rx.tap
+            .subscribe(
+                onNext:{
+                    _ in
+                    RxLocationManager.requestWhenInUseAuthorization()
+            })
             .addDisposableTo(disposeBag)
         
-        requestAlwaysBtn.rx_tap.subscribeNext{
-            RxLocationManager.requestAlwaysAuthorization()
-            }
+        requestAlwaysBtn.rx.tap
+            .subscribe(
+                onNext:{
+                    _ in
+                    RxLocationManager.requestAlwaysAuthorization()
+            })
             .addDisposableTo(disposeBag)
         
         RxLocationManager.enabled
             .map{return "Location Service is \($0 ? "ON":"OFF")"}
-            .subscribe(locationServiceStatusLbl.rx_text)
+            .bindTo(locationServiceStatusLbl.rx.text)
             .addDisposableTo(disposeBag)
         
         RxLocationManager.authorizationStatus
             .map {
                 switch($0){
-                case .NotDetermined:
+                case .notDetermined:
                     return "NotDetermined"
-                case .Restricted:
+                case .restricted:
                     return "Restricted"
-                case .Denied:
+                case .denied:
                     return "Denied"
-                case .AuthorizedAlways:
+                case .authorizedAlways:
                     return "AuthorizedAlways"
-                case .AuthorizedWhenInUse:
+                case .authorizedWhenInUse:
                     return "AuthorizedWhenInUse"
                 }
             }
             .map {
                 return "Authorization Status is " + $0
             }
-            .subscribe(authStatusLbl.rx_text)
+            .bindTo(authStatusLbl.rx.text)
             .addDisposableTo(disposeBag)
         
     }

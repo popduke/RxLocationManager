@@ -33,37 +33,36 @@ class HeadingUpdateServiceViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         disposeBag = DisposeBag()
-        trueHeadingSwitch.rx_value
-            .subscribeNext{
+        trueHeadingSwitch.rx.value
+            .subscribe(onNext:{
                 if $0{
                     RxLocationManager.HeadingUpdate.startTrueHeading(nil)
                 }else{
                     RxLocationManager.HeadingUpdate.stopTrueHeading()
                 }
-                
-            }
+            })
             .addDisposableTo(disposeBag)
         
-        toggleHeadingUpdateBtn.rx_tap
-            .subscribeNext{
+        toggleHeadingUpdateBtn.rx.tap
+            .subscribe{
                 [unowned self]
                 _ in
                 if self.headingSubscription == nil {
-                    self.toggleHeadingUpdateBtn.setTitle("Stop", forState: .Normal)
+                    self.toggleHeadingUpdateBtn.setTitle("Stop", for: .normal)
                     self.headingSubscription = RxLocationManager.HeadingUpdate.heading
-                        .subscribeNext{
+                        .subscribe(onNext:{
                             [unowned self]
                             heading in
                             self.magneticHeadingValueLbl.text = heading.magneticHeading.description
                             self.trueHeadingValueLbl.text = heading.trueHeading.description
                             self.headingAccuracyValueLbl.text = heading.headingAccuracy.description
                             self.timestampValueLbl.text = heading.timestamp.description
-                    }
+                    })
                 }else{
                     self.headingSubscription?.dispose()
-                    self.toggleHeadingUpdateBtn.setTitle("Start", forState: .Normal)
+                    self.toggleHeadingUpdateBtn.setTitle("Start", for: .normal)
                     self.magneticHeadingValueLbl.text = ""
                     self.trueHeadingValueLbl.text = ""
                     self.headingAccuracyValueLbl.text = ""
@@ -75,7 +74,7 @@ class HeadingUpdateServiceViewController: UIViewController {
             .addDisposableTo(disposeBag)
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         disposeBag = nil
         headingSubscription?.dispose()
         headingSubscription = nil

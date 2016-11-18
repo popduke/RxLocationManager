@@ -12,7 +12,7 @@ import CoreLocation
 
 //MARK: RxLocationManager
 open class RxLocationManager{
-    fileprivate static var defaultLocationMgr: CLLocationManagerBridge = {
+    private static var defaultLocationMgr: CLLocationManagerBridge = {
         let locMgr = CLLocationManagerBridge()
         locMgr.didChangeAuthorizationStatus = {
             clLocMgr, status in
@@ -22,7 +22,7 @@ open class RxLocationManager{
         return locMgr
     }()
     
-    fileprivate static var enabledSink:ReplaySubject<Bool> = {
+    private static var enabledSink:ReplaySubject<Bool> = {
         let replaySubject:ReplaySubject<Bool> = ReplaySubject.create(bufferSize: 1)
         replaySubject.onNext(CLLocationManagerBridge.locationServicesEnabled())
         //Force initialize defaultLocationMgr, since it's always lazy
@@ -37,7 +37,7 @@ open class RxLocationManager{
         }
     }
     
-    fileprivate static var authorizationStatusSink:ReplaySubject<CLAuthorizationStatus> = {
+    private static var authorizationStatusSink:ReplaySubject<CLAuthorizationStatus> = {
         let replaySubject:ReplaySubject<CLAuthorizationStatus> = ReplaySubject.create(bufferSize: 1)
         replaySubject.onNext(CLLocationManagerBridge.authorizationStatus())
         //Force initialize defaultLocationMgr, since it's always lazy

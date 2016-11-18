@@ -15,11 +15,11 @@ extension CLRegionState: CustomStringConvertible{
     public var description:String{
         get{
             switch self{
-            case .Unknown:
+            case .unknown:
                 return "Unknown"
-            case .Inside:
+            case .inside:
                 return "IN"
-            case .Outside:
+            case .outside:
                 return "OUT"
             }
         }
@@ -36,57 +36,57 @@ class RegionMonitoringServiceViewController: UIViewController {
     
     private var disposeBag:DisposeBag!
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         disposeBag = DisposeBag()
-        addRegionBtn.rx_tap
-            .subscribeNext{
+        addRegionBtn.rx.tap
+            .subscribe{
                 [unowned self]
                 _ in
                 self.errorLbl.text = ""
                 RxLocationManager.Standard.located
-                    .doOnError{
+                    .do(onError:{
                         self.errorLbl.text = ($0 as NSError).description
-                    }
-                    .subscribeNext{
+                    })
+                    .subscribe(onNext:{
                         location in
-                        RxLocationManager.RegionMonitoring.startMonitoringForRegions([CLCircularRegion(center: location.coordinate, radius: 20, identifier: location.timestamp.description)])
-                    }
+                        _ = RxLocationManager.RegionMonitoring.startMonitoringForRegions([CLCircularRegion(center: location.coordinate, radius: 20, identifier: location.timestamp.description)])
+                    })
                     .addDisposableTo(self.disposeBag)
             }
             .addDisposableTo(disposeBag)
         
         RxLocationManager.RegionMonitoring.error
-            .subscribeNext{
+            .subscribe(onNext:{
                 [unowned self]
                 region, error in
                 self.errorLbl.text = error.description
-            }
+            })
             .addDisposableTo(disposeBag)
 
         RxLocationManager.RegionMonitoring.monitoredRegions
-            .bindTo(monitoredRangesTableView.rx_itemsWithCellFactory) { (tableView, row, monitoredRegion) in
-                let cell = tableView.dequeueReusableCellWithIdentifier("MonitoredRegionTableViewCell")! as! MonitoredCircleRegionTableViewCell
+            .bindTo(monitoredRangesTableView.rx.items) { (tableView, row, monitoredRegion) in
+                let cell = tableView.dequeueReusableCell(withIdentifier: "MonitoredRegionTableViewCell")! as! MonitoredCircleRegionTableViewCell
                 cell.monitoredRegion = monitoredRegion as? CLCircularRegion
                 return cell
             }
             .addDisposableTo(disposeBag)
         
-        monitoredRangesTableView.rx_itemDeleted
-            .subscribeNext{
+        monitoredRangesTableView.rx.itemDeleted
+            .subscribe(onNext:{
                 [unowned self]
                 indexOfRemovedRegion in
-                let removedRegionCell = self.monitoredRangesTableView.cellForRowAtIndexPath(indexOfRemovedRegion) as! MonitoredCircleRegionTableViewCell
-                RxLocationManager.RegionMonitoring.stopMonitoringForRegions([removedRegionCell.monitoredRegion!])
-            }
+                let removedRegionCell = self.monitoredRangesTableView.cellForRow(at: indexOfRemovedRegion) as! MonitoredCircleRegionTableViewCell
+                _ = RxLocationManager.RegionMonitoring.stopMonitoringForRegions([removedRegionCell.monitoredRegion!])
+            })
             .addDisposableTo(disposeBag)
         
         RxLocationManager.RegionMonitoring.entering
-            .subscribeNext{
+            .subscribe(onNext:{
                 [unowned self]
                 enteredRegion in
                 for i in 0 ..< self.monitoredRangesTableView.numberOfSections {
-                    for j in 0 ..< self.monitoredRangesTableView.numberOfRowsInSection(i){
-                        if let cell = self.monitoredRangesTableView.cellForRowAtIndexPath(NSIndexPath(forRow: j, inSection: i)){
+                    for j in 0 ..< self.monitoredRangesTableView.numberOfRows(inSection: i){
+                        if let cell = self.monitoredRangesTableView.cellForRow(at:IndexPath(row: j, section: i)){
                             let monitoredCell = cell as! MonitoredCircleRegionTableViewCell
                             if monitoredCell.monitoredRegion!.identifier == enteredRegion.identifier{
                                 monitoredCell.inoutStatusLbl!.text = "IN"
@@ -94,16 +94,16 @@ class RegionMonitoringServiceViewController: UIViewController {
                         }
                     }
                 }
-            }
+            })
             .addDisposableTo(disposeBag)
         
         RxLocationManager.RegionMonitoring.exiting
-            .subscribeNext{
+            .subscribe(onNext:{
                 [unowned self]
                 exitedRegion in
                 for i in 0 ..< self.monitoredRangesTableView.numberOfSections {
-                    for j in 0 ..< self.monitoredRangesTableView.numberOfRowsInSection(i){
-                        if let cell = self.monitoredRangesTableView.cellForRowAtIndexPath(NSIndexPath(forRow: j, inSection: i)){
+                    for j in 0 ..< self.monitoredRangesTableView.numberOfRows(inSection: i){
+                        if let cell = self.monitoredRangesTableView.cellForRow(at:IndexPath(row: j, section: i)){
                             let monitoredCell = cell as! MonitoredCircleRegionTableViewCell
                             if monitoredCell.monitoredRegion!.identifier == exitedRegion.identifier{
                                 monitoredCell.inoutStatusLbl!.text = "OUT"
@@ -111,25 +111,25 @@ class RegionMonitoringServiceViewController: UIViewController {
                         }
                     }
                 }
-            }
+            })
             .addDisposableTo(disposeBag)
         
-        monitoredRangesTableView.rx_itemSelected
-            .subscribeNext{
+        monitoredRangesTableView.rx.itemSelected
+            .subscribe(onNext:{
                 [unowned self]
                 indexPath in
-                let monitoredCell = self.monitoredRangesTableView.cellForRowAtIndexPath(indexPath) as! MonitoredCircleRegionTableViewCell
-                RxLocationManager.RegionMonitoring.requestRegionsState([monitoredCell.monitoredRegion!])
-            }
+                let monitoredCell = self.monitoredRangesTableView.cellForRow(at:indexPath) as! MonitoredCircleRegionTableViewCell
+                _ = RxLocationManager.RegionMonitoring.requestRegionsState([monitoredCell.monitoredRegion!])
+            })
         .addDisposableTo(disposeBag)
         
         RxLocationManager.RegionMonitoring.determinedRegionState
-            .subscribeNext{
+            .subscribe(onNext:{
                 [unowned self]
                 region, state in
                 for i in 0 ..< self.monitoredRangesTableView.numberOfSections {
-                    for j in 0 ..< self.monitoredRangesTableView.numberOfRowsInSection(i){
-                        if let cell = self.monitoredRangesTableView.cellForRowAtIndexPath(NSIndexPath(forRow: j, inSection: i)){
+                    for j in 0 ..< self.monitoredRangesTableView.numberOfRows(inSection: i){
+                        if let cell = self.monitoredRangesTableView.cellForRow(at: IndexPath(row: j, section: i)){
                             let monitoredCell = cell as! MonitoredCircleRegionTableViewCell
                             if monitoredCell.monitoredRegion!.identifier == region.identifier{
                                 monitoredCell.inoutStatusLbl!.text = state.description
@@ -137,11 +137,11 @@ class RegionMonitoringServiceViewController: UIViewController {
                         }
                     }
                 }
-            }
+            })
             .addDisposableTo(disposeBag)
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         disposeBag = nil
     }
 }

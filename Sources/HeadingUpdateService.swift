@@ -74,9 +74,9 @@
     
     //MARK: DefaultHeadingUpdateService
     class DefaultHeadingUpdateService: HeadingUpdateService {
-        fileprivate let bridgeClass: CLLocationManagerBridge.Type
+        private let bridgeClass: CLLocationManagerBridge.Type
         var locMgr: CLLocationManagerBridge
-        fileprivate var trueHeadingParams: (distanceFilter:CLLocationDistance, desiredAccuracy:CLLocationAccuracy)?
+        private var trueHeadingParams: (distanceFilter:CLLocationDistance, desiredAccuracy:CLLocationAccuracy)?
 
         var headingFilter: CLLocationDegrees{
             get{

@@ -21,32 +21,33 @@ class VisitMonitoringViewController: UIViewController {
     
     private var disposeBag:DisposeBag!
     private var subscription: Disposable?
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         disposeBag = DisposeBag()
-        toggleBtn.rx_tap
-            .subscribeNext{
+        toggleBtn.rx.tap
+            .subscribe(
+                onNext:{
                 [unowned self]
                 _ in
                 if self.subscription != nil{
                     self.subscription!.dispose()
-                    self.toggleBtn.setTitle("Start", forState: .Normal)
+                    self.toggleBtn.setTitle("Start", for: .normal)
                     self.subscription = nil
                 }else{
                     self.subscription = RxLocationManager.VisitMonitoring.visiting
-                        .subscribeNext{
+                        .subscribe(onNext:{
                             visit in
                             self.coordValueLbl.text = "\(visit.coordinate.latitude),\(visit.coordinate.longitude)"
                             self.horizontalAccuracyLbl.text = visit.horizontalAccuracy.description
                             self.arriveDateLbl.text = visit.arrivalDate.description
                             self.departureDateLbl.text = visit.departureDate.description
-                        }
-                    self.toggleBtn.setTitle("Stop", forState: .Normal)
+                        })
+                    self.toggleBtn.setTitle("Stop", for: .normal)
                 }
-            }
+            })
             .addDisposableTo(disposeBag)
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         disposeBag = nil
         subscription?.dispose()
         subscription = nil

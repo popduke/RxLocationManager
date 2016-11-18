@@ -28,24 +28,24 @@ class StandardLocationServiceViewController: UIViewController {
     private var locatedSubscription: Disposable?
     private var locatingSubscription: Disposable?
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         disposeBag = DisposeBag()
-        modeSwitcher.rx_value
+        modeSwitcher.rx.value
             .map{
                 return $0 != 0
             }
-            .subscribe(getCurrentLocationBtn.rx_hidden)
+            .subscribe(getCurrentLocationBtn.rx.isHidden)
             .addDisposableTo(disposeBag)
         
-        modeSwitcher.rx_value
+        modeSwitcher.rx.value
             .map{
                 return $0 == 0
             }
-            .subscribe(toggleLocatingBtn.rx_hidden)
+            .subscribe(toggleLocatingBtn.rx.isHidden)
             .addDisposableTo(disposeBag)
         
-        getCurrentLocationBtn.rx_tap
-            .subscribeNext{
+        getCurrentLocationBtn.rx.tap
+            .subscribe{
                 [unowned self]
                 _ in
                 if self.locatedSubscription != nil {
@@ -56,48 +56,46 @@ class StandardLocationServiceViewController: UIViewController {
                     .map{
                         return "\($0.coordinate.latitude),\($0.coordinate.longitude)"
                     }
-                    .doOn{
-                        switch $0{
-                        case .Next(_):
+                    .do(
+                        onNext:{
+                            _ in
                             self.errorLbl.text = ""
-                        case .Error(let error as NSError):
+                        },
+                        onError:{
                             self.currentLocationLbl.text = ""
-                            self.errorLbl.text = error.description
-                        default:
-                            return
+                            self.errorLbl.text = ($0 as NSError).description
                         }
-                    }
+                    )
                     .catchErrorJustReturn("")
-                    .subscribe(self.currentLocationLbl.rx_text)
+                    .bindTo(self.currentLocationLbl.rx.text)
             }
             .addDisposableTo(disposeBag)
         
-        toggleLocatingBtn.rx_tap
-            .subscribeNext{
+        toggleLocatingBtn.rx.tap
+            .subscribe{
                 [unowned self]
                 _ in
                 if self.locatingSubscription == nil {
-                    self.toggleLocatingBtn.setTitle("Stop", forState: .Normal)
+                    self.toggleLocatingBtn.setTitle("Stop", for: .normal)
                     self.locatingSubscription = RxLocationManager.Standard.locating
                         .map{
                             let coord = $0.last!;
                             return "\(coord.coordinate.latitude),\(coord.coordinate.longitude)"
                         }
-                        .doOn{
-                            switch $0{
-                            case .Next(_):
+                        .do(
+                            onNext:{
+                                _ in
                                 self.errorLbl.text = ""
-                            case .Error(let error as NSError):
+                            },
+                            onError:{
                                 self.currentLocationLbl.text = ""
-                                self.errorLbl.text = error.description
-                            default:
-                                return
+                                self.errorLbl.text = ($0 as NSError).description
                             }
-                        }
+                        )
                         .catchErrorJustReturn("")
-                        .subscribe(self.currentLocationLbl.rx_text)
+                        .bindTo(self.currentLocationLbl.rx.text)
                 }else{
-                    self.toggleLocatingBtn.setTitle("Start", forState: .Normal)
+                    self.toggleLocatingBtn.setTitle("Start", for: .normal)
                     self.currentLocationLbl.text = ""
                     self.locatingSubscription!.dispose()
                     self.locatingSubscription = nil
@@ -106,7 +104,7 @@ class StandardLocationServiceViewController: UIViewController {
             .addDisposableTo(disposeBag)
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         disposeBag = nil
         locatedSubscription?.dispose()
         locatedSubscription = nil

@@ -90,14 +90,14 @@
     class DefaultRegionMonitoringService: RegionMonitoringService{
         let locMgr: CLLocationManagerBridge
     
-        fileprivate var enteringObservers = [(id:Int, observer: AnyObserver<CLRegion>)]()
-        fileprivate var exitingObservers = [(id:Int, observer: AnyObserver<CLRegion>)]()
-        fileprivate var determinedRegionStateObservers = [(id:Int, observer: AnyObserver<(CLRegion, CLRegionState)>)]()
-        fileprivate var errorObservers = [(id:Int, observer: AnyObserver<(CLRegion?, NSError)>)]()
-        fileprivate var monitoredRegionsObservers = [(id:Int, observer: AnyObserver<Set<CLRegion>>)]()
+        private var enteringObservers = [(id:Int, observer: AnyObserver<CLRegion>)]()
+        private var exitingObservers = [(id:Int, observer: AnyObserver<CLRegion>)]()
+        private var determinedRegionStateObservers = [(id:Int, observer: AnyObserver<(CLRegion, CLRegionState)>)]()
+        private var errorObservers = [(id:Int, observer: AnyObserver<(CLRegion?, NSError)>)]()
+        private var monitoredRegionsObservers = [(id:Int, observer: AnyObserver<Set<CLRegion>>)]()
         
         #if os(iOS)
-        fileprivate var rangingObservers = [(id:Int, observer: AnyObserver<([CLBeacon], CLBeaconRegion)>)]()
+        private var rangingObservers = [(id:Int, observer: AnyObserver<([CLBeacon], CLBeaconRegion)>)]()
         #endif
         
         var maximumRegionMonitoringDistance: CLLocationDistance{

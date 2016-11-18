@@ -120,21 +120,21 @@ public protocol StandardLocationService: StandardLocationServiceConfigurable{
 
 //MARK: DefaultStandardLocationService
 class DefaultStandardLocationService: StandardLocationService{
-    fileprivate let bridgeClass: CLLocationManagerBridge.Type
+    private let bridgeClass: CLLocationManagerBridge.Type
     
     #if os(iOS) || os(watchOS) || os(tvOS)
     var locMgrForLocation:CLLocationManagerBridge!
-    fileprivate var locatedObservers = [(id: Int, observer: AnyObserver<CLLocation>)]()
+    private var locatedObservers = [(id: Int, observer: AnyObserver<CLLocation>)]()
     #endif
     
     #if os(iOS) || os(OSX) || os(watchOS)
     var locMgrForLocating:CLLocationManagerBridge!
-    fileprivate var locatingObservers = [(id: Int, observer: AnyObserver<[CLLocation]>)]()
+    private var locatingObservers = [(id: Int, observer: AnyObserver<[CLLocation]>)]()
     #endif
     
     #if os(iOS)
-    fileprivate var deferredUpdateErrorObservers = [(id: Int, observer: AnyObserver<NSError?>)]()
-    fileprivate var isPausedObservers = [(id: Int, observer: AnyObserver<Bool>)]()
+    private var deferredUpdateErrorObservers = [(id: Int, observer: AnyObserver<NSError?>)]()
+    private var isPausedObservers = [(id: Int, observer: AnyObserver<Bool>)]()
     #endif
     
     var distanceFilter:CLLocationDistance{

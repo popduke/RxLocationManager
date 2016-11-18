@@ -19,7 +19,7 @@
     //MARK: DefaultSignificantLocationUpdateService
     class DefaultSignificantLocationUpdateService: SignificantLocationUpdateService{
         let locMgr:CLLocationManagerBridge
-        fileprivate var observers = [(id: Int, AnyObserver<[CLLocation]>)]()
+        private var observers = [(id: Int, AnyObserver<[CLLocation]>)]()
         var locating: Observable<[CLLocation]>{
             get{
                 return Observable.create {

@@ -20,23 +20,23 @@ class SignificantLocationUpdateViewController: UIViewController {
     private var disposeBag:DisposeBag!
     
     private var locatingSubscription: Disposable?
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         disposeBag = DisposeBag()
-        toggleSignificantLocationUpdateBtn.rx_tap
-            .subscribeNext{
+        toggleSignificantLocationUpdateBtn.rx.tap
+            .subscribe{
                 [unowned self]
                 _ in
                 if self.locatingSubscription == nil {
-                    self.toggleSignificantLocationUpdateBtn.setTitle("Stop", forState: .Normal)
+                    self.toggleSignificantLocationUpdateBtn.setTitle("Stop", for: .normal)
                     self.locatingSubscription = RxLocationManager.SignificantLocation.locating
                         .map{
                             let coord = $0.last!;
                             return "\(coord.coordinate.latitude),\(coord.coordinate.longitude)"
                         }
                         .catchErrorJustReturn("")
-                        .subscribe(self.currentLocationLbl.rx_text)
+                        .subscribe(self.currentLocationLbl.rx.text)
                 }else{
-                    self.toggleSignificantLocationUpdateBtn.setTitle("Start", forState: .Normal)
+                    self.toggleSignificantLocationUpdateBtn.setTitle("Start", for: .normal)
                     self.currentLocationLbl.text = ""
                     self.locatingSubscription!.dispose()
                     self.locatingSubscription = nil
@@ -44,7 +44,7 @@ class SignificantLocationUpdateViewController: UIViewController {
             }
             .addDisposableTo(disposeBag)
     }
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         disposeBag = nil
         locatingSubscription?.dispose()
         locatingSubscription = nil
