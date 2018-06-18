@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
     spec.name = "RxLocationManager"
-    spec.version = "2.0.0"
+    spec.version = "3.0.0"
     spec.summary = "Reactive Style Location Manager for iOS, macOS, watchOS, tvOS"
     spec.description = "If you programs in functional reactive style in iOS, RxLocationManager makes location management a lot easier comparing to CLLocationManager"
     spec.homepage = "https://github.com/popduke/RxLocationManager"
@@ -17,5 +17,5 @@ Pod::Spec.new do |spec|
     spec.source = { git: "https://github.com/popduke/RxLocationManager.git", tag: spec.version.to_s }
     spec.source_files = 'sources/*.{h,swift}'
 
-    spec.dependency "RxSwift", "~> 3.0"
+    spec.dependency "RxSwift", "~> 4.0"
 end
