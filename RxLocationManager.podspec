@@ -17,5 +17,5 @@ Pod::Spec.new do |spec|
     spec.source = { git: "https://github.com/popduke/RxLocationManager.git", tag: spec.version.to_s }
     spec.source_files = 'sources/*.{h,swift}'
 
-    spec.dependency "RxSwift", "~> 4"
+    spec.dependency "RxSwift", "~> 5.0"
 end
